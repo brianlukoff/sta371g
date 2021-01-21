@@ -1,0 +1,16 @@
+*.aux
+*latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*-concordance.tex
+*-tikzDictionary
+*.upa
+.Rproj.user
+.Rhistory

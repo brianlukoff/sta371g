@@ -1,0 +1,51 @@
+\usepackage[utf8]{inputenc}
+\usepackage{pgfpages}
+\usepackage[main=english]{babel}
+\usepackage{ragged2e}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes,backgrounds,arrows}
+\usepackage{amsmath,amssymb}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{pifont}
+\usepackage{multicol}
+\usetheme[faculty=ped,logo=../mccombs.png]{fibeamer}
+\usetikzlibrary{shapes.geometric}
+
+\newcommand{\fullpagepicture}[1]{
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[at=(current page.center)] {
+      \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{#1}
+    };
+  \end{tikzpicture}
+}
+\tikzset{
+  decision/.style = {regular polygon, regular polygon sides=4, draw},
+  leaf/.style     = {color=orange},
+  prob/.style     = {circle,draw}
+}
+
+\newcommand{\lc}{\note{>>> LC question after this slide <<<}}
+
+\newcommand{\greencheckmark}{{\Large\color{green}\checkmark}}
+\newcommand{\redx}{{\Large\color{red} \ding{55}\ }}
+
+\newcommand{\fontsm}{\fontsize{10}{11}\selectfont}
+\newcommand{\fontvsm}{\fontsize{8}{9.6}\selectfont}
+
+\newcommand{\shrug}[1][]{%
+\begin{tikzpicture}[baseline,x=0.8\ht\strutbox,y=0.8\ht\strutbox,line width=0.125ex,#1]
+\def\arm{(-2.5,0.95) to (-2,0.95) (-1.9,1) to (-1.5,0) (-1.35,0) to (-0.8,0)};
+\draw \arm;
+\draw[xscale=-1] \arm;
+\def\headpart{(0.6,0) arc[start angle=-40, end angle=40,x radius=0.6,y radius=0.8]};
+\draw \headpart;
+\draw[xscale=-1] \headpart;
+\def\eye{(-0.075,0.15) .. controls (0.02,0) .. (0.075,-0.15)};
+\draw[shift={(-0.3,0.8)}] \eye;
+\draw[shift={(0,0.85)}] \eye;
+% draw mouth
+\draw (-0.1,0.2) to [out=15,in=-100] (0.4,0.95);
+\end{tikzpicture}}
