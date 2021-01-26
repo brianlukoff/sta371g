@@ -1,0 +1,305 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Probability 2}
+\subtitle{Lecture 3}
+\author{STA 371G}
+
+\begin{document}
+<<setup, include=F, cache=F>>=
+library(knitr)
+opts_knit$set(global.par=T)
+opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+library(extrafont)
+loadfonts()
+load("../../data/lecture-02.RData")
+options(scipen=1, digits=2)
+@
+<<include=F, cache=F>>=
+par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+@
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{Announcements}
+    \end{frame}
+
+    \section{Conditional probabilities}
+
+    \begin{frame}{Conditional probability}
+      \begin{definition}
+        The \alert{conditional probability} $P(B|A)$ is the probability of $B$ happening if we already know that $A$ has occurred.
+      \end{definition}
+
+      Read $P(B|A)$ out loud as ``the probability of $B$ given $A$.''
+    \end{frame}
+
+    
+    \begin{frame}
+      \fullpagepicture{world}
+    \end{frame}
+
+
+    \begin{frame}
+      \begin{center}
+        \includegraphics[width=3in]{venn}
+      \end{center}
+      
+      \begin{align*}
+        P(C|F) &= \frac{\text{Deena, J-Woww, Snooki}}{\text{Deena, J-Woww, Snooki, Angelina}} = \frac{3}{4} \\ 
+               &= \frac{P(\text{$C$ and $F$})}{P(F)} = \frac{3/8}{4/8}
+      \end{align*}
+    \end{frame}
+
+
+    \begin{frame}
+      \begin{center}
+        \includegraphics[width=3in]{venn}
+      \end{center}
+      
+      $P(C|F) \neq P(F|C)$ --- they mean two different things:
+      \begin{itemize}
+        \item $P(C|F)$ is the proportion of feuding cast members that have children
+        \item $P(F|C)$ is the proportion of cast members with children that are also feuding
+      \end{itemize}
+    \end{frame}
+
+
+    \begin{frame}{Probability rules}
+      \begin{enumerate}
+        \item The chance of an event happening is between 0\% and 100\%, i.e. $0 \leq P(E) \leq 1$ for any event $E$.
+        \item The probabilities for all possible outcomes put together add up to 1.
+        \item The probability that something doesn’t happen is 100\% minus the probability that it does happen, i.e. $P(E^c) = 1-P(E)$.
+        \item $P(\text{$A$ or $B$}) = P(A)+P(B) - P(\text{$A$ and $B$})$.
+        \item $P(\text{$A$ and $B$}) = P(A)P(B|A)$.
+      \end{enumerate}
+    \end{frame}
+
+
+    \begin{frame}{Two multiplication rules are really one}
+      \begin{tabular}{ll}
+        From last time: & $P(\text{$A$ and $B$}) = P(A)P(B)$, if $A$ and $B$ are independent \\
+        From today:     & $P(\text{$A$ and $B$}) = P(A)P(B|A)$
+      \end{tabular}
+
+      \vspace{0.5in}\pause
+
+      But these are really the same rule, since $P(B|A)=B$ exactly when $A$ and $B$ are independent! 
+
+      \vspace{0.3in}\pause
+      
+      This is also how you can check if two events are independent: just check if $P(A)P(B)=P(\text{$A$ and $B$})$.
+    \end{frame}
+
+    \begin{frame}[fragile]{Reading conditional probabilities off of contingency tables}
+      $P( \text{survived}|\text{female})$ is the proportion of women that survived:
+      <<>>=
+      prop.table(table(titanic$Sex, titanic$Survived), 1)
+      @
+      From this we can read off that $P(S|F) = \Sexpr{round(prop.table(table(titanic$Sex, titanic$Survived), 1)[1,2], 2)}$.
+    \end{frame}
+
+    \section{Probability trees}
+
+    \begin{frame}{Probability trees}
+      \begin{itemize}
+        \item A way to visualize all joint ($P(\text{$A$ and $B$})$) and conditional ($P(B|A)$) probabilities for a particular situation
+        \item A branch for each possible outcome
+        \item At each level of the tree, assume the things to the left have already happened
+        \item Each branch contains the probability of getting to that branch, conditional on what is to its left
+        \item The leaves of the tree represents probabilities of final outcomes
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          level 1/.style          = {sibling distance=11em, level distance=4em},
+          level 2/.style          = {sibling distance=6em, level distance=16em},
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [none] {}
+          child {
+            node [none] {}
+            child {
+              node [leaf] { $P(\text{$M$ \& 1st})$ }
+              edge from parent node [above] {1st class}
+              edge from parent node [below] {$P(\text{1st}|M)$}
+            }
+            child {
+              node [leaf] { $P(\text{$M$ \& 2nd})$ }
+              edge from parent node [above] {2nd class}
+              edge from parent node [below] {$P(\text{2nd}|M)$}
+            }
+            child {
+              node [leaf] { $P(\text{$M$ \& 3rd})$ }
+              edge from parent node [above] {3rd class}
+              edge from parent node [below] {$P(\text{3rd}|M)$}
+            }
+            edge from parent node [above] {male}
+            edge from parent node [below] {$P(M)$}
+          }
+          child {
+            node [none] {}
+            child {
+              node [leaf] { $P(\text{$F$ \& 1st})$ }
+              edge from parent node [above] {1st class}
+              edge from parent node [below] {$P(\text{1st}|F)$}
+            }
+            child {
+              node [leaf] { $P(\text{$F$ \& 2nd})$ }
+              edge from parent node [above] {2nd class}
+              edge from parent node [below] {$P(\text{2nd}|F)$}
+            }
+            child {
+              node [leaf] { $P(\text{$F$ \& 3rd})$ }
+              edge from parent node [above] {3rd class}
+              edge from parent node [below] {$P(\text{3rd}|F)$}
+            }
+            edge from parent node [above] {female}
+            edge from parent node [below] {$P(F)$}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+
+    \begin{frame}
+      <<include=F>>=
+      table.sex <- prop.table(table(titanic$Sex))
+      P.f <- table.sex["female"]
+      P.m <- table.sex["male"]
+      table.cond <- prop.table(table(titanic$Sex, titanic$PClass), 1)
+      @
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          level 1/.style          = {sibling distance=11em, level distance=4em},
+          level 2/.style          = {sibling distance=6em, level distance=16em},
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [none] {}
+          child {
+            node [none] {}
+            child {
+              node [leaf] { $P(\text{$M$ \& 1st})$ }
+              edge from parent node [above] {1st class}
+              edge from parent node [below] {$P(\text{1st}|M)$}
+            }
+            child {
+              node [leaf] { $P(\text{$M$ \& 2nd})$ }
+              edge from parent node [above] {2nd class}
+              edge from parent node [below] {$P(\text{2nd}|M)$}
+            }
+            child {
+              node [leaf] { $P(\text{$M$ \& 3rd})$ }
+              edge from parent node [above] {3rd class}
+              edge from parent node [below] {$P(\text{3rd}|M)$}
+            }
+            edge from parent node [above] {male}
+            edge from parent node [below] {\Sexpr{P.m}}
+          }
+          child {
+            node [none] {}
+            child {
+              node [leaf] { $P(\text{$F$ \& 1st})$ }
+              edge from parent node [above] {1st class}
+              edge from parent node [below] {$P(\text{1st}|F)$}
+            }
+            child {
+              node [leaf] { $P(\text{$F$ \& 2nd})$ }
+              edge from parent node [above] {2nd class}
+              edge from parent node [below] {$P(\text{2nd}|F)$}
+            }
+            child {
+              node [leaf] { \Sexpr{P.f * table.cond["female", "3rd"]} }
+              edge from parent node [above] {3rd class}
+              edge from parent node [below] {\Sexpr{table.cond["female", "3rd"]}}
+            }
+            edge from parent node [above] {female}
+            edge from parent node [below] {\Sexpr{P.f}}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+
+    \begin{frame}
+      <<include=F>>=
+      table.sex <- prop.table(table(titanic$Sex))
+      P.f <- table.sex["female"]
+      P.m <- table.sex["male"]
+      table.cond <- prop.table(table(titanic$Sex, titanic$PClass), 1)
+      @
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          level 1/.style          = {sibling distance=11em, level distance=4em},
+          level 2/.style          = {sibling distance=5em, level distance=16em},
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [none] {}
+          child {
+            node [none] {}
+            child {
+              node [leaf] { \Sexpr{P.m * table.cond["male", "1st"]} }
+              edge from parent node [above] {1st class}
+              edge from parent node [below] {\Sexpr{table.cond["male", "1st"]}}
+            }
+            child {
+              node [leaf] { \Sexpr{P.m * table.cond["male", "2nd"]} }
+              edge from parent node [above] {2nd class}
+              edge from parent node [below] {\Sexpr{table.cond["male", "2nd"]}}
+            }
+            child {
+              node [leaf] { \Sexpr{P.m * table.cond["male", "3rd"]} }
+              edge from parent node [above] {3rd class}
+              edge from parent node [below] {\Sexpr{table.cond["male", "3rd"]}}
+            }
+            edge from parent node [above] {male}
+            edge from parent node [below] {\Sexpr{P.m}}
+          }
+          child {
+            node [none] {}
+            child {
+              node [leaf] { \Sexpr{P.f * table.cond["female", "1st"]} }
+              edge from parent node [above] {1st class}
+              edge from parent node [below] {\Sexpr{table.cond["female", "1st"]}}
+            }
+            child {
+              node [leaf] { \Sexpr{P.f * table.cond["female", "2nd"]} }
+              edge from parent node [above] {2nd class}
+              edge from parent node [below] {\Sexpr{table.cond["female", "2nd"]}}
+            }
+            child {
+              node [leaf] { \Sexpr{P.f * table.cond["female", "3rd"]} }
+              edge from parent node [above] {3rd class}
+              edge from parent node [below] {\Sexpr{table.cond["female", "3rd"]}}
+            }
+            edge from parent node [above] {female}
+            edge from parent node [below] {\Sexpr{P.f}}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+  \end{darkframes}
+\end{document}

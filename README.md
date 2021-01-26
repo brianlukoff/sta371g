@@ -3,7 +3,8 @@
 | Lecture | Slides | R script |
 | ------- | ------ | -------- |
 | Lecture 1: Introduction to predictive analytics | [Slides](slides/lecture-01/lecture-01.pdf) | |
-| Lecture 2: Probability 1 | [Slides](slides/lecture-02/lecture-02.pdf) | |
+| Lecture 2: Probability 1 | [Slides](slides/lecture-02/lecture-02.pdf) | [Script](lecture-scripts/lecture-02.R) |
+| Lecture 3: Probability 2 | [Slides](slides/lecture-03/lecture-03.pdf) | |
 
 # R help pages
 
