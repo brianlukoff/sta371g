@@ -1,0 +1,382 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Bayes' Rule \& Random Variables}
+\subtitle{Lecture 4}
+\author{STA 371G}
+
+\begin{document}
+<<setup, include=F, cache=F>>=
+library(knitr)
+opts_knit$set(global.par=T)
+opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+library(extrafont)
+loadfonts()
+options(scipen=1, digits=2)
+ut2000 <- read.csv("http://jgscott.github.io/teaching/data/ut2000.csv")
+@
+<<include=F, cache=F>>=
+par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+@
+
+
+\frame{\maketitle}
+
+\AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+\begin{darkframes}
+
+\begin{frame}{Announcements}
+  \begin{itemize}
+    \item Homework 1 is due tonight at 11:59 PM (through MyStatLab)
+    \item Quiz 1 is Tuesday night at 6:30 PM (covers material through last week --- not today)
+  \end{itemize}
+\end{frame}
+
+\section{Bayes' Rule}
+
+\begin{frame}{COVID testing}
+  \begin{itemize}[<+->]
+    \item COVID testing is important for public health, but COVID tests are not perfect
+    \item The Beckman Coulter Access SARS-CoV-2 IgG test has the following properties:
+      \begin{itemize}
+        \item If you \textbf{have COVID}, there is a 96.8\% chance the test will show a \textbf{positive result}
+        \item If you \textbf{do not have COVID}, there is a 99.6\% chance the test will show a \textbf{negative result}
+      \end{itemize}
+    \item Let's suppose that 1\% of people in the population being tested actually have COVID
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{COVID testing}
+  \begin{center}
+    \[
+      C = \text{has COVID}, \qquad T = \text{tests positive for COVID}
+    \]
+    We know $P(T|C) = 0.968$, but we really want to know is $P(C|T)$!
+  \end{center}
+\end{frame}
+
+\begin{frame}{Bayes Rule}
+  For any events $A$ and $B$,
+  \begin{eqnarray*}
+    P(A|B) &=& \dfrac{P(\text{$A$ and $B$})}{P(B)} \\ \pause 
+    &=& \dfrac{P(B|A)P(A)}{P(\text{$B$ and $A$}) + P(\text{$B$ and $A^c$})} \\ \pause
+    &=& \dfrac{P(B|A)P(A)}{P(B|A)P(A) + P(B|A^c)P(A^c)}
+  \end{eqnarray*}
+  \pause
+  Bayes Rule allows us to ``reverse the conditioning'' and find $P(A|B)$ when we know $P(B|A)$.
+\end{frame}
+
+\begin{frame}{COVID testing}
+  Bayes Rule says
+  \[
+    P(C|T) = \frac{P(T|C)P(C)}{P(T|C)P(C) + P(T|C^c)P(C^c)}
+  \]
+
+  We know
+  \[ P(T|C) = 0.968, \qquad P(T^c|C^c) = 0.996, \qquad P(C) = 0.01 \]
+
+  \pause
+
+  So:
+  \begin{itemize}[<+->]
+    \item $P(C^c) = 1-P(C) = 0.99$
+    \item $P(T|C^c) = 1-P(T^c|C^c) = 0.004$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{COVID testing}
+<<include=F>>=
+options(digits=2)
+@
+
+\begin{align*}
+  P(C|T) &= \frac{ P(T|C)P(C) }{ P(T|C)P(C) + P(T|C^c)P(C^c) } \\
+  &= \frac{ (0.968)(0.01) }{ (0.968)(0.01) + (0.004)(0.99) } \\
+  &= \Sexpr{ (0.968)*(0.01) / ((0.968)*(0.01) + (0.004)*(0.99)) }
+\end{align*}
+\end{frame}
+
+\begin{frame}{COVID testing}
+  \begin{itemize}[<+->]
+    \item If you have COVID, there is a 96.8\% chance the test will show a positive result
+    \item If you do not have HIV, there is a 99.6\% chance the test will show a negative result
+    \item But if you test positive there is only a \Sexpr{round(100 * (0.968)*(0.01) / ((0.968)*(0.01) + (0.004)*(0.99)))}\% chance you have COVID!
+    \item This is counterintuitive, and is due to the low 1\% ``base rate'' of people that actually COVID
+    \item It's surprisingly low because of the way we as humans are wired (it even has a name: ``base rate fallacy'')
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Another way to look at it}
+  \begin{tikzpicture}
+  [
+    grow                    = right,
+    sibling distance        = 8em,
+    level distance          = 10em,
+    level 2/.style          = { sibling distance=4em },
+    edge from parent/.style = {draw, -latex},
+    every node/.style       = {font=\footnotesize, text width=2 cm},
+    sloped
+  ]
+  \node { 1,000,000 people }
+  child {
+    node { 10,000 (1\%) COVID positive }
+    child {
+      node { 9,680 (96.8\%) test positive }
+    }
+    child {
+      node { 320 (3.2\%) test negative }
+    }
+  }
+  child {
+    node { 990,000 (99\%) COVID negative }
+    child {
+      node { 3,960 (0.4\%) test positive }
+    }
+    child {
+      node { 986,040 (99.6\%) test negative }
+    }
+  };
+  \end{tikzpicture}
+  \pause
+
+  Of the $9680+3960=13640$ people that tested positive, only $9680$ (\Sexpr{round(100*9680/(9680+3960))}\%) are actually COVID positive!
+  
+\end{frame}
+
+\begin{frame}
+  Think of Bayes' Rule as a way to update our thinking based on new information:
+
+  \bigskip
+
+  \begin{center}
+    \begin{tabular}{ll}
+      $P(C)$ & $\longleftarrow$ Prior probability \\
+      $P(C|T)$ & $\longleftarrow$ Posterior probability (includes new information) \\
+    \end{tabular}
+  \end{center}
+  
+\end{frame}
+
+\begin{frame}
+  \fullpagepicture{doctors}
+\end{frame}
+
+\begin{frame}
+  Just 21\% of gynecologists got the right answer!
+  \bigskip\pause
+
+  In other words, this is hard, and it goes against our intuition!
+\end{frame}
+
+\section{Discrete random variables}
+
+\begin{frame}{Random variables}
+  \begin{definition}
+    A \alert{random variable} is a variable that can take on different numeric values with different probabilities. 
+    The \alert{distribution} of a random variable indicates each possible outcome with its corresponding probability.
+  \end{definition}
+\end{frame}
+
+\begin{frame}{iPhone prices}
+  Let $T$ be the possible prices, in dollars, of a randomly-selected iPhone 12 sold in October-November 2020.
+  The probabilities come from the actual percentage sold: 
+
+  \begin{center}
+    \begin{tabular}{lll}
+      Model & Price ($x$) & $P(T=x)$ \\
+      \hline
+      iPhone 12 & \$799 & 0.35 \\
+      iPhone 12 Pro & \$999 & 0.29 \\
+      iPhone 12 Pro Max & \$1,099 & 0.28 \\
+      iPhone 12 Mini & \$699 & 0.08 \\
+    \end{tabular}
+  \end{center}
+
+  \pause
+  How would we quantify the price of a ``typical'' or ``average'' iPhone 12? And how would we quantify how different the prices paid by different customers are?
+\end{frame}
+
+\begin{frame}{Expected value}
+  The expected value represents the long-run average price if we selected iPhones over and over an infinite number of times:
+  \begin{align*}
+    E(T) &= \sum_{\text{All prices $x$}} x \cdot P(T = x) \\
+    &= 700 \cdot 0.35 + 999 \cdot 0.29 + 1099 \cdot 0.28 + 699 \cdot 0.08 \\
+    &= \$933.
+  \end{align*}
+  It can be thought of as the price of a ``typical'' iPhone.
+\end{frame}
+
+\begin{frame}[fragile]{Calculating expected values in R}
+  In R, define the probabilities and values (prices) in separate vectors:
+  <<>>=
+  prices <- c(799, 999, 1099, 699)
+  probs <- c(0.35, 0.29, 0.28, 0.08)
+
+  # Calculate expected value
+  sum(prices * probs)
+  @
+\end{frame}
+
+\begin{frame}{Variance and standard deviation}
+  The variance and standard deviation represents the long-run variance and standard deviation of the prices of an infinite number of iPhones selected at random:
+  \begin{align*}
+    \text{Var}(T) &= \sum_{\text{All prices $x$}} (x - E(T))^2 \cdot P(T=x) \\
+    &= (700-933)^2\cdot 0.35 + (999-933)^2\cdot 0.29 + \\
+    &\qquad (1099-933)^2\cdot 0.28 + (699-933)^2\cdot 0.08 \\
+    &= 19644 \\
+    \text{SD}(T) &= \sqrt{\text{Var}(T)} \\
+    &= \$140.16.
+  \end{align*}
+\end{frame}
+
+\begin{frame}[fragile]{Calculating variance and SD in R}
+  <<>>=
+  # Expected value
+  iphone.ev <- sum(prices * probs)
+  # Variance
+  iphone.var <- sum((prices - iphone.ev)^2 * probs)
+  iphone.var
+  # Standard deviation
+  sqrt(iphone.var)
+  @
+\end{frame}
+
+\section{Continuous random variables: Normal distributions}
+
+\begin{frame}[fragile]{Data set}
+  The data set \texttt{ut2000} contains information on all \Sexpr{nrow(ut2000)} students that entered UT Austin in Fall 2000 and graduated within 6 years.
+  <<>>=
+  head(ut2000)
+  @
+  \footnotesize{Data from James Scott: \url{http://jgscott.github.io/teaching/data/ut2000.csv}}
+\end{frame}
+  
+\begin{frame}{In the year 2000...}
+  \begin{itemize}[<+->]
+    \item The most popular TV show was \emph{Survivor}
+    \item Britney Spears' \emph{Oops!...I did it again} had just come out
+    \item Angelina Jolie was married to Billy Bob Thorton
+    \item I was a college freshman
+  \end{itemize}
+\end{frame}
+  
+\begin{frame}[fragile]
+<<>>=
+hist(ut2000$SAT.C, main="", col="orange", xlab="SAT")
+@
+\end{frame}
+
+\begin{frame}[fragile]
+  This random variable is approximately \alert{Normal}, with mean $\mu=\Sexpr{mean(ut2000$SAT.C)}$ and SD $\sigma=\Sexpr{sd(ut2000$SAT.C)}$:
+
+  <<echo=F>>=
+  h <- hist(ut2000$SAT.C, main="", col="orange", xlab="SAT", freq=F, yaxt="n", ylab="")
+  x <- seq(600, 1600, by=1)
+  curve(dnorm(x, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C)), add=T, lwd=3, col="red")
+  @
+\end{frame}
+
+\begin{frame}{The Empirical Rule}
+  \begin{itemize}
+    \item About 68\% of a Normal random variable falls within $\pm 1$ SD of the mean
+    \item About 95\% of a Normal random variable falls within $\pm 2$ SD of the mean
+    \item About 99.7\% of a Normal random variable falls within $\pm 3$ SD of the mean
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The Empirical Rule}
+  \begin{itemize}[<+->]
+    \item About 68\% of students scored between $\Sexpr{mean(ut2000$SAT.C)} - \Sexpr{sd(ut2000$SAT.C)} = \Sexpr{mean(ut2000$SAT.C) - sd(ut2000$SAT.C)}$ and $\Sexpr{mean(ut2000$SAT.C)} + \Sexpr{sd(ut2000$SAT.C)}  = \Sexpr{mean(ut2000$SAT.C) + sd(ut2000$SAT.C)}$
+    \item About 95\% of students scored between $\Sexpr{mean(ut2000$SAT.C)} - 2\cdot\Sexpr{sd(ut2000$SAT.C)} = \Sexpr{mean(ut2000$SAT.C) - 2*sd(ut2000$SAT.C)}$ and $\Sexpr{mean(ut2000$SAT.C)} + 2\cdot\Sexpr{sd(ut2000$SAT.C)}  = \Sexpr{mean(ut2000$SAT.C) + 2*sd(ut2000$SAT.C)}$
+    \item About 99.7\% of students scored between $\Sexpr{mean(ut2000$SAT.C)} - 3\cdot\Sexpr{sd(ut2000$SAT.C)} = \Sexpr{mean(ut2000$SAT.C) - 3*sd(ut2000$SAT.C)}$ and $\Sexpr{mean(ut2000$SAT.C)} + 3\cdot\Sexpr{sd(ut2000$SAT.C)}  = \Sexpr{mean(ut2000$SAT.C) + 3*sd(ut2000$SAT.C)}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Calculating probabilities using R}
+  The \texttt{pnorm($x$, $\mu$, $\sigma$)} function calculates $P(X < x)$ if $X$ is a Normal random variable with mean $\mu$ and SD $\sigma$.
+\end{frame}
+
+\begin{frame}
+  <<echo=F>>=
+  h <- hist(ut2000$SAT.C, main="", col="orange", xlab="SAT", freq=F, yaxt="n", ylab="")
+  x <- seq(600, 1600, by=1)
+  y <- dnorm(x, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C))
+  nx <- seq(600, 1000, by=1)
+  ny <- dnorm(nx, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C))
+  polygon(c(600, nx, 1000), c(0, ny, 0), col="red")
+  @
+  \begin{center}
+    $P(\text{SAT}<1000) = $ \texttt{pnorm(1000, 1215.03, 145.38)} $ = \Sexpr{pnorm(1000, 1215.03, 145.38)}$ 
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  <<echo=F>>=
+  h <- hist(ut2000$SAT.C, main="", col="orange", xlab="SAT", freq=F, yaxt="n", ylab="")
+  x <- seq(600, 1600, by=1)
+  y <- dnorm(x, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C))
+  nx <- seq(1500, 1600, by=1)
+  ny <- dnorm(nx, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C))
+  polygon(c(1500, nx, 1600), c(0, ny, 0), col="red")
+  @
+  \begin{center}
+    $P(\text{SAT}>1500) = $ \texttt{1 - pnorm(1500, 1215.03, 145.38)} $ = \Sexpr{1-pnorm(1500, 1215.03, 145.38)}$ 
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  <<echo=F>>=
+  h <- hist(ut2000$SAT.C, main="", col="orange", xlab="SAT", freq=F, yaxt="n", ylab="")
+  x <- seq(600, 1600, by=1)
+  y <- dnorm(x, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C))
+  nx <- seq(1100, 1400, by=1)
+  ny <- dnorm(nx, mean=mean(ut2000$SAT.C), sd=sd(ut2000$SAT.C))
+  polygon(c(1100, nx, 1400), c(0, ny, 0), col="red")
+  @
+
+  \[
+    P(1100<\text{SAT}<1400) = \text{?}
+  \]
+\end{frame}
+
+\begin{frame}{How to tell if data is Normal?}
+  Variables can fail to be Normal in multiple ways:
+  \begin{enumerate}
+    \item Normal random variables are \alert{unimodal}; multimodal random variables are not Normal
+    \item Normal random variables are \alert{symmetric}; skewed random variables are not Normal
+    \item Normal random variables have a \alert{bell shape}; random variables with extreme outliers (or tails that are too ``fat'' or too ``skinny'') are not Normal
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Checking for normality in R}
+  The \texttt{qqnorm} function creates a Normal probability plot; a perfectly Normal distribution will have a straight line.
+  <<>>=
+  qqnorm(ut2000$SAT.C)
+  @
+\end{frame}
+
+\begin{frame}[fragile]{Checking for normality in R}
+  The \alert{skewness} measures skewness; it is negative for left-skewed distributions, symmetric for symmetric distributions, and positive for right-skewed distributions.
+  <<>>=
+  library(moments)
+  skewness(ut2000$SAT.C)
+  @
+\end{frame}
+
+\begin{frame}[fragile]{Checking for normality in R}
+  The \alert{kurtosis} is $<3$ for distributions with skinny tails, $=3$ for Normal distributions, and $>3$ for distributions with fat tails.
+  <<>>=
+  kurtosis(ut2000$SAT.C)
+  @
+\end{frame}
+
+\begin{frame}{Checking for normality in R}
+  The Q-Q plot is almost a straight line, the skewness is almost exactly 0, and the kurtosis is almost exactly 3, so the SAT distribution is almost exactly Normal.
+\end{frame}
+
+\end{darkframes}
+\end{document}
