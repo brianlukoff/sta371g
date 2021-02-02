@@ -1,0 +1,247 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Making Decisions}
+\subtitle{Lecture 5}
+\author{STA 371G}
+
+\begin{document}
+<<setup, include=F, cache=F>>=
+library(knitr)
+opts_knit$set(global.par=T)
+opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+library(extrafont)
+loadfonts()
+options(scipen=1, digits=2)
+@
+<<include=F, cache=F>>=
+par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+@
+
+
+\frame{\maketitle}
+
+\begin{darkframes}
+  \begin{frame}[fragile]{Decision Analysis}
+    \begin{itemize}[<+->]
+      \item A framework for analyzing decision problems that involve uncertainty
+      \item Decision trees: a powerful graphical tool that guides that analysis
+      \item Smaller analyses can be done using pen and paper
+      \item Larger ones require software
+      \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}[fragile]{Topics to cover}
+    \begin{itemize}[<+->]
+      \item Criteria for choosing among alternative decisions
+      \item How probabilities are used in the decision-making process
+      \item How early decisions affect later decisions
+      \item How a decision-maker can quantify the value of information
+      \item How attitudes toward risk and uncertainty can affect the analysis
+    \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}[fragile]{Elements of a Decision Analysis}
+    All problems have three common elements:
+
+    \begin{itemize}
+      \item The decisions available to the decision maker.
+      \item The possible outcomes and the probabilities of these outcomes.
+      \item A value model that provides monetary values for the various outcomes.
+    \end{itemize}
+
+    Once these elements are defined, the decision maker can find an optimal decision.
+  \end{frame}
+
+
+  \begin{frame}{A real decision}
+    Suppose you are offered a job at a tech startup, with two compensation options:
+    \begin{enumerate}
+      \item \alert{Salary only}: \$125,000 annually
+      \item \alert{Salary + stock}: \$105,000 annually, plus 0.7\% equity in the company
+    \end{enumerate}
+
+    What factors would come into play here that would help you make your decision?
+  \end{frame}
+
+
+  \begin{frame}[fragile]{Payoff Tables}
+    A payoff table lists the payoff for each decision outcome pair; positive values are gains and negative values are losses.
+
+      \begin{center}
+        \begin{tabular}{r|rrr}
+          & O1 & O2 & O3 \\
+          \hline
+          D1 & $\$10$ & $\$10$ & $\$10$ \\
+          D2 & $-\$10$ & $\$20$ & $\$30$ \\
+          D3 & $-\$30$ & $\$30$ & $\$80$
+        \end{tabular}
+      \end{center}
+      \begin{itemize}
+          \item This table shows three possible decisions (D1, D2, and D3) and three
+          possible outcomes (O1, O2, and O3) for each. (Imagine D1, D2, and D3 are different stocks we might purchase, and O1, O2, and O3 represent three possible market conditions in the future.)
+          \item Which decision do you prefer?
+      \end{itemize}
+  \end{frame}
+
+
+  \begin{frame}[fragile]{Payoff Tables}
+    We need to know the probability of each outcome to make a good decision!
+    \begin{center}
+      \begin{tabular}{r|rrr}
+        & O1 & O2 & O3 \\
+        \hline
+        D1 & \$10 & \$10 & \$10 \\
+        D2 & $-\$10$ & \$20 & \$30 \\
+        D3 & $-\$30$ & \$30 & \$80
+      \end{tabular}
+    \end{center}
+    \begin{itemize}
+        \item Suppose $P(O1) = 0.3, P(O2) = 0.5, P(O3) = 0.2$
+        \item Now which decision do you prefer?
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Decision strategies}
+    \begin{itemize}[<+->]
+      \item \alert{Maximin}: Pick the decision that leads to the least-bad worst-case outcome (pessimistic)
+      \item \alert{Maximax}: Pick the decision that leads to the best possible best-case outcome (optimistic)
+      \item \alert{Expected monetary value (EMV)}: Pick the decision that leads to the best outcome in expected value (realistic)
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Maximin}
+    \begin{center}
+      \begin{tabular}{r|rrr}
+        & O1 & O2 & O3 \\
+        \hline
+        D1 & \$10 & \$10 & \$10 \\
+        D2 & $-\$10$ & \$20 & \$30 \\
+        D3 & $-\$30$ & \$30 & \$80
+      \end{tabular}
+    \end{center}
+
+    Find the worst-case outcome for each strategy:
+    \begin{itemize}
+      \item D1: Worst-case outcome is $\$10$
+      \item D2: Worst-case outcome is $-\$10$
+      \item D3: Worst-case outcome is $-\$30$
+    \end{itemize}
+    Pick decision with the least-bad worst-case outcome: D1
+
+    \pause
+    
+    (In this case the worst-case outcomes always came from O1, but that won't always be the case.)
+  \end{frame}
+
+
+  \begin{frame}{Maximax}
+    \begin{center}
+      \begin{tabular}{r|rrr}
+        & O1 & O2 & O3 \\
+        \hline
+        D1 & \$10 & \$10 & \$10 \\
+        D2 & $-\$10$ & \$20 & \$30 \\
+        D3 & $-\$30$ & \$30 & \$80
+      \end{tabular}
+    \end{center}
+
+    Find the best-case outcome for each strategy:
+    \begin{itemize}
+      \item D1: Best-case outcome is $\$10$
+      \item D2: Best-case outcome is $\$30$
+      \item D3: Best-case outcome is $\$80$
+    \end{itemize}
+    Pick decision with the best best-case outcome: D3
+
+    \pause
+    
+    (In this case the worst-case outcomes always came from O3, but that won't always be the case.)
+  \end{frame}
+
+  \begin{frame}[fragile]{Expected monetary value}
+    Treat each possible decision as its own random variable and calculate expected value:
+
+    \begin{itemize}[<+->]
+      \item $E(D1) = 10$
+      \item $E(D2) = -10(0.3) + 20(0.5) - 30(0.2) = 13$
+      \item $E(D3) = -30(0.3) + 30(0.5) + 80(0.2) = 22$
+    \end{itemize}
+
+    Pick decision with the highest expected value: D3
+  \end{frame}
+
+  \begin{frame}{Back to the startup job dilemma}
+    My choices:
+    \begin{enumerate}
+      \item \alert{Salary only}: \$125,000 annually
+      \item \alert{Salary + stock}: \$105,000 annually, plus 0.7\% equity in the company
+    \end{enumerate}
+
+    \pause 
+    In real life, we won't usually be given neat probabilities and outcomes; we have to estimate them based on historical data or our knowledge of the industry. Let's assume:
+    \begin{itemize}[<+->]
+      \item You expect to work at this startup for 2 years
+      \item There is a 10\% chance that the startup is acquired for \$10M, a 5\% chance that the startup is acquired for \$50M, and a 1\% chance that the startup is acquired for \$100M
+      \item In all other cases, your 0.7\% stake in the company is worthless
+    \end{itemize}
+
+  \end{frame}
+
+  \begin{frame}{Payoff table for the startup job dilemma}
+    \begin{center}
+      \begin{tabular}{c|cccc}
+        Decision & No exit & \$10M exit & \$50M exit & \$100M exit \\
+        & 84\% & 10\% & 5\% & 1\% \\
+        \hline
+        Salary only &  \\
+        Salary + stock &  \\
+      \end{tabular}
+    \end{center}
+
+
+  \end{frame}
+
+  \begin{frame}{Payoff table for the startup job dilemma}
+    \begin{center}
+      \begin{tabular}{c|cccc}
+        Decision & No exit & \$10M exit & \$50M exit & \$100M exit \\
+        & 84\% & 10\% & 5\% & 1\% \\
+        \hline
+        Salary only & \$250,000 & \$250,000 & \$250,000 & \$250,000 \\
+        Salary + stock & \$210,000 & \$280,000 & \$560,000 & \$910,000 \\
+      \end{tabular}
+    \end{center}
+    \vspace{0.2in}
+
+    Now let's calculate expected values:
+
+    \begin{enumerate}
+      \item Salary only: \$250,000 \\
+      \item Salary + stock: \$241,500
+    \end{enumerate}
+
+    So you are better off choosing the salary-only option using the EMV criterion.
+  \end{frame}
+
+  \begin{frame}{Other considerations}
+    \begin{itemize}[<+->]
+      \item The results are dependent on my assumptions; a \alert{sensitivity analysis} would vary the input assumptions and see how much of a difference it would make in my decision-making process:
+      \begin{itemize}
+        \item What if you decide to stay longer than 2 years?
+        \item What if there is a chance that the company ends up being worth \$1B (or more)?
+        \item What if you are being too optimistic about this company's chances of an exit at all?
+      \end{itemize}
+      \item Even under my existing assumptions, you might still decide to choose the salary + stock option because the variance is higher---it might be worth rolling the dice!
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{So what really happened?}
+    \begin{itemize}
+      \item As it turned out, the company did get acquired, for \$13M
+      \item The job seeker chose neither option---decided not to take the job at all!
+    \end{itemize}
+  \end{frame}
+\end{darkframes}
+\end{document}

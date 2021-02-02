@@ -5,7 +5,8 @@
 | Lecture 1: Introduction to predictive analytics | [Slides](slides/lecture-01/lecture-01.pdf) | |
 | Lecture 2: Probability 1 | [Slides](slides/lecture-02/lecture-02.pdf) | [Script](lecture-scripts/lecture-02.R) |
 | Lecture 3: Probability 2 | [Slides](slides/lecture-03/lecture-03.pdf) | [Script](lecture-scripts/lecture-03.R) |
-| Lecture 4: Bayes' Rule & Random Variables | [Slides](slides/lecture-04/lecture-04.pdf) |  |
+| Lecture 4: Bayes' Rule & Random Variables | [Slides](slides/lecture-04/lecture-04.pdf) | [Script](lecture-scripts/lecture-04.R) |
+| Lecture 5: Making Decisions | [Slides](slides/lecture-05/lecture-05.pdf) |  |
 
 # R help pages
 
