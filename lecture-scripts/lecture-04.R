@@ -26,3 +26,18 @@ sum(newprices * newprobs)
 
 ut2000 <- read.csv("http://jgscott.github.io/teaching/data/ut2000.csv")
 hist(ut2000$SAT.C)
+
+mean(ut2000$SAT.C)
+sd(ut2000$SAT.C)
+# P(SAT < 1000)
+pnorm(1000, mean(ut2000$SAT.C), sd(ut2000$SAT.C))
+# P(SAT > 1500)
+1 - pnorm(1500, mean(ut2000$SAT.C), sd(ut2000$SAT.C))
+
+install.packages("moments")
+library(moments)
+skewness(ut2000$SAT.C)
+
+hist(ut2000$GPA)
+skewness(ut2000$GPA)
+qqnorm(ut2000$GPA)
