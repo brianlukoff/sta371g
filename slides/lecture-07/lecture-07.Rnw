@@ -1,0 +1,600 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Decision Trees 2}
+\subtitle{Lecture 7}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1))
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    <<include=F>>=
+    oil.revenue = 10
+    drill.cost = 1
+    oil.net = oil.revenue - drill.cost
+    no.oil.net = -drill.cost
+    O = .15
+    S.O = .6
+    Sc.Oc = .8
+    Oc = 1-O
+    Sc.O = 1-S.O
+    S.Oc = 1-Sc.Oc
+    O.S = (S.O*O)/(S.O*O + S.Oc*Oc)
+    Oc.S = 1-O.S
+    O.Sc = (Sc.O*O)/(Sc.O*O + Sc.Oc*Oc)
+    Oc.Sc = 1-O.Sc
+    S = S.O*O + S.Oc*Oc
+    Sc = 1-S
+    drill.S = oil.net*O.S + no.oil.net*Oc.S
+    drill.Sc = oil.net*O.Sc + no.oil.net*Oc.Sc
+    @
+
+    \begin{frame}{Oil drilling}
+      \begin{itemize}[<+->]
+        \item Suppose you are planning to drill for oil in a newly-discovered field.
+        \item Setting up the drilling equipment costs \$\Sexpr{drill.cost}M.
+        \item If you strike oil, you will generate \$\Sexpr{oil.revenue}M.
+        \item But there's only a \Sexpr{100*O}\% chance that a random oil field has oil.
+      \end{itemize}
+      
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 6em,
+          level distance          = 10em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [decision] {}
+          child {
+            node [leaf] {$0$}
+            edge from parent node [below] {Don't drill}
+          }
+          child {
+            node [prob] {}
+            child {
+              node [leaf] { $\Sexpr{no.oil.net}$ }
+              edge from parent node [above] {No oil}
+              edge from parent node [below] {$p=\Sexpr{Oc}$}
+            }
+            child {
+              node [leaf] { $\Sexpr{oil.net}$ }
+              edge from parent node [above] {Strike oil}
+              edge from parent node [below] {$p=\Sexpr{O}$}
+            }
+            edge from parent node [above] {Drill}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      <<include=F>>=
+      no.info = max(0, Oc*no.oil.net + O*oil.net)
+      @
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 6em,
+          level distance          = 10em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [decision] {$\Sexpr{round(max(0, Oc*no.oil.net + O*oil.net), 2)}$}
+          child {
+            node [leaf] {$0$}
+            edge from parent node [below] {Don't drill}
+          }
+          child {
+            node [prob] {$\Sexpr{round(Oc*no.oil.net + O*oil.net, 2)}$}
+            child {
+              node [leaf] { $\Sexpr{no.oil.net}$ }
+              edge from parent node [above] {No oil}
+              edge from parent node [below] {$p=\Sexpr{Oc}$}
+            }
+            child {
+              node [leaf] { $\Sexpr{oil.net}$ }
+              edge from parent node [above] {Strike oil}
+              edge from parent node [below] {$p=\Sexpr{O}$}
+            }
+            edge from parent node [above] {Drill}
+          };
+        \end{tikzpicture}
+        \pause\bigskip
+
+        Without any information, we expect to make \$\Sexpr{round(max(0, Oc*no.oil.net + O*oil.net), 2)}M by deciding to drill.
+      \end{center}
+    \end{frame}
+
+    \begin{frame}{How much is perfect information worth?}
+      \begin{itemize}[<+->]
+        \item Suppose we have a psychic that gives us \emph{perfect information} about whether the field has oil or not.
+        \item The psychic is always right!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      <<include=F>>=
+      oil.revenue = 10
+      drill.cost = 1
+      oil.net = oil.revenue - drill.cost
+      no.oil.net = -drill.cost
+      S.O = 1
+      Sc.Oc = 1
+      Oc = 1-O
+      Sc.O = 1-S.O
+      S.Oc = 1-Sc.Oc
+      O.S = (S.O*O)/(S.O*O + S.Oc*Oc)
+      Oc.S = 1-O.S
+      O.Sc = (Sc.O*O)/(Sc.O*O + Sc.Oc*Oc)
+      Oc.Sc = 1-O.Sc
+      S = S.O*O + S.Oc*Oc
+      Sc = 1-S
+      drill.S = oil.net*O.S + no.oil.net*Oc.S
+      drill.Sc = oil.net*O.Sc + no.oil.net*Oc.Sc
+      perfect.info = Sc*max(0, drill.Sc) + S*max(0, drill.S)
+      @
+
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {$\Sexpr{round(Sc*max(0, drill.Sc) + S*max(0, drill.S), 2)}$}
+          child {
+            node [decision] {$\Sexpr{round(max(0, drill.Sc), 2)}$}
+            child [sibling distance=7em] {
+              node [prob] {$\Sexpr{round(drill.Sc, 2)}$}
+              child [sibling distance=7em]  {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = \Sexpr{round(O.Sc, 2)}$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = \Sexpr{round(Oc.Sc, 2)}$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Psychic says dry}
+            edge from parent node [below] {$p = \Sexpr{round(Sc, 2)}$}
+          }
+          child {
+            node [decision] {$\Sexpr{round(max(0, drill.S), 2)}$}
+            child [sibling distance=7em] {
+              node [prob] {$\Sexpr{round(drill.S, 2)}$}
+              child {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = \Sexpr{round(O.S, 2)}$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = \Sexpr{round(Oc.S, 2)}$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Psychic says oil}
+            edge from parent node [below] {$p = \Sexpr{round(S, 2)}$}
+          };
+        \end{tikzpicture}
+      \end{center}
+      \note{Before showing this tree, build up the skeleton of the}
+      \note{tree on the board, and use LC Q3 to get students}
+      \note{to fill it out. Then use LC Q4 either before or after.}
+    \end{frame}
+
+    \begin{frame}
+      <<include=F>>=
+      oil.revenue = 10
+      drill.cost = 1
+      oil.net = oil.revenue - drill.cost
+      no.oil.net = -drill.cost
+      S.O = .6
+      Sc.Oc = .8
+      Oc = 1-O
+      Sc.O = 1-S.O
+      S.Oc = 1-Sc.Oc
+      O.S = (S.O*O)/(S.O*O + S.Oc*Oc)
+      Oc.S = 1-O.S
+      O.Sc = (Sc.O*O)/(Sc.O*O + Sc.Oc*Oc)
+      Oc.Sc = 1-O.Sc
+      S = S.O*O + S.Oc*Oc
+      Sc = 1-S
+      drill.S = oil.net*O.S + no.oil.net*Oc.S
+      drill.Sc = oil.net*O.Sc + no.oil.net*Oc.Sc
+      imperfect.info1 = Sc*max(0, drill.Sc) + S*max(0, drill.S)
+      @
+      \begin{itemize}[<+->]
+        \item Suppose we commission a geological survey of the field; this is \emph{imperfect information}.
+        \item When a field is oil-rich, the survey will indicate this \Sexpr{100*S.O}\% of the time.
+        \item When a field is dry, the survey will indicate this \Sexpr{100*Sc.Oc}\% of the time.
+        \item How much should we be willing to pay for the survey?
+      \end{itemize}
+      \note{LC Q5-Q6 to ensure students understand the numbers.}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {}
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child [sibling distance=7em]  {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em]  {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+          }
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p=p_1$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$p=p_2$}
+          };
+        \end{tikzpicture}
+      \end{center}
+      \note{LC Q7-Q8 to identify p_1 and p_2}
+    \end{frame}
+
+    \begin{frame}
+      Let's say $O$ is the event that you would strike oil in the oilfield, and $S$ is the event that the survey indicates there is oil present.
+
+      \bigskip\pause
+
+      There's only a \Sexpr{100*O}\% chance that a random oil field has oil.
+
+      \[  P(O) = \Sexpr{O}, \qquad P(O^c) = \Sexpr{Oc} \]
+
+      \bigskip\pause
+
+      When a field is oil-rich, the survey will indicate this \Sexpr{100*S.O}\% of the time.
+
+      \pause
+
+      \[ P(S|O) = \Sexpr{S.O}, \qquad\pause P(S^c|O) = \Sexpr{Sc.O} \]
+
+      \pause
+
+      When a field is dry, the survey will indicate this 80\% of the time.
+
+      \pause
+
+      \[ P(S|O^c) = \Sexpr{S.Oc}, \qquad\pause P(S^c|O^c) = \Sexpr{Sc.Oc} \]
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {}
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child [sibling distance=7em]  {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$P(O|S^c)$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$P(O^c|S^c)$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+            edge from parent node [below] {$P(S^c)$}
+          }
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$P(O|S)$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$P(O^c|S)$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$P(S)$}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      Let's calculate the required probabilities using Bayes' rule:
+      \begin{align*}
+        P(O|S) &= \frac{P(S|O)P(O)}{P(S|O)P(O) + P(S|O^c)P(O^c)} \\
+        &= \frac{(\Sexpr{S.O})(\Sexpr{O})}{(\Sexpr{S.O})(\Sexpr{O}) + (\Sexpr{S.Oc})(\Sexpr{Oc})} \\
+        &= \Sexpr{round(O.S, 2)}
+      \end{align*}
+      \begin{align*}
+        P(O^c|S) &= \frac{P(S|O^c)P(O^c)}{P(S|O^c)P(O^c) + P(S|O)P(O)} \\
+        &= \frac{(\Sexpr{S.Oc})(\Sexpr{Oc})}{(\Sexpr{S.Oc})(\Sexpr{Oc}) + (\Sexpr{S.O})(\Sexpr{O})} \\
+        &= \Sexpr{round(Oc.S, 2)}
+      \end{align*}
+      \note{LC Q9 to compute one of the other probabilities}
+    \end{frame}
+
+    \begin{frame}
+      We also need to know the probability that the survey will indicate oil:
+      \begin{align*}
+        P(S) &= P(\text{$S$ and $O$}) + P(\text{$S$ and $O^c$}) \\
+        &= P(S|O)P(O) + P(S|O^c)P(O^c) \\
+        &= (\Sexpr{S.O})(\Sexpr{O}) + (\Sexpr{S.Oc})(\Sexpr{Oc}) \\
+        &= \Sexpr{round(S, 2)}
+      \end{align*}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {$\Sexpr{round(Sc*max(0, drill.Sc) + S*max(0, drill.S), 2)}$}
+          child {
+            node [decision] {$\Sexpr{round(max(0, drill.Sc), 2)}$}
+            child [sibling distance=7em] {
+              node [prob] {$\Sexpr{round(drill.Sc, 2)}$}
+              child [sibling distance=7em]  {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = \Sexpr{round(O.Sc, 2)}$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = \Sexpr{round(Oc.Sc, 2)}$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+            edge from parent node [below] {$p = \Sexpr{round(Sc, 2)}$}
+          }
+          child {
+            node [decision] {$\Sexpr{round(max(0, drill.S), 2)}$}
+            child [sibling distance=7em] {
+              node [prob] {$\Sexpr{round(drill.S, 2)}$}
+              child {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = \Sexpr{round(O.S, 2)}$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = \Sexpr{round(Oc.S, 2)}$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$p = \Sexpr{round(S, 2)}$}
+          };
+        \end{tikzpicture}
+      \end{center}
+      \note{LC Q10 to compute EVSI, Q11 to explore factors impacting EVSI}
+    \end{frame}
+
+    \begin{frame}
+      <<include=F>>=
+      oil.revenue = 10
+      drill.cost = 1
+      oil.net = oil.revenue - drill.cost
+      no.oil.net = -drill.cost
+      S.O = .95
+      Sc.Oc = .9
+      Oc = 1-O
+      Sc.O = 1-S.O
+      S.Oc = 1-Sc.Oc
+      O.S = (S.O*O)/(S.O*O + S.Oc*Oc)
+      Oc.S = 1-O.S
+      O.Sc = (Sc.O*O)/(Sc.O*O + Sc.Oc*Oc)
+      Oc.Sc = 1-O.Sc
+      S = S.O*O + S.Oc*Oc
+      Sc = 1-S
+      drill.S = oil.net*O.S + no.oil.net*Oc.S
+      drill.Sc = oil.net*O.Sc + no.oil.net*Oc.Sc
+      imperfect.info = Sc*max(0, drill.Sc) + S*max(0, drill.S)
+      @
+
+      \begin{itemize}[<+->]
+        \item The information from the survey is worth the difference between these two trees ($\Sexpr{round(imperfect.info1, 2)} - \Sexpr{round(no.info, 2)} = \$\Sexpr{round(imperfect.info1 - no.info, 2)}$M); this is EVSI (Expected Value of Sample Information)
+        \item Suppose we had a better survey, which correctly identifies oil-rich fields \Sexpr{100*S.O}\% of the time, and correctly identifies dry fields \Sexpr{100*Sc.Oc}\% of the time.
+      \end{itemize}
+      \note{LC Q12 if you have time to have them calculate the new tree.}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {$\Sexpr{round(Sc*max(0, drill.Sc) + S*max(0, drill.S), 2)}$}
+          child {
+            node [decision] {$\Sexpr{round(max(0, drill.Sc), 2)}$}
+            child [sibling distance=7em] {
+              node [prob] {$\Sexpr{round(drill.Sc, 2)}$}
+              child [sibling distance=7em]  {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = \Sexpr{round(O.Sc, 2)}$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = \Sexpr{round(Oc.Sc, 2)}$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+            edge from parent node [below] {$p = \Sexpr{round(Sc, 2)}$}
+          }
+          child {
+            node [decision] {$\Sexpr{round(max(0, drill.S), 2)}$}
+            child [sibling distance=7em] {
+              node [prob] {$\Sexpr{round(drill.S, 2)}$}
+              child {
+                node [leaf] {$\Sexpr{oil.net}$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = \Sexpr{round(O.S, 2)}$}
+              }
+              child {
+                node [leaf] {$\Sexpr{no.oil.net}$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = \Sexpr{round(Oc.S, 2)}$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$p = \Sexpr{round(S, 2)}$}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}{Summary}
+      \begin{itemize}[<+->]
+        \item With no information, the expected value of the tree was \$\Sexpr{round(no.info, 2)}M.
+        \item With perfect information (the psychic), the expected value of the tree was \$\Sexpr{round(perfect.info, 2)}M. The EVPI (expected value of perfect information) is $\Sexpr{round(perfect.info, 2)} - \Sexpr{round(no.info, 2)} = \$\Sexpr{round(perfect.info - no.info, 2)}$M.
+        \begin{itemize}
+          \item No survey (or any other kind of information about this oil field) could ever be worth more than \$\Sexpr{round(perfect.info - no.info, 2)}M.
+        \end{itemize}
+        \item With imperfect information (the better survey), the expected value of the tree was \$\Sexpr{round(imperfect.info, 2)}M. The EVSI (expected value of sample information) is $\Sexpr{round(imperfect.info, 2)} - \Sexpr{round(no.info, 2)} = \$\Sexpr{round(imperfect.info - no.info, 2)}$M.
+        \begin{itemize}
+          \item It's worth paying up to \$\Sexpr{round(imperfect.info - no.info, 2)}M for this particular survey.
+        \end{itemize}
+
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+\end{document}

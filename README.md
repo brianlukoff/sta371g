@@ -8,6 +8,7 @@
 | Lecture 4: Bayes' Rule & Random Variables | [Slides](slides/lecture-04/lecture-04.pdf) | [Script](lecture-scripts/lecture-04.R) |
 | Lecture 5: Making Decisions | [Slides](slides/lecture-05/lecture-05.pdf) | [Script](lecture-scripts/lecture-05.R) |
 | Lecture 6: Decision Trees | [Slides](slides/lecture-06/lecture-06.pdf) | |
+| Lecture 7: Value of Information | [Slides](slides/lecture-07/lecture-07.pdf) | |
 
 # R help pages
 

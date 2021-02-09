@@ -1,0 +1,564 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{../371g-slides}
+\title{Decision Trees 2}
+\subtitle{Lecture 7}
+\author{STA 371G}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+  
+  
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    
+
+    \begin{frame}{Oil drilling}
+      \begin{itemize}[<+->]
+        \item Suppose you are planning to drill for oil in a newly-discovered field.
+        \item Setting up the drilling equipment costs \$1M.
+        \item If you strike oil, you will generate \$10M.
+        \item But there's only a 15\% chance that a random oil field has oil.
+      \end{itemize}
+      
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 6em,
+          level distance          = 10em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [decision] {}
+          child {
+            node [leaf] {$0$}
+            edge from parent node [below] {Don't drill}
+          }
+          child {
+            node [prob] {}
+            child {
+              node [leaf] { $-1$ }
+              edge from parent node [above] {No oil}
+              edge from parent node [below] {$p=0.85$}
+            }
+            child {
+              node [leaf] { $9$ }
+              edge from parent node [above] {Strike oil}
+              edge from parent node [below] {$p=0.15$}
+            }
+            edge from parent node [above] {Drill}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 6em,
+          level distance          = 10em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [decision] {$0.5$}
+          child {
+            node [leaf] {$0$}
+            edge from parent node [below] {Don't drill}
+          }
+          child {
+            node [prob] {$0.5$}
+            child {
+              node [leaf] { $-1$ }
+              edge from parent node [above] {No oil}
+              edge from parent node [below] {$p=0.85$}
+            }
+            child {
+              node [leaf] { $9$ }
+              edge from parent node [above] {Strike oil}
+              edge from parent node [below] {$p=0.15$}
+            }
+            edge from parent node [above] {Drill}
+          };
+        \end{tikzpicture}
+        \pause\bigskip
+
+        Without any information, we expect to make \$0.5M by deciding to drill.
+      \end{center}
+    \end{frame}
+
+    \begin{frame}{How much is perfect information worth?}
+      \begin{itemize}[<+->]
+        \item Suppose we have a psychic that gives us \emph{perfect information} about whether the field has oil or not.
+        \item The psychic is always right!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      
+
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {$1.35$}
+          child {
+            node [decision] {$0$}
+            child [sibling distance=7em] {
+              node [prob] {$-1$}
+              child [sibling distance=7em]  {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = 0$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = 1$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Psychic says dry}
+            edge from parent node [below] {$p = 0.85$}
+          }
+          child {
+            node [decision] {$9$}
+            child [sibling distance=7em] {
+              node [prob] {$9$}
+              child {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = 1$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = 0$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Psychic says oil}
+            edge from parent node [below] {$p = 0.15$}
+          };
+        \end{tikzpicture}
+      \end{center}
+      \note{Before showing this tree, build up the skeleton of the}
+      \note{tree on the board, and use LC Q3 to get students}
+      \note{to fill it out. Then use LC Q4 either before or after.}
+    \end{frame}
+
+    \begin{frame}
+      
+      \begin{itemize}[<+->]
+        \item Suppose we commission a geological survey of the field; this is \emph{imperfect information}.
+        \item When a field is oil-rich, the survey will indicate this 60\% of the time.
+        \item When a field is dry, the survey will indicate this 80\% of the time.
+        \item How much should we be willing to pay for the survey?
+      \end{itemize}
+      \note{LC Q5-Q6 to ensure students understand the numbers.}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {}
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child [sibling distance=7em]  {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em]  {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+          }
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p=p_1$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$p=p_2$}
+          };
+        \end{tikzpicture}
+      \end{center}
+      \note{LC Q7-Q8 to identify p_1 and p_2}
+    \end{frame}
+
+    \begin{frame}
+      Let's say $O$ is the event that you would strike oil in the oilfield, and $S$ is the event that the survey indicates there is oil present.
+
+      \bigskip\pause
+
+      There's only a 15\% chance that a random oil field has oil.
+
+      \[  P(O) = 0.15, \qquad P(O^c) = 0.85 \]
+
+      \bigskip\pause
+
+      When a field is oil-rich, the survey will indicate this 60\% of the time.
+
+      \pause
+
+      \[ P(S|O) = 0.6, \qquad\pause P(S^c|O) = 0.4 \]
+
+      \pause
+
+      When a field is dry, the survey will indicate this 80\% of the time.
+
+      \pause
+
+      \[ P(S|O^c) = 0.2, \qquad\pause P(S^c|O^c) = 0.8 \]
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {}
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child [sibling distance=7em]  {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$P(O|S^c)$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$P(O^c|S^c)$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+            edge from parent node [below] {$P(S^c)$}
+          }
+          child {
+            node [decision] {}
+            child [sibling distance=7em] {
+              node [prob] {}
+              child {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$P(O|S)$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$P(O^c|S)$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$P(S)$}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      Let's calculate the required probabilities using Bayes' rule:
+      \begin{align*}
+        P(O|S) &= \frac{P(S|O)P(O)}{P(S|O)P(O) + P(S|O^c)P(O^c)} \\
+        &= \frac{(0.6)(0.15)}{(0.6)(0.15) + (0.2)(0.85)} \\
+        &= 0.35
+      \end{align*}
+      \begin{align*}
+        P(O^c|S) &= \frac{P(S|O^c)P(O^c)}{P(S|O^c)P(O^c) + P(S|O)P(O)} \\
+        &= \frac{(0.2)(0.85)}{(0.2)(0.85) + (0.6)(0.15)} \\
+        &= 0.65
+      \end{align*}
+      \note{LC Q9 to compute one of the other probabilities}
+    \end{frame}
+
+    \begin{frame}
+      We also need to know the probability that the survey will indicate oil:
+      \begin{align*}
+        P(S) &= P(\text{$S$ and $O$}) + P(\text{$S$ and $O^c$}) \\
+        &= P(S|O)P(O) + P(S|O^c)P(O^c) \\
+        &= (0.6)(0.15) + (0.2)(0.85) \\
+        &= 0.26
+      \end{align*}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {$0.64$}
+          child {
+            node [decision] {$0$}
+            child [sibling distance=7em] {
+              node [prob] {$-0.19$}
+              child [sibling distance=7em]  {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = 0.08$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = 0.92$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+            edge from parent node [below] {$p = 0.74$}
+          }
+          child {
+            node [decision] {$2.46$}
+            child [sibling distance=7em] {
+              node [prob] {$2.46$}
+              child {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = 0.35$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = 0.65$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$p = 0.26$}
+          };
+        \end{tikzpicture}
+      \end{center}
+      \note{LC Q10 to compute EVSI, Q11 to explore factors impacting EVSI}
+    \end{frame}
+
+    \begin{frame}
+      
+
+      \begin{itemize}[<+->]
+        \item The information from the survey is worth the difference between these two trees ($0.64 - 0.5 = \$0.14$M); this is EVSI (Expected Value of Sample Information)
+        \item Suppose we had a better survey, which correctly identifies oil-rich fields 95\% of the time, and correctly identifies dry fields 90\% of the time.
+      \end{itemize}
+      \note{LC Q12 if you have time to have them calculate the new tree.}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \begin{tikzpicture}
+        [
+          grow                    = right,
+          sibling distance        = 11em,
+          level distance          = 7em,
+          edge from parent/.style = {draw, -latex},
+          every node/.style       = {font=\footnotesize},
+          sloped
+        ]
+        \node [prob] {$1.2$}
+          child {
+            node [decision] {$0$}
+            child [sibling distance=7em] {
+              node [prob] {$-0.9$}
+              child [sibling distance=7em]  {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = 0.01$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = 0.99$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says dry}
+            edge from parent node [below] {$p = 0.77$}
+          }
+          child {
+            node [decision] {$5.26$}
+            child [sibling distance=7em] {
+              node [prob] {$5.26$}
+              child {
+                node [leaf] {$9$}
+                edge from parent node [above] {Strike oil}
+                edge from parent node [below] {$p = 0.63$}
+              }
+              child {
+                node [leaf] {$-1$}
+                edge from parent node [above] {No oil}
+                edge from parent node [below] {$p = 0.37$}
+              }
+              edge from parent node [above] {Drill}
+            }
+            child [sibling distance=7em] {
+              node [leaf] {0}
+              edge from parent node [above] {Don't drill}
+            }
+            edge from parent node [above] {Survey says oil}
+            edge from parent node [below] {$p = 0.23$}
+          };
+        \end{tikzpicture}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}{Summary}
+      \begin{itemize}[<+->]
+        \item With no information, the expected value of the tree was \$0.5M.
+        \item With perfect information (the psychic), the expected value of the tree was \$1.35M. The EVPI (expected value of perfect information) is $1.35 - 0.5 = \$0.85$M.
+        \begin{itemize}
+          \item No survey (or any other kind of information about this oil field) could ever be worth more than \$0.85M.
+        \end{itemize}
+        \item With imperfect information (the better survey), the expected value of the tree was \$1.2M. The EVSI (expected value of sample information) is $1.2 - 0.5 = \$0.7$M.
+        \begin{itemize}
+          \item It's worth paying up to \$0.7M for this particular survey.
+        \end{itemize}
+
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+\end{document}
