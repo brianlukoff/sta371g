@@ -1,0 +1,195 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Correlation \& Simple Regression 1}
+\subtitle{Lecture 9}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  @
+  <<include=F>>=
+  ut2000 <- read.csv("http://jgscott.github.io/teaching/data/ut2000.csv")
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{Scatterplots}
+      \begin{itemize}
+        \item \alert{Scatterplots} are the main graphical tool used to examine the relationship between two variables
+        \item The \alert{explanatory} (or \alert{independent}) variable goes on the $X$-axis: it's the variable you want to use to explain observed outcomes
+        \item The \alert{response} (or \alert{dependent}) variable goes on the $Y$-axis: it's the variable you want to explain
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Predicting SAT scores from high school GPA}
+      \begin{itemize}
+        \item Cases are individual students entering UT in Fall 2000
+        \item SAT score is the response variable
+        \item High school GPA is the explanatory variable
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<>>=
+      plot(ut2000$GPA, ut2000$SAT.C)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<>>=
+      plot(ut2000$GPA, ut2000$SAT.C, col="orange", pch=".",
+           xlab="GPA", ylab="SAT")
+      @
+    \end{frame}
+
+    \begin{frame}{Correlation coefficient}
+      \begin{definition}
+        The \alert{correlation} $r$ between two variables $X$ and $Y$ measures the strength of the linear relationship between them. Correlation ranges from $-1$ (perfect negative relationship) to $0$ (no relationship) to $1$ (perfect positive relationship).
+      \end{definition}
+      \pause 
+      It is calculated as
+      \[ 
+        r = \frac{1}{n-1} \sum_{i=1}^n 
+        \left( \frac{X_i-\overline{X}}{\text{SD}(X)} \right) 
+        \left( \frac{Y_i-\overline{Y}}{\text{SD}(Y)} \right)  
+      \]
+    \end{frame}
+
+    \begin{frame}[fragile]{How correlation is calculated}
+      \[ 
+        r = \frac{1}{n-1} \sum_{i=1}^n 
+        \underbrace{ \left( \frac{X_i-\overline{X}}{\text{SD}(X)} \right) }_{\text{$z$-score for $i$th GPA}} 
+        \cdot
+        \underbrace{ \left( \frac{Y_i-\overline{Y}}{\text{SD}(Y)} \right) }_{\text{$z$-score for $i$th SAT}} 
+      \]
+      <<echo=F, fig.height=2.8>>=
+      plot(ut2000$GPA, ut2000$SAT.C, 
+           col=ifelse((ut2000$GPA > mean(ut2000$GPA) & ut2000$SAT.C > mean(ut2000$SAT.C)) | (ut2000$GPA < mean(ut2000$GPA) & ut2000$SAT.C < mean(ut2000$SAT.C)), "green", "red"), 
+           pch=".", xlab="", ylab="")
+      abline(h=mean(ut2000$SAT.C), col="lightblue", lwd=3)
+      abline(v=mean(ut2000$GPA), col="lightblue", lwd=3)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F>>=
+      set.seed(1)
+      par(mfrow=c(3, 5), mai=c(.25, .3, .25, .05))
+      for (r in c(-1, -0.9, -0.8, -0.5, -0.2, NA, NA, 0, NA, NA, 0.2, 0.5, 0.8, 0.9, 1)) {
+        if (is.na(r)) {
+          plot.new()
+        } else {
+          x = rnorm(100)
+          y = rnorm(100)
+          if (abs(r) < 1) {
+            a = r/sqrt(1-r^2)
+            z = a*x + y
+          } else {
+            z = r*x/2
+          }
+          plot(x, z, xlab="", ylab="", main=sprintf("r = %.2f", r), pch=".", col="red")
+        }
+      }
+      par(mfrow=c(1, 1), mai=c(1.02, 0.82, 0.22, 0.42))
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Calculating correlations in R}
+      <<>>=
+      cor(ut2000$GPA, ut2000$SAT.C)
+      @
+
+      \pause
+
+      <<>>=
+      cor(ut2000$SAT.C, ut2000$GPA)
+      @
+    \end{frame}
+
+    \begin{frame}{Conditions for correlation}
+      In order for correlation coefficients to make sense:
+      \begin{itemize}
+        \item Both variables must be quantitative
+        \item The relationship between $X$ and $Y$ must be linear (i.e., not curved)
+        \item There must not be extreme outliers
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{What if the relationship is not linear?}
+      <<echo=F>>=
+      set.seed(2)
+      x <- rnorm(10000)
+      y <- x^2 + rnorm(10000, mean=0, sd=0.5)
+      plot(x, y, 
+          col=ifelse((x > mean(x) & y > mean(y)) | (x < mean(x) & y < mean(y)), "green", "red"), pch=".",
+          xlab="", ylab="")
+      abline(h=mean(y), col="lightblue", lwd=3)
+      abline(v=mean(x), col="lightblue", lwd=3)
+      @
+      \pause
+      \vspace{-0.5in}
+      The correlation is 0 even though there is a strong relationship between $X$ and $Y$!
+    \end{frame}
+
+    \begin{frame}{What if there are extreme outliers?}
+      <<echo=F, fig.height=2>>=
+      par(mfrow=c(1, 2), mar=c(2.1, 2.1, 0.2, 1.1))
+      x <- rnorm(1000)
+      y <- rnorm(1000)
+      plot(x, y, col="orange", pch=20, xlab="", ylab="")
+      xp <- c(x, 40)
+      yp <- c(y, 40)
+      plot(xp, yp, col="orange", pch=20, xlab="", ylab="")
+      @
+
+      \pause
+      \vspace{0.2in}
+      Adding just one outlier makes the correlation jump from 0 to 0.6!
+    \end{frame}
+
+    \begin{frame}{Correlation $\neq$ causation}
+      \begin{itemize}[<+->]
+        \item Just because the correlation between $X$ and $Y$ is large does not mean that $X$ causes $Y$ (or $Y$ causes $X$)
+        \item The correlation could be caused by a \alert{lurking variable} that is causing both $X$ and $Y$
+        \item Or the correlation could be a coincidence!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Lurking variables}
+      What could the lurking variable be?
+      \begin{itemize}[<+->]
+        \item Students with higher GPAs tend to have higher SAT scores
+        \item More people tend to drown when ice cream sales are higher
+        \item In Europe, more babies tend to be born where there are more storks
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Seriously, correlation $\neq$ causation, even if $r$ is high}
+      \includegraphics[width=\textwidth]{spurious}
+    \end{frame}
+
+    \begin{frame}{Correlation $\neq$ causation}
+      \includegraphics[width=\textwidth]{xkcd}
+    \end{frame}
+  \end{darkframes}
+
+\end{document}
