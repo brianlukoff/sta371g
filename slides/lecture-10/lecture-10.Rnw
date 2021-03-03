@@ -1,0 +1,502 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Correlation \& Simple Regression 2}
+\subtitle{Lecture 10}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  @
+  <<include=F>>=
+  addhealth <- read.csv("../../data/addhealth.csv")
+  stock.market <- read.csv("../../data/stock-market-returns.csv")
+  salaries <- read.csv("../../data/social-worker-salaries.csv")
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \section{Regression basics}
+
+    \begin{frame}
+      \begin{center}
+        \includegraphics[width=3in]{add-health}
+
+        \bigskip
+        National Longitudinal Study of Adolescent to Adult Health
+
+        \bigskip
+        Nationally representative sample of US students in grades 7-12 were surveyed in the 1994-95 school year (\url{http://www.cpc.unc.edu/projects/addhealth})
+
+        \bigskip
+        Students were followed up on with subsequent in-home interviews four times (most recently 2008)
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      This is an \textbf{awesome} data set, with data on:
+      \begin{columns}[onlytextwidth]
+        \column{.5\textwidth}
+          \begin{itemize}
+            \item family
+            \item relationships
+            \item health
+            \item military service
+            \item religion
+            \item sex and STDs
+            \item economics
+            \item education
+          \end{itemize}
+        \column{.5\textwidth}
+          \begin{itemize}
+            \item personality
+            \item criminality
+            \item tobacco
+            \item drugs
+            \item alcohol
+            \item pregnancy
+            \item sleep
+            \item daily activities
+          \end{itemize}
+      \end{columns}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        Do people that start drinking younger tend to drink more (or less) when they become adults?
+      \end{center}
+      \bigskip\pause
+      We want to know:
+      \begin{itemize}[<+->]
+        \item What is our best \textbf{prediction} of alcohol consumption if we know at what age they had their first drink?
+        \item How good is that prediction?
+        \item What is the \textbf{relationship} between alcohol consumption and age of first drink?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \begin{tabular}{ll}
+        Age of first drink & \textbf{Explanatory variable} ($X$) \\
+        Number of drinks consumed as adult & \textbf{Response variable} ($Y$) \\
+      \end{tabular}
+    \end{frame}
+
+    \begin{frame}[fragile]{Working with a large data set}
+      Put the variables you will work with into a new data set in R; it's easier to work with and clean up that way.
+      <<>>=
+      drinking <- data.frame(age=addhealth$h4to34, 
+                             num.drinks=addhealth$h4to36)
+      @
+    \end{frame}
+    
+    \begin{frame}[fragile]
+      <<fig.height=2.5>>=
+      hist(drinking$age,
+        main='', xlab="Age of first drink",
+        col="orange")
+      @      
+    \end{frame}
+
+    \begin{frame}{Let's examine our variables using the codebook}
+      \begin{center}
+        \includegraphics[width=3.5in]{h4to34_codebook.png}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<>>=
+      drinking$age[drinking$age >= 96] <- NA
+      hist(drinking$age, main='', xlab='', col="orange")
+      @
+    \end{frame}
+
+    \begin{frame}{Let's examine our variables using the codebook}
+      \begin{center}
+        \includegraphics[width=3.5in]{h4to36_codebook.png}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<>>=
+      drinking$num.drinks[drinking$num.drinks >= 96] <- NA
+      hist(drinking$num.drinks, main='', xlab='How many drinks',
+        col="orange")
+      @
+    \end{frame}
+
+
+    \begin{frame}[fragile]
+      <<>>=
+      plot(num.drinks ~ age, data=drinking, pch=16, col="orange",
+        xlab="Age of first drink",
+        ylab="Number of drinks consumed")
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<>>=
+      plot(jitter(num.drinks, 4) ~ jitter(age, 4),
+        data=drinking, pch=".", col="orange",
+        xlab="Age of first drink",
+        ylab="Number of drinks consumed")
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      The regression line is the line of ``best fit'' through this plot:
+      <<echo=F>>=
+      plot(num.drinks ~ age, pch=16, col="orange",
+        data=drinking,
+        xlab="Age of first drink",
+        ylab="Number of drinks consumed")
+      model <- lm(num.drinks ~ age, data=drinking)
+      abline(model, col='red', lwd=4)
+      @
+      
+    \end{frame}
+
+    \begin{frame}{What is linear regression doing?}
+      We model each case ($x_i=$ age for $i$th person, $y_i=$ number of drinks for $i$th person) as a linear relationship plus some error:
+      \[
+        y_i = \beta_0 + \beta_1 x_i + \epsilon_i
+      \]
+      $\beta_0$ and $\beta_1$ are the intercept and slope, respectively.
+      \bigskip\pause
+
+      We find estimates for $\beta_0$ and $\beta_1$ in our sample that \emph{minimize} the errors:
+      \[
+        \hat Y = \hat\beta_0 + \hat\beta_1 X
+      \]
+      This is the regression (best fit) line.
+    \end{frame}
+
+    \begin{frame}{Finding the regression equation}
+      When there is just one $X$ variable, the formulas are straightforward:
+      \begin{enumerate}
+        \item The slope is $\hat\beta_1 = r \cdot \dfrac{\text{SD}(Y)}{\text{SD}(X)}$.
+        \item Solve for the intercept using the fact that the regression line will always pass through $(\overline X,\overline Y)$: $\hat\beta_0 = \overline Y - \hat\beta_1\overline X$.
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{9}{9}\selectfont
+      <<>>=
+      model <- lm(num.drinks ~ age, data=drinking)
+      summary(model)
+      @
+      
+    \end{frame}
+
+    \begin{frame}[fragile]
+      This translates to a regression line of:
+      <<echo=F>>=
+        options(digits=2)
+        beta0 <- model$coefficients["(Intercept)"]
+        beta1 <- model$coefficients['age']
+        r.squared <- summary(model)$r.squared
+        age.se <- summary(model)$coefficients[,"Std. Error"]["age"]
+      @
+      \[
+        \widehat{\text{num drinks}} = \Sexpr{beta0} - \Sexpr{abs(beta1)} \cdot\text{age}
+      \]
+      \pause
+      Predict number of drinks for $\text{age}=21$:
+      \[
+        \widehat{\text{num drinks}}
+        = \Sexpr{beta0} - \Sexpr{abs(beta1)} \cdot 21
+        = \Sexpr{predict(model, list(age=21))}
+      \]
+      Or we can use R to do the work for us:
+      <<results='hide'>>=
+      predict(model, list(age=21))
+      @
+      
+    \end{frame}
+
+    \begin{frame}{How good are our predictions?}
+      $R^2$ quantifies how closely the model fits the data.
+      \begin{itemize}[<+->]
+        \item $R^2$ is the fraction of the variation of $Y$ explained by the model (i.e., $R^2 = \text{Var}(\hat Y)/\text{Var}(Y)$).
+        \item $R^2=\text{cor}(X,Y)^2$, i.e., the squared correlation between $X$ and $Y$.
+        \item $R^2=0$ when the model has no predictive power at all.
+        \item $R^2=1$ when the model yields perfect predictions every time.
+        \item $R^2=\text{cor}(Y,\hat Y)^2$, i.e., the squared correlation between the actual and predicted values of $Y$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{9}{9}\selectfont
+      <<>>=
+      model <- lm(num.drinks ~ age, data=drinking)
+      summary(model)
+      @
+    \end{frame}
+
+    \begin{frame}
+      In our regression, $R^2=\Sexpr{r.squared}$, so $r=\sqrt{\Sexpr{r.squared}}=-\Sexpr{sqrt(r.squared)}$ (negative since the slope is negative).
+
+      \pause\vspace{0.3in}
+      Is this ``significant?'' \pause \alert{We'll discuss this next time!}
+    \end{frame}
+
+    \section{Regression assumptions}
+
+    \begin{frame}
+      In finance, the $\beta$ of an asset indicates its volatility relative to the market. An asset with:
+      \pause
+      \begin{itemize}[<+->]
+        \item $\beta=1$ rises and falls with the market as a whole.
+        \item $\beta>1$ is \textbf{more} volatile than the market as a whole.
+        \item $\beta<1$ is \textbf{less} volatile than the market as a whole.
+      \end{itemize}
+      \pause
+      $\beta$ is just the slope of the regression line (i.e. $\hat\beta_1$) when we regress the asset's weekly returns against the weekly returns of a market index.
+    \end{frame}
+
+    \begin{frame}[fragile]{W5000 (Wilshire 5000, a broad market index)}
+      <<fig.height=2.8>>=
+      hist(stock.market$W5000, col="green", main="",
+        xlab="W5000 return as a % of previous week close")
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Amazon (AMZN)}
+      <<fig.height=2.5>>=
+      plot(AMZN ~ W5000, data=stock.market,
+        pch=16, col='cyan')
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F, fig.height=2.5>>=
+      options(digits=2)
+      amzn <- lm(AMZN ~ W5000, data=stock.market)
+      beta0 <- amzn$coefficients["(Intercept)"]
+      beta1 <- amzn$coefficients['W5000']
+      r.squared <- summary(amzn)$r.squared
+      plot(AMZN ~ W5000, data=stock.market,
+        pch=16, col='cyan')
+      abline(amzn, col="orange", lwd=4)
+      @
+
+      The regression line is
+      \[
+        \widehat{\text{AMZN}} = \Sexpr{beta0} + \Sexpr{beta1} \cdot\text{W5000},
+      \]
+      with $R^2=\Sexpr{r.squared}$.
+    \end{frame}
+
+    \begin{frame}{Interpreting the regression statistics}
+      \begin{itemize}[<+->]
+        \item $\hat\beta_1=\Sexpr{beta1}$ (``$\beta$'') is the predicted increase in returns for AMZN when W5000 returns increase by 1 percentage point---since this is $>1$ AMZN will swing more than the market as a whole
+        \item $R^2=\Sexpr{r.squared}$ indicates how closely AMZN tracks W5000 (the market as a whole)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions}
+      We need four things to be true for a regression model to be a good fit for the data:
+      \begin{enumerate}
+        \item Both $X$ and $Y$ are quantitative
+        \item $X$ and $Y$ are approximately linearly related
+        \item There are no extreme outliers
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'')
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions}
+      We need four things to be true for a regression model to be a good fit for the data:
+      \begin{enumerate}
+        \item Both $X$ and $Y$ are quantitative \greencheckmark
+        \item $X$ and $Y$ are approximately linearly related
+        \item There are no extreme outliers
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'')
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Assumption 2: Linearity}
+      Step 1: Visually examine to ensure a line is a good fit for the data:
+      <<echo=F, fig.height=2.5>>=
+      plot(AMZN ~ W5000, data=stock.market,
+        pch=16, col='cyan')
+      abline(amzn, col="orange", lwd=4)
+      @
+    \end{frame}
+
+    \begin{frame}{Assumption 2: Linearity}
+      Each point has a \textbf{residual} ($Y-\hat Y$); this is the over/under-prediction of the model (red lines).
+      <<echo=F, fig.height=2.5>>=
+      plot(AMZN ~ W5000, data=stock.market,
+        pch=16, col='cyan')
+      abline(amzn, col="orange", lwd=4)
+      segments(stock.market$W5000, stock.market$AMZN, stock.market$W5000, predict(amzn), col='red', lwd=4)
+      points(stock.market$W5000, stock.market$AMZN, col='cyan', pch=16)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 2: Linearity}
+      \fontsize{10}{10}\selectfont
+      A \textbf{residual plot} (of residuals vs $X$) helps us ensure that there is not subtle nonlinearity. We want to see \textbf{no trend} in this plot:
+      <<fig.height=2>>=
+      model <- lm(AMZN ~ W5000, data=stock.market)
+      plot(stock.market$W5000, resid(model),
+        pch=16, col="green", xlab='W5000', ylab='Residuals')
+      @
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions}
+      We need four things to be true for a regression model to be a good fit for the data:
+      \begin{enumerate}
+        \item Both $X$ and $Y$ are quantitative \greencheckmark
+        \item $X$ and $Y$ are approximately linearly related \greencheckmark
+        \item There are no extreme outliers
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'')
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 3: There are no extreme outliers}
+      The outliers that would be problematic are those that are \emph{deviate from the existing relationship} between $X$ and $Y$ and are far from the mean on $X$. These would are called \alert{influential points}:
+      <<echo=F, fig.height=2.8>>=
+      model <- lm(AMZN ~ W5000, data=stock.market)
+      plot(stock.market$W5000, stock.market$AMZN,
+        pch=16, col="green", xlab='W5000', ylab='AMZN', xlim=c(-8, 10), ylim=c(-15, 20))
+      abline(model, col="lightblue", lwd=3)
+      #points(c(-8, 10), c(20, -15), col="red", pch="*")
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 3: There are no extreme outliers}
+      The outliers that would be problematic are those that are \emph{deviate from the existing relationship} between $X$ and $Y$ and are far from the mean on $X$. These would are called \alert{influential points}:
+      <<echo=F, fig.height=2.8>>=
+      model <- lm(AMZN ~ W5000, data=stock.market)
+      plot(stock.market$W5000, stock.market$AMZN,
+        pch=16, col="green", xlab='W5000', ylab='AMZN', xlim=c(-8, 10), ylim=c(-15, 20))
+      abline(model, col="lightblue", lwd=3)
+      points(c(-8, 10), c(20, -15), col="red", pch="*")
+      @
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions}
+      We need four things to be true for a regression model to be a good fit for the data:
+      \begin{enumerate}
+        \item Both $X$ and $Y$ are quantitative \greencheckmark
+        \item $X$ and $Y$ are approximately linearly related \greencheckmark
+        \item There are no extreme outliers \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'')
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 4: Homoscedasticity}
+      Look for the residual plot to have roughly equal vertical spread all the way across:
+      <<fig.height=3, echo=F>>=
+      model <- lm(AMZN ~ W5000, data=stock.market)
+      plot(stock.market$W5000, resid(model),
+        pch=16, col="green", xlab='W5000', ylab='Residuals')
+      abline(5, 0, col="orange", lwd=4, lty='dotted')
+      abline(-5, 0, col="orange", lwd=4, lty='dotted')
+      @
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions}
+      We need four things to be true for a regression model to be a good fit for the data:
+      \begin{enumerate}
+        \item Both $X$ and $Y$ are quantitative \greencheckmark
+        \item $X$ and $Y$ are approximately linearly related \greencheckmark
+        \item There are no extreme outliers \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'') \greencheckmark
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{An example where an assumption fails}
+      This is a data set of social worker salaries based on years of experience. Which assumption might be violated here?
+      <<echo=F, fig.height=2.5>>=
+      plot(salary ~ experience, data=salaries, col="orange", pch=16, xlab='Years of experience', ylab='Salary ($)')
+      @
+    \end{frame}
+
+    \begin{frame}{An example where an assumption fails}
+      <<echo=F>>=
+      model <- lm(salary ~ experience, data=salaries)
+      plot(salaries$experience, resid(model), col="green", pch=16, xlab='Years of experience', ylab='Residuals')
+      @
+    \end{frame}
+
+    \section{Regression to the mean}
+
+    \begin{frame}
+      \fullpagepicture{si}
+    \end{frame}
+    \begin{frame}
+      \fullpagepicture{agt}
+    \end{frame}
+    \begin{frame}
+      \fullpagepicture{sat}
+    \end{frame}
+
+    \begin{frame}{What is regression to the mean?}
+      \begin{itemize}[<+->]
+        \item Whenever two variables are imperfectly related (e.g. first SAT attempt vs second SAT attempt), \alert{regression to the mean} will occur
+        \item Extreme cases on one variable (very high or very low scores) will likely be not \emph{quite} so extreme on the other variable, since the good (or bad) luck in the extreme case is not likely to be present the next time around:
+          \begin{itemize}[<+->]
+            \item If you got a very high SAT score the first time, you probably will score high again, but you probably won't be as lucky the next time around
+            \item If you got a very low SAT score the first time, you probably will score poorly again, but you probably won't be as unlucky the next time around
+          \end{itemize}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{What does it have to do with regression?}
+      Suppose the correlation between first and second SAT attempts is $r=0.85$, and scores have been standardized, so $\hat Y=0.85 X$:
+      <<echo=F>>=
+      library(MASS)
+      out <- mvrnorm(400, mu = c(0,0), Sigma = matrix(c(1,0.85,0.85,1), ncol = 2), empirical = TRUE)
+      x <- out[,1]
+      y <- out[,2]
+      plot(x, y, col="lightgreen", pch=16, xlab="SAT first attempt", ylab="SAT second attempt")
+      abline(a=0, b=0.85, col="red", lwd=3)
+      @
+    \end{frame}
+
+    \begin{frame}{What does it have to do with regression?}
+      \begin{columns}[onlytextwidth]
+        \begin{column}{0.5\textwidth}
+          \begin{itemize}[<+->]
+            \item $X=2$ (first attempt 2 SD above mean) $\longrightarrow$ $\hat Y = 1.7$ (second attempt 1.7 SD above mean)
+            \item $X=0 \longrightarrow \hat Y = 0$ 
+            \item $X=-2 \longrightarrow \hat Y = -1.7$
+            \item In other words, the second attempts will tend to ``regress'' towards the mean
+            \item This has nothing to do with the SAT in particular---it's a statistical phenomenon!
+          \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+          <<echo=F, fig.height=4>>=
+          library(MASS)
+          out <- mvrnorm(400, mu = c(0,0), Sigma = matrix(c(1,0.85,0.85,1), ncol = 2), empirical = TRUE)
+          x <- out[,1]
+          y <- out[,2]
+          plot(x, y, col="lightgreen", pch=16, xlab="", ylab="")
+          abline(a=0, b=0.85, col="red", lwd=3)
+          @    
+        \end{column}
+      \end{columns}
+    \end{frame}
+
+  \end{darkframes}
+
+\end{document}
