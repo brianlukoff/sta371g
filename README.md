@@ -12,7 +12,7 @@
 | Lecture 8: Review of Inference | [Slides](slides/lecture-08/lecture-08.pdf) | [Script](lecture-scripts/lecture-08.R) |
 | Lecture 9: Correlation & Simple Regression 1 | [Slides](slides/lecture-09/lecture-09.pdf) | [Script](lecture-scripts/lecture-09.R) |
 | Lecture 10: Correlation & Simple Regression 2 | [Slides](slides/lecture-10/lecture-10.pdf) | [Script](lecture-scripts/lecture-10.R) |
-| Lecture 11: Inference for Simple Regression 1 | [Slides](slides/lecture-10/lecture-10.pdf) |  |
+| Lecture 11: Inference for Simple Regression 1 | [Slides](slides/lecture-11/lecture-11.pdf) |  |
 
 # R help pages
 
