@@ -1,0 +1,249 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Inference for Simple Regression 1}
+\subtitle{Lecture 11}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  @
+  <<include=F>>=
+  addhealth <- read.csv("../../data/addhealth.csv")
+  drinking <- data.frame(age=addhealth$h4to34, 
+                             num.drinks=addhealth$h4to36)
+  drinking$age[drinking$age >= 96] <- NA
+  drinking$num.drinks[drinking$num.drinks >= 96] <- NA
+
+  options(digits=2)
+  model <- lm(num.drinks ~ age, data=drinking)
+  beta0 <- model$coefficients["(Intercept)"]
+  beta1 <- model$coefficients['age']
+  r.squared <- summary(model)$r.squared
+  age.se <- summary(model)$coefficients[,"Std. Error"]["age"]
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{Measuring goodness-of-fit}
+      \begin{itemize}[<+->]
+        \item $R^2$ measures the fraction of the variation in $Y$ explained by $X$;
+        in our analysis predicting number of drinks from age of first drink, $R^2=\Sexpr{r.squared}$.
+        \item The \alert{standard error of the regression} $s_e$ can be roughly interpreted as
+        the standard deviation of the residuals.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F>>=
+      options(digits=3)
+      @
+      \fontsize{9}{9}\selectfont
+      <<>>=
+      model <- lm(num.drinks ~ age, data=drinking)
+      summary(model)
+      @
+      <<echo=F>>=
+      options(digits=2)
+      @
+    \end{frame}
+
+    \begin{frame}{Interpreting the standard error of the regression $s_e = \Sexpr{summary(model)$sigma}$}
+      \begin{itemize}[<+->]
+        \item The \alert{residual} for the $i$th case is $Y_i - \hat Y_i$ ($\text{actual $Y$ value} - \text{predicted $Y$ value}$)
+        \item The residuals are approximately Normally distributed
+        \item The mean of the residuals is 0 (why?)
+        \item Therefore: 95\% of the residuals are roughly within $\pm 2 s_e$
+        \item In other words, 95\% of the time I expect my prediction to be off by at most $2 \cdot \Sexpr{summary(model)$sigma} = \Sexpr{2*summary(model)$sigma}$
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      In our regression, $R^2=\Sexpr{r.squared}$.
+
+      Is this ``significant?''
+      \pause
+      \begin{itemize}[<+->]
+        \item \textbf{Statistical significance:} Can we reject the null hypothesis that the correlation between $X$ and $Y$ in the \emph{population} is zero?
+        \item \textbf{Practical significance:} Is the relationship in our sample strong enough to be meaningful?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The overall null hypothesis for a regression model}
+      The following are equivalent ways to express the overall null hypothesis:
+      \begin{itemize}[<+->]
+        \item $R^2=0$ (in the population)
+        \item $\text{cor}(X,Y)=0$ (in the population)
+        \item $\beta_1=0$
+        \item The model has no predictive power
+        \item Predictions from this model are no better than predicting $\overline Y$ for every case
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Two ways to test the overall null hypothesis}
+      \begin{itemize}
+        \item The $F$-test (tests $H_0:R^2=0$ in the population vs $H_A:R^2\neq 0$)
+        \item The $t$-test for the \emph{slope} ($\beta_1$) coefficient (tests $H_0:\beta_1=0$ vs $H_A:\beta_1\neq 0$)
+        \item Note that both tests are two-tailed, since we would care about the null hypothesis being wrong in either direction (i.e. $\beta_1>0$ and $\beta_1<0$ are both of interest)
+      \end{itemize}
+      \pause
+      Both of these methods are equivalent; the $p$-values will be exactly the same!
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{9}{9}\selectfont
+      <<>>=
+      model <- lm(num.drinks ~ age)
+      summary(model)
+      @
+    \end{frame}
+
+    \begin{frame}{What is our conclusion about $\beta_1$?}
+      \begin{itemize}[<+->]
+        \item There is a \textbf{statistically significant} relationship between the age someone starts drinking and how much they drink as an adult.
+        \item Or: People that start drinking earlier in life consume \textbf{significantly more} alcohol when they drink as adults.
+        \item Each additional year you wait to start drinking is associated with consuming \Sexpr{abs(beta1)} fewer drinks as an adult.
+        \item Is this relationship \textbf{practically significant}?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Practical significance}
+      \begin{itemize}
+        \item To assess \textbf{statistical significance}, we look at the $p$-value
+        \item To assess \textbf{practical significance}:
+          \begin{itemize}
+            \item We only consider it if we already have statistical significance (why?)
+            \item Look at $R^2$, the standard error of the regression, and the magnitude of the coefficients
+            \item It's ultimately a judgement call!
+          \end{itemize}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Put a confidence interval on it}
+      \begin{itemize}[<+->]
+        \item Our best estimate for the \emph{effect} of a year's postponement of drinking is \Sexpr{abs(beta1)} fewer drinks as an adult
+        \item We can use a confidence interval to give a range of plausible values for what this effect size is in the population
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Put a confidence interval on it}
+      A confidence interval is always of the form \[ \text{estimate} \pm (\text{critical value})(\text{standard error}). \]
+      \pause
+      Recall that the critical value for a 95\% confidence interval is the cutoff value that cuts off 95\% of the area in the middle of the distribution; the sampling distribution of $\hat\beta_1$ is a $t$-distribution.
+
+      <<echo=F>>=
+        options(digits=7)
+      @
+      <<>>=
+      # n = number of observations (cases)
+      n <- nobs(model)
+      # critical value = cutoff values so that 95% of area is captured between them
+      qt(0.975, n-2)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F>>=
+      options(digits=3)
+      @
+      \fontsize{9}{9}\selectfont
+      <<>>=
+      model <- lm(num.drinks ~ age)
+      summary(model)
+      @
+      <<echo=F>>=
+      options(digits=2)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Put a confidence interval on it}
+      R will also calculate confidence intervals for us:
+      <<>>=
+      confint(model)
+      @
+      <<echo=F>>=
+      options(digits=2)
+      @
+      \pause
+      In other words, we are 95\% confident that the effect of each additional year's delay in starting to drink is between \Sexpr{abs(confint(model)["age","97.5 %"])} and \Sexpr{abs(confint(model)["age","2.5 %"])}.
+    \end{frame}
+
+    \begin{frame}{Put a confidence interval on it, part 2}
+      We can also put a confidence interval on a prediction!
+
+      Two kinds of intervals:
+
+      \begin{itemize}
+        \item \alert{Confidence interval for the mean response}: Predicting the mean value of $Y$ for a particular $X$. (Example: Among all people that start drinking at age 21, how many drinks do have on average as adults?) 
+        \item \alert{Prediction interval}: Predicting $Y$ for a single new case. (Example: If Bob started drinking at age 21, how many drinks do we think will have as an adult?) 
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Confidence intervals for making predictions}
+      \begin{itemize}
+        \item Confidence interval for the mean response (predicting the mean $Y$ for a particular $X$):
+        \[
+          \hat Y \pm t^* \cdot s_e \sqrt{\frac 1 n + \frac{(X - \overline X)^2}{\sum_{i=1}^n (X_i - \overline X)^2}}
+        \]
+        \item Prediction interval (predicting $Y$ for a single new case):
+        \[
+          \hat Y \pm t^* \cdot s_e \sqrt{1 + \frac 1 n + \frac{(X - \overline X)^2}{\sum_{i=1}^n (X_i - \overline X)^2}}
+        \]
+      \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}[fragile]{Put a confidence interval on it, part 2}
+      <<echo=F>>=
+      options(digits=7)
+      @
+      <<>>=
+      predict(model, list(age=21), interval="confidence")
+      predict(model, list(age=21), interval="prediction")
+      @
+
+      \pause
+      Why is the prediction interval wider?
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F, fig.height=4>>=
+      plot(jitter(num.drinks, 4) ~ jitter(age, 4),
+        ylim=c(-5, 18),
+        data=drinking, pch=".", col="gray",
+        xlab="Age of first drink",
+        ylab="Number of drinks consumed")
+        x <- 5:30
+      cint <- predict(model, list(age=x), interval="confidence")
+      pint <- predict(model, list(age=x), interval="prediction")
+      abline(model, col="orange")
+      lines(x, cint[,2], col="lightpink")
+      lines(x, cint[,3], col="lightpink")
+      lines(x, pint[,2], col="lightblue")
+      lines(x, pint[,3], col="lightblue")
+
+      @
+    \end{frame}
+
+    
+  \end{darkframes}
+
+\end{document}
