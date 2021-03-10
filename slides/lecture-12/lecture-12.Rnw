@@ -1,0 +1,163 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Inference for Simple Regression 2}
+\subtitle{Lecture 12}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  @
+  <<include=F>>=
+  stock.market <- read.csv("../../data/stock-market-returns.csv")
+  model <- lm(PG ~ W5000, data=stock.market)
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}
+      \begin{center}
+        TX Votes presentation
+      \end{center}
+    \end{frame}
+    
+    \begin{frame}{A few notes about the project}
+      \begin{itemize}
+        \item You'll build up your paper over time---for the Preliminary Proposal all you need are the title, authors, introduction, and data description
+        \item Also submit your R script and codebook
+        \item Your codebook should include all of the information from the original data set's codebook for each of the variables you include
+        \item Data sets and codebooks are posted in Canvas under Files
+        \item Think about what you want to predict/model, and then come up with an (inital) list of 8-20 explanatory variables that might be helpful in predicting it
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      In finance, the $\beta$ of an asset indicates its volatility relative to the market. An asset with:
+      \begin{itemize}
+        \item $\beta=1$ rises and falls with the market as a whole.
+        \item $\beta>1$ is \textbf{more} volatile than the market as a whole.
+        \item $\beta<1$ is \textbf{less} volatile than the market as a whole.
+      \end{itemize}
+      $\beta$ is just the slope of the regression line (i.e. $\hat\beta_1$) when we regress the asset's weekly returns against the weekly returns of a market index.
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F, fig.height=2.5>>=
+      options(digits=2)
+      pg <- lm(PG ~ W5000, data=stock.market)
+      beta0 <- pg$coefficients["(Intercept)"]
+      beta1 <- pg$coefficients['W5000']
+      r.squared <- summary(pg)$r.squared
+      p.value <- summary(pg)$coefficients['W5000','Pr(>|t|)']
+      plot(PG ~ W5000, data=stock.market,
+        pch=16, col='cyan')
+      abline(pg, col='orange', lwd=4)
+      @
+
+      The regression line is
+      \[
+        \widehat{\text{PG}} = \Sexpr{beta0} + \Sexpr{beta1} \cdot\text{W5000},
+      \]
+      with $R^2=\Sexpr{r.squared}$ and $p=\Sexpr{p.value}$.
+      
+    \end{frame}
+
+    \begin{frame}{Interpreting the regression statistics}
+      \begin{itemize}[<+->]
+        \item $\hat\beta_1=\Sexpr{beta1}$ (``$\beta$'') is the predicted increase in returns for PG when W5000 returns increase by 1 percentage point---since this is $<1$ PG will swing less than the market as a whole
+        \item $R^2=\Sexpr{r.squared}$ indicates how closely PG tracks W5000 (the market as a whole)
+        \item $p=\Sexpr{p.value}$ tells us whether we can reject the null hypothesis that PG does not move with the market at all \pause (we can! since $p$ is small)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \pause
+      \begin{enumerate}
+        \item The errors are independent.
+        \item $Y$ is a linear function of $X$ (except for the errors).
+        \item The errors are normally distributed.
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Assumption 1: Independence of errors}
+      Independence means that knowing the error (over-/under-prediction by the regression line) for one case doesn't tell you anything about the error for another case.
+    \end{frame}
+
+    \begin{frame}{Assumption 1: Independence of errors}
+      \begin{itemize}[<+->]
+        \item From last time: Knowing how much more Bob drinks than expected (based on the age he started drinking) doesn't give us any suggestion as to how much more Lisa drinks than expected.
+        \item From today: Knowing how much better or worse PG performs relative to the market \emph{last} week doesn't tell us anything about how much better or worse PG performs relative to the market \emph{this} week, if we believe the efficient market hypothesis.
+        \item \alert{But:} Time-series data often violates the independence assumption!
+        \item We can often only verify this assumption by thinking about the situation conceptually.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of $X$ (except for the errors).
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+        \item The errors are normally distributed.
+      \end{enumerate}
+    \end{frame}
+
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of $X$ (except for the errors). \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity''). \greencheckmark
+        \item The errors are normally distributed.
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 4: Errors are normally distributed}
+      Step 1: Look at a histogram of the residuals and ensure they are approximately normally distributed:
+      <<fig.height=2>>=
+      hist(residuals(model), col='darkred', xlab='Residuals')
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 4: Errors are normally distributed}
+      Step 2: Look at a Q-Q plot of the residuals and look for an approximately straight line:
+      <<fig.height=2>>=
+      qqnorm(residuals(model))
+      @
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of $X$ (except for the errors). \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity''). \greencheckmark
+        \item The errors are normally distributed. \greencheckmark
+      \end{enumerate}
+      \pause
+      \alert{We always need to check these assumptions before interpreting $p$-values or confidence intervals!}
+    \end{frame}
+  \end{darkframes}
+
+\end{document}

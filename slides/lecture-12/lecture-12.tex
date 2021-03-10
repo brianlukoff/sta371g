@@ -1,0 +1,207 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{1, 0.894, 0.769}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.824,0.412,0.118}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{1,0.894,0.71}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.824,0.706,0.549}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.941,0.902,0.549}{#1}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.804,0.776,0.451}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.78,0.941,0.545}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{1,0.78,0.769}{#1}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{../371g-slides}
+\title{Inference for Simple Regression 2}
+\subtitle{Lecture 12}
+\author{STA 371G}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+  
+  
+  
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}
+      \begin{center}
+        TX Votes presentation
+      \end{center}
+    \end{frame}
+    
+    \begin{frame}{A few notes about the project}
+      \begin{itemize}
+        \item You'll build up your paper over time---for the Preliminary Proposal all you need are the title, authors, introduction, and data description
+        \item Also submit your R script and codebook
+        \item Your codebook should include all of the information from the original data set's codebook for each of the variables you include
+        \item Data sets and codebooks are posted in Canvas under Files
+        \item Think about what you want to predict/model, and then come up with an (inital) list of 8-20 explanatory variables that might be helpful in predicting it
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      In finance, the $\beta$ of an asset indicates its volatility relative to the market. An asset with:
+      \begin{itemize}
+        \item $\beta=1$ rises and falls with the market as a whole.
+        \item $\beta>1$ is \textbf{more} volatile than the market as a whole.
+        \item $\beta<1$ is \textbf{less} volatile than the market as a whole.
+      \end{itemize}
+      $\beta$ is just the slope of the regression line (i.e. $\hat\beta_1$) when we regress the asset's weekly returns against the weekly returns of a market index.
+    \end{frame}
+
+    \begin{frame}[fragile]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-3-1} 
+
+\end{knitrout}
+
+      The regression line is
+      \[
+        \widehat{\text{PG}} = 0.11 + 0.45 \cdot\text{W5000},
+      \]
+      with $R^2=0.15$ and $p=\ensuremath{4.81\times 10^{-11}}$.
+      
+    \end{frame}
+
+    \begin{frame}{Interpreting the regression statistics}
+      \begin{itemize}[<+->]
+        \item $\hat\beta_1=0.45$ (``$\beta$'') is the predicted increase in returns for PG when W5000 returns increase by 1 percentage point---since this is $<1$ PG will swing less than the market as a whole
+        \item $R^2=0.15$ indicates how closely PG tracks W5000 (the market as a whole)
+        \item $p=\ensuremath{4.81\times 10^{-11}}$ tells us whether we can reject the null hypothesis that PG does not move with the market at all \pause (we can! since $p$ is small)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \pause
+      \begin{enumerate}
+        \item The errors are independent.
+        \item $Y$ is a linear function of $X$ (except for the errors).
+        \item The errors are normally distributed.
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Assumption 1: Independence of errors}
+      Independence means that knowing the error (over-/under-prediction by the regression line) for one case doesn't tell you anything about the error for another case.
+    \end{frame}
+
+    \begin{frame}{Assumption 1: Independence of errors}
+      \begin{itemize}[<+->]
+        \item From last time: Knowing how much more Bob drinks than expected (based on the age he started drinking) doesn't give us any suggestion as to how much more Lisa drinks than expected.
+        \item From today: Knowing how much better or worse PG performs relative to the market \emph{last} week doesn't tell us anything about how much better or worse PG performs relative to the market \emph{this} week, if we believe the efficient market hypothesis.
+        \item \alert{But:} Time-series data often violates the independence assumption!
+        \item We can often only verify this assumption by thinking about the situation conceptually.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of $X$ (except for the errors).
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+        \item The errors are normally distributed.
+      \end{enumerate}
+    \end{frame}
+
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of $X$ (except for the errors). \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity''). \greencheckmark
+        \item The errors are normally distributed.
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 4: Errors are normally distributed}
+      Step 1: Look at a histogram of the residuals and ensure they are approximately normally distributed:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{hist}\hlstd{(}\hlkwd{residuals}\hlstd{(model),} \hlkwc{col}\hlstd{=}\hlstr{'darkred'}\hlstd{,} \hlkwc{xlab}\hlstd{=}\hlstr{'Residuals'}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-4-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 4: Errors are normally distributed}
+      Step 2: Look at a Q-Q plot of the residuals and look for an approximately straight line:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{qqnorm}\hlstd{(}\hlkwd{residuals}\hlstd{(model))}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-5-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Simple regression assumptions for inference}
+      We need four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for regression:
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of $X$ (except for the errors). \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity''). \greencheckmark
+        \item The errors are normally distributed. \greencheckmark
+      \end{enumerate}
+      \pause
+      \alert{We always need to check these assumptions before interpreting $p$-values or confidence intervals!}
+    \end{frame}
+  \end{darkframes}
+
+\end{document}
