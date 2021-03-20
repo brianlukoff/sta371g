@@ -1,0 +1,102 @@
+Processor,Transistor count,Date of introduction,Designer
+TMS 1000,8000,1971,Texas Instruments
+Intel 4004,2300,1971,Intel
+Intel 8008,3500,1972,Intel
+MOS Technology 6502,3510,1975,MOS Technology
+Motorola 6800,4100,1974,Motorola
+Intel 8080,4500,1974,Intel
+RCA 1802,5000,1974,RCA
+Intel 8085,6500,1976,Intel
+Zilog Z80,8500,1976,Zilog
+Motorola 6809,9000,1978,Motorola
+Intel 8086,29000,1978,Intel
+Intel 8088,29000,1979,Intel
+WDC 65C02,11500,1981,WDC
+Intel 80186,55000,1982,Intel
+Motorola 68000,68000,1979,Motorola
+Intel 80286,134000,1982,Intel
+WDC 65C816,22000,1983,WDC
+Motorola 68020,190000,1984,Motorola
+Intel 80386,275000,1985,Intel
+ARM 1,25000,1985,Acorn
+Novix NC4016,16000,1985,Harris Corporation
+ARM 2,30000,1986,Acorn
+TI Explorer's 32-bit Lisp machine chip,553000,1987,Texas Instruments
+DEC WRL MultiTitan,180000,1988,DEC WRL
+Intel i960,250000,1988,Intel
+Intel 80486,1180235,1989,Intel
+ARM 3,300000,1989,Acorn
+R4000,1350000,1991,MIPS
+ARM 6,35000,1991,ARM
+Pentium,3100000,1993,Intel
+ARM700,578977,1994,ARM
+SA-110,2500000,1995,Acorn/DEC/Apple
+ARM 9TDMI,111000,1999,Acorn
+Pentium Pro,5500000,1995,Intel
+AMD K5,4300000,1996,AMD
+Pentium II Klamath,7500000,1997,Intel
+Pentium II Deschutes,7500000,1998,Intel
+AMD K6,8800000,1997,AMD
+Pentium III Katmai,9500000,1999,Intel
+Pentium III Coppermine,21000000,2000,Intel
+Pentium II Mobile Dixon,27400000,1999,Intel
+Pentium III Tualatin,45000000,2001,Intel
+AMD K6-III,21300000,1999,AMD
+AMD K7,22000000,1999,AMD
+Pentium 4 Willamette,42000000,2000,Intel
+Pentium 4 Northwood,55000000,2002,Intel
+Pentium 4 Prescott,112000000,2004,Intel
+Pentium 4 Prescott-2M,169000000,2005,Intel
+Pentium 4 Cedar Mill,184000000,2006,Intel
+Pentium D Smithfield,228000000,2005,Intel
+Pentium D Presler,362000000,2006,Intel
+Atom,47000000,2008,Intel
+Barton,54300000,2003,AMD
+AMD K8,105900000,2003,AMD
+Itanium 2 McKinley,220000000,2002,Intel
+Cell,241000000,2006,Sony/IBM/Toshiba
+Core 2 Duo Conroe,291000000,2006,Intel
+Core 2 Duo Allendale,169000000,2007,Intel
+Itanium 2 Madison 6M,410000000,2003,Intel
+AMD K10 quad-core 2M L3,463000000,2007,AMD
+ARM Cortex-A9,26000000,2007,ARM
+Core 2 Duo Wolfdale 3M,230000000,2008,Intel
+Itanium 2 with 9 MB cache,592000000,2004,Intel
+Core 2 Duo Wolfdale,411000000,2007,Intel
+Core i7 (Quad),731000000,2008,Intel
+AMD K10 quad-core 6M L3,758000000,2008,AMD
+POWER6,789000000,2007,IBM
+Six-core Opteron 2400,904000000,2009,AMD
+16-core SPARC T3,1000000000,2010,Sun/Oracle
+"Apple A7 (dual-core ARM64 ""mobile SoC"")",1000000000,2013,Apple
+Quad-core + GPU Core i7,1160000000,2011,Intel
+Six-core Core i7 (Gulftown),1170000000,2010,Intel
+8-core POWER7 32M L3,1200000000,2010,IBM
+8-core AMD Bulldozer,1200000000,2012,AMD
+Quad-core + GPU AMD Trinity,1303000000,2012,AMD
+Quad-core z196[21],1400000000,2010,IBM
+Quad-core + GPU Core i7 Ivy Bridge,1400000000,2012,Intel
+Quad-core + GPU Core i7 Haswell,1400000000,2014,Intel
+Dual-core Itanium 2,1700000000,2006,Intel
+Quad-core + GPU GT2 Core i7 Skylake K,1750000000,2015,Intel
+Six-core Core i7 Ivy Bridge E,1860000000,2013,Intel
+Duo-core + GPU Iris Core i7 Broadwell-U,1900000000,2015,Intel
+Six-core Xeon 7400,1900000000,2008,Intel
+Quad-core Itanium Tukwila,2000000000,2010,Intel
+"Apple A8 (dual-core ARM64 ""mobile SoC"")",2000000000,2014,Apple
+8-core POWER7+ 80 MB L3 cache,2100000000,2012,IBM
+Six-core Core i7/8-core Xeon E5,2270000000,2011,Intel
+8-core Xeon Nehalem-EX,2300000000,2010,Intel
+8-core Core i7 Haswell-E,2600000000,2014,Intel
+10-core Xeon Westmere-EX,2600000000,2011,Intel
+Six-core zEC12,2750000000,2012,IBM
+"Apple A8X (tri-core ARM64 ""mobile SoC"")",3000000000,2014,Apple
+8-core Itanium Poulson,3100000000,2012,Intel
+IBM z13,3990000000,2015,IBM
+12-core POWER8,4200000000,2013,IBM
+15-core Xeon Ivy Bridge-EX,4310000000,2014,Intel
+61-core Xeon Phi,5000000000,2012,Intel
+Xbox One main SoC,5000000000,2013,Microsoft/AMD
+18-core Xeon Haswell-E5,5560000000,2014,Intel
+IBM z13 Storage Controller,7100000000,2015,IBM
+SPARC M7,10000000000,2015,Oracle

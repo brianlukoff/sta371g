@@ -1,0 +1,171 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{What can go wrong, and how to fix it 2}
+\subtitle{Lecture 14}
+\author{STA 371G}
+
+\begin{document}
+<<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  cars <- read.csv("../../data/cars.csv")
+  prices <- read.csv("../../data/stock-market-prices.csv")
+  options(digits=2)
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}
+      \fullpagepicture{debbie-downer}
+    \end{frame}
+
+    \begin{frame}{Mileage efficiency data set}
+      The data set \texttt{cars} contains specs for \Sexpr{nrow(cars)} different cars. We'll focus on two variables:
+      \begin{itemize}
+        \item \textbf{MPG} is fuel efficiency, measured in miles per gallon
+        \item \textbf{Weight} is the weight of the car, in pounds
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{What problems do you see here?}
+      <<echo=F>>=
+      plot(MPG ~ Weight, data=cars, pch=16, col="lightblue")
+      model <- lm(MPG ~ Weight, data=cars)
+      abline(model, col="orange", lwd=4)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Using transformations to fix problems}
+      \begin{itemize}
+        \item Sometimes, a violation of regression assumptions can be fixed by transforming one or the other of the variables (or both).
+        \item When we transform a variable, we have to also transform our interpretation of the equation.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{A bad example}
+      <<fig.height=2.3>>=
+      cars$WeightSq <- cars$Weight^2
+      plot(MPG ~ WeightSq, data=cars, pch=16, col="lightblue")
+      sq.model <- lm(MPG ~ WeightSq, data=cars)
+      abline(sq.model, col="orange", lwd=4)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{The log transformation}
+      The \alert{log} transformation is frequently useful in regression, because many nonlinear relationships are naturally exponential.
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        \movie{\includegraphics[width=\textwidth]{log}}{log.mp4}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{The log transformation}
+      The \alert{log} transformation is frequently useful in regression, because many nonlinear relationships are naturally exponential.
+
+      \bigskip
+
+      \begin{itemize}
+        \item $\log_b x = y$ when $b^y = x$
+        \item For example, $\log_{10} 1000 = 3$, $\log_{10} 100 = 2$, and $\log_{10} 10 = 1$
+        \item The natural log is $\log_e$, where $e \approx 2.72$ --- when we say ``log'' we will usually mean ``natural log'' (although for our purposes the base doesn't matter)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Applying a log transformation}
+      \fontsm
+      <<fig.height=2>>=
+      cars$LogWeight <- log(cars$Weight)
+      plot(MPG ~ LogWeight, data=cars, pch=16, col="lightblue")
+      log.model <- lm(MPG ~ LogWeight, data=cars)
+      abline(log.model, col="orange", lwd=4)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Checking assumptions of our new model}
+      \fontsm
+      <<fig.height=2>>=
+      plot(cars$LogWeight, residuals(log.model), pch=16, col="pink")
+      @
+      Linearity looks good, but homoscedasticity is still not satisfied!
+    \end{frame}
+
+    \begin{frame}[fragile]{Applying a second log transformation}
+      \fontsm
+      <<fig.height=2>>=
+      cars$LogMPG <- log(cars$MPG)
+      plot(LogMPG ~ LogWeight, data=cars, pch=16, col="lightblue")
+      log.log.model <- lm(LogMPG ~ LogWeight, data=cars)
+      abline(log.log.model, col="orange", lwd=4)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Checking assumptions of the log-log model}
+      \fontsm
+      <<fig.height=2>>=
+      plot(cars$LogWeight, residuals(log.log.model), pch=16, col="pink")
+      @
+      Much better---transforming MPG to log(MPG) gives us both linearity and homoscedasticity!
+    \end{frame}
+
+    \begin{frame}{Another way to transform}
+      \begin{itemize}
+        \item Instead of transforming using logs, we can also transform using the reciprocal ($x \to 1/x$)
+        \item Let's transform $Y$ by making $\text{MPG} \to 1/\text{MPG}$
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<fig.height=2>>=
+      cars$rMPG <- 1/(cars$MPG)
+      plot(rMPG ~ Weight, data=cars, pch=16, col="lightblue")
+      recip.model <- lm(rMPG ~ Weight, data=cars)
+      abline(recip.model, col="orange", lwd=4)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Checking assumptions of the reciprocal model}
+      \fontsm
+      <<fig.height=2>>=
+      plot(cars$Weight, residuals(recip.model), pch=16, col="pink")
+      @
+    \end{frame}
+
+    \begin{frame}{Which transformation is better?}
+      \begin{itemize}[<+->]
+        \item We could compare $R^2$ values: $R^2 = \Sexpr{summary(recip.model)$r.squared}$ for the reciprocal model, vs $R^2 = \Sexpr{summary(log.log.model)$r.squared}$ for the log-log model
+        \item There is also a conceptual reason to prefer the reciprocal model: MPG is already a ratio, which tips us off that a reciprocal transformation would be appropriate
+        \item The reciprocal model is also simpler to interpret since only one of the variables is transformed
+        \item In general, log transformations tend to work best when the spacing between values increases as the values increase (e.g., salaries, city population sizes)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Thinking about transformations}
+      \begin{itemize}[<+->]
+        \item Thinking about whether you want to stretch or squeeze one of the axes, and apply a transformation accordingly (e.g., $\sqrt x$ or $\log x$ to squeeze; $x^2$ or $e^x$ to stretch).
+        \item Transformations of $Y$ can address both heteroscedasticity and nonlinearity; transformations of $X$ can only address nonlinearity.
+        \item You might need to transform both $X$ and $Y$; if so, start by transforming $Y$ to address the heteroscedasticity, and then transform $X$ to address nonlinearity if necessary.
+        \item It's OK to do a little trial and error!
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+
+\end{document}

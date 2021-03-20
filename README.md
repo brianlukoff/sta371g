@@ -13,7 +13,9 @@
 | Lecture 9: Correlation & Simple Regression 1 | [Slides](slides/lecture-09/lecture-09.pdf) | [Script](lecture-scripts/lecture-09.R) |
 | Lecture 10: Correlation & Simple Regression 2 | [Slides](slides/lecture-10/lecture-10.pdf) | [Script](lecture-scripts/lecture-10.R) |
 | Lecture 11: Inference for Simple Regression 1 | [Slides](slides/lecture-11/lecture-11.pdf) | [Script](lecture-scripts/lecture-11.R) |
-| Lecture 12: Inference for Simple Regression 2 | [Slides](slides/lecture-12/lecture-12.pdf) |  |
+| Lecture 12: Inference for Simple Regression 2 | [Slides](slides/lecture-12/lecture-12.pdf) | [Script](lecture-scripts/lecture-12.R) |
+| Lecture 13: What can go wrong, and how to fix it 1 | [Slides](slides/lecture-13/lecture-13.pdf) | |
+| Lecture 14: What can go wrong, and how to fix it 1 | [Slides](slides/lecture-14/lecture-14.pdf) | |
 
 # R help pages
 
