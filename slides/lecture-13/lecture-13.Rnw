@@ -264,7 +264,7 @@
         <<echo=F>>=
         library(data.table)
         table <- cbind(apple$Revenue.Billions, shift(apple$Revenue.Billions, 1), shift(apple$Revenue.Billions, 2), shift(apple$Revenue.Billions, 3))
-        rownames(table) <- apple$Quarter
+        rownames(table) <- paste0(apple$Year, " Q", apple$Quarter)
         colnames(table) <- c("Apple revenue ($B)", "Lag 1", "Lag 2", "Lag 3")
         kable(head(table, 6), row.names=T, booktabs=T)
         @
