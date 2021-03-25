@@ -1,0 +1,344 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Polynomial regression and data cleaning}
+\subtitle{Lecture 16}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  colleges <- read.csv("../../data/colleges.csv")
+  manager <- read.csv("../../data/manager.csv", na.strings="")
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \section{Model selection}
+
+    \begin{frame}{$R^2$}
+      \begin{itemize}[<+->]
+        \item $R^2$ has a similar meaning as in simple regression: how much of the variation in the response variable ($Y$) are explained by the predictor variables ($X$'s) together?
+        \item Another way to think about $R^2$ is that \[ R^2 = \frac{\text{Var}(\hat Y)}{\text{Var}(Y)}, \] i.e., it represents how much variance in $Y$ the model predicts.
+        \item $R^2$ always increases when you add more variables, \alert{even if you add variables that have no real relationship with $Y$}.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<include=F>>=
+      set.seed(4)
+      options(digits=9)
+      @
+      \fontsize{8}{8}
+      <<>>=
+      my.sample <- subset(colleges,
+        !is.na(Average.combined.SAT) & Graduation.rate <= 100)
+      model1 <- lm(Graduation.rate ~ Average.combined.SAT + In.state.tuition,
+                   data=my.sample)
+      summary(model1)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+      <<>>=
+      Random.numbers <- rnorm(nrow(my.sample))
+      model2 <- lm(Graduation.rate ~ Average.combined.SAT + In.state.tuition
+                     + Random.numbers, data=my.sample)
+      summary(model2)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+      <<>>=
+      Random.numbers <- rnorm(nrow(my.sample))
+      model2 <- lm(Graduation.rate ~ Average.combined.SAT + In.state.tuition
+                     + Average.math.SAT, data=my.sample)
+      summary(model2)
+      @
+    \end{frame}
+
+    \begin{frame}{Adjusted $R^2$}
+      \begin{itemize}[<+->]
+        \item There are many, many possible models (think of how many combinations of predictors there are!) so we need some criterion to determine which model is best.
+        \item $R^2$ is not good because adding even a variable of random numbers increases $R^2$.
+        \item \alert{Adjusted $R^2$} makes an adjustment to $R^2$ by adding a penalty for each variable added (in this example, adjusted $R^2$ went down even though $R^2$ increased).
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<include=F>>=
+      set.seed(4)
+      options(digits=9)
+      @
+      \fontsize{8}{8}
+      <<>>=
+      model1 <- lm(Graduation.rate ~ Average.combined.SAT + In.state.tuition,
+                   data=my.sample)
+      summary(model1)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+      <<>>=
+      Random.numbers <- rnorm(nrow(my.sample))
+      model2 <- lm(Graduation.rate ~ Average.combined.SAT + In.state.tuition
+                     + Random.numbers, data=my.sample)
+      summary(model2)
+      @
+    \end{frame}
+
+    \begin{frame}{Which model is the best?}
+      \begin{itemize}[<+->]
+        \item In general, we want to select the model that is the most \alert{parsimonious}, that is, the model that has the best combination of being simple with a high $R^2$.
+        \item This is easier said than done---using Adjusted $R^2$ is not enough. We'll come back to this next week!
+      \end{itemize}
+    \end{frame}
+
+    \section{Polynomial regression}
+
+    \begin{frame}
+      \fullpagepicture{hbr}
+    \end{frame}
+
+    \begin{frame}
+      Let's look at some simulated Yerkes-Dodson data:
+      <<echo=F>>=
+      set.seed(1)
+      Arousal <- rnorm(100)
+      Performance <- -Arousal^2 + rnorm(100, 0, 0.5) + 4
+      Performance <- .7*(1.6 + Performance)
+      Arousal <- 3 + Arousal
+      plot(Arousal, Performance, col="orange", pch=16)
+      @
+      The correlation is almost 0, but there is a pretty strong relationship here---it's just not linear!
+    \end{frame}
+
+    \begin{frame}{Polynomial regression}
+      \begin{itemize}[<+->]
+        \item Polynomial regression allows us to fit a polynomial (like $4x^2-6x+3$ or $x^3-2x^2+x-7$) to the data
+        \item To do this, we create variables $X^2$, $X^3$, etc. (up to as high as we want) and add them to a simple regression model to create a multiple regression model
+        \item For example, to fit a parabola (quadratic polynomial) to this data, we would build a model where the explanatory variables are $X$ and $X^2$
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+      <<>>=
+      model1 <- lm(Performance ~ Arousal)
+      summary(model1)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+      <<>>=
+      Arousal2 <- Arousal^2
+      model2 <- lm(Performance ~ Arousal + Arousal2)
+      summary(model2)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+      <<>>=
+      Arousal3 <- Arousal^3
+      model3 <- lm(Performance ~ Arousal + Arousal2 + Arousal3)
+      summary(model3)
+      @
+    \end{frame}
+
+    \begin{frame}
+      <<echo=F>>=
+      plot(Arousal, Performance, col="orange", pch=16)
+      abline(model1, col="lightblue", lwd=3)
+      @
+    \end{frame}
+
+    \begin{frame}
+      <<echo=F>>=
+      plot(Arousal, Performance, col="orange", pch=16)
+      abline(model1, col="lightblue", lwd=3)
+      curve(model2$coefficients['Arousal2']*x^2 + model2$coefficients['Arousal']*x + model2$coefficients['(Intercept)'], lwd=3, col="purple", add=T)
+      @
+    \end{frame}
+
+    \begin{frame}
+      <<echo=F>>=
+      plot(Arousal, Performance, col="orange", pch=16)
+      abline(model1, col="lightblue", lwd=3)
+      curve(model2$coefficients['Arousal2']*x^2 + model2$coefficients['Arousal']*x + model2$coefficients['(Intercept)'], lwd=3, col="purple", add=T)
+      curve(model3$coefficients['Arousal3']*x^3 + model3$coefficients['Arousal2']*x^2 + model3$coefficients['Arousal']*x + model3$coefficients['(Intercept)'], lwd=3, col="green", add=T)
+      @
+    \end{frame}
+
+    \begin{frame}{Important considerations with polynomial regression}
+      \begin{itemize}[<+->]
+        \item Use changes in Adjusted $R^2$ and the significant of the highest-order term to help you decide how many higher-order terms to add
+        \item If you include the term $X^k$ (for any $k$), you should also include all lower-order terms, even if they are not significant
+        \item Be very careful with extrapolation when using models with polynomial terms!
+      \end{itemize}
+    \end{frame}
+
+    \section{Data cleaning}
+
+    \begin{frame}{Data set}
+      We're going to look at a data set of newly hired managers:
+      \begin{columns}[onlytextwidth]
+        \column{.5\textwidth}
+          \begin{itemize}
+            \item Salary (response)
+            \item Manager rating
+            \item Years of experience
+          \end{itemize}
+        \column{.5\textwidth}
+          \begin{itemize}
+            \item Years since graduation
+            \item Origin (internal or external hire)
+          \end{itemize}
+      \end{columns}
+    \end{frame}
+
+    \begin{frame}[fragile]{Data issues}
+      \begin{center}
+        Data scientists report that they spend \alert{70\% of their time on obtaining and cleaning the data}. Only 30\% is for statistical analysis.\bigskip \pause
+
+        Never run a regression without exploring and cleaning the data first!
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      Boxplots are commonly used to find cases that \alert{might} be outliers. Let's start by looking at the Salary column.
+
+      <<fig.height=2>>=
+      boxplot(manager$Salary, xlab="Salary", horizontal=T)
+      @
+    \end{frame}
+
+    \begin{frame}{Exploring the data: outliers}
+      If a case is shown as an outlier on the boxplot (i.e., 1.5 IQR above Q3 or 1.5 IQR below Q1):
+      \begin{itemize}
+        \item It might be an error.
+        \item It might represent a missing value or other situation. (Consult the codebook for the data set, if there is one!)
+        \item It might be a true outlier.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      <<>>=
+      subset(manager, Salary > 200)
+      subset(manager, Salary < 0)
+      @
+      \pause
+
+      We can deal with outliers in two ways.
+      \begin{itemize}[<+->]
+        \item If the result of \textbf{errors in the data}, we can try to correct or omit.
+        \item If not, consider omitting, but report on them separately.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      Let's omit the outliers by creating a new data set \texttt{mclean} that consists of the subset of the data where the salary is between \$0 and \$200,000.
+      <<>>=
+      mclean <- subset(manager, Salary > 0 & Salary < 200)
+      @
+      We'll use \texttt{mclean} for our analysis, but we won't destroy the original data set!
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      <<fig.height=2.5>>=
+      boxplot(mclean$YearsExp, xlab="Years of Experience",
+        horizontal=T)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      99 must be a code for missing entry in the Years of Experience variable!
+
+      \bigskip\pause
+
+      Let's label all 99s as \texttt{NA} (``not available'' --- R's code for missing data). \pause
+      <<>>=
+      mclean$YearsExp[mclean$YearsExp == 99] <- NA
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      Let's see if we have other missing data.
+      <<>>=
+      mclean[!complete.cases(mclean),]
+      @
+      \pause
+      This isn't surprising---it is very common to have missing entries in your data. (The comma is needed so that we capture the full row.)
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      There are two ways of dealing with missing data:
+      \begin{itemize}
+        \item Omit the rows that have missing entries in it.
+        \item Try to predict values to fill the missing entries.
+      \end{itemize}
+      Omitting data is the easiest, but often not the best way, \alert{because you lose all the other information available in the same row}.
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      What should we replace the \texttt{NA}s in the Manager Rating and Years of Experience columns with? \pause \bigskip
+
+      The simplest way would be to use the averages in the respective columns.
+
+      <<>>=
+      mclean$MngrRating[is.na(mclean$MngrRating)] <-
+        mean(mclean$MngrRating, na.rm=T)
+
+      mclean$YearsExp[is.na(mclean$YearsExp)] <-
+        mean(mclean$YearsExp, na.rm=T)
+      @
+
+      \pause \bigskip
+      A smarter and more advanced way is to predict the missing data from the other data (using regression!).
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      What about the missing data for categorical variables? \pause
+      Let's choose the easy way and omit them.
+
+      <<>>=
+      mclean <- na.omit(mclean)
+      @
+      \pause
+      This removes all the rows that contain missing entries (only the Origin column has missing entries in this case). \pause \bigskip
+
+      We could also predict the missing entries, or treat the missing entries as a seperate level (e.g. ``Unknown'').
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      \begin{itemize}[<+->]
+        \item While dealing with the missing data, we assume that the data is ``Missing Completely at Random'' (MCAR).
+        \item If this assumption does not hold (e.g. if the missing data mostly belongs to external hires), the model will  be biased.
+        \item Making predictions for missing data based on available data reinforces the existing relationships between variables, so impacts the standard error.
+        \item If a lot of data is missing (e.g. more than 5\%) for a particular variable, you may have to discard the whole column.
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+
+\end{document}

@@ -1,0 +1,356 @@
+\documentclass{beamer}
+\usepackage{../371g-slides}
+\title{Multiple regression}
+\subtitle{Lecture 15}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  colleges <- read.csv("../../data/colleges.csv")
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{Why do some colleges have higher graduation rates than others?}
+      \begin{itemize}[<+->]
+        \item What factors do you think impact the graduation rate of a college?
+        \item It seems like there is no \emph{one} factor that dominates---it is probably true that to make a good prediction we need to put a lot of variables together, so simple regression is likely not sufficient.
+        \item \alert{Multiple regression} allows us to build on simple regression by predicting one $Y$ variable using multiple $X$ variables.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The colleges data set}
+      Today's data set is a sample of \Sexpr{nrow(colleges)} colleges with various factors about the colleges, including SAT scores, student/faculty ratios, tuition rates, acceptance rates, etc.
+    \end{frame}
+
+    \begin{frame}[fragile]{A quick data clean}
+      Many colleges have no SAT scores reported, so let's ignore those colleges (to enable a fair comparison) and also remove colleges with an obviously incorrect graduation rate of $>100\%$:
+      <<>>=
+      my.sample <- subset(colleges,
+        !is.na(Average.combined.SAT) & Graduation.rate <= 100)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F>>=
+      model.sat <- lm(Graduation.rate ~ Average.combined.SAT, data=my.sample)
+      model.tuition <- lm(Graduation.rate ~ In.state.tuition, data=my.sample)
+      options(digits=3)
+      @
+      \begin{center}
+        SAT scores and (in-state) tuition were the two best single predictors, with $R^2$ values of \Sexpr{summary(model.sat)$r.squared} and \Sexpr{summary(model.tuition)$r.squared}, respectively. Can we combine these together and get an $R^2$ that is better than either predictor would produce on its own?
+      \end{center}
+    \end{frame}
+
+    \begin{frame}{Using multiple predictors to predict graduation rate}
+      The simple regression models were:
+      \[
+        Y_i = \beta_0 + \beta_1 (\text{SAT}) + \epsilon_i
+      \]
+      and
+      \[
+        Y_i = \beta_0 + \beta_1 (\text{tuition}) + \epsilon_i.
+      \]
+      The multiple regression model is
+      \[
+        Y_i = \beta_0 + \beta_1 (\text{SAT}) + \beta_2 (\text{tuition}) + \epsilon_i.
+      \]
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+      <<>>=
+      model <- lm(Graduation.rate ~ Average.combined.SAT + In.state.tuition, data=my.sample)
+      summary(model)
+      @
+    \end{frame}
+
+    \begin{frame}
+      The multiple regression prediction equation is:
+      <<echo=F>>=
+      options(scipen=5, digits=4)
+      @
+      \[
+        \widehat{\text{Graduation rate}} =
+          \Sexpr{coefficients(model)["(Intercept)"]} +
+          \Sexpr{coefficients(model)["Average.combined.SAT"]}(\text{SAT})
+          + \Sexpr{coefficients(model)["In.state.tuition"]}(\text{tuition})
+      \]
+      \pause
+      We can use this to make predictions like we would for a simple regression!
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F, fig.width=4.5, fig.height=4>>=
+      library(scatterplot3d)
+      result <- scatterplot3d(my.sample$Average.combined.SAT, my.sample$In.state.tuition, my.sample$Graduation.rate, highlight.3d=TRUE, xlab="SAT", ylab="Tuition", zlab="Graduation rate", zlim=c(0, 100), pch=16)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      <<echo=F, fig.width=4.5, fig.height=4>>=
+      library(scatterplot3d)
+      result <- scatterplot3d(my.sample$Average.combined.SAT, my.sample$In.state.tuition, my.sample$Graduation.rate, highlight.3d=TRUE, xlab="SAT", ylab="Tuition", zlab="Graduation rate", zlim=c(0, 100), pch=16)
+      result$plane3d(model)
+      @
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients: intercept}
+      Let's interpret the intercept coefficient of $\Sexpr{coefficients(model)["(Intercept)"]}$:
+      \begin{itemize}[<+->]
+        \item The predicted graduation rate when the average SAT score is 0 and the in-state tuition is \$0 is $\Sexpr{coefficients(model)["(Intercept)"]}$.
+        \item This is not a meaningful number on its own in this case, since there will never be a school with those particular predictor values! (The intercept might be interpretable for other models.)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients: SAT}
+      Let's interpret the SAT coefficient of \Sexpr{coefficients(model)["Average.combined.SAT"]}:
+      \begin{itemize}[<+->]
+        \item \alert{Holding tuition constant}, each additional SAT score point  increases our predicted graduation rate by \Sexpr{coefficients(model)["Average.combined.SAT"]} percentage points.
+        \item \alert{Among colleges that have the same tuition}, an increase in SAT of 1 point would result in a predicted graduation rate that is \Sexpr{coefficients(model)["Average.combined.SAT"]} percentage points higher.
+        \item \alert{If we compared two colleges that have the same tuition but differ in average SAT scores by 1 point}, the college with the higher SAT score would be predicted to have a graduation rate that is \Sexpr{coefficients(model)["Average.combined.SAT"]} percentage points higher.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients: tuition}
+      Let's interpret the tuition coefficient of \Sexpr{coefficients(model)["In.state.tuition"]}:
+      \begin{itemize}[<+->]
+        \item \alert{Holding SAT constant}, each additional dollar of in-state tuition increases our predicted graduation rate by \Sexpr{coefficients(model)["In.state.tuition"]} percentage points.
+        \item \alert{Among colleges that have the same average SAT scores}, an increase in tuition of \$1 would result in a predicted graduation rate that is \Sexpr{coefficients(model)["In.state.tuition"]} percentage points higher.
+        \item \alert{If we compared two colleges that have the same average SAT scores but differ in their tuition by \$1}, the college with the higher tuition would be predicted to have a graduation rate that is \Sexpr{coefficients(model)["In.state.tuition"]} percentage points higher.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{What's the difference?!}
+      \begin{itemize}[<+->]
+        \item ``The predicted effect of a 1-point increase in SAT score'' and ``the predicted effect of a 1-point increase in SAT score, holding tuition constant'' really are \alert{two different things}.
+        \item The relationship between $X_1$ and $Y$ may change when we \alert{control for} (i.e., add to the model) another predictor $X_2$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Multiple regression assumptions}
+      We need (the same!) four things to be true for statistical inference (i.e., hypothesis tests, $p$-values, confidence intervals) to work for multiple regression:
+      \pause
+      \begin{enumerate}
+        \item The errors are independent.
+        \item $Y$ is a linear function of the $X$'s (except for the errors).
+        \item The errors are normally distributed.
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Assumption 1: Independence of errors}
+      Independence means that knowing the error (over-/under-prediction by the regression line) for one case doesn't tell you anything about the error for another case.
+
+      \bigskip\pause
+
+      Since each college is completely separate, there is no reason to think the errors are not independent.
+    \end{frame}
+
+    \begin{frame}{Multiple regression assumptions}
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of the $X$'s (except for the errors).
+        \item The errors are normally distributed.
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 2: Linearity}
+      Look at the residual plot:
+      <<echo=F>>=
+      par(mar=c(4.1, 4.1, 1.1, 2.1))
+      @
+      <<fig.height=2>>=
+      plot(predict(model), residuals(model), col="green",
+        xlab="Predicted values", ylab="Residuals", pch=16)
+      abline(h=0)
+      @
+    \end{frame}
+
+    \begin{frame}{Multiple regression assumptions}
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of the $X$'s (except for the errors). \greencheckmark
+        \item The errors are normally distributed.
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 3: Normality of residuals}
+      <<fig.height=2.5>>=
+      qqnorm(residuals(model))
+      @
+    \end{frame}
+
+    \begin{frame}{Multiple regression assumptions}
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of the $X$'s (except for the errors). \greencheckmark
+        \item The errors are normally distributed. \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity'').
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}[fragile]{Assumption 4: Homoscedasticity}
+      Look at the residual plot:
+      <<fig.height=2>>=
+      plot(predict(model), residuals(model), col="green",
+        xlab="Predicted values", ylab="Residuals", pch=16)
+      @
+    \end{frame}
+
+    \begin{frame}{Multiple regression assumptions}
+      \begin{enumerate}
+        \item The errors are independent. \greencheckmark
+        \item $Y$ is a linear function of the $X$'s (except for the errors). \greencheckmark
+        \item The errors are normally distributed. \greencheckmark
+        \item The variance of $Y$ is the same for any value of $X$ (``homoscedasticity''). \shrug[red]
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        Since one of the assumptions is not completely satisfied, we'll proceed with caution---i.e., take the $p$-values and confidence intervals with a grain of salt.  (We could try and fix the problem with a transformation, or by building different models for different subsets of the data, but let's just live with it for now.)
+      \end{center}
+    \end{frame}
+
+    \begin{frame}{The overall null hypothesis for a regression model}
+      The following are equivalent ways to express the overall null hypothesis with $k$ predictor variables:
+      \begin{itemize}[<+->]
+        \item $R^2=0$ (in the population)
+        \item $\text{cor}(\hat Y,Y)=0$ (in the population)
+        \item $\beta_1=\beta_2=\cdots=\beta_k=0$ (i.e., all coefficients are 0 except the intercept)
+        \item The model has no predictive power
+        \item Predictions from this model are no better than predicting $\overline Y$ for every case
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      We should always test the overall null hypothesis for a model first. \alert{If we can't reject the overall null hypothesis, there's no reason to interpret the model further.}
+
+      \bigskip\pause
+
+      In this model, the overall $p$-value is very small, so we reject the overall null hypothesis and conclude that yes, we have statistical significance and that this model does have some predictive power.
+    \end{frame}
+
+    \begin{frame}{Statistical vs practical significance}
+      \begin{itemize}
+        \item As in simple regression, once we determine that there is statistical significance, we want to then assess whether there is also practical significance.
+        \item For the test of the overall null hypothesis, we look to the value of $R^2$ in the sample to assess practical significance.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Testing individual coefficients}
+      \begin{itemize}[<+->]
+        \item Next, we want to test $H_0 : \beta_i=0$ for each of the predictors $X_i$, for each $i=1,2,\ldots,k$.
+        \item This is equivalent to the null hypothesis that $X_i$ has no correlation with $Y$ once the other predictors are held constant.
+        \item The test statistic for testing the null hypothesis $\beta_i = S$ follows a $t$-distribution with $n-k-1$ degrees of freedom: \[ t = \frac{\beta_i - S}{\text{SE}(\beta_i)} \]
+        \item The regression output calculates the $p$-value for us for testing the null hypotheses $\beta_i = 0$.
+        \item If we reject this null hypothesis for a coefficient, we say that $X_i$  is a (statistically) significant predictor of $Y$ in the model.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Testing individual coefficients}
+      If a predictor is not statistically significant, we should:
+      \begin{enumerate}[<+->]
+        \item Interpret it as if it were zero.
+        \item Remove it from the model (unless there are other reasons to keep it), as it does not contribute to predicting $Y$ above and beyond the other predictors.
+      \end{enumerate}
+    \end{frame}
+
+    % \begin{frame}{Comparing two models}
+    %   <<echo=F, results="asis">>=
+    %   model1 <- lm(Graduation.rate ~ Acceptance.rate, data=my.sample)
+    %   model2 <- lm(Graduation.rate ~ Acceptance.rate + Average.combined.SAT, data=my.sample)
+    %   stargazer(model1, model2,
+    %     title="Models for predicting graduation rate",
+    %     dep.var.caption="",
+    %     report="vc*",
+    %     dep.var.labels.include=F,
+    %     column.labels=c("Model 1", "Model 2"),
+    %     align=T,
+    %     single.row=T,
+    %     omit.stat=c("ser", "f", "n"),
+    %     omit.table.layout=c("m")
+    %   )
+    %   @
+    % \end{frame}
+
+    \begin{frame}{Residual standard error}
+      \begin{itemize}[<+->]
+        \item Like with simple regression, the \alert{residual standard error} $s_e$ is approximately equal to the standard deviation of the residuals.
+        \item Since one of the assumptions of regression is that the residuals are approximately normal, we can conclude that approximately 95\% of the residuals will be less than $\pm 2s_e$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Confidence intervals for coefficents}
+      Confidence intervals for the individual coefficients are found the same way as in simple regression, and interpreted the same way:
+      <<>>=
+      confint(model)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Confidence intervals for predictions}
+      \fontsm
+      We can also put confidence intervals on our predictions for $Y$.
+
+      \bigskip\pause
+
+      A 95\% CI for the graduation rate at the University of California, Merced, which is not in the data set and has an average SAT score of 1100 and in-state tuition of \$11,502:
+      <<>>=
+      predict(model, list(Average.combined.SAT=1100,
+                          In.state.tuition=11502),
+                     interval="prediction")
+      @
+      <<include=F>>=
+      res <- predict(model, list(Average.combined.SAT=1100,
+                          In.state.tuition=11502), interval="prediction")
+      options(digits=2)
+      @
+
+      \pause
+
+      Our best guess for UC Merced is \Sexpr{res[,"fit"]}\%, with a 95\% CI of (\Sexpr{res[,"lwr"]}\%, \Sexpr{res[,"upr"]}\%). \pause (It turns out that the actual graduation rate at UC Merced is 64\%.)
+    \end{frame}
+
+    \begin{frame}[fragile]{Confidence intervals for predictions}
+      \fontsm
+      A 95\% CI for average graduation rate among all colleges with an average SAT score of 1100 and in-state tuition of \$11,502:
+      <<include=F>>=
+      options(digits=6)
+      @
+      <<>>=
+      predict(model, list(Average.combined.SAT=1100,
+                          In.state.tuition=11502),
+                     interval="confidence")
+      @
+
+      \bigskip\pause
+
+      As with simple regression, our point estimate is the same, but the confidence interval is much narrower, because it's easier to estimate a mean than a prediction for a single new case.
+    \end{frame}
+
+
+  \end{darkframes}
+
+\end{document}

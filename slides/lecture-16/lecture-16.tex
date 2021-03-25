@@ -1,0 +1,640 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{1, 0.894, 0.769}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.824,0.412,0.118}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{1,0.894,0.71}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.824,0.706,0.549}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.941,0.902,0.549}{#1}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.804,0.776,0.451}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.78,0.941,0.545}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{1,0.78,0.769}{#1}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{../371g-slides}
+\title{Polynomial regression and data cleaning}
+\subtitle{Lecture 16}
+\author{STA 371G}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+  
+  
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \section{Model selection}
+
+    \begin{frame}{$R^2$}
+      \begin{itemize}[<+->]
+        \item $R^2$ has a similar meaning as in simple regression: how much of the variation in the response variable ($Y$) are explained by the predictor variables ($X$'s) together?
+        \item Another way to think about $R^2$ is that \[ R^2 = \frac{\text{Var}(\hat Y)}{\text{Var}(Y)}, \] i.e., it represents how much variance in $Y$ the model predicts.
+        \item $R^2$ always increases when you add more variables, \alert{even if you add variables that have no real relationship with $Y$}.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      
+      \fontsize{8}{8}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{my.sample} \hlkwb{<-} \hlkwd{subset}\hlstd{(colleges,}
+  \hlopt{!}\hlkwd{is.na}\hlstd{(Average.combined.SAT)} \hlopt{&} \hlstd{Graduation.rate} \hlopt{<=} \hlnum{100}\hlstd{)}
+\hlstd{model1} \hlkwb{<-} \hlkwd{lm}\hlstd{(Graduation.rate} \hlopt{~} \hlstd{Average.combined.SAT} \hlopt{+} \hlstd{In.state.tuition,}
+             \hlkwc{data}\hlstd{=my.sample)}
+\hlkwd{summary}\hlstd{(model1)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Graduation.rate ~ Average.combined.SAT + In.state.tuition, 
+    data = my.sample)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-45.52572  -9.18156   0.05085   8.70420  43.66097 
+
+Coefficients:
+                         Estimate   Std. Error  t value Pr(>|t|)    
+(Intercept)          -8.324645625  4.370827909 -1.90459 0.057238 .  
+Average.combined.SAT  0.061122082  0.004887825 12.50496  < 2e-16 ***
+In.state.tuition      0.001248638  0.000111119 11.23692  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.7466 on 709 degrees of freedom
+  (19 observations deleted due to missingness)
+Multiple R-squared:  0.44686,	Adjusted R-squared:   0.4453 
+F-statistic: 286.387 on 2 and 709 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Random.numbers} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlkwd{nrow}\hlstd{(my.sample))}
+\hlstd{model2} \hlkwb{<-} \hlkwd{lm}\hlstd{(Graduation.rate} \hlopt{~} \hlstd{Average.combined.SAT} \hlopt{+} \hlstd{In.state.tuition}
+               \hlopt{+} \hlstd{Random.numbers,} \hlkwc{data}\hlstd{=my.sample)}
+\hlkwd{summary}\hlstd{(model2)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Graduation.rate ~ Average.combined.SAT + In.state.tuition + 
+    Random.numbers, data = my.sample)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-45.59477  -9.13473   0.06836   8.75583  43.74968 
+
+Coefficients:
+                         Estimate   Std. Error  t value Pr(>|t|)    
+(Intercept)          -8.433559857  4.378188630 -1.92627 0.054471 .  
+Average.combined.SAT  0.061244215  0.004896088 12.50881  < 2e-16 ***
+In.state.tuition      0.001248531  0.000111177 11.23012  < 2e-16 ***
+Random.numbers        0.277098090  0.537299499  0.51572 0.606208    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.7537 on 708 degrees of freedom
+  (19 observations deleted due to missingness)
+Multiple R-squared:  0.447068,	Adjusted R-squared:  0.444725 
+F-statistic: 190.816 on 3 and 708 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Random.numbers} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlkwd{nrow}\hlstd{(my.sample))}
+\hlstd{model2} \hlkwb{<-} \hlkwd{lm}\hlstd{(Graduation.rate} \hlopt{~} \hlstd{Average.combined.SAT} \hlopt{+} \hlstd{In.state.tuition}
+               \hlopt{+} \hlstd{Average.math.SAT,} \hlkwc{data}\hlstd{=my.sample)}
+\hlkwd{summary}\hlstd{(model2)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Graduation.rate ~ Average.combined.SAT + In.state.tuition + 
+    Average.math.SAT, data = my.sample)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-45.27189  -9.06503   0.03009   8.64981  43.89591 
+
+Coefficients:
+                         Estimate   Std. Error  t value Pr(>|t|)    
+(Intercept)          -8.144252350  4.434188943 -1.83669 0.066675 .  
+Average.combined.SAT  0.054229967  0.023519872  2.30571 0.021416 *  
+In.state.tuition      0.001256312  0.000115918 10.83790  < 2e-16 ***
+Average.math.SAT      0.012667133  0.041953872  0.30193 0.762794    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.7492 on 706 degrees of freedom
+  (21 observations deleted due to missingness)
+Multiple R-squared:  0.447693,	Adjusted R-squared:  0.445346 
+F-statistic: 190.758 on 3 and 706 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Adjusted $R^2$}
+      \begin{itemize}[<+->]
+        \item There are many, many possible models (think of how many combinations of predictors there are!) so we need some criterion to determine which model is best.
+        \item $R^2$ is not good because adding even a variable of random numbers increases $R^2$.
+        \item \alert{Adjusted $R^2$} makes an adjustment to $R^2$ by adding a penalty for each variable added (in this example, adjusted $R^2$ went down even though $R^2$ increased).
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      
+      \fontsize{8}{8}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model1} \hlkwb{<-} \hlkwd{lm}\hlstd{(Graduation.rate} \hlopt{~} \hlstd{Average.combined.SAT} \hlopt{+} \hlstd{In.state.tuition,}
+             \hlkwc{data}\hlstd{=my.sample)}
+\hlkwd{summary}\hlstd{(model1)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Graduation.rate ~ Average.combined.SAT + In.state.tuition, 
+    data = my.sample)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-45.52572  -9.18156   0.05085   8.70420  43.66097 
+
+Coefficients:
+                         Estimate   Std. Error  t value Pr(>|t|)    
+(Intercept)          -8.324645625  4.370827909 -1.90459 0.057238 .  
+Average.combined.SAT  0.061122082  0.004887825 12.50496  < 2e-16 ***
+In.state.tuition      0.001248638  0.000111119 11.23692  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.7466 on 709 degrees of freedom
+  (19 observations deleted due to missingness)
+Multiple R-squared:  0.44686,	Adjusted R-squared:   0.4453 
+F-statistic: 286.387 on 2 and 709 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsize{8}{8}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Random.numbers} \hlkwb{<-} \hlkwd{rnorm}\hlstd{(}\hlkwd{nrow}\hlstd{(my.sample))}
+\hlstd{model2} \hlkwb{<-} \hlkwd{lm}\hlstd{(Graduation.rate} \hlopt{~} \hlstd{Average.combined.SAT} \hlopt{+} \hlstd{In.state.tuition}
+               \hlopt{+} \hlstd{Random.numbers,} \hlkwc{data}\hlstd{=my.sample)}
+\hlkwd{summary}\hlstd{(model2)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Graduation.rate ~ Average.combined.SAT + In.state.tuition + 
+    Random.numbers, data = my.sample)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-45.59477  -9.13473   0.06836   8.75583  43.74968 
+
+Coefficients:
+                         Estimate   Std. Error  t value Pr(>|t|)    
+(Intercept)          -8.433559857  4.378188630 -1.92627 0.054471 .  
+Average.combined.SAT  0.061244215  0.004896088 12.50881  < 2e-16 ***
+In.state.tuition      0.001248531  0.000111177 11.23012  < 2e-16 ***
+Random.numbers        0.277098090  0.537299499  0.51572 0.606208    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 13.7537 on 708 degrees of freedom
+  (19 observations deleted due to missingness)
+Multiple R-squared:  0.447068,	Adjusted R-squared:  0.444725 
+F-statistic: 190.816 on 3 and 708 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Which model is the best?}
+      \begin{itemize}[<+->]
+        \item In general, we want to select the model that is the most \alert{parsimonious}, that is, the model that has the best combination of being simple with a high $R^2$.
+        \item This is easier said than done---using Adjusted $R^2$ is not enough. We'll come back to this next week!
+      \end{itemize}
+    \end{frame}
+
+    \section{Polynomial regression}
+
+    \begin{frame}
+      \fullpagepicture{hbr}
+    \end{frame}
+
+    \begin{frame}
+      Let's look at some simulated Yerkes-Dodson data:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-9-1} 
+
+\end{knitrout}
+      The correlation is almost 0, but there is a pretty strong relationship here---it's just not linear!
+    \end{frame}
+
+    \begin{frame}{Polynomial regression}
+      \begin{itemize}[<+->]
+        \item Polynomial regression allows us to fit a polynomial (like $4x^2-6x+3$ or $x^3-2x^2+x-7$) to the data
+        \item To do this, we create variables $X^2$, $X^3$, etc. (up to as high as we want) and add them to a simple regression model to create a multiple regression model
+        \item For example, to fit a parabola (quadratic polynomial) to this data, we would build a model where the explanatory variables are $X$ and $X^2$
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model1} \hlkwb{<-} \hlkwd{lm}\hlstd{(Performance} \hlopt{~} \hlstd{Arousal)}
+\hlkwd{summary}\hlstd{(model1)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Performance ~ Arousal)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-3.330631 -0.238013  0.238412  0.542176  1.336404 
+
+Coefficients:
+             Estimate Std. Error  t value Pr(>|t|)    
+(Intercept)  3.673979   0.329398 11.15363  < 2e-16 ***
+Arousal     -0.107626   0.101830 -1.05692  0.29315    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.910048 on 98 degrees of freedom
+Multiple R-squared:  0.0112704,	Adjusted R-squared:  0.00118129 
+F-statistic: 1.11709 on 1 and 98 DF,  p-value: 0.293145
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Arousal2} \hlkwb{<-} \hlstd{Arousal}\hlopt{^}\hlnum{2}
+\hlstd{model2} \hlkwb{<-} \hlkwd{lm}\hlstd{(Performance} \hlopt{~} \hlstd{Arousal} \hlopt{+} \hlstd{Arousal2)}
+\hlkwd{summary}\hlstd{(model2)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Performance ~ Arousal + Arousal2)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.687761 -0.218888 -0.045085  0.203100  0.794497 
+
+Coefficients:
+             Estimate Std. Error   t value   Pr(>|t|)    
+(Intercept) -2.752770   0.284304  -9.68248  6.503e-16 ***
+Arousal      4.455741   0.186369  23.90810 < 2.22e-16 ***
+Arousal2    -0.741622   0.029668 -24.99739 < 2.22e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.335311 on 97 degrees of freedom
+Multiple R-squared:  0.867141,	Adjusted R-squared:  0.864402 
+F-statistic: 316.549 on 2 and 97 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Arousal3} \hlkwb{<-} \hlstd{Arousal}\hlopt{^}\hlnum{3}
+\hlstd{model3} \hlkwb{<-} \hlkwd{lm}\hlstd{(Performance} \hlopt{~} \hlstd{Arousal} \hlopt{+} \hlstd{Arousal2} \hlopt{+} \hlstd{Arousal3)}
+\hlkwd{summary}\hlstd{(model3)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Performance ~ Arousal + Arousal2 + Arousal3)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-0.6917765 -0.2205673 -0.0429428  0.1940644  0.7995118 
+
+Coefficients:
+              Estimate Std. Error  t value   Pr(>|t|)    
+(Intercept) -2.8891429  0.5733027 -5.03947 2.1935e-06 ***
+Arousal      4.6179937  0.6203317  7.44439 4.1776e-11 ***
+Arousal2    -0.7988884  0.2108451 -3.78898 0.00026392 ***
+Arousal3     0.0061735  0.0225016  0.27436 0.78439904    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.336921 on 96 degrees of freedom
+Multiple R-squared:  0.867245,	Adjusted R-squared:  0.863097 
+F-statistic: 209.046 on 3 and 96 DF,  p-value: < 2.22e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-13-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-14-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-15-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Important considerations with polynomial regression}
+      \begin{itemize}[<+->]
+        \item Use changes in Adjusted $R^2$ and the significant of the highest-order term to help you decide how many higher-order terms to add
+        \item If you include the term $X^k$ (for any $k$), you should also include all lower-order terms, even if they are not significant
+        \item Be very careful with extrapolation when using models with polynomial terms!
+      \end{itemize}
+    \end{frame}
+
+    \section{Data cleaning}
+
+    \begin{frame}{Data set}
+      We're going to look at a data set of newly hired managers:
+      \begin{columns}[onlytextwidth]
+        \column{.5\textwidth}
+          \begin{itemize}
+            \item Salary (response)
+            \item Manager rating
+            \item Years of experience
+          \end{itemize}
+        \column{.5\textwidth}
+          \begin{itemize}
+            \item Years since graduation
+            \item Origin (internal or external hire)
+          \end{itemize}
+      \end{columns}
+    \end{frame}
+
+    \begin{frame}[fragile]{Data issues}
+      \begin{center}
+        Data scientists report that they spend \alert{70\% of their time on obtaining and cleaning the data}. Only 30\% is for statistical analysis.\bigskip \pause
+
+        Never run a regression without exploring and cleaning the data first!
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      Boxplots are commonly used to find cases that \alert{might} be outliers. Let's start by looking at the Salary column.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{boxplot}\hlstd{(manager}\hlopt{$}\hlstd{Salary,} \hlkwc{xlab}\hlstd{=}\hlstr{"Salary"}\hlstd{,} \hlkwc{horizontal}\hlstd{=T)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-16-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Exploring the data: outliers}
+      If a case is shown as an outlier on the boxplot (i.e., 1.5 IQR above Q3 or 1.5 IQR below Q1):
+      \begin{itemize}
+        \item It might be an error.
+        \item It might represent a missing value or other situation. (Consult the codebook for the data set, if there is one!)
+        \item It might be a true outlier.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{subset}\hlstd{(manager, Salary} \hlopt{>} \hlnum{200}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+    Salary MngrRating YearsExp YrsSinceGrad   Origin
+146    511        6.1        2            2 Internal
+\end{verbatim}
+\begin{alltt}
+\hlkwd{subset}\hlstd{(manager, Salary} \hlopt{<} \hlnum{0}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+    Salary MngrRating YearsExp YrsSinceGrad   Origin
+121    -66        5.7        1            2 Internal
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      \pause
+
+      We can deal with outliers in two ways.
+      \begin{itemize}[<+->]
+        \item If the result of \textbf{errors in the data}, we can try to correct or omit.
+        \item If not, consider omitting, but report on them separately.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      Let's omit the outliers by creating a new data set \texttt{mclean} that consists of the subset of the data where the salary is between \$0 and \$200,000.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mclean} \hlkwb{<-} \hlkwd{subset}\hlstd{(manager, Salary} \hlopt{>} \hlnum{0} \hlopt{&} \hlstd{Salary} \hlopt{<} \hlnum{200}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+      We'll use \texttt{mclean} for our analysis, but we won't destroy the original data set!
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{boxplot}\hlstd{(mclean}\hlopt{$}\hlstd{YearsExp,} \hlkwc{xlab}\hlstd{=}\hlstr{"Years of Experience"}\hlstd{,}
+  \hlkwc{horizontal}\hlstd{=T)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-19-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Outliers}
+      99 must be a code for missing entry in the Years of Experience variable!
+
+      \bigskip\pause
+
+      Let's label all 99s as \texttt{NA} (``not available'' --- R's code for missing data). \pause
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mclean}\hlopt{$}\hlstd{YearsExp[mclean}\hlopt{$}\hlstd{YearsExp} \hlopt{==} \hlnum{99}\hlstd{]} \hlkwb{<-} \hlnum{NA}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      Let's see if we have other missing data.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mclean[}\hlopt{!}\hlkwd{complete.cases}\hlstd{(mclean),]}
+\end{alltt}
+\begin{verbatim}
+    Salary MngrRating YearsExp YrsSinceGrad   Origin
+103     75         NA        8            8 Internal
+110     81         NA        9            9 External
+124     73        5.9       NA            7 External
+154     49        8.0        1            1     <NA>
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      \pause
+      This isn't surprising---it is very common to have missing entries in your data. (The comma is needed so that we capture the full row.)
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      There are two ways of dealing with missing data:
+      \begin{itemize}
+        \item Omit the rows that have missing entries in it.
+        \item Try to predict values to fill the missing entries.
+      \end{itemize}
+      Omitting data is the easiest, but often not the best way, \alert{because you lose all the other information available in the same row}.
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      What should we replace the \texttt{NA}s in the Manager Rating and Years of Experience columns with? \pause \bigskip
+
+      The simplest way would be to use the averages in the respective columns.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mclean}\hlopt{$}\hlstd{MngrRating[}\hlkwd{is.na}\hlstd{(mclean}\hlopt{$}\hlstd{MngrRating)]} \hlkwb{<-}
+  \hlkwd{mean}\hlstd{(mclean}\hlopt{$}\hlstd{MngrRating,} \hlkwc{na.rm}\hlstd{=T)}
+
+\hlstd{mclean}\hlopt{$}\hlstd{YearsExp[}\hlkwd{is.na}\hlstd{(mclean}\hlopt{$}\hlstd{YearsExp)]} \hlkwb{<-}
+  \hlkwd{mean}\hlstd{(mclean}\hlopt{$}\hlstd{YearsExp,} \hlkwc{na.rm}\hlstd{=T)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+      \pause \bigskip
+      A smarter and more advanced way is to predict the missing data from the other data (using regression!).
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      What about the missing data for categorical variables? \pause
+      Let's choose the easy way and omit them.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{mclean} \hlkwb{<-} \hlkwd{na.omit}\hlstd{(mclean)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+      \pause
+      This removes all the rows that contain missing entries (only the Origin column has missing entries in this case). \pause \bigskip
+
+      We could also predict the missing entries, or treat the missing entries as a seperate level (e.g. ``Unknown'').
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Missing entries}
+      \begin{itemize}[<+->]
+        \item While dealing with the missing data, we assume that the data is ``Missing Completely at Random'' (MCAR).
+        \item If this assumption does not hold (e.g. if the missing data mostly belongs to external hires), the model will  be biased.
+        \item Making predictions for missing data based on available data reinforces the existing relationships between variables, so impacts the standard error.
+        \item If a lot of data is missing (e.g. more than 5\%) for a particular variable, you may have to discard the whole column.
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+
+\end{document}
