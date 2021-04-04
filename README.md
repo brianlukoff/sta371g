@@ -16,8 +16,10 @@
 | Lecture 12: Inference for Simple Regression 2 | [Slides](slides/lecture-12/lecture-12.pdf) | [Script](lecture-scripts/lecture-12.R) |
 | Lecture 13: What can go wrong, and how to fix it 1 | [Slides](slides/lecture-13/lecture-13.pdf) | [Script](lecture-scripts/lecture-13.R) |
 | Lecture 14: What can go wrong, and how to fix it 2 | [Slides](slides/lecture-14/lecture-14.pdf) | [Script](lecture-scripts/lecture-14.R) |
-| Lecture 15: Multiple Regression | [Slides](slides/lecture-15/lecture-15.pdf) | |
-| Lecture 16: Polynomial Regression & Data Cleaning | [Slides](slides/lecture-16/lecture-16.pdf) | |
+| Lecture 15: Multiple Regression | [Slides](slides/lecture-15/lecture-15.pdf) | [Script](lecture-scripts/lecture-15.R) |
+| Lecture 16: Polynomial Regression & Data Cleaning | [Slides](slides/lecture-16/lecture-16.pdf) | [Script](lecture-scripts/lecture-16.R) |
+| Lecture 17: Building Models | [Slides](slides/lecture-17/lecture-17.pdf) | |
+| Lecture 18: Indicator Variables and Interactions | [Slides](slides/lecture-18/lecture-18.pdf) | |
 
 # R help pages
 

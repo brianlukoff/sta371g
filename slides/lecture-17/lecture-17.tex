@@ -1,0 +1,391 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{1, 0.894, 0.769}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.824,0.412,0.118}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{1,0.894,0.71}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.824,0.706,0.549}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.941,0.902,0.549}{#1}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.804,0.776,0.451}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.78,0.941,0.545}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{1,0.78,0.769}{#1}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{../371g-slides}
+\usepackage{dcolumn}
+\title{Building Models}
+\subtitle{Lecture 17}
+\author{STA 371G}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+  
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{My review of the midsemester survey}
+      \begin{itemize}[<+->]
+        \item Thanks for the feedback---appreciate it!
+        \item In class: increasing opportunities for practice with R and with concepts in class
+        \item Getting help outside of class: R info pages, LC solutions, meeting outside of office hours
+      \end{itemize}
+    \end{frame}
+
+    \section{Multicollinearity}
+
+    \begin{frame}[fragile]{Exploring the data: Multicollinearity}
+      Multicollinearity exists whenever 2+ predictors in a regression model are moderately or highly correlated. \pause
+      \begin{itemize}[<+->]
+        \item If two predictors $X_1$ and $X_2$ are highly correlated, it is hard to estimate the effect of changing $X_1$ while keeping $X_2$ constant.
+        \item This means we will have large standard errors, and large p-values, for $X_1$ and/or $X_2$.
+        \item This \alert{does not} mean there isn't a relationship between $X_1$ and $Y$, or $X_2$ and $Y$ -- it just means we can't pin down that relationship, because of the correlation!
+      \end{itemize}
+      \pause
+      Correlation between the response and the predictors is good, but correlation between the predictors is not!
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Multicollinearity}
+      We want to avoid multicollinearity in our models! \pause
+      \begin{itemize}[<+->]
+        \item Any conclusions based on the p-values, coefficients, and confidence intervals of the highly correlated variables will be unreliable.
+        \item These statistics will not be stable: adding new data or predictors to the model could drastically change them.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]%{Exploring the data: Multicollinearity}
+      \fontsize{9}{9}\selectfont
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{pairs}\hlstd{(}\hlopt{~} \hlstd{MngrRating} \hlopt{+} \hlstd{YearsExp} \hlopt{+} \hlstd{YrsSinceGrad,} \hlkwc{data}\hlstd{=mclean)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-2-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]%{Exploring the data: Multicollinearity}
+      \fontsize{8}{8}\selectfont
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model} \hlkwb{<-} \hlkwd{lm}\hlstd{(Salary} \hlopt{~} \hlstd{MngrRating} \hlopt{+} \hlstd{YearsExp} \hlopt{+} \hlstd{YrsSinceGrad,}
+           \hlkwc{data}\hlstd{=mclean)}
+\hlkwd{summary}\hlstd{(model)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Salary ~ MngrRating + YearsExp + YrsSinceGrad, data = mclean)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-39.181  -4.519   0.630   4.327  25.590 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   51.5922     2.8185  18.305   <2e-16 ***
+MngrRating     4.6929     0.4260  11.016   <2e-16 ***
+YearsExp      -1.4579     1.6111  -0.905    0.367    
+YrsSinceGrad   0.5036     1.6078   0.313    0.755    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.799 on 148 degrees of freedom
+  (2 observations deleted due to missingness)
+Multiple R-squared:  0.5034,	Adjusted R-squared:  0.4934 
+F-statistic: 50.02 on 3 and 148 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      \note{Point out the high standard errors}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Multicollinearity}
+      One way to see if two variables are collinear is to check the correlation between the two:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{cor}\hlstd{(mclean}\hlopt{$}\hlstd{YearsExp, mclean}\hlopt{$}\hlstd{YrsSinceGrad)}
+\end{alltt}
+\begin{verbatim}
+[1] 0.9951195
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      \pause
+      Any correlation $\geq 0.95$ is definitely a problem, but smaller correlations could be problematic too.
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Multicollinearity}
+      A better way to check multicollinearity is using Variance Inflation Factors (VIF).
+
+      \begin{itemize}[<+->]
+        \item The VIF is
+          \[
+            \text{VIF}(\beta_j) = \frac{1}{1 - R_j^2},
+          \]
+          where $R_j^2$ is the $R^2$ in a regression predicting $X$ variable $j$ from the other $X$ variables.
+        \item $\text{VIF}(\beta_j)=0$ when $R_j^2=0$; i.e., the $j$th predictor variable is completely independent from the others.
+        \item $\text{VIF}(\beta_j)$ increases as $R_j^2$ does, and is $\infty$ when there is perfect multicollinearity; i.e., when $X_j$ is perfectly predictable from the other $X$ variables.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Exploring the data: Multicollinearity}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(car)}
+\hlkwd{vif}\hlstd{(model)}
+\end{alltt}
+\begin{verbatim}
+  MngrRating     YearsExp YrsSinceGrad 
+    1.005517   102.785807   102.831640 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      Predictors with $\text{VIF} > 5$ indicate multicollinearity.
+      \pause\bigskip
+
+      \alert{Remember:} Multicollinearity could exist between more than two predictors (this is why there are only $n-1$ dummy variables for a categorical variable with $n$ values).
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{debbie-downer}
+    \end{frame}
+
+    \begin{frame}{Dealing with multicollinearity}
+      There are two general strategies for dealing with multicollinearity:
+      \begin{itemize}
+        \item Drop a variable with a high VIF factor. (Just like we drop one of the dummy variables when putting a categorical variable in the model!)
+        \item Combine the variables that correlate into a composite variable.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]%{Exploring the data: Multicollinearity}
+      \fontsize{9}{9}\selectfont
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model2} \hlkwb{<-} \hlkwd{lm}\hlstd{(Salary} \hlopt{~} \hlstd{MngrRating} \hlopt{+} \hlstd{YearsExp,} \hlkwc{data}\hlstd{=mclean)}
+\hlkwd{summary}\hlstd{(model2)}
+\end{alltt}
+\begin{verbatim}
+
+Call:
+lm(formula = Salary ~ MngrRating + YearsExp, data = mclean)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-39.229  -4.545   0.624   4.303  25.563 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  51.6008     2.8098   18.36  < 2e-16 ***
+MngrRating    4.6979     0.4244   11.07  < 2e-16 ***
+YearsExp     -0.9557     0.1588   -6.02  1.3e-08 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.775 on 149 degrees of freedom
+  (2 observations deleted due to missingness)
+Multiple R-squared:  0.5031,	Adjusted R-squared:  0.4964 
+F-statistic: 75.43 on 2 and 149 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \section{Selecting the best model}
+    \begin{frame}
+      \fullpagepicture{doc-shortage}
+    \end{frame}
+
+    \begin{frame}[fragile]{Potential predictor variables}
+      \begin{itemize}
+        \item \textbf{LandArea}:       Area in square miles
+        \item \textbf{PctRural}:       Percentage rural land
+        \item \textbf{MedianIncome}:   Median household income
+        \item \textbf{Population}:     Population
+        \item \textbf{PctUnder18}:     Percent children
+        \item \textbf{PctOver65}:      Percent seniors
+        \item \textbf{PctPoverty}:     Percent below the poverty line
+        \item \textbf{PctUninsured}:   Percent without health insurance
+        \item \textbf{PctSomeCollege}: Percent with some higher education
+        \item \textbf{PctUnemployed}:  Percent unemployed
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Parsimony}
+      \begin{itemize}[<+->]
+        \item We want a model that has a high $R^2$ and a low $s_e$, because then the predictors are doing a good job of explaining $Y$---and our predictions will be more accurate.
+        \item We also want a model that is simple, so it's easy to explain to a non-expert.
+        \item The ideal model is \alert{parsimonious}: a good trade-off between simplicity (as few variables as possible) and a high $R^2$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{General strategy}
+      \begin{enumerate}[<+->]
+        \item Use one or more procedures to generate candidate models: possible models that are worth considering.
+        \item Select the candidate model with a reasonable tradeoff simplicity and predictive power (high $R^2$).
+        \item Check assumptions; apply transformations and other fixes if needed to the final model. If the problems are unfixable, select a different candidate model.
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Backward stepwise regression}
+      \begin{enumerate}
+        \item Start with a ``full'' model containing all of the predictors.
+        \item Remove the least significant (highest $p$-value / smallest $t$-statistic) predictor.
+        \item Re-run the model with that predictor removed.
+        \item Repeat steps 2-3 until all predictors are significant.
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Forward stepwise regression}
+      \begin{enumerate}
+        \item Start with a ``null'' model containing none of the predictors.
+        \item Try adding each predictor, one at a time, and pick the one that ends up being the most significant (lowest $p$-value / highest $t$-statistic) predictor.
+        \item Re-run the model with that predictor added.
+        \item Repeat steps 2-3 until no more significant predictors can be added.
+      \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Other stepwise regression possibilities}
+      \begin{itemize}
+        \item Add (or remove) variables one at a time based on the change in $R^2$, Adjusted $R^2$, or another model fit criterion when that variable is added (or removed).
+        \item Run the stepwise regression in both directions, allowing addition or removal of a variable at each step.
+        \item R's \texttt{step} function incorporates both of these methods.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The problem with stepwise regression}
+      Stepwise regression will not necessarily give you the best model; by only adding or removing one variable at a time, you can get locked into a particular ``path'' that means you may never consider better models.
+    \end{frame}
+
+    \begin{frame}{Best subsets regression}
+      \begin{itemize}
+        \item Computers are fast! Just let R try out all of the $2^k-1$ possible models for you.
+        \item R will present you the model with the best Adjusted $R^2$ for each possible number of predictors.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Best-subsets regression}
+      \fontsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{library}\hlstd{(leaps)}
+\hlkwd{plot}\hlstd{(}\hlkwd{regsubsets}\hlstd{(PhysiciansPer10000} \hlopt{~} \hlstd{LandArea} \hlopt{+} \hlstd{PctRural}
+                 \hlopt{+} \hlstd{MedianIncome} \hlopt{+} \hlstd{Population} \hlopt{+} \hlstd{PctUnder18}
+                 \hlopt{+} \hlstd{PctOver65} \hlopt{+} \hlstd{PctPoverty} \hlopt{+} \hlstd{PctUninsured}
+                 \hlopt{+} \hlstd{PctSomeCollege} \hlopt{+} \hlstd{PctUnemployed,}
+                 \hlkwc{data}\hlstd{=my.counties),} \hlkwc{scale}\hlstd{=}\hlstr{"adjr2"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}
+      \vspace{-1in}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-8-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}
+      \begin{itemize}
+        \item Best-subsets regression presents us with a candidate model for each possible number of predictors.
+        \item The label on the $y$-axis show the Adjusted $R^2$ value for the model corresponding to the filled-in squares for that row.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Putting things together}
+      \begin{itemize}[<+->]
+        \item Look at multiple statistics. They generally say similar things.
+        \item Find the \textbf{parsimonious} middle ground between an underspecified model and extraneous variables.
+        \item Fine-tune the model to ensure the model meets assumptions and captures key relationships: you may need to transform predictors and/or add interactions.
+        \item Think about logical reasons why certain predictors might be useful; don't just focus on $p$-values.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Check assumptions of the best model}
+      \fontsm
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{candidate} \hlkwb{<-} \hlkwd{lm}\hlstd{(PhysiciansPer10000} \hlopt{~} \hlstd{PctRural} \hlopt{+} \hlstd{PctOver65}
+                  \hlopt{+} \hlstd{PctSomeCollege,} \hlkwc{data}\hlstd{=my.counties)}
+\hlkwd{plot}\hlstd{(candidate)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-10-1} 
+
+\end{knitrout}
+
+    \end{frame}
+
+    \begin{frame}{Be careful of getting too crazy!}
+      \begin{itemize}[<+->]
+        \item A general guideline is that you should not even consider more than one variable for every 10 to 15 cases in your dataset.
+        \item Think about the meaning of the variables in your model. Be careful if the model looks too good to be true.
+        \item Do not just use a mechanical process for model selection and call it a day; you need to use your judgement and select a parsimonious model.
+        \item Don't forget to check the model assumptions for your final model!
+      \end{itemize}
+    \end{frame}
+
+  \end{darkframes}
+
+\end{document}

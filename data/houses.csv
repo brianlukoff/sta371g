@@ -1,0 +1,1729 @@
+X1,Price,Lot.Size,Waterfront,Age,Land.Value,New.Construct,Central.Air,Fuel.Type,Heat.Type,Sewer.Type,Living.Area,Pct.College,Bedrooms,Fireplaces,Bathrooms,Rooms,Fireplace,Beds
+1,132500,0.09,No,42,50000,No,No,Electric,Electric,Private,906,35,2,1,1.0,5,Yes,2 or fewer
+2,181115,0.92,No,0,22300,No,No,Gas,Hot Water,Private,1953,51,3,None,2.5,6,No,3
+3,109000,0.19,No,133,7300,No,No,Gas,Hot Water,Public,1944,51,4,1,1.0,8,Yes,4 or more
+4,155000,0.41,No,13,18700,No,No,Gas,Hot Air,Private,1944,51,3,1,1.5,5,Yes,3
+5,86060,0.11,No,0,15000,Yes,Yes,Gas,Hot Air,Public,840,51,2,None,1.0,3,No,2 or fewer
+6,120000,0.68,No,31,14000,No,No,Gas,Hot Air,Private,1152,22,4,1,1.0,8,Yes,4 or more
+7,153000,0.4,No,33,23300,No,No,Oil,Hot Water,Private,2752,51,4,1,1.5,8,Yes,4 or more
+8,170000,1.21,No,23,14600,No,No,Oil,Hot Air,Private,1662,35,4,1,1.5,9,Yes,4 or more
+9,90000,0.83,No,36,22200,No,No,Electric,Electric,Private,1632,51,3,None,1.5,8,No,3
+10,122900,1.94,No,4,21200,No,No,Gas,Hot Air,None,1416,44,3,None,1.5,6,No,3
+11,325000,2.29,No,123,12600,No,No,Oil,Hot Air,Private,2894,51,7,None,1.0,12,No,4 or more
+12,120000,0.92,No,1,22300,No,No,Gas,Hot Air,Private,1624,51,3,None,2.0,6,No,3
+13,85860,8.97,No,13,4800,No,No,Electric,Electric,Private,704,41,2,None,1.0,4,No,2 or fewer
+14,97000,0.11,No,153,3100,No,No,Gas,Hot Water,Public,1383,57,3,None,2.0,5,No,3
+15,127000,0.14,No,9,300,No,No,Oil,Hot Air,Private,1300,41,3,None,1.5,8,No,3
+16,89900,0.0,No,88,2500,No,No,Gas,Hot Water,Public,936,57,3,None,1.0,4,No,3
+17,155000,0.13,No,9,300,No,No,Oil,Hot Air,Private,1300,41,3,None,1.5,7,No,3
+18,253750,2.0,No,0,49800,No,Yes,Gas,Hot Air,None,2816,71,4,1,2.5,12,Yes,4 or more
+19,60000,0.21,No,82,8500,No,No,Oil,Hot Water,Private,924,35,2,None,1.0,6,No,2 or fewer
+20,87500,0.88,No,17,19400,No,No,Oil,Hot Air,Private,1092,35,3,None,1.0,6,No,3
+21,112000,1.0,No,12,8600,No,No,Electric,Electric,Private,1056,35,3,None,1.0,7,No,3
+22,104900,0.43,No,21,5600,No,No,Electric,Electric,Public,1600,39,3,None,1.5,4,No,3
+23,148635,0.32,No,1,6200,Yes,Yes,Gas,Hot Air,Private,1576,39,3,None,2.5,7,No,3
+24,150000,0.03,No,24,5100,No,No,Oil,Hot Air,Private,2080,39,3,None,2.0,6,No,3
+25,90400,0.36,No,16,5200,No,No,Electric,Electric,Public,1600,39,3,None,1.5,4,No,3
+26,248800,4.0,No,28,5500,No,No,Oil,Hot Air,Private,2224,39,4,None,3.0,10,No,4 or more
+27,135000,1.83,No,126,6000,No,No,Oil,Hot Water,Private,1656,39,3,None,1.0,6,No,3
+28,145000,3.0,No,26,4500,No,No,Oil,Hot Air,Private,1170,39,4,None,1.5,5,No,4 or more
+29,457000,0.43,Yes,53,2700,No,No,Oil,Hot Air,Public,2461,39,4,1,2.0,10,Yes,4 or more
+30,140000,0.44,No,56,19400,No,Yes,Oil,Hot Air,Private,1544,71,3,1,1.5,7,Yes,3
+31,130000,1.24,No,51,24800,No,No,Oil,Hot Water,Private,1220,71,2,2 or more,1.0,4,Yes,2 or fewer
+32,187000,0.46,No,3,15200,No,No,Gas,Hot Air,Private,1858,52,3,1,2.5,7,Yes,3
+33,229000,0.87,No,9,41100,No,No,Gas,Hot Air,Public,2219,64,3,1,2.0,8,Yes,3
+34,227000,1.8,No,201,25500,No,No,Oil,Hot Air,Private,1876,52,3,None,2.5,5,No,3
+35,179900,0.46,No,1,15200,No,No,Gas,Hot Air,Private,2026,52,4,1,2.5,6,Yes,4 or more
+36,169900,0.91,No,19,20200,No,Yes,Gas,Hot Air,Private,1671,71,4,1,3.0,8,Yes,4 or more
+37,209900,0.46,No,1,15200,No,No,Gas,Hot Air,None,2060,52,4,1,2.5,7,Yes,4 or more
+38,169900,0.59,No,0,17300,No,No,Gas,Hot Air,Private,1884,52,4,1,2.5,9,Yes,4 or more
+39,293000,7.24,No,43,36600,No,No,Gas,Hot Water,Private,2022,71,4,2 or more,3.0,6,Yes,4 or more
+40,245900,0.19,No,0,20700,No,Yes,Gas,Hot Air,None,2394,71,4,1,2.5,7,Yes,4 or more
+41,157000,0.46,No,45,20200,No,No,Gas,Hot Air,Private,1390,71,3,1,1.5,6,Yes,3
+42,195000,0.41,No,32,27100,No,Yes,Gas,Hot Air,Private,1954,71,4,None,2.5,8,No,4 or more
+43,150000,0.78,No,54,24500,No,Yes,Oil,Hot Air,Private,1554,71,3,1,1.5,5,Yes,3
+44,234900,0.89,No,9,41600,No,Yes,Gas,Hot Air,Public,1976,64,3,None,2.5,6,No,3
+45,279550,1.34,No,0,44400,No,No,Gas,Hot Air,Private,2479,71,4,1,2.5,10,Yes,4 or more
+46,246500,1.0,No,0,17100,No,No,Gas,Hot Air,None,2714,71,4,1,2.5,9,Yes,4 or more
+47,124000,1.0,No,98,15500,No,No,Oil,Hot Air,Private,797,52,2,None,1.0,3,No,2 or fewer
+48,138000,0.27,No,54,8900,No,No,Gas,Hot Water,Private,1500,71,3,None,2.5,7,No,3
+49,290000,0.71,Yes,73,61000,No,No,Oil,Hot Air,Private,1838,71,4,None,2.0,8,No,4 or more
+50,108000,0.9,No,48,19000,No,No,Gas,Hot Air,Private,1042,71,2,1,2.0,3,Yes,2 or fewer
+51,134900,0.24,No,10,8000,No,Yes,Gas,Hot Air,Public,1782,52,3,None,2.5,6,No,3
+52,64500,0.06,No,16,1600,No,No,Gas,Hot Air,Public,1480,52,2,1,2.5,5,Yes,2 or fewer
+53,142000,0.55,No,20,13800,No,No,Gas,Hot Air,Private,1426,52,3,1,2.0,6,Yes,3
+54,125000,0.34,No,32,11100,No,No,Gas,Hot Air,Private,1404,52,3,None,2.0,5,No,3
+55,88000,0.19,No,15,3400,No,Yes,Gas,Hot Water,Public,1480,52,3,1,1.5,5,Yes,3
+56,135000,0.23,No,135,8100,No,No,Gas,Hot Water,Public,1344,52,3,None,1.0,5,No,3
+57,90000,0.07,No,14,1800,No,Yes,Gas,Hot Air,Public,1480,52,2,1,2.5,5,Yes,2 or fewer
+58,90100,0.09,No,15,2400,No,No,Gas,Hot Water,Public,1480,52,3,1,1.5,7,Yes,3
+59,126900,0.25,No,10,8400,No,No,Gas,Hot Air,Public,1596,52,3,None,2.5,6,No,3
+60,175000,0.47,No,15,27200,No,No,Electric,Electric,Private,1768,52,3,1,2.0,5,Yes,3
+61,158000,0.36,No,10,12100,No,Yes,Gas,Hot Air,Public,1348,52,2,1,2.0,3,Yes,2 or fewer
+62,92000,0.07,No,14,1800,No,No,Gas,Hot Air,Public,1480,52,3,1,1.5,8,Yes,3
+63,82800,0.11,No,225,3900,No,No,Gas,Hot Air,Public,1483,52,3,None,1.0,7,No,3
+64,140000,0.23,No,25,8300,No,Yes,Gas,Hot Air,Public,1576,52,4,1,1.5,5,Yes,4 or more
+65,171000,3.16,No,15,24100,No,No,Electric,Electric,Private,1008,52,2,None,1.0,7,No,2 or fewer
+66,200640,0.08,No,0,32000,Yes,No,Gas,Hot Air,Public,2332,52,4,None,2.5,9,No,4 or more
+67,139000,0.57,No,30,7500,No,No,Oil,Hot Air,Private,1064,52,3,1,1.0,5,Yes,3
+68,225000,0.5,No,12,15300,No,Yes,Gas,Hot Air,Public,2428,52,4,1,2.5,11,Yes,4 or more
+69,182000,1.0,No,16,26600,No,No,Electric,Electric,Private,1310,52,3,1,2.0,7,Yes,3
+70,208767,0.5,No,0,32000,Yes,Yes,Gas,Hot Air,Public,1662,52,3,None,2.0,7,No,3
+71,186000,0.55,No,0,4400,Yes,No,Gas,Hot Air,Public,2000,52,4,None,2.5,7,No,4 or more
+72,93000,0.1,No,14,2600,No,No,Gas,Hot Air,Public,1480,52,3,1,1.5,6,Yes,3
+73,257386,0.5,No,0,32000,Yes,Yes,Gas,Hot Air,Public,2969,52,4,1,4.0,10,Yes,4 or more
+74,161000,0.31,No,10,10400,No,Yes,Gas,Hot Air,Public,1542,52,3,None,2.5,5,No,3
+75,92000,0.28,No,18,6300,No,No,Oil,Hot Air,Private,1527,52,4,None,2.0,7,No,4 or more
+76,211002,0.06,No,0,32000,Yes,No,Gas,Hot Air,Public,2195,52,4,None,2.5,8,No,4 or more
+77,115000,0.06,No,14,1600,No,No,Gas,Hot Air,Public,1480,52,3,1,1.5,6,Yes,3
+78,113000,0.46,No,53,9200,No,Yes,Oil,Hot Water,Private,1452,52,3,None,2.0,7,No,3
+79,216300,0.1,No,0,32000,Yes,No,Gas,Hot Air,Public,2360,52,4,None,2.5,10,No,4 or more
+80,145000,2.12,No,32,19000,No,No,Oil,Hot Air,Private,1440,52,3,1,1.0,8,Yes,3
+81,114000,0.06,No,14,1600,No,No,Electric,Hot Air,Public,1480,52,2,1,2.5,5,Yes,2 or fewer
+82,139050,0.21,No,125,7300,No,No,Gas,Hot Air,Public,1879,52,3,None,2.5,6,No,3
+83,104000,0.06,No,14,1600,No,No,Gas,Hot Air,Public,1480,52,3,None,1.5,6,No,3
+84,169900,0.26,No,11,8700,No,No,Gas,Hot Air,Public,1792,52,3,None,2.5,8,No,3
+85,177900,0.29,No,2,25000,No,No,Gas,Hot Air,Private,1386,44,3,None,2.5,5,No,3
+86,133000,1.29,No,14,10300,No,Yes,Electric,Hot Air,Private,1676,44,2,1,2.0,3,Yes,2 or fewer
+87,185000,1.0,No,0,4000,No,No,Gas,Hot Air,Private,768,22,4,None,2.0,9,No,4 or more
+88,115000,0.88,No,16,10000,No,Yes,Electric,Electric,Private,1560,22,3,1,1.5,8,Yes,3
+89,100000,0.52,No,91,5000,No,No,Oil,Hot Air,Private,1000,22,3,None,1.0,6,No,3
+90,117000,0.07,No,15,18900,No,No,Electric,Electric,Private,1676,51,4,1,1.5,9,Yes,4 or more
+91,150000,0.32,No,11,19400,No,No,Electric,Electric,None,1656,51,3,None,1.5,6,No,3
+92,187500,0.92,No,11,20600,No,No,Electric,Electric,Private,2300,51,3,1,1.5,7,Yes,3
+93,107000,0.46,No,25,18700,No,No,Gas,Hot Air,Private,1712,51,3,1,1.0,6,Yes,3
+94,126900,0.46,No,26,18700,No,No,Gas,Hot Air,Private,1350,51,3,None,1.5,5,No,3
+95,147000,0.11,No,15,18900,No,No,Gas,Hot Air,Private,1676,51,3,1,2.5,6,Yes,3
+96,62000,0.4,No,103,10500,No,No,Gas,Hot Water,Private,1317,51,3,None,1.5,7,No,3
+97,101000,0.87,No,30,8700,No,No,Gas,Hot Air,Private,1056,51,3,1,2.0,8,Yes,3
+98,143500,0.59,No,13,19900,No,No,Gas,Hot Air,Private,912,51,3,None,1.0,7,No,3
+99,113400,0.93,No,18,4500,No,No,Electric,Electric,Private,1232,44,2,None,2.0,3,No,2 or fewer
+100,76320,0.15,No,68,2000,No,No,Gas,Hot Air,Public,1380,44,3,1,1.0,5,Yes,3
+101,110000,0.59,No,10,3100,No,Yes,Gas,Hot Air,Private,936,44,3,None,1.0,6,No,3
+102,88000,0.33,No,49,3400,No,No,Gas,Hot Air,Private,720,44,3,None,1.0,4,No,3
+103,108000,0.32,No,30,6500,No,No,Oil,Hot Water,Private,1628,44,2,1,1.5,4,Yes,2 or fewer
+104,114900,0.46,No,41,5000,No,No,Gas,Hot Air,Private,1144,44,3,None,1.5,6,No,3
+105,146000,0.48,No,2,3000,No,No,Gas,Hot Air,Private,1827,44,3,None,2.5,9,No,3
+106,225000,2.37,No,8,3300,No,No,Oil,Hot Water,Private,1784,44,3,1,2.0,6,Yes,3
+107,138000,0.83,No,16,3700,No,Yes,Gas,Hot Air,Private,1851,44,3,1,2.5,8,Yes,3
+108,218070,1.0,No,0,3500,Yes,No,Gas,Hot Water,Private,2194,44,4,None,2.5,8,No,4 or more
+109,25000,0.21,No,75,900,No,No,Oil,Hot Air,Private,920,44,2,None,1.0,6,No,2 or fewer
+110,112000,0.27,No,36,3800,No,No,Gas,Hot Water,Public,1280,44,3,None,1.0,5,No,3
+111,112500,0.72,No,43,4600,No,No,Electric,Electric,Private,1232,44,3,1,1.0,5,Yes,3
+112,97000,0.36,No,45,3600,No,No,Gas,Hot Water,Private,1406,44,3,None,1.5,6,No,3
+113,121000,0.52,No,6,2500,No,No,Gas,Hot Air,Private,1164,44,3,None,2.0,5,No,3
+114,65720,0.19,No,123,2100,No,No,Gas,Hot Water,Public,1198,44,3,None,1.0,5,No,3
+115,225000,0.38,No,10,6600,No,Yes,Gas,Hot Air,Private,2206,44,4,1,2.5,8,Yes,4 or more
+116,192000,0.82,No,0,5000,Yes,Yes,Gas,Hot Air,Private,1880,44,3,1,2.5,9,Yes,3
+117,158500,0.69,No,6,3400,No,No,Oil,Hot Air,Private,1368,44,3,None,1.5,8,No,3
+118,247000,0.51,No,16,6000,No,Yes,Gas,Hot Air,Private,1901,44,3,1,2.5,5,Yes,3
+119,193777,0.72,No,11,3200,No,No,Gas,Hot Air,Private,1547,44,3,None,2.0,8,No,3
+120,136500,0.62,No,12,5400,No,No,Gas,Hot Air,Private,896,44,3,None,2.0,5,No,3
+121,75000,1.0,No,45,8000,No,No,Gas,Hot Air,Private,1008,44,3,None,1.0,7,No,3
+122,45000,0.52,No,75,3900,No,No,Gas,Hot Air,Private,912,44,2,None,1.0,4,No,2 or fewer
+123,243000,0.82,No,12,3700,No,No,Gas,Hot Air,Private,2443,44,3,None,2.5,6,No,3
+124,90000,0.29,No,83,3900,No,No,Gas,Hot Air,Public,900,44,4,None,1.0,7,No,4 or more
+125,158000,0.52,No,0,4400,Yes,Yes,Gas,Hot Air,Private,2098,44,3,None,2.0,7,No,3
+126,174000,0.64,No,9,3000,No,No,Gas,Hot Water,Private,2115,44,4,1,2.5,7,Yes,4 or more
+127,150000,0.52,No,12,4500,No,No,Gas,Hot Air,Private,1344,44,2,1,2.0,7,Yes,2 or fewer
+128,159650,1.0,No,3,5200,No,No,Gas,Hot Air,Private,1106,44,3,None,1.0,8,No,3
+129,139062,0.69,No,33,6500,No,No,Gas,Hot Water,Private,1440,44,3,2 or more,2.0,6,Yes,3
+130,84950,0.13,No,0,15000,Yes,No,Gas,Hot Air,Public,840,51,2,None,1.0,3,No,2 or fewer
+131,102000,0.22,No,10,7300,No,No,Gas,Hot Air,Public,1170,51,2,None,1.0,6,No,2 or fewer
+132,175000,0.46,No,15,23400,No,No,Oil,Hot Air,Private,1664,51,4,None,1.0,5,No,4 or more
+133,78500,1.0,No,153,27300,No,No,Oil,Hot Air,Private,3024,51,4,None,1.0,12,No,4 or more
+134,232478,1.0,No,0,15900,No,No,Gas,Hot Air,None,2598,51,4,1,2.5,9,Yes,4 or more
+135,93805,0.13,No,0,15000,Yes,No,Gas,Hot Air,Public,840,51,2,None,1.5,7,No,2 or fewer
+136,119900,1.03,No,63,41500,No,No,Oil,Hot Water,Private,1701,41,5,None,1.0,10,No,4 or more
+137,146000,1.17,No,33,41800,No,No,Oil,Hot Air,Private,1456,41,3,1,1.5,6,Yes,3
+138,125000,0.34,No,44,19000,No,No,Oil,Hot Air,Private,1224,71,3,None,1.0,4,No,3
+139,135000,0.38,No,48,21300,No,No,Gas,Hot Air,Private,1411,71,3,1,1.0,5,Yes,3
+140,157500,1.96,No,29,39700,No,No,Oil,Hot Air,Private,1608,71,3,1,1.5,5,Yes,3
+141,135000,3.0,No,178,44500,No,No,Oil,Hot Water,Private,3020,41,4,None,2.5,12,No,4 or more
+142,142900,0.33,No,32,22500,No,No,Gas,Hot Water,Public,1898,64,3,1,1.5,7,Yes,3
+143,259900,0.46,No,1,36600,Yes,Yes,Gas,Hot Air,Public,2544,64,4,1,2.5,9,Yes,4 or more
+144,85000,0.29,No,16,22100,No,No,Electric,Electric,Public,1038,64,2,None,1.0,7,No,2 or fewer
+145,180377,0.35,No,1,37000,Yes,No,Gas,Hot Air,Public,1820,64,3,1,2.5,6,Yes,3
+146,163500,0.28,No,21,28400,No,Yes,Electric,Electric,Public,2202,64,3,1,2.0,10,Yes,3
+147,106500,0.52,No,53,20300,No,No,Oil,Hot Air,Private,2387,64,3,None,1.0,6,No,3
+148,115000,0.11,No,16,20700,No,Yes,Electric,Electric,Public,1368,64,2,1,1.5,3,Yes,2 or fewer
+149,115000,0.14,No,16,21000,No,Yes,Electric,Electric,Public,1480,64,2,1,2.0,5,Yes,2 or fewer
+150,135000,0.14,No,15,19600,No,Yes,Electric,Electric,Public,1348,64,2,1,1.5,5,Yes,2 or fewer
+151,198900,0.47,No,7,25500,No,Yes,Gas,Hot Air,Public,1889,64,4,1,2.5,8,Yes,4 or more
+152,139000,0.14,No,16,19600,No,Yes,Electric,Electric,Public,1343,64,2,1,1.5,6,Yes,2 or fewer
+153,206000,0.51,No,15,39600,No,Yes,Gas,Hot Air,Public,2011,64,3,1,2.5,7,Yes,3
+154,120000,0.21,No,15,28800,No,Yes,Gas,Hot Air,Public,1180,64,2,1,1.5,3,Yes,2 or fewer
+155,205980,0.14,No,1,45200,Yes,Yes,Gas,Hot Air,Public,1983,64,3,1,2.5,5,Yes,3
+156,275000,0.55,No,14,72000,No,Yes,Gas,Hot Air,Public,2253,64,3,1,2.5,7,Yes,3
+157,139000,0.07,No,12,24500,No,Yes,Gas,Hot Air,Public,1604,64,2,None,1.5,4,No,2 or fewer
+158,89900,0.49,No,83,11900,No,No,Gas,Hot Air,Private,1196,45,3,None,1.0,6,No,3
+159,139900,0.07,No,13,24500,No,Yes,Gas,Hot Air,Public,1602,64,2,None,2.5,7,No,2 or fewer
+160,172750,0.36,No,1,37100,Yes,No,Gas,Hot Air,Public,1747,64,3,None,2.5,5,No,3
+161,136000,0.5,No,37,19800,No,No,Oil,Hot Water,Private,1092,64,3,None,1.0,5,No,3
+162,270000,0.48,No,10,37800,No,Yes,Gas,Hot Air,Public,2410,64,4,1,2.5,11,Yes,4 or more
+163,174000,0.29,No,14,31100,No,Yes,Gas,Hot Air,Public,1933,64,3,1,2.5,6,Yes,3
+164,379000,0.68,No,9,57200,No,Yes,Gas,Hot Air,Public,3080,64,4,1,2.5,12,Yes,4 or more
+165,382500,4.08,No,13,75500,No,Yes,Oil,Hot Air,Private,4534,64,6,2 or more,2.5,12,Yes,4 or more
+166,144900,0.1,No,14,26000,No,Yes,Gas,Hot Air,Public,1677,64,3,1,2.5,5,Yes,3
+167,349900,0.62,No,7,57800,No,Yes,Gas,Hot Air,Public,2900,64,4,1,2.5,11,Yes,4 or more
+168,133000,0.07,No,16,20300,No,Yes,Electric,Electric,Public,1392,64,2,1,1.5,5,Yes,2 or fewer
+169,115000,0.16,No,15,22400,No,No,Gas,Hot Air,Public,1058,64,2,1,1.5,7,Yes,2 or fewer
+170,211950,0.36,No,1,29200,Yes,Yes,Gas,Hot Air,Public,2342,64,4,1,2.5,8,Yes,4 or more
+171,227812,0.01,No,0,37200,Yes,Yes,Gas,Hot Air,Public,2206,64,4,1,2.5,10,Yes,4 or more
+172,164400,0.34,No,1,36200,Yes,Yes,Gas,Hot Air,Public,1516,64,3,1,2.0,5,Yes,3
+173,340000,0.75,No,12,82500,No,Yes,Gas,Hot Air,Public,2836,64,4,1,2.5,10,Yes,4 or more
+174,139900,0.29,No,15,35200,No,Yes,Gas,Hot Air,Public,1256,64,2,None,1.5,7,No,2 or fewer
+175,279900,0.47,No,6,20000,No,Yes,Gas,Hot Air,Public,2340,64,4,1,3.5,10,Yes,4 or more
+176,225000,0.32,No,0,53900,Yes,Yes,Gas,Hot Air,Public,2129,64,4,1,2.5,9,Yes,4 or more
+177,144500,0.12,No,15,16800,No,Yes,Gas,Hot Air,Public,1343,64,2,1,2.5,4,Yes,2 or fewer
+178,362710,1.0,No,0,24300,Yes,Yes,Gas,Hot Air,Private,2963,64,4,1,2.5,10,Yes,4 or more
+179,247000,0.46,No,13,36600,No,Yes,Gas,Hot Air,Public,2114,64,4,1,3.5,8,Yes,4 or more
+180,120000,0.18,No,16,21400,No,Yes,Electric,Electric,Public,1144,64,2,1,1.0,7,Yes,2 or fewer
+181,136000,0.55,No,33,14900,No,No,Oil,Hot Air,Private,988,64,3,1,1.0,7,Yes,3
+182,228500,0.46,No,9,45800,No,No,Gas,Hot Air,Public,1475,64,3,None,2.0,4,No,3
+183,162800,0.15,No,10,28500,No,No,Gas,Hot Air,Public,1247,64,3,None,1.5,7,No,3
+184,230000,0.93,No,48,23500,No,No,Gas,Hot Water,Private,1912,64,5,1,2.0,10,Yes,4 or more
+185,115800,0.46,No,23,19700,No,No,Oil,Hot Air,Private,1440,64,3,None,1.5,5,No,3
+186,175000,0.26,No,16,30100,No,Yes,Gas,Hot Air,Public,1596,64,3,1,2.0,6,Yes,3
+187,263008,0.63,No,0,24400,Yes,Yes,Gas,Hot Air,Public,2665,64,4,1,2.5,11,Yes,4 or more
+188,146000,0.5,No,35,28000,No,No,Gas,Hot Water,Private,1984,64,3,None,1.5,8,No,3
+189,204900,0.03,No,10,35800,No,Yes,Gas,Hot Air,Public,1616,64,3,None,2.0,6,No,3
+190,265000,0.17,No,9,40500,No,No,Gas,Hot Air,Public,1917,64,3,1,2.5,5,Yes,3
+191,167500,0.64,No,37,16400,No,No,Oil,Hot Water,Private,2592,64,3,1,1.5,9,Yes,3
+192,205000,0.47,No,6,25500,No,No,Gas,Hot Air,Public,1845,64,3,1,2.5,9,Yes,3
+193,170000,0.92,No,53,29000,No,Yes,Oil,Hot Air,Private,1360,57,4,None,1.0,9,No,4 or more
+194,176000,0.41,No,35,26200,No,Yes,Gas,Hot Air,Public,1664,64,3,1,1.5,6,Yes,3
+195,132000,0.16,No,15,22400,No,Yes,Gas,Hot Air,Public,1098,64,2,1,1.5,3,Yes,2 or fewer
+196,115500,0.01,No,17,9900,No,No,Electric,Electric,Public,1214,64,2,None,1.5,4,No,2 or fewer
+197,150000,0.29,No,93,9200,No,No,Electric,Electric,Private,1046,57,3,None,1.0,6,No,3
+198,120000,0.36,No,103,32200,No,No,Oil,Hot Air,Private,1144,64,3,None,1.0,8,No,3
+199,125000,0.28,No,16,22000,No,Yes,Gas,Hot Air,Public,1140,64,2,1,2.0,6,Yes,2 or fewer
+200,150000,0.15,No,14,21000,No,No,Gas,Hot Air,Public,1232,64,2,1,1.5,5,Yes,2 or fewer
+201,362360,0.59,No,0,153800,Yes,Yes,Gas,Hot Air,Public,3020,64,4,1,2.5,9,Yes,4 or more
+202,133500,0.36,No,19,27000,No,No,Gas,Hot Air,Public,1508,52,3,1,2.0,6,Yes,3
+203,91000,0.16,No,19,15700,No,No,Electric,Electric,Public,912,52,2,1,1.5,5,Yes,2 or fewer
+204,104000,0.34,No,18,27000,No,No,Electric,Electric,Public,1508,52,3,None,1.5,4,No,3
+205,148000,0.33,No,17,27000,No,No,Gas,Hot Air,Public,1561,52,3,1,1.5,6,Yes,3
+206,182000,0.56,No,30,26400,No,No,Gas,Hot Water,Public,2625,64,4,1,2.5,8,Yes,4 or more
+207,152500,0.48,No,30,19600,No,No,Gas,Hot Water,Public,936,52,3,1,1.0,7,Yes,3
+208,97000,0.16,No,19,15700,No,No,Electric,Electric,Public,912,52,2,None,1.5,3,No,2 or fewer
+209,113000,0.17,No,16,15100,No,No,Electric,Electric,Public,1492,52,3,None,2.5,8,No,3
+210,172000,0.46,No,30,26300,No,No,Gas,Hot Water,Public,1599,64,4,1,2.5,5,Yes,4 or more
+211,179900,0.81,No,25,25000,No,No,Electric,Electric,Private,2304,52,5,1,2.5,9,Yes,4 or more
+212,84000,0.15,No,19,15700,No,No,Electric,Electric,Public,912,52,2,None,1.5,7,No,2 or fewer
+213,117900,0.15,No,17,15100,No,Yes,Gas,Hot Air,Public,1385,52,2,1,1.5,7,Yes,2 or fewer
+214,177000,0.32,No,17,27000,No,No,Electric,Electric,Public,1561,52,4,None,1.5,8,No,4 or more
+215,107500,0.16,No,20,15700,No,No,Gas,Hot Water,Public,884,52,2,None,2.0,3,No,2 or fewer
+216,92500,0.15,No,18,15700,No,No,Electric,Electric,Public,912,52,2,None,2.0,4,No,2 or fewer
+217,102900,0.15,No,17,15700,No,No,Gas,Electric,Public,912,52,2,None,1.5,3,No,2 or fewer
+218,134800,0.48,No,73,20500,No,No,Oil,Hot Air,Private,1384,52,3,None,2.0,5,No,3
+219,150000,0.77,No,7,30000,No,No,Gas,Hot Air,Public,1334,52,3,None,1.5,4,No,3
+220,165000,0.42,No,10,26200,No,Yes,Gas,Hot Air,Private,1433,64,3,1,2.0,5,Yes,3
+221,120000,0.17,No,16,15100,No,No,Electric,Electric,Public,1492,52,3,1,2.5,6,Yes,3
+222,177500,0.32,No,16,27000,No,Yes,Gas,Hot Air,Public,1561,52,4,1,1.5,9,Yes,4 or more
+223,300000,0.09,Yes,11,32000,No,No,Electric,Electric,Public,936,52,1,None,1.0,3,No,2 or fewer
+224,123500,0.16,No,16,15100,No,No,Electric,Electric,Public,1492,52,3,1,2.5,8,Yes,3
+225,141000,0.16,No,18,15100,No,No,Electric,Electric,Public,1853,52,3,None,2.5,7,No,3
+226,105400,0.15,No,15,15100,No,No,Electric,Electric,Public,1240,52,2,None,1.5,7,No,2 or fewer
+227,100600,0.17,No,19,15800,No,No,Electric,Electric,Public,912,52,2,None,1.5,6,No,2 or fewer
+228,108900,0.17,No,19,15800,No,No,Gas,Hot Air,Public,912,52,2,None,1.5,3,No,2 or fewer
+229,105500,0.16,No,19,15700,No,No,Gas,Hot Water,Public,912,52,2,None,1.5,6,No,2 or fewer
+230,109900,0.16,No,19,15100,No,No,Gas,Hot Water,Public,1184,52,3,None,1.5,8,No,3
+231,172700,0.34,No,18,27000,No,No,Electric,Electric,Public,1638,52,3,1,2.0,6,Yes,3
+232,166500,0.31,No,16,27000,No,No,Electric,Electric,Public,1508,52,3,1,2.0,6,Yes,3
+233,105000,0.4,No,50,18000,No,No,Electric,Electric,Public,672,52,2,None,1.0,5,No,2 or fewer
+234,490000,0.34,Yes,18,79700,No,No,Oil,Hot Air,Public,1346,52,3,1,2.0,6,Yes,3
+235,120000,0.16,No,18,15100,No,No,Electric,Electric,Public,1184,52,3,None,2.0,5,No,3
+236,107500,0.15,No,16,15700,No,No,Gas,Hot Air,Public,912,52,2,None,1.5,4,No,2 or fewer
+237,116600,0.15,No,18,15700,No,No,Electric,Electric,Public,912,52,2,1,1.5,5,Yes,2 or fewer
+238,65000,0.16,No,19,15700,No,No,Gas,Hot Air,Public,988,52,2,None,2.0,4,No,2 or fewer
+239,118000,0.16,No,19,15100,No,No,Gas,Hot Air,Public,1184,52,3,None,2.0,6,No,3
+240,115900,0.15,No,16,15100,No,No,Electric,Electric,Public,1385,52,2,None,1.5,4,No,2 or fewer
+241,100000,0.15,No,18,15700,No,No,Gas,Hot Water,Public,912,52,2,None,1.5,3,No,2 or fewer
+242,171000,0.37,No,18,27000,No,Yes,Gas,Hot Air,Public,1548,52,3,1,2.0,5,Yes,3
+243,188000,0.31,No,17,27000,No,No,Electric,Electric,Public,1561,52,4,None,1.5,9,No,4 or more
+244,140000,1.0,No,24,21000,No,Yes,Gas,Hot Air,Private,1008,52,2,None,1.0,3,No,2 or fewer
+245,124500,0.15,No,17,15200,No,No,Electric,Electric,Public,1385,52,2,None,1.5,4,No,2 or fewer
+246,107200,0.16,No,19,15700,No,No,Gas,Hot Air,Public,908,52,2,None,1.0,6,No,2 or fewer
+247,107500,0.24,No,138,1400,No,No,Oil,Hot Water,Public,2246,39,4,None,1.5,9,No,4 or more
+248,180000,2.06,No,16,5900,No,No,Gas,Hot Air,Private,1820,39,3,1,2.5,5,Yes,3
+249,214325,0.42,No,0,13000,Yes,Yes,Gas,Hot Air,Public,2554,64,4,1,2.5,9,Yes,4 or more
+250,128850,0.92,No,16,5500,No,No,Electric,Electric,Private,824,45,3,None,1.5,5,No,3
+251,208700,0.4,No,0,15000,No,No,Gas,Hot Air,Public,2458,64,4,1,2.5,9,Yes,4 or more
+252,139900,0.36,No,22,10500,No,No,Electric,Electric,Public,1324,64,3,None,1.0,4,No,3
+253,350000,5.84,No,12,20000,No,Yes,Gas,Hot Air,Public,2916,64,3,1,2.5,9,Yes,3
+254,108000,0.16,No,19,15100,No,No,Electric,Electric,Public,1032,52,2,None,1.5,4,No,2 or fewer
+255,115500,0.15,No,16,15700,No,No,Electric,Electric,Public,912,52,2,1,1.5,4,Yes,2 or fewer
+256,135000,0.98,No,35,19600,No,No,Electric,Electric,Private,1320,52,2,None,1.0,3,No,2 or fewer
+257,135000,0.33,No,17,27000,No,No,Gas,Hot Air,Public,1508,52,3,1,1.5,8,Yes,3
+258,107400,0.16,No,16,15700,No,No,Electric,Electric,Public,912,52,2,1,1.5,7,Yes,2 or fewer
+259,233000,0.09,No,12,31200,No,Yes,Gas,Hot Air,Private,2040,52,4,1,2.5,7,Yes,4 or more
+260,105000,0.16,No,17,15700,No,No,Electric,Electric,Public,912,52,2,1,1.5,5,Yes,2 or fewer
+261,335000,3.0,No,10,53600,No,Yes,Oil,Hot Air,Public,1776,52,2,None,2.0,6,No,2 or fewer
+262,139000,0.58,No,25,25000,No,No,Electric,Electric,Public,1304,64,3,None,2.0,8,No,3
+263,209500,0.42,No,10,26200,No,Yes,Gas,Hot Air,Private,1836,64,4,1,2.5,8,Yes,4 or more
+264,101000,0.17,No,18,15800,No,No,Electric,Electric,Public,912,52,2,None,2.0,3,No,2 or fewer
+265,77500,0.16,No,19,15700,No,No,Electric,Electric,Public,912,52,2,None,1.5,6,No,2 or fewer
+266,150500,0.31,No,16,27000,No,No,Electric,Electric,Public,1527,52,2,1,2.0,7,Yes,2 or fewer
+267,167000,0.99,No,17,5700,No,No,Electric,Electric,Private,1454,39,3,None,1.5,7,No,3
+268,114000,0.26,No,26,4600,No,No,Oil,Hot Water,Public,1700,39,3,1,1.5,4,Yes,3
+269,160000,0.45,No,27,7000,No,No,Electric,Electric,Public,1680,45,4,None,1.0,9,No,4 or more
+270,85000,0.49,No,0,13000,No,Yes,Gas,Hot Air,Public,2401,64,4,1,2.5,10,Yes,4 or more
+271,143000,0.35,No,21,11000,No,No,Electric,Electric,Public,1176,64,3,None,1.0,7,No,3
+272,126000,0.4,No,24,9800,No,No,Electric,Electric,Public,1344,64,3,1,1.5,7,Yes,3
+273,140000,0.48,No,23,10400,No,No,Electric,Electric,Public,1344,64,3,None,1.5,8,No,3
+274,140000,0.35,No,9,13000,No,No,Gas,Hot Water,Private,1714,64,3,None,2.5,8,No,3
+275,205000,0.25,No,20,29000,No,No,Gas,Hot Air,Public,1992,64,4,1,3.0,9,Yes,4 or more
+276,79900,0.12,No,19,18200,No,Yes,Gas,Hot Air,Public,924,64,2,None,1.0,7,No,2 or fewer
+277,139000,0.09,No,24,17600,No,Yes,Gas,Hot Air,Public,1290,64,2,1,1.5,3,Yes,2 or fewer
+278,190000,0.46,No,36,27400,No,No,Gas,Hot Water,Public,2521,64,4,1,2.5,10,Yes,4 or more
+279,151500,0.71,No,58,22700,No,No,Oil,Hot Water,Public,1377,82,3,1,1.5,7,Yes,3
+280,97500,0.06,No,19,16400,No,Yes,Gas,Hot Air,Public,1237,64,2,1,1.5,6,Yes,2 or fewer
+281,194500,0.61,No,41,32300,No,Yes,Gas,Hot Water,Public,2310,64,4,1,2.5,7,Yes,4 or more
+282,195160,0.32,No,0,35000,No,No,Gas,Hot Air,Public,1863,64,3,1,2.5,9,Yes,3
+283,152500,0.37,No,26,37500,No,Yes,Gas,Hot Air,Public,1693,64,3,1,1.5,8,Yes,3
+284,159500,0.29,No,26,31400,No,Yes,Gas,Hot Air,Public,1684,64,3,1,2.5,4,Yes,3
+285,185000,0.95,No,16,40900,No,Yes,Electric,Electric,Public,1585,64,3,1,1.5,4,Yes,3
+286,240000,0.67,No,8,72400,No,Yes,Gas,Hot Air,Public,2290,64,4,1,3.0,9,Yes,4 or more
+287,187900,0.4,No,32,30000,No,Yes,Gas,Hot Air,Public,2464,64,5,1,2.5,9,Yes,4 or more
+288,262000,0.29,No,5,29000,No,Yes,Gas,Hot Air,Public,2549,64,4,1,2.5,12,Yes,4 or more
+289,212500,0.35,No,6,36500,No,Yes,Gas,Hot Air,Public,2316,64,4,1,2.5,7,Yes,4 or more
+290,220000,0.37,No,18,43000,No,Yes,Gas,Hot Air,Private,2600,64,4,1,2.5,8,Yes,4 or more
+291,245000,0.53,No,15,65800,No,Yes,Gas,Hot Air,Public,2677,64,4,1,2.5,10,Yes,4 or more
+292,120000,0.06,No,19,16400,No,Yes,Electric,Electric,Public,1479,64,3,None,1.5,4,No,3
+293,102500,0.15,No,16,18500,No,Yes,Electric,Electric,Public,1138,64,2,None,1.0,7,No,2 or fewer
+294,136000,0.27,No,24,18900,No,No,Gas,Hot Water,Public,1576,64,3,None,2.5,4,No,3
+295,212500,0.43,No,10,52200,No,Yes,Gas,Hot Air,Public,2084,82,4,1,2.5,9,Yes,4 or more
+296,205900,0.06,No,26,35900,No,Yes,Gas,Hot Air,Public,1726,64,3,1,2.0,8,Yes,3
+297,259900,1.0,No,2,49900,No,Yes,Gas,Hot Air,Private,1851,71,2,2 or more,2.0,4,Yes,2 or fewer
+298,191500,0.46,No,30,27400,No,No,Gas,Hot Air,Public,2310,64,5,1,2.5,12,Yes,4 or more
+299,272500,0.03,No,0,56800,No,No,Gas,Hot Air,Public,2930,64,4,1,2.5,12,Yes,4 or more
+300,191500,0.88,No,33,35900,No,No,Gas,Hot Water,Public,2576,64,4,1,2.5,10,Yes,4 or more
+301,158000,0.55,No,36,30500,No,No,Gas,Hot Water,Public,1664,64,3,1,2.0,8,Yes,3
+302,195000,1.0,No,24,46000,No,No,Electric,Electric,Private,1237,64,2,None,1.5,3,No,2 or fewer
+303,187500,0.43,No,29,31400,No,Yes,Gas,Hot Air,Public,2662,64,5,1,2.5,9,Yes,4 or more
+304,160000,0.45,No,35,32300,No,No,Gas,Hot Air,Public,1575,64,3,1,1.5,7,Yes,3
+305,137500,0.1,No,12,18000,No,Yes,Gas,Hot Air,Public,1566,64,2,None,1.5,7,No,2 or fewer
+306,109900,0.09,No,16,17600,No,Yes,Gas,Hot Air,Public,1326,64,2,1,1.5,4,Yes,2 or fewer
+307,85000,0.09,No,18,17600,No,No,Gas,Hot Water,Public,1480,64,3,None,1.5,8,No,3
+308,184350,0.59,No,0,38400,No,No,Gas,Hot Air,Public,2161,64,4,1,2.5,11,Yes,4 or more
+309,134500,0.16,No,10,18600,No,Yes,Gas,Hot Air,Public,1352,64,2,1,1.5,3,Yes,2 or fewer
+310,154900,0.51,No,33,34600,No,Yes,Gas,Hot Air,Public,1648,64,3,None,1.5,8,No,3
+311,255000,0.46,No,25,60500,No,Yes,Gas,Hot Air,Public,2936,64,3,1,3.5,12,Yes,3
+312,238600,0.46,No,1,36400,No,No,Gas,Hot Air,Public,2404,64,4,1,2.5,10,Yes,4 or more
+313,106000,0.42,No,36,30900,No,No,Gas,Hot Air,Public,1738,64,3,None,1.5,9,No,3
+314,625000,0.45,No,14,119500,No,Yes,Gas,Hot Air,Public,5228,64,4,2 or more,4.0,12,Yes,4 or more
+315,195000,0.55,No,34,30500,No,No,Gas,Hot Water,Public,2576,64,4,1,2.5,12,Yes,4 or more
+316,168500,0.44,No,34,31800,No,No,Gas,Hot Air,Public,1586,64,3,1,1.5,7,Yes,3
+317,87000,0.06,No,19,16400,No,No,Electric,Electric,Public,1480,64,3,None,1.5,5,No,3
+318,215000,0.5,No,15,37000,No,No,Gas,Hot Air,Public,1917,64,4,1,2.5,7,Yes,4 or more
+319,197500,0.3,No,30,24500,No,Yes,Gas,Hot Air,Public,1938,64,3,1,1.5,9,Yes,3
+320,215000,0.33,No,3,11600,No,Yes,Gas,Hot Air,Public,2110,64,4,1,2.5,8,Yes,4 or more
+321,118000,0.14,No,19,18400,No,No,Gas,Hot Air,Public,1479,64,3,None,1.5,5,No,3
+322,187900,0.69,No,34,34700,No,No,Gas,Hot Water,Public,2576,64,5,1,2.5,9,Yes,4 or more
+323,275000,0.38,No,18,60800,No,Yes,Gas,Hot Air,Public,2445,82,4,2 or more,2.5,9,Yes,4 or more
+324,249900,0.74,No,14,73800,No,Yes,Gas,Hot Air,Public,2185,64,3,1,2.5,7,Yes,3
+325,270000,0.38,No,18,82800,No,Yes,Electric,Hot Air,Private,2078,64,4,1,2.5,8,Yes,4 or more
+326,157900,0.38,No,37,29100,No,No,Gas,Hot Air,Public,1674,64,3,1,1.5,5,Yes,3
+327,120000,0.29,No,19,20300,No,No,Electric,Electric,Public,1228,64,4,None,1.5,9,No,4 or more
+328,126400,0.28,No,22,19500,No,Yes,Electric,Electric,Public,1375,64,2,1,1.5,7,Yes,2 or fewer
+329,220000,0.54,No,16,30200,No,Yes,Gas,Hot Air,Public,1650,64,3,1,2.0,5,Yes,3
+330,180000,0.26,No,31,21900,No,Yes,Gas,Hot Air,Public,1718,64,3,1,1.5,9,Yes,3
+331,203600,0.59,No,33,31700,No,No,Gas,Hot Water,Public,2576,64,4,1,2.5,9,Yes,4 or more
+332,249900,0.37,No,4,37500,No,No,Gas,Hot Air,Public,2280,64,4,1,2.5,7,Yes,4 or more
+333,193000,0.4,No,18,25000,No,No,Gas,Hot Water,Public,2088,64,4,1,2.5,10,Yes,4 or more
+334,215000,0.5,No,15,37000,No,No,Gas,Hot Air,Public,1917,64,4,1,2.5,9,Yes,4 or more
+335,201000,0.54,No,29,30200,No,No,Gas,Hot Water,Public,3140,64,5,1,3.5,10,Yes,4 or more
+336,65000,0.22,No,73,6900,No,No,Gas,Hot Air,Private,1029,82,3,None,1.0,4,No,3
+337,195000,0.35,No,36,39800,No,Yes,Gas,Hot Air,Public,1896,64,4,1,2.5,7,Yes,4 or more
+338,215900,0.52,No,38,29600,No,No,Gas,Hot Water,Public,2310,64,5,1,2.5,9,Yes,4 or more
+339,92000,0.31,No,17,19600,No,No,Electric,Electric,Public,924,64,2,1,1.0,6,Yes,2 or fewer
+340,155000,0.38,No,25,38000,No,Yes,Gas,Electric,Public,2080,64,3,1,2.5,9,Yes,3
+341,123500,0.08,No,22,17200,No,Yes,Electric,Electric,Public,1237,64,3,1,1.5,4,Yes,3
+342,110400,0.1,No,29,18000,No,Yes,Gas,Hot Air,Public,1287,64,3,None,1.5,5,No,3
+343,198900,0.44,No,18,33200,No,No,Gas,Hot Water,Public,1847,64,3,1,2.5,7,Yes,3
+344,150000,0.26,No,49,41900,No,Yes,Gas,Hot Air,Private,1064,64,3,None,1.0,8,No,3
+345,104000,0.07,No,18,16800,No,Yes,Gas,Hot Air,Public,1480,64,3,1,1.5,4,Yes,3
+346,245000,0.48,No,23,48500,No,Yes,Gas,Hot Air,Public,2462,64,5,2 or more,3.5,8,Yes,4 or more
+347,180000,0.41,No,17,25400,No,No,Gas,Hot Water,Public,2228,64,3,1,2.5,7,Yes,3
+348,154300,0.42,No,61,14700,No,No,Gas,Hot Water,Private,1260,82,3,None,1.0,8,No,3
+349,170000,0.45,No,30,30000,No,No,Gas,Hot Air,Public,1559,64,4,1,2.5,5,Yes,4 or more
+350,219000,0.6,No,25,71000,No,Yes,Gas,Hot Air,Public,1980,64,4,1,2.5,10,Yes,4 or more
+351,295000,0.95,No,9,78000,No,No,Gas,Hot Air,Private,2380,82,3,1,2.5,6,Yes,3
+352,181500,0.56,No,27,30800,No,No,Gas,Hot Water,Public,1887,64,4,1,2.5,8,Yes,4 or more
+353,260000,1.25,No,133,43500,No,No,Gas,Hot Water,Private,2185,64,4,1,1.5,11,Yes,4 or more
+354,239900,0.7,No,15,69400,No,Yes,Electric,Electric,Public,2488,64,4,1,2.5,7,Yes,4 or more
+355,135500,0.67,No,56,21100,No,No,Gas,Hot Air,Private,1152,64,1,None,2.0,3,No,2 or fewer
+356,191500,0.66,No,15,32100,No,No,Gas,Hot Water,Public,2025,64,4,1,2.5,9,Yes,4 or more
+357,225000,0.62,No,37,32600,No,No,Gas,Hot Water,Public,2521,64,5,1,2.5,12,Yes,4 or more
+358,98500,0.08,No,18,17200,No,Yes,Gas,Hot Air,Public,1480,64,3,None,1.5,4,No,3
+359,110500,0.08,No,17,17200,No,Yes,Gas,Hot Air,Public,1480,64,3,1,1.5,5,Yes,3
+360,290000,0.51,No,7,39100,No,No,Gas,Hot Air,Public,2362,64,4,1,2.5,8,Yes,4 or more
+361,184400,0.28,No,31,23200,No,Yes,Gas,Hot Air,Public,1910,64,3,1,1.5,7,Yes,3
+362,178500,1.0,No,12,32000,No,No,Oil,Hot Air,Private,1952,71,3,2 or more,2.0,9,Yes,3
+363,415000,0.58,No,9,86400,No,Yes,Gas,Hot Air,Public,3358,64,4,1,3.5,12,Yes,4 or more
+364,244900,0.43,No,26,39000,No,Yes,Gas,Hot Air,Public,2090,64,4,1,2.5,7,Yes,4 or more
+365,150000,0.55,No,35,33000,No,Yes,Gas,Hot Air,Public,1965,64,5,1,2.0,11,Yes,4 or more
+366,168000,0.49,No,33,34100,No,Yes,Gas,Hot Air,Public,2110,64,4,1,1.5,9,Yes,4 or more
+367,159000,0.39,No,43,29600,No,No,Gas,Hot Air,Private,1456,64,4,None,2.5,9,No,4 or more
+368,127000,0.06,No,18,16400,No,No,Gas,Hot Air,Public,1479,64,3,None,1.5,7,No,3
+369,175000,0.46,No,29,27400,No,No,Gas,Hot Water,Public,1874,64,4,1,2.5,7,Yes,4 or more
+370,255250,0.5,No,0,17500,No,No,Gas,Hot Air,Public,2099,64,4,1,2.5,8,Yes,4 or more
+371,175000,0.6,No,33,32000,No,No,Gas,Hot Water,Public,1872,64,3,1,2.5,8,Yes,3
+372,235000,0.41,No,17,44300,No,Yes,Electric,Electric,Public,2388,64,4,1,2.5,11,Yes,4 or more
+373,324000,0.53,No,18,65800,No,Yes,Gas,Hot Air,Public,2812,64,4,1,2.5,12,Yes,4 or more
+374,173000,0.21,No,11,19100,No,No,Gas,Hot Air,Public,1064,64,2,1,2.0,4,Yes,2 or fewer
+375,116900,0.06,No,20,16400,No,Yes,Gas,Hot Air,Public,1375,64,2,None,1.5,7,No,2 or fewer
+376,105900,0.09,No,19,17600,No,No,Electric,Hot Air,Public,1480,64,3,None,1.5,5,No,3
+377,112000,0.13,No,25,18300,No,Yes,Gas,Hot Air,Public,1260,64,2,1,1.5,5,Yes,2 or fewer
+378,235000,0.72,No,15,40300,No,Yes,Gas,Hot Air,Public,2086,64,3,1,2.5,5,Yes,3
+379,235000,1.0,No,9,43900,No,No,Oil,Hot Air,Private,2588,64,4,1,2.5,12,Yes,4 or more
+380,130000,0.18,No,18,18800,No,No,Electric,Electric,Public,1480,64,3,None,1.5,4,No,3
+381,235000,0.74,No,10,35700,No,No,Gas,Hot Air,Public,1752,64,3,1,2.5,7,Yes,3
+382,191900,0.48,No,32,28200,No,No,Gas,Hot Water,Public,2660,64,4,1,2.5,11,Yes,4 or more
+383,284900,0.58,No,20,69500,No,Yes,Gas,Hot Air,Public,2417,64,3,1,2.5,9,Yes,3
+384,335000,0.01,No,21,79100,No,Yes,Gas,Hot Air,Public,2793,64,3,1,2.5,7,Yes,3
+385,140000,1.0,No,78,21200,No,No,Oil,Hot Water,Private,1152,64,2,None,1.0,6,No,2 or fewer
+386,191000,0.41,No,29,25400,No,No,Gas,Hot Water,Public,2344,64,4,1,2.5,9,Yes,4 or more
+387,153000,0.51,No,33,34600,No,Yes,Gas,Hot Air,Public,1926,64,4,1,1.5,6,Yes,4 or more
+388,196000,0.55,No,35,34800,No,Yes,Gas,Hot Air,Public,2208,64,4,1,2.5,9,Yes,4 or more
+389,248000,0.46,No,16,60500,No,Yes,Gas,Hot Air,Public,2208,64,3,1,2.5,7,Yes,3
+390,240000,0.6,No,35,32000,No,No,Gas,Hot Water,Public,2708,64,5,2 or more,2.5,12,Yes,4 or more
+391,132000,0.19,No,18,18900,No,Yes,Gas,Hot Air,Public,1142,64,3,None,1.5,6,No,3
+392,199000,1.42,No,32,48300,No,Yes,Gas,Hot Air,Private,2529,64,3,1,2.0,7,Yes,3
+393,217000,0.69,No,20,35500,No,No,Electric,Electric,Private,1797,64,4,None,2.0,9,No,4 or more
+394,167000,0.51,No,31,34600,No,No,Gas,Hot Air,Public,1611,64,3,1,1.5,4,Yes,3
+395,245000,0.29,No,13,31400,No,Yes,Gas,Hot Air,Public,2576,64,4,1,2.5,10,Yes,4 or more
+396,358000,0.06,No,10,79600,No,Yes,Gas,Hot Air,Private,2653,82,4,None,2.5,10,No,4 or more
+397,412500,0.6,No,13,88000,No,Yes,Gas,Hot Water,Public,3896,64,5,2 or more,4.5,12,Yes,4 or more
+398,208000,0.53,No,16,37500,No,Yes,Gas,Hot Air,Public,1585,64,3,1,1.0,6,Yes,3
+399,270000,0.38,No,10,38000,No,Yes,Gas,Hot Air,Public,2774,64,4,1,2.5,8,Yes,4 or more
+400,100000,0.74,No,54,28300,No,No,Gas,Hot Air,Private,1283,64,2,1,1.0,3,Yes,2 or fewer
+401,130000,0.56,No,29,34800,No,No,Oil,Hot Air,Private,1136,64,3,None,1.0,6,No,3
+402,182500,0.71,No,32,35100,No,No,Gas,Hot Water,Public,1896,64,4,1,2.5,6,Yes,4 or more
+403,139000,2.84,No,55,60200,No,No,Gas,Hot Water,Private,1536,64,2,1,1.0,7,Yes,2 or fewer
+404,104000,0.09,No,19,17600,No,No,Electric,Electric,Public,1480,64,3,1,1.5,5,Yes,3
+405,221000,0.52,No,14,37300,No,Yes,Gas,Hot Air,Public,2096,64,4,1,2.5,8,Yes,4 or more
+406,260000,1.0,No,8,40200,No,Yes,Gas,Hot Air,Public,2324,64,4,None,2.5,7,No,4 or more
+407,182500,0.5,No,29,29000,No,No,Gas,Hot Water,Public,2079,64,4,1,2.5,7,Yes,4 or more
+408,196000,0.43,No,33,31400,No,Yes,Gas,Hot Air,Public,1911,64,4,1,1.5,10,Yes,4 or more
+409,132000,0.09,No,18,17600,No,Yes,Gas,Hot Air,Public,1480,64,3,1,1.5,7,Yes,3
+410,224900,0.11,No,25,32900,No,No,Gas,Hot Water,Private,2208,64,4,1,2.5,10,Yes,4 or more
+411,199900,0.24,No,9,28000,No,No,Gas,Hot Air,Public,1462,64,3,None,2.5,7,No,3
+412,165835,0.39,No,38,29600,No,No,Gas,Hot Air,Private,1794,64,4,1,1.5,10,Yes,4 or more
+413,189000,0.8,No,38,35500,No,No,Gas,Hot Water,Public,1886,64,4,1,2.5,9,Yes,4 or more
+414,89900,0.19,No,19,13300,No,No,Electric,Electric,Public,1080,64,3,None,1.5,7,No,3
+415,235000,0.59,No,34,31700,No,Yes,Gas,Hot Water,Public,2576,64,5,1,3.0,11,Yes,4 or more
+416,166000,0.48,No,26,31200,No,No,Gas,Hot Water,Public,1508,64,4,1,1.5,5,Yes,4 or more
+417,153100,0.46,No,35,32700,No,No,Gas,Hot Air,Public,1672,64,4,1,1.0,5,Yes,4 or more
+418,162000,0.4,No,35,30000,No,Yes,Gas,Hot Air,Public,1739,64,4,1,1.5,9,Yes,4 or more
+419,224000,0.52,No,40,29600,No,No,Gas,Hot Water,Private,3074,64,7,1,2.5,12,Yes,4 or more
+420,222400,0.86,No,3,35600,No,No,Gas,Hot Air,Private,1976,64,3,1,2.5,8,Yes,3
+421,199000,0.46,No,37,27400,No,No,Gas,Hot Water,Public,2302,64,4,1,2.5,8,Yes,4 or more
+422,166000,0.95,No,13,9500,No,Yes,Gas,Hot Air,Private,1480,51,3,1,2.0,4,Yes,3
+423,149900,0.63,No,11,17900,No,No,Gas,Hot Water,Public,960,54,2,None,2.0,5,No,2 or fewer
+424,152000,0.42,No,16,17400,No,No,Electric,Electric,Private,1582,36,3,None,1.5,8,No,3
+425,162500,0.34,No,154,11900,No,No,Oil,Hot Air,Public,1600,54,4,None,1.0,7,No,4 or more
+426,274900,0.5,No,5,4000,No,No,Gas,Hot Air,Public,2320,54,4,None,2.5,9,No,4 or more
+427,100000,0.2,No,14,7200,No,No,Gas,Hot Water,Public,1034,54,2,None,1.5,5,No,2 or fewer
+428,215000,2.96,No,19,11000,No,No,Electric,Electric,Private,1488,57,3,None,1.5,8,No,3
+429,124000,1.0,No,17,3500,No,No,Electric,Electric,Private,1056,57,3,None,1.0,8,No,3
+430,125000,1.0,No,128,16200,No,No,Oil,Hot Air,Private,864,57,3,None,1.0,6,No,3
+431,138000,1.0,No,19,17600,No,No,Electric,Electric,Private,1552,57,3,1,2.0,4,Yes,3
+432,225000,0.52,No,11,18200,No,No,Gas,Hot Air,Public,1816,57,3,1,1.5,6,Yes,3
+433,180000,0.48,No,20,12500,No,Yes,Gas,Hot Air,Private,1530,57,3,1,2.0,6,Yes,3
+434,189900,0.33,No,14,11900,No,Yes,Gas,Hot Air,Public,1756,54,4,None,2.0,8,No,4 or more
+435,435000,1.0,No,25,25000,No,No,Gas,Hot Water,Private,4211,57,5,2 or more,3.5,12,Yes,4 or more
+436,120000,2.6,No,10,20200,No,No,Oil,Hot Air,Private,2206,57,3,1,2.5,7,Yes,3
+437,163000,0.15,Yes,64,36000,No,No,Oil,Hot Air,Public,1092,36,2,None,1.0,6,No,2 or fewer
+438,131000,2.8,No,114,28300,No,No,Oil,Hot Water,Private,1594,36,7,None,1.0,10,No,4 or more
+439,126500,0.08,No,15,2100,No,No,Gas,Hot Air,Public,1480,54,3,1,2.5,8,Yes,3
+440,122500,0.14,No,15,3200,No,Yes,Gas,Hot Air,Public,1480,54,3,1,1.5,4,Yes,3
+441,425000,0.46,No,88,19700,No,Yes,Gas,Hot Air,Private,3003,57,4,1,3.5,12,Yes,4 or more
+442,225000,0.63,No,54,9500,No,No,Oil,Hot Water,Private,2164,57,2,None,1.5,7,No,2 or fewer
+443,209000,3.8,No,19,14400,No,No,Oil,Hot Water,Private,1519,57,2,None,1.0,3,No,2 or fewer
+444,189100,0.46,No,15,15700,No,Yes,Oil,Hot Air,Private,1604,57,3,1,2.5,4,Yes,3
+445,285000,0.98,No,25,15900,No,No,Electric,Electric,Private,1400,57,3,1,2.0,5,Yes,3
+446,266600,1.0,No,12,20300,No,No,Gas,Hot Air,Private,1752,57,4,None,1.0,7,No,4 or more
+447,80000,1.0,No,32,20300,No,No,Electric,Electric,Private,880,57,2,None,1.5,6,No,2 or fewer
+448,225000,6.07,No,14,25700,No,No,Oil,Hot Air,Private,1240,57,3,None,2.0,5,No,3
+449,159000,0.03,No,17,18800,No,No,Gas,Hot Air,Private,1514,36,3,1,1.5,8,Yes,3
+450,119900,0.18,No,2,15000,No,Yes,Gas,Hot Air,Public,840,36,1,None,1.0,6,No,2 or fewer
+451,130900,0.11,No,1,15000,No,Yes,Gas,Hot Air,Public,840,36,2,None,1.0,3,No,2 or fewer
+452,194670,0.28,No,124,7400,No,No,Gas,Hot Air,Public,2592,36,4,None,1.5,12,No,4 or more
+453,72000,0.18,No,121,7300,No,No,Gas,Hot Air,Public,1010,36,3,None,1.0,7,No,3
+454,144700,0.16,No,2,15000,No,No,Gas,Hot Air,Public,1380,36,3,None,1.5,6,No,3
+455,139500,0.15,No,3,15000,No,Yes,Gas,Hot Air,Public,1366,36,3,None,1.5,8,No,3
+456,319000,0.5,Yes,5,40200,No,Yes,Gas,Hot Air,Public,1681,57,3,1,2.5,4,Yes,3
+457,348000,3.68,No,14,27200,No,No,Oil,Hot Water,Private,2037,36,3,1,2.0,9,Yes,3
+458,189900,0.98,No,16,11200,No,No,Oil,Hot Water,Private,2570,36,3,None,1.5,10,No,3
+459,20000,0.52,No,59,8000,No,No,Oil,Hot Air,Private,936,20,2,None,1.0,4,No,2 or fewer
+460,60000,0.01,No,13,1200,No,No,Gas,Hot Water,Public,960,41,2,None,1.5,7,No,2 or fewer
+461,179500,0.91,No,11,3200,No,No,Oil,Hot Air,Private,1352,30,3,1,1.5,5,Yes,3
+462,133300,0.34,No,118,6200,No,No,Gas,Hot Water,Public,1060,41,4,None,1.0,8,No,4 or more
+463,153000,2.06,No,6,40100,No,No,Oil,Hot Air,Private,1508,30,3,None,2.0,5,No,3
+464,111900,0.35,No,54,19600,No,No,Oil,Hot Air,Private,1272,60,4,1,1.5,9,Yes,4 or more
+465,187000,0.47,No,18,18800,No,No,Oil,Hot Water,Private,2389,27,6,None,3.0,11,No,4 or more
+466,158500,0.7,No,17,28800,No,No,Gas,Hot Air,Private,1210,60,2,1,1.0,4,Yes,2 or fewer
+467,153000,0.39,No,52,21800,No,No,Oil,Hot Air,Private,1230,60,3,1,1.0,6,Yes,3
+468,190000,0.52,No,47,28100,No,No,Oil,Hot Air,Private,1832,60,4,1,2.0,8,Yes,4 or more
+469,242000,1.27,No,27,34200,No,No,Oil,Hot Water,Private,1854,60,3,1,1.5,8,Yes,3
+470,234500,2.0,No,164,40000,No,No,Oil,Hot Air,Private,2268,60,3,None,2.5,10,No,3
+471,225000,0.68,No,29,28700,No,No,Oil,Hot Air,Private,1807,60,3,1,1.5,8,Yes,3
+472,165000,0.38,No,48,21300,No,No,Gas,Hot Air,Private,1272,60,4,1,1.5,5,Yes,4 or more
+473,129900,0.28,No,12,4800,No,Yes,Gas,Hot Air,Public,1560,47,3,1,1.0,8,Yes,3
+474,315000,0.07,No,15,200,No,Yes,Gas,Hot Air,Public,1863,47,3,1,3.5,7,Yes,3
+475,129900,0.24,Yes,64,1400,No,No,Oil,Hot Air,Private,1120,47,2,None,1.0,3,No,2 or fewer
+476,257000,0.26,No,15,700,No,Yes,Gas,Hot Air,Public,1832,47,2,1,2.5,8,Yes,2 or fewer
+477,324000,3.64,No,0,7400,No,Yes,Oil,Hot Air,Public,2092,47,4,1,2.5,8,Yes,4 or more
+478,520000,0.41,No,13,3100,No,No,Oil,Hot Air,Public,2702,47,3,1,2.5,11,Yes,3
+479,150414,0.46,No,32,5800,No,No,Oil,Hot Water,Public,1040,47,3,1,1.5,5,Yes,3
+480,290000,0.15,No,13,400,No,Yes,Gas,Hot Air,Public,1758,47,2,1,2.5,6,Yes,2 or fewer
+481,112000,0.16,No,116,6800,No,No,Oil,Hot Air,Public,2326,27,3,None,2.0,7,No,3
+482,185000,1.0,No,13,13700,No,No,Electric,Electric,Private,2340,27,3,None,1.5,8,No,3
+483,295000,2.61,No,1,15700,No,No,Oil,Hot Water,Private,2058,27,3,1,2.5,9,Yes,3
+484,290000,1.0,Yes,33,21700,No,No,Oil,Hot Air,Private,944,27,1,1,1.0,4,Yes,2 or fewer
+485,79900,0.19,No,44,9100,No,No,Electric,Electric,Private,640,20,2,None,1.0,6,No,2 or fewer
+486,256000,0.83,No,6,14700,No,Yes,Gas,Hot Air,Private,2353,60,4,1,2.5,8,Yes,4 or more
+487,245000,1.0,No,7,17800,No,No,Gas,Hot Water,Private,2038,54,4,1,2.5,7,Yes,4 or more
+488,140000,0.42,No,32,18500,No,Yes,Gas,Hot Air,Private,1469,60,4,None,1.5,9,No,4 or more
+489,272000,0.87,No,10,41100,No,No,Gas,Hot Air,Public,2219,63,3,1,2.0,10,Yes,3
+490,164000,0.68,No,16,19900,No,No,Gas,Hot Air,Public,1774,54,4,None,2.0,7,No,4 or more
+491,182500,0.38,No,51,14600,No,Yes,Oil,Hot Air,Private,1296,60,4,1,2.0,9,Yes,4 or more
+492,219900,1.1,No,124,20100,No,No,Oil,Hot Water,Private,2289,60,4,1,1.5,9,Yes,4 or more
+493,325000,0.8,No,134,18100,No,No,Gas,Hot Air,Private,2463,60,5,2 or more,2.5,12,Yes,4 or more
+494,352000,0.95,No,2,49200,No,Yes,Oil,Hot Air,Private,3126,54,4,None,2.5,12,No,4 or more
+495,315000,4.1,No,15,26600,No,No,Oil,Hot Water,Private,2550,54,3,None,2.5,7,No,3
+496,154000,0.34,No,49,13100,No,Yes,Oil,Hot Air,Private,1182,60,2,None,1.0,6,No,2 or fewer
+497,199000,0.09,No,48,15800,No,Yes,Oil,Hot Air,Private,1890,60,4,1,2.0,7,Yes,4 or more
+498,202000,1.0,No,12,500,No,No,Oil,Hot Air,None,1944,36,3,1,2.5,7,Yes,3
+499,292000,0.57,No,6,15000,No,No,Gas,Hot Air,Public,2815,57,4,1,2.5,10,Yes,4 or more
+500,116600,1.0,No,11,34900,No,No,Electric,Electric,Private,1040,57,3,1,2.0,7,Yes,3
+501,155000,0.48,No,25,14400,No,No,Oil,Hot Air,Private,1638,57,4,None,2.0,5,No,4 or more
+502,215000,0.14,No,13,21100,No,No,Gas,Hot Air,Private,2206,57,4,1,2.5,9,Yes,4 or more
+503,373490,0.19,No,0,74800,Yes,No,Gas,Hot Air,Public,3170,57,4,1,3.5,12,Yes,4 or more
+504,259142,0.5,No,0,74800,Yes,Yes,Gas,Hot Air,Public,2328,57,4,1,2.5,10,Yes,4 or more
+505,293565,0.35,No,0,74800,Yes,No,Gas,Hot Air,Public,2737,57,4,1,3.0,8,Yes,4 or more
+506,285558,0.21,No,0,32000,Yes,No,Gas,Hot Air,Public,2879,54,4,None,3.0,8,No,4 or more
+507,273960,3.47,No,1,20300,Yes,Yes,Gas,Hot Air,Private,2158,54,3,1,2.0,10,Yes,3
+508,185000,0.55,No,11,19300,No,Yes,Gas,Hot Air,Public,1336,57,3,1,2.0,7,Yes,3
+509,190000,0.53,No,4,4200,No,No,Gas,Hot Air,Public,1594,54,3,None,2.5,6,No,3
+510,171000,0.54,No,11,18900,No,Yes,Gas,Hot Air,Public,1603,57,3,None,1.5,4,No,3
+511,208000,0.54,No,11,18900,No,Yes,Gas,Hot Air,Public,2190,57,4,None,2.5,11,No,4 or more
+512,168000,0.32,No,10,10700,No,Yes,Gas,Hot Air,Public,1478,54,3,1,2.5,5,Yes,3
+513,165000,0.25,No,10,8400,No,Yes,Gas,Hot Air,Public,1348,54,2,None,2.0,7,No,2 or fewer
+514,138500,0.32,No,36,8000,No,Yes,Gas,Hot Air,Private,1558,54,3,1,1.0,6,Yes,3
+515,179900,0.5,No,13,18300,No,No,Gas,Hot Air,Public,1574,54,3,1,1.5,7,Yes,3
+516,180000,0.04,No,13,16500,No,Yes,Gas,Hot Air,Public,1612,54,4,None,2.0,7,No,4 or more
+517,112000,0.21,No,129,7300,No,No,Gas,Hot Water,Public,1216,54,3,None,1.0,7,No,3
+518,152000,0.17,No,124,6000,No,Yes,Gas,Hot Air,Public,2256,54,4,None,1.5,8,No,4 or more
+519,100000,0.51,No,28,15000,No,No,Oil,Hot Air,Private,1170,54,3,1,1.5,4,Yes,3
+520,154000,0.17,No,29,4600,No,No,Oil,Hot Air,Public,1456,57,3,None,2.0,6,No,3
+521,133000,0.11,No,29,3900,No,No,Electric,Electric,Public,1320,57,3,None,3.0,5,No,3
+522,285000,0.14,No,14,20700,No,Yes,Gas,Hot Air,Private,2076,57,4,1,2.5,10,Yes,4 or more
+523,138000,1.0,No,22,16800,No,No,Electric,Electric,Private,1326,57,3,None,2.0,5,No,3
+524,303000,0.18,No,20,20900,No,No,Electric,Electric,Private,2240,57,4,1,2.5,10,Yes,4 or more
+525,250000,1.29,No,19,21600,No,Yes,Gas,Hot Air,Private,2100,57,4,1,3.0,7,Yes,4 or more
+526,167500,1.0,No,27,8300,No,No,Oil,Hot Air,Private,1129,38,2,None,1.0,7,No,2 or fewer
+527,190000,0.6,No,19,16000,No,Yes,Gas,Hot Air,Private,2296,57,4,1,2.5,7,Yes,4 or more
+528,182500,0.46,No,20,13800,No,No,Gas,Hot Air,Private,1475,57,3,1,2.0,8,Yes,3
+529,107000,1.03,No,20,20100,No,No,Gas,Hot Air,Private,1268,57,3,1,1.0,6,Yes,3
+530,195000,0.47,No,15,14100,No,No,Gas,Hot Air,Private,1816,57,3,1,2.0,7,Yes,3
+531,169000,0.5,No,30,15000,No,No,Gas,Hot Water,Private,1632,57,4,1,2.5,8,Yes,4 or more
+532,156000,0.26,No,11,8700,No,No,Gas,Hot Air,Public,1254,54,2,None,1.5,5,No,2 or fewer
+533,120000,0.49,No,30,64400,No,No,Gas,Hot Air,Public,1272,57,3,None,1.0,4,No,3
+534,170000,0.28,No,29,80800,No,Yes,Gas,Hot Air,Public,1604,57,4,None,1.5,6,No,4 or more
+535,249835,0.52,No,0,77000,No,Yes,Gas,Hot Air,Public,2474,57,4,1,2.5,11,Yes,4 or more
+536,188095,0.15,No,0,36000,No,Yes,Gas,Hot Air,Public,2057,57,3,1,2.5,9,Yes,3
+537,176450,0.05,No,6,32000,No,Yes,Electric,Electric,Public,1852,57,3,None,2.5,8,No,3
+538,322277,0.09,No,1,51400,No,Yes,Gas,Hot Air,Public,2242,57,3,None,3.0,8,No,3
+539,149000,0.49,No,32,64400,No,No,Gas,Hot Air,Public,1564,57,4,1,1.5,9,Yes,4 or more
+540,95000,0.19,No,24,39200,No,No,Electric,Electric,Private,960,57,3,None,1.0,6,No,3
+541,198500,0.1,No,63,85000,No,Yes,Gas,Hot Air,Public,1680,57,2,None,2.5,7,No,2 or fewer
+542,185000,0.03,No,3,27000,No,Yes,Gas,Hot Air,Public,1428,57,2,1,2.5,6,Yes,2 or fewer
+543,168900,0.16,No,0,36800,No,Yes,Gas,Hot Air,Public,1672,57,3,None,2.5,7,No,3
+544,220000,0.28,No,29,80800,No,Yes,Gas,Hot Air,Public,2284,57,3,1,1.5,6,Yes,3
+545,129900,0.32,No,31,54200,No,Yes,Gas,Hot Air,Public,1286,57,3,1,1.0,4,Yes,3
+546,167000,0.23,No,53,73000,No,No,Gas,Hot Water,Public,1250,57,3,None,1.0,4,No,3
+547,330000,0.12,No,113,51300,No,No,Oil,Hot Water,Public,1896,57,4,None,1.5,8,No,4 or more
+548,336000,0.15,No,1,61000,No,Yes,Gas,Hot Air,Public,2592,57,3,None,3.0,10,No,3
+549,512971,0.01,No,0,12500,No,Yes,Gas,Hot Air,Public,1904,57,2,1,2.0,8,Yes,2 or fewer
+550,229000,0.29,No,3,46400,No,Yes,Gas,Hot Air,Public,1680,57,3,None,2.0,6,No,3
+551,145000,0.16,No,38,54900,No,No,Gas,Hot Air,Public,1152,57,2,1,1.0,7,Yes,2 or fewer
+552,103000,0.07,No,16,46600,No,Yes,Electric,Electric,Public,1290,57,3,1,1.5,5,Yes,3
+553,210000,0.17,No,93,55800,No,No,Gas,Hot Air,Public,2396,57,4,1,1.5,11,Yes,4 or more
+554,559000,0.24,No,55,255000,No,Yes,Gas,Hot Water,Public,3090,57,4,2 or more,4.0,12,Yes,4 or more
+555,218000,0.21,No,142,107000,No,No,Oil,Hot Water,Public,1428,57,3,None,1.0,8,No,3
+556,262138,0.15,No,0,114000,No,Yes,Gas,Hot Air,Public,1631,57,3,1,2.5,4,Yes,3
+557,125000,0.24,No,33,49100,No,No,Gas,Hot Air,Public,1368,57,3,None,1.0,7,No,3
+558,130000,0.16,No,36,54900,No,No,Gas,Hot Air,Public,1134,57,3,None,1.0,4,No,3
+559,157500,0.3,No,27,84600,No,Yes,Gas,Hot Air,Public,1697,57,3,1,1.5,6,Yes,3
+560,193000,0.3,No,6,47000,No,Yes,Gas,Hot Air,Public,1666,57,3,1,2.5,4,Yes,3
+561,275000,0.12,No,78,89000,No,Yes,Oil,Hot Water,Public,1738,57,4,1,2.5,6,Yes,4 or more
+562,240000,0.15,No,103,210000,No,No,Gas,Hot Water,Public,1457,57,2,None,1.5,7,No,2 or fewer
+563,200136,0.15,No,0,54000,No,Yes,Gas,Hot Air,Public,1632,57,3,1,2.5,7,Yes,3
+564,395000,1.4,No,12,128500,No,Yes,Gas,Hot Air,None,2186,57,3,None,2.5,6,No,3
+565,366703,0.15,No,0,95000,No,Yes,Electric,Hot Air,Public,2117,57,3,1,2.5,6,Yes,3
+566,103150,0.25,No,32,50000,No,No,Gas,Hot Air,Public,936,57,3,1,1.0,8,Yes,3
+567,310000,0.17,No,169,220000,No,No,Gas,Hot Water,Public,3347,57,6,2 or more,2.5,12,Yes,4 or more
+568,142900,0.36,No,32,50600,No,Yes,Gas,Hot Air,Public,1824,57,4,1,2.5,10,Yes,4 or more
+569,359770,0.16,No,1,62600,No,Yes,Gas,Hot Air,Public,2592,57,3,None,3.0,8,No,3
+570,126000,0.68,No,64,84200,No,No,Oil,Hot Air,Private,1080,57,2,None,1.0,7,No,2 or fewer
+571,760000,1.22,No,2,194700,No,Yes,Gas,Hot Air,Private,3148,57,5,None,3.5,12,No,4 or more
+572,282500,0.25,No,150,115000,No,No,Gas,Hot Water,Public,2128,57,3,1,1.5,8,Yes,3
+573,132000,0.06,No,18,28800,No,No,Gas,Hot Air,Public,1616,57,3,None,1.5,8,No,3
+574,325000,0.23,No,5,73800,No,Yes,Gas,Hot Air,Public,3313,57,4,1,2.5,12,Yes,4 or more
+575,207000,0.48,No,25,57800,No,No,Gas,Hot Water,Public,2327,57,3,1,1.5,10,Yes,3
+576,155000,0.24,No,32,49100,No,Yes,Gas,Hot Air,Public,1640,57,4,1,1.5,7,Yes,4 or more
+577,330000,0.12,No,73,89000,No,No,Gas,Hot Water,Public,1421,57,3,None,1.5,5,No,3
+578,101760,0.15,No,103,54000,No,No,Gas,Hot Water,Public,1280,57,2,1,1.0,3,Yes,2 or fewer
+579,496000,0.34,No,3,82400,No,Yes,Gas,Hot Air,Public,3467,57,4,1,2.5,11,Yes,4 or more
+580,185000,0.11,No,83,87000,No,No,Gas,Hot Water,Public,1250,57,3,None,1.5,5,No,3
+581,125000,0.25,No,33,50000,No,No,Gas,Hot Air,Public,1368,57,3,None,1.0,5,No,3
+582,286000,0.13,No,1,110200,No,No,Gas,Hot Air,Public,1396,57,3,None,2.5,8,No,3
+583,269000,0.04,No,15,36000,No,Yes,Gas,Hot Air,Public,2004,57,3,1,2.5,8,Yes,3
+584,303374,0.12,No,1,56200,No,Yes,Gas,Hot Air,Public,2242,57,3,None,3.0,6,No,3
+585,371165,0.39,No,0,85400,No,No,Gas,Hot Air,Public,2786,57,4,1,2.5,8,Yes,4 or more
+586,287600,0.07,No,0,48200,No,Yes,Gas,Hot Air,Public,2242,57,3,None,2.5,6,No,3
+587,131000,0.34,No,33,55400,No,No,Gas,Hot Air,Public,1404,57,3,None,1.0,6,No,3
+588,187000,1.0,No,25,98500,No,Yes,Gas,Hot Air,Private,1600,57,3,1,1.5,7,Yes,3
+589,169000,0.04,No,103,36000,No,No,Gas,Hot Air,Public,1408,57,2,None,1.0,3,No,2 or fewer
+590,133500,0.21,No,37,59400,No,No,Gas,Hot Air,Public,972,57,3,None,1.0,8,No,3
+591,620000,1.06,No,14,125100,No,Yes,Oil,Hot Air,Private,4856,57,5,2 or more,4.0,12,Yes,4 or more
+592,549254,0.25,No,0,63000,No,Yes,Gas,Hot Air,Public,2885,57,3,1,2.5,11,Yes,3
+593,280000,0.09,No,82,83000,No,No,Gas,Hot Air,Public,1560,57,2,None,1.0,6,No,2 or fewer
+594,135000,0.26,No,33,50600,No,No,Gas,Hot Air,Public,1472,57,3,None,1.0,8,No,3
+595,195388,0.14,No,0,35200,No,Yes,Gas,Hot Air,Public,2124,57,3,1,2.5,10,Yes,3
+596,337020,0.15,No,1,114000,No,Yes,Gas,Hot Air,Public,2162,57,3,1,2.5,7,Yes,3
+597,330850,0.46,No,0,89600,No,No,Gas,Hot Air,Public,2515,57,4,1,2.5,8,Yes,4 or more
+598,248495,0.63,No,0,98500,No,Yes,Gas,Hot Air,Public,2294,57,4,1,2.5,11,Yes,4 or more
+599,120000,0.26,No,123,63300,No,No,Gas,Hot Air,Public,1744,57,4,None,1.0,6,No,4 or more
+600,240000,0.48,No,0,90800,No,Yes,Gas,Hot Air,Public,2022,57,3,1,2.5,8,Yes,3
+601,235000,0.22,No,34,72000,No,Yes,Gas,Hot Water,Public,1578,57,3,None,2.0,8,No,3
+602,500075,0.91,Yes,0,239300,No,Yes,Gas,Hot Air,Public,3400,57,3,None,3.0,12,No,3
+603,240000,0.07,No,13,48200,No,Yes,Gas,Hot Air,Public,1744,57,3,1,2.5,6,Yes,3
+604,270000,0.46,No,0,89600,No,Yes,Gas,Hot Air,Public,2560,57,3,1,2.5,9,Yes,3
+605,225000,0.12,No,51,89000,No,Yes,Gas,Hot Air,Public,1398,57,3,None,2.5,4,No,3
+606,280000,0.16,No,0,62600,No,Yes,Gas,Hot Air,Public,2494,57,3,None,2.5,8,No,3
+607,225000,0.48,No,27,57800,No,Yes,Gas,Hot Air,Public,2208,57,4,2 or more,2.5,11,Yes,4 or more
+608,248220,0.46,No,0,89600,No,Yes,Gas,Hot Air,Public,2550,57,3,1,2.5,7,Yes,3
+609,275000,0.03,No,16,27000,No,Yes,Gas,Hot Air,Public,1812,57,2,1,2.5,7,Yes,2 or fewer
+610,137000,0.12,No,50,89000,No,No,Gas,Hot Water,Public,1290,57,2,None,1.0,3,No,2 or fewer
+611,150000,0.14,No,16,52200,No,No,Gas,Hot Air,Public,1172,57,2,None,2.0,3,No,2 or fewer
+612,649000,1.04,No,10,192900,No,Yes,Gas,Hot Air,Private,4128,57,3,2 or more,3.5,12,Yes,3
+613,195000,0.49,No,17,64400,No,Yes,Electric,Electric,Public,1816,57,3,1,2.5,5,Yes,3
+614,373200,0.65,No,4,99500,No,No,Gas,Hot Air,Public,2628,57,4,1,2.5,8,Yes,4 or more
+615,169450,0.15,No,0,36000,No,Yes,Gas,Hot Air,Public,1254,57,3,1,2.5,4,Yes,3
+616,144200,0.15,No,113,54000,No,No,Gas,Hot Air,Public,1660,57,4,1,1.5,9,Yes,4 or more
+617,189900,0.5,No,43,73500,No,No,Gas,Hot Air,Public,1850,57,3,1,1.5,7,Yes,3
+618,166000,0.14,No,0,35200,No,Yes,Gas,Hot Air,Public,1258,57,3,None,2.0,8,No,3
+619,160000,0.23,No,0,42400,No,Yes,Gas,Hot Air,Public,1219,57,3,None,2.0,5,No,3
+620,327355,0.14,No,14,59400,No,Yes,Gas,Hot Air,Public,1850,57,3,1,2.5,6,Yes,3
+621,247000,0.29,No,9,52400,No,No,Gas,Hot Air,Public,2103,57,3,None,2.5,7,No,3
+622,318000,0.23,No,3,73800,No,Yes,Gas,Hot Air,Public,1806,57,3,1,2.5,8,Yes,3
+623,341000,0.23,No,52,250000,No,No,Gas,Hot Water,Public,1674,57,2,1,1.5,4,Yes,2 or fewer
+624,288650,0.08,No,0,49800,No,Yes,Gas,Hot Air,Public,2242,57,3,None,2.5,10,No,3
+625,157000,0.03,No,103,27000,No,No,Gas,Hot Air,Public,1408,57,3,None,1.5,4,No,3
+626,449000,1.0,No,20,124800,No,Yes,Electric,Electric,Private,3457,57,3,2 or more,2.5,12,Yes,3
+627,142000,0.16,No,28,50400,No,No,Gas,Hot Air,Public,1728,57,3,None,1.5,6,No,3
+628,389000,1.0,No,16,125900,No,Yes,Electric,Electric,Private,2354,57,3,2 or more,2.5,6,Yes,3
+629,476000,0.42,No,4,87200,No,Yes,Gas,Hot Air,Public,2246,57,3,1,2.5,9,Yes,3
+630,249230,0.18,No,0,119700,No,Yes,Gas,Hot Air,Public,1902,57,2,1,2.5,4,Yes,2 or fewer
+631,139900,0.3,No,30,53000,No,No,Gas,Hot Air,Public,1178,57,3,None,1.0,7,No,3
+632,301900,0.73,No,0,103500,No,Yes,Gas,Hot Air,Public,2896,57,4,1,3.5,11,Yes,4 or more
+633,425000,1.03,No,24,124800,No,Yes,Gas,Hot Air,Public,2457,57,3,1,3.0,9,Yes,3
+634,121000,0.25,No,32,50000,No,No,Gas,Hot Air,Public,936,57,3,None,1.0,8,No,3
+635,150000,0.19,No,123,103000,No,No,Gas,Hot Water,Public,934,57,2,None,1.0,7,No,2 or fewer
+636,138000,0.29,No,30,52400,No,No,Gas,Hot Air,Public,1279,57,3,1,1.0,6,Yes,3
+637,199900,0.39,No,6,69400,No,No,Gas,Hot Water,Private,1888,57,3,None,2.0,5,No,3
+638,145000,0.27,No,33,63700,No,No,Gas,Hot Air,Public,1686,57,4,1,1.5,7,Yes,4 or more
+639,465000,0.25,No,22,61000,No,Yes,Gas,Hot Air,Public,2310,57,2,1,3.0,7,Yes,2 or fewer
+640,158000,0.32,No,1,48200,No,Yes,Gas,Hot Air,Public,1200,57,3,None,1.5,4,No,3
+641,375000,0.27,No,50,78800,No,Yes,Gas,Hot Air,Public,1944,57,3,1,2.5,7,Yes,3
+642,147783,0.36,No,51,50600,No,No,Electric,Electric,Private,1184,57,3,None,1.0,5,No,3
+643,339000,0.36,No,3,83600,No,Yes,Gas,Hot Air,Public,2000,57,3,1,2.5,5,Yes,3
+644,267000,0.07,No,14,48200,No,Yes,Gas,Hot Air,Public,1744,57,3,1,2.5,9,Yes,3
+645,290000,0.12,No,3,108300,No,Yes,Gas,Hot Air,Public,1620,57,3,1,2.5,7,Yes,3
+646,271295,0.35,No,1,67000,No,Yes,Gas,Hot Air,Public,2359,57,4,None,2.5,11,No,4 or more
+647,278140,0.62,No,1,98000,No,Yes,Gas,Hot Air,Public,2230,57,3,None,2.5,10,No,3
+648,138000,0.07,No,94,46800,No,No,Gas,Hot Air,Public,1147,57,2,None,1.5,3,No,2 or fewer
+649,367500,0.27,No,2,78200,No,Yes,Gas,Hot Air,Public,2205,57,3,1,2.5,10,Yes,3
+650,428500,0.42,No,4,87200,No,Yes,Gas,Hot Air,Public,3243,57,4,None,2.5,11,No,4 or more
+651,140000,0.48,No,34,57800,No,No,Gas,Hot Air,Public,1431,57,3,None,1.5,5,No,3
+652,140000,0.36,No,35,56600,No,No,Gas,Hot Air,Public,936,57,3,None,1.0,7,No,3
+653,145000,0.3,No,33,53000,No,Yes,Gas,Hot Air,Public,1368,57,3,None,1.5,7,No,3
+654,280000,0.07,No,16,48200,No,Yes,Electric,Hot Air,Public,1800,57,3,1,2.5,8,Yes,3
+655,190400,0.17,No,16,49500,No,No,Gas,Hot Air,Public,1920,57,3,1,1.5,9,Yes,3
+656,267000,0.11,No,83,87000,No,No,Gas,Hot Water,Public,1416,57,3,None,2.0,7,No,3
+657,164900,0.14,No,77,93000,No,No,Gas,Hot Air,Public,616,57,2,None,1.0,5,No,2 or fewer
+658,280000,0.1,No,79,85000,No,No,Gas,Hot Air,Public,1488,57,4,None,1.5,5,No,4 or more
+659,225000,0.11,No,84,87000,No,No,Oil,Hot Air,Public,1320,57,3,1,1.5,6,Yes,3
+660,148000,0.06,No,18,45800,No,Yes,Gas,Hot Air,Public,1250,57,2,None,1.5,5,No,2 or fewer
+661,165000,0.32,No,32,54200,No,Yes,Gas,Hot Air,Public,1286,57,3,1,1.0,6,Yes,3
+662,340455,0.38,No,0,84800,No,Yes,Gas,Hot Air,Public,2886,57,4,1,2.5,10,Yes,4 or more
+663,133000,0.42,No,36,60200,No,No,Gas,Hot Air,Public,1279,57,3,1,1.0,4,Yes,3
+664,115540,0.2,No,104,56700,No,No,Gas,Hot Air,Public,1074,57,3,None,1.0,7,No,3
+665,240000,0.58,No,52,78300,No,No,Gas,Hot Water,Private,1304,57,3,1,1.0,4,Yes,3
+666,600000,0.04,No,17,36000,No,Yes,Gas,Hot Air,Public,3191,57,3,2 or more,3.5,12,Yes,3
+667,71500,0.3,No,44,64700,No,No,Gas,Hot Water,Public,1056,57,3,None,1.0,5,No,3
+668,189900,0.03,No,18,19200,No,Yes,Gas,Hot Air,Public,1468,57,3,1,2.5,4,Yes,3
+669,325000,0.08,No,115,81000,No,No,Gas,Hot Water,Public,1598,57,3,None,1.5,6,No,3
+670,280000,0.14,No,84,93000,No,No,Gas,Hot Water,Public,1160,57,3,None,1.5,4,No,3
+671,255000,0.12,No,104,89000,No,No,Gas,Hot Air,Public,1028,57,2,None,1.0,5,No,2 or fewer
+672,300000,0.2,No,104,105000,No,No,Gas,Hot Water,Public,2014,57,6,None,1.0,11,No,4 or more
+673,106000,0.48,No,34,63800,No,No,Gas,Hot Air,Public,1296,57,3,None,1.0,7,No,3
+674,139000,0.27,No,56,62500,No,No,Gas,Hot Air,Public,932,57,2,None,1.0,3,No,2 or fewer
+675,165000,0.06,No,15,45800,No,No,Gas,Hot Air,Public,1290,57,3,1,1.5,5,Yes,3
+676,169000,0.17,No,19,37600,No,No,Gas,Hot Air,Public,1448,57,2,None,1.5,5,No,2 or fewer
+677,159400,0.24,No,29,49100,No,No,Gas,Hot Air,Public,1368,57,3,None,1.0,5,No,3
+678,300000,0.87,No,25,90800,No,No,Gas,Hot Water,Private,3046,57,4,1,1.5,11,Yes,4 or more
+679,161000,0.23,No,32,48200,No,No,Gas,Hot Air,Public,1272,57,3,None,1.5,8,No,3
+680,230500,0.59,No,18,69500,No,Yes,Gas,Hot Air,Public,1822,57,4,None,2.5,6,No,4 or more
+681,220000,0.41,No,31,105700,No,Yes,Gas,Hot Air,Public,1579,57,4,None,1.5,6,No,4 or more
+682,177900,0.29,No,32,52400,No,No,Gas,Hot Air,Public,1660,57,4,1,1.5,7,Yes,4 or more
+683,350000,0.32,No,36,144900,No,No,Oil,Hot Water,Public,2452,57,3,1,2.5,10,Yes,3
+684,335000,0.14,No,94,50200,No,Yes,Gas,Hot Air,Public,2004,57,3,None,2.0,9,No,3
+685,597185,1.07,No,0,193200,No,Yes,Gas,Hot Air,Private,4210,57,4,1,3.5,12,Yes,4 or more
+686,173000,0.33,No,32,54800,No,Yes,Gas,Hot Air,Public,1640,57,4,None,1.5,9,No,4 or more
+687,518000,0.17,No,144,99000,No,No,Gas,Hot Water,Public,2847,57,3,1,1.5,7,Yes,3
+688,212000,0.5,No,18,65000,No,Yes,Gas,Hot Air,Public,1816,57,3,1,2.0,7,Yes,3
+689,149900,0.87,No,19,93300,No,No,Oil,Hot Air,Public,2028,57,4,None,2.0,10,No,4 or more
+690,140958,0.22,No,40,54500,No,No,Gas,Hot Water,Public,775,57,2,None,1.0,7,No,2 or fewer
+691,95000,0.33,No,34,54800,No,No,Gas,Hot Air,Public,1368,57,2,None,1.0,6,No,2 or fewer
+692,161600,0.24,No,34,49100,No,No,Gas,Hot Air,Public,936,57,3,None,1.5,8,No,3
+693,351400,0.15,No,1,114000,No,Yes,Gas,Hot Air,Public,1680,57,2,1,2.5,4,Yes,2 or fewer
+694,155000,0.3,No,33,53000,No,No,Gas,Hot Air,Public,1368,57,3,None,1.0,6,No,3
+695,198500,0.4,No,34,53000,No,Yes,Gas,Hot Air,Public,1326,57,3,1,1.5,7,Yes,3
+696,276000,0.21,No,62,107000,No,Yes,Oil,Hot Air,Public,1579,57,3,1,2.0,4,Yes,3
+697,167000,0.25,No,32,50000,No,No,Gas,Hot Air,Public,1286,57,3,None,1.0,8,No,3
+698,227000,0.84,No,25,207700,No,Yes,Gas,Hot Air,Public,2132,57,3,2 or more,2.5,7,Yes,3
+699,405100,0.39,No,3,85400,No,Yes,Gas,Hot Air,Public,2000,57,3,1,2.5,6,Yes,3
+700,395000,0.14,No,3,112100,No,Yes,Gas,Hot Air,Public,2222,57,3,None,2.5,6,No,3
+701,360000,0.41,No,99,139000,No,No,Gas,Hot Water,Public,2641,57,4,None,2.0,9,No,4 or more
+702,775000,0.0,Yes,5,412600,No,Yes,Gas,Hot Air,Private,2472,57,3,1,2.5,9,Yes,3
+703,285000,0.07,No,16,48200,No,Yes,Electric,Hot Air,Public,1926,57,2,2 or more,3.0,6,Yes,2 or fewer
+704,300000,0.12,No,4,108300,No,Yes,Gas,Hot Air,Public,1534,57,3,None,2.5,8,No,3
+705,214000,0.25,No,39,44000,No,No,Gas,Hot Air,Private,1490,57,3,None,1.5,4,No,3
+706,229000,0.22,No,46,72000,No,No,Gas,Hot Water,Public,1126,57,3,1,2.0,8,Yes,3
+707,330000,0.23,No,33,61200,No,Yes,Gas,Hot Air,Public,1435,57,3,None,1.5,8,No,3
+708,146000,0.42,No,44,60200,No,No,Gas,Hot Air,Public,1136,57,3,None,1.5,8,No,3
+709,381500,0.15,No,2,114000,No,Yes,Gas,Hot Air,Public,2162,57,3,1,2.5,9,Yes,3
+710,430000,0.34,No,5,82400,No,Yes,Gas,Hot Air,Public,2328,57,3,1,2.5,7,Yes,3
+711,650000,0.43,No,2,87800,No,Yes,Gas,Hot Air,Public,2754,57,3,1,2.5,10,Yes,3
+712,194500,0.17,No,40,37600,No,No,Gas,Hot Air,Private,1504,57,4,None,1.5,6,No,4 or more
+713,279000,0.39,No,14,58400,No,Yes,Gas,Hot Air,Public,2473,57,4,1,3.5,7,Yes,4 or more
+714,183000,0.31,No,35,47600,No,No,Gas,Hot Air,Public,2072,57,4,1,2.5,8,Yes,4 or more
+715,195000,0.03,No,18,19200,No,Yes,Gas,Hot Air,Public,1480,57,3,1,2.5,7,Yes,3
+716,470000,0.17,No,135,99000,No,No,Gas,Hot Air,Public,2096,57,3,2 or more,2.5,8,Yes,3
+717,167000,0.11,No,80,50400,No,No,Gas,Hot Water,Public,1050,57,2,None,1.0,6,No,2 or fewer
+718,309278,0.02,No,17,18000,No,Yes,Gas,Hot Air,Public,1650,57,2,1,2.5,5,Yes,2 or fewer
+719,217500,0.34,No,26,92300,No,Yes,Gas,Hot Air,Public,1596,57,3,None,1.5,6,No,3
+720,200000,0.17,No,44,99000,No,No,Gas,Hot Water,Public,979,57,3,None,2.0,8,No,3
+721,199995,0.16,No,18,53800,No,Yes,Gas,Hot Air,Public,1393,57,2,None,1.5,6,No,2 or fewer
+722,179000,0.46,No,44,70200,No,No,Gas,Hot Air,Public,864,57,2,None,1.0,7,No,2 or fewer
+723,329000,1.0,No,1,106800,No,Yes,Gas,Hot Air,Private,2744,57,4,None,2.5,10,No,4 or more
+724,374900,0.06,No,15,46600,No,Yes,Gas,Hot Air,Public,2300,57,3,1,3.0,10,Yes,3
+725,165000,0.29,No,34,52400,No,No,Gas,Hot Air,Public,1612,57,3,1,1.0,5,Yes,3
+726,647000,1.08,No,14,193300,No,Yes,Gas,Hot Air,Private,2640,57,4,1,2.5,12,Yes,4 or more
+727,315000,0.63,No,19,65500,No,No,Oil,Hot Air,Public,775,57,1,None,1.0,6,No,2 or fewer
+728,208000,0.34,No,26,49400,No,Yes,Gas,Hot Air,Public,2470,57,4,1,2.5,10,Yes,4 or more
+729,405000,0.58,No,6,80000,No,No,Gas,Hot Air,Private,3124,57,4,1,3.0,9,Yes,4 or more
+730,535000,1.0,No,14,192500,No,Yes,Gas,Hot Air,Private,3254,57,4,1,2.5,12,Yes,4 or more
+731,184020,0.4,No,34,59000,No,No,Gas,Hot Air,Public,1544,57,3,None,2.5,7,No,3
+732,95000,0.17,No,139,1900,No,No,Gas,Hot Water,Public,1410,38,6,None,1.5,9,No,4 or more
+733,87550,0.46,No,44,2100,No,No,Gas,Hot Air,Private,906,38,2,None,1.0,3,No,2 or fewer
+734,131000,0.23,No,66,3600,No,No,Gas,Hot Air,Public,1512,38,3,1,1.0,8,Yes,3
+735,127000,0.2,No,77,3400,No,No,Gas,Hot Air,Public,1232,38,3,1,1.0,8,Yes,3
+736,104695,0.21,No,54,3500,No,No,Gas,Hot Air,Public,921,38,2,None,1.0,7,No,2 or fewer
+737,120000,0.18,No,70,3100,No,No,Gas,Hot Air,Public,1287,38,3,None,1.0,4,No,3
+738,278500,0.16,No,17,5200,No,No,Electric,Electric,Private,2600,38,4,None,3.0,12,No,4 or more
+739,75500,0.13,No,124,1500,No,No,Gas,Hot Air,Public,1302,38,3,None,2.0,8,No,3
+740,121900,0.47,No,20,4700,No,No,Gas,Hot Water,Private,1144,38,3,None,1.0,6,No,3
+741,208000,0.45,No,39,5500,No,No,Gas,Hot Water,Private,1703,38,3,None,2.0,6,No,3
+742,151000,0.59,No,15,4500,No,No,Electric,Electric,Private,1553,38,3,1,2.0,4,Yes,3
+743,138000,0.38,No,15,1700,No,No,Electric,Electric,Private,1040,38,2,None,1.0,3,No,2 or fewer
+744,229000,0.55,No,11,7500,No,No,Gas,Hot Water,Private,2124,38,4,None,3.0,10,No,4 or more
+745,130000,0.52,No,13,4500,No,No,Gas,Hot Air,Private,1344,38,3,None,2.0,5,No,3
+746,89900,0.46,No,66,3900,No,No,Gas,Hot Air,Private,884,38,2,None,1.0,3,No,2 or fewer
+747,145000,0.76,No,11,3800,No,No,Oil,Hot Air,Private,1812,38,3,None,1.5,7,No,3
+748,86000,0.46,No,43,5500,No,No,Gas,Hot Air,Private,880,38,3,None,1.0,4,No,3
+749,95000,0.17,No,134,2300,No,No,Gas,Hot Air,Public,1256,38,3,None,2.0,5,No,3
+750,195000,0.34,No,15,5000,No,Yes,Gas,Hot Air,Private,1826,38,3,1,2.5,6,Yes,3
+751,107325,0.1,No,126,1100,No,No,Gas,Hot Air,Public,1134,38,3,None,1.5,7,No,3
+752,131000,0.54,No,41,5300,No,No,Gas,Hot Air,Private,1916,38,4,1,2.5,8,Yes,4 or more
+753,166900,0.75,No,3,1700,No,No,Gas,Hot Air,Private,1272,38,3,None,1.5,7,No,3
+754,127000,0.43,No,39,4900,No,Yes,Gas,Hot Air,Private,960,38,3,None,1.0,6,No,3
+755,119000,0.15,No,65,2500,No,No,Gas,Hot Air,Public,1152,38,2,None,1.5,4,No,2 or fewer
+756,92509,0.52,No,13,4500,No,No,Gas,Hot Air,Private,840,38,2,None,1.0,4,No,2 or fewer
+757,174000,0.46,No,34,5500,No,No,Gas,Hot Air,Private,2106,38,5,None,2.0,11,No,4 or more
+758,180000,0.52,No,10,2500,No,No,Gas,Hot Air,Private,1632,38,3,None,2.0,8,No,3
+759,155000,0.41,No,9,300,No,No,Gas,Hot Air,Private,1092,38,3,None,2.0,8,No,3
+760,146500,0.44,No,25,13200,No,Yes,Gas,Hot Air,Private,1634,57,3,1,1.5,8,Yes,3
+761,162500,0.46,No,26,13800,No,Yes,Gas,Hot Air,Private,1890,57,3,1,2.5,7,Yes,3
+762,210000,0.48,No,32,18400,No,No,Gas,Hot Air,Private,2224,57,5,2 or more,2.5,11,Yes,4 or more
+763,165000,0.65,No,22,16500,No,No,Electric,Electric,Private,1475,57,3,1,2.0,6,Yes,3
+764,123000,0.08,No,16,2100,No,No,Gas,Hot Air,Public,1480,54,3,1,1.5,5,Yes,3
+765,150000,0.58,No,36,13300,No,No,Gas,Hot Air,Private,1368,54,3,1,1.0,4,Yes,3
+766,128900,0.14,No,7,7200,No,No,Gas,Hot Air,Public,1200,36,3,None,1.0,8,No,3
+767,88100,0.14,No,0,7400,No,Yes,Gas,Hot Air,Public,840,36,2,None,1.0,7,No,2 or fewer
+768,175000,0.68,No,54,25900,No,No,Oil,Hot Air,Public,1176,47,3,None,2.0,8,No,3
+769,120975,0.13,No,0,7400,Yes,No,Gas,Hot Air,Public,1380,36,3,None,2.0,4,No,3
+770,147543,0.29,No,0,11300,Yes,No,Gas,Hot Air,Private,1786,36,3,None,2.5,7,No,3
+771,118000,0.22,No,17,3400,No,No,Gas,Hot Air,Public,1480,54,3,None,1.5,4,No,3
+772,199000,0.5,No,13,15300,No,No,Gas,Hot Water,Public,1574,54,3,1,1.5,7,Yes,3
+773,79900,0.18,No,154,7500,No,No,Oil,Hot Air,Private,950,54,2,None,1.5,5,No,2 or fewer
+774,279000,0.55,No,14,25300,No,Yes,Gas,Hot Air,Public,3178,57,4,1,3.5,12,Yes,4 or more
+775,90000,0.28,No,16,10600,No,No,Gas,Hot Air,Private,1342,57,3,None,1.5,7,No,3
+776,91900,0.35,No,20,12000,No,Yes,Electric,Electric,Private,1336,57,2,1,1.5,5,Yes,2 or fewer
+777,153000,0.25,No,10,8400,No,No,Gas,Hot Air,Public,1542,54,3,None,2.5,6,No,3
+778,170000,2.68,No,11,21400,No,No,Oil,Hot Water,Private,2272,54,4,1,3.5,8,Yes,4 or more
+779,145200,0.2,No,15,3400,No,No,Gas,Hot Air,Public,1480,54,2,1,2.5,4,Yes,2 or fewer
+780,296000,0.02,No,8,14000,No,No,Gas,Hot Air,Public,2506,57,4,2 or more,2.5,10,Yes,4 or more
+781,150000,0.37,No,1,15800,No,No,Oil,Hot Air,Private,1852,30,4,None,2.0,6,No,4 or more
+782,86000,0.45,No,19,14000,No,No,Gas,Hot Air,Private,1055,57,2,1,1.0,7,Yes,2 or fewer
+783,118000,0.36,No,21,40000,No,No,Gas,Hot Air,Private,1392,57,3,None,1.5,7,No,3
+784,155000,0.75,No,53,6500,No,No,Oil,Hot Air,Private,1608,57,3,1,2.0,5,Yes,3
+785,222500,0.69,No,15,16900,No,No,Gas,Hot Air,Public,1564,57,3,1,2.0,6,Yes,3
+786,250000,0.46,No,17,18400,No,Yes,Gas,Hot Air,Private,2068,57,4,1,2.5,10,Yes,4 or more
+787,365000,0.69,No,13,21900,No,Yes,Oil,Hot Air,Private,2516,57,4,None,2.5,11,No,4 or more
+788,120000,0.89,No,14,19300,No,No,Electric,Electric,Private,1684,38,4,None,1.5,5,No,4 or more
+789,193000,0.47,No,18,14100,No,No,Gas,Hot Water,Private,1481,57,3,None,1.5,5,No,3
+790,85568,0.15,No,67,2600,No,No,Oil,Hot Water,Public,999,20,3,None,1.0,6,No,3
+791,82000,0.46,No,17,4420,No,No,Oil,Hot Water,Public,896,20,2,None,1.0,3,No,2 or fewer
+792,225000,0.77,No,50,3000,No,No,Oil,Hot Water,Private,792,20,2,1,1.0,7,Yes,2 or fewer
+793,240000,0.85,No,34,50400,No,No,Oil,Hot Water,Private,2747,27,4,2 or more,3.5,12,Yes,4 or more
+794,234900,0.01,No,1,43300,Yes,Yes,Gas,Hot Air,Public,2277,63,4,None,2.5,8,No,4 or more
+795,112000,0.02,No,19,14900,No,Yes,Gas,Hot Air,Public,1281,63,2,1,2.5,6,Yes,2 or fewer
+796,261000,0.57,No,14,43200,No,Yes,Gas,Hot Air,Public,2462,63,4,1,2.5,10,Yes,4 or more
+797,400000,0.6,No,9,57000,No,Yes,Gas,Hot Air,Public,2897,63,4,2 or more,2.5,12,Yes,4 or more
+798,310000,0.41,No,4,37600,No,Yes,Electric,Hot Air,Public,2672,63,4,1,3.5,8,Yes,4 or more
+799,182000,0.29,No,21,26300,No,No,Gas,Hot Air,Public,1932,63,3,None,1.5,8,No,3
+800,187500,0.47,No,11,25500,No,No,Gas,Hot Air,Public,1320,63,3,None,2.5,7,No,3
+801,405000,0.61,No,6,23900,No,Yes,Gas,Hot Air,Public,3296,63,4,1,2.5,12,Yes,4 or more
+802,420000,1.14,No,6,82100,No,Yes,Gas,Hot Air,Public,3279,63,4,1,3.0,11,Yes,4 or more
+803,359000,0.48,No,4,37100,No,Yes,Gas,Hot Air,Public,3204,63,4,1,2.5,9,Yes,4 or more
+804,120000,0.01,No,16,9900,No,Yes,Electric,Electric,Public,1217,63,2,None,2.5,6,No,2 or fewer
+805,171500,0.31,No,37,21500,No,No,Gas,Hot Water,Public,1782,63,3,1,1.5,6,Yes,3
+806,159900,0.21,No,16,28800,No,Yes,Gas,Hot Air,Public,1180,63,2,1,1.5,6,Yes,2 or fewer
+807,186500,0.21,No,16,28000,No,Yes,Electric,Hot Air,Public,1452,63,3,1,2.0,8,Yes,3
+808,260000,0.46,No,13,36600,No,Yes,Gas,Hot Air,Public,2140,63,4,1,2.5,8,Yes,4 or more
+809,115000,0.01,No,16,9900,No,Yes,Electric,Electric,Public,1219,63,2,None,1.5,6,No,2 or fewer
+810,191000,0.44,No,39,24100,No,No,Gas,Hot Water,Public,1518,63,4,1,1.5,5,Yes,4 or more
+811,355465,0.35,No,0,233000,Yes,Yes,Gas,Hot Air,Public,3328,63,4,1,2.5,12,Yes,4 or more
+812,339900,0.57,No,10,54600,No,Yes,Gas,Hot Air,Public,2344,63,3,None,2.5,10,No,3
+813,90000,0.49,No,74,10600,No,No,Gas,Hot Air,Private,960,23,2,None,1.0,7,No,2 or fewer
+814,245000,0.04,No,6,28800,No,No,Gas,Hot Air,Public,1544,63,3,None,2.5,8,No,3
+815,320900,0.46,No,7,36400,No,Yes,Gas,Hot Air,Public,2873,63,4,1,2.5,8,Yes,4 or more
+816,159000,0.22,No,18,29600,No,Yes,Gas,Hot Air,Public,1180,63,2,1,1.5,6,Yes,2 or fewer
+817,174900,0.62,No,38,15100,No,No,Gas,Hot Air,Private,1368,63,3,None,1.5,6,No,3
+818,293500,0.49,No,10,38400,No,Yes,Gas,Hot Air,Public,1904,63,4,1,2.5,8,Yes,4 or more
+819,210000,0.51,No,11,26900,No,No,Gas,Hot Air,Public,1320,63,3,None,2.0,8,No,3
+820,182500,1.0,No,34,25200,No,No,Gas,Hot Air,Private,1594,63,3,1,1.5,5,Yes,3
+821,219900,0.46,No,8,38100,No,Yes,Gas,Hot Air,Public,1847,63,3,1,2.5,7,Yes,3
+822,370000,0.46,No,1,36600,Yes,Yes,Gas,Hot Air,Public,3125,63,4,1,2.5,12,Yes,4 or more
+823,286000,0.47,No,7,20000,No,No,Gas,Hot Air,Public,2004,63,4,1,2.5,10,Yes,4 or more
+824,169900,0.49,No,36,27800,No,Yes,Gas,Hot Air,Public,1623,63,3,1,1.5,8,Yes,3
+825,161000,0.23,No,40,22000,No,No,Oil,Hot Water,Public,1120,41,3,None,1.0,7,No,3
+826,287000,0.36,No,2,53900,No,Yes,Gas,Hot Air,Public,2363,63,5,1,2.5,11,Yes,4 or more
+827,315000,0.94,No,9,48200,No,No,Gas,Hot Air,Public,2572,63,4,1,2.5,11,Yes,4 or more
+828,177000,0.34,No,25,9200,No,No,Electric,Electric,Private,1548,63,3,None,1.5,5,No,3
+829,332000,1.0,No,11,26700,No,Yes,Gas,Hot Air,Public,2734,63,3,None,2.5,11,No,3
+830,249000,0.53,No,8,38800,No,Yes,Gas,Hot Air,Public,1462,63,3,1,2.0,5,Yes,3
+831,179000,0.09,No,15,25500,No,No,Gas,Hot Air,Public,1558,63,2,None,2.5,7,No,2 or fewer
+832,150000,0.52,No,34,14000,No,No,Oil,Hot Water,Private,1664,63,3,None,1.5,8,No,3
+833,225000,0.37,No,16,24500,No,No,Gas,Hot Air,Public,1877,63,4,1,3.0,10,Yes,4 or more
+834,182000,0.33,No,37,21400,No,No,Gas,Hot Air,Public,1838,63,3,1,1.0,7,Yes,3
+835,329900,0.5,No,9,37800,No,Yes,Gas,Hot Air,Public,2368,63,4,1,2.5,11,Yes,4 or more
+836,165000,0.33,No,32,22500,No,No,Gas,Hot Water,Public,2104,63,5,1,1.5,11,Yes,4 or more
+837,180000,0.31,No,16,36800,No,No,Gas,Hot Air,Public,1180,63,2,None,1.5,7,No,2 or fewer
+838,321000,0.53,No,11,38800,No,Yes,Gas,Hot Air,Public,2399,63,4,1,2.5,11,Yes,4 or more
+839,180000,0.11,No,15,15400,No,No,Gas,Hot Air,Public,1232,63,2,1,1.5,4,Yes,2 or fewer
+840,178000,0.14,No,17,19600,No,Yes,Gas,Hot Air,Public,1180,63,2,None,1.5,6,No,2 or fewer
+841,279900,0.55,No,2,39500,No,No,Gas,Hot Air,Public,2022,63,4,1,2.5,9,Yes,4 or more
+842,179000,0.14,No,19,21000,No,Yes,Gas,Hot Air,Public,1364,63,2,1,1.5,5,Yes,2 or fewer
+843,183000,0.15,No,17,21000,No,Yes,Gas,Hot Air,Public,1343,63,2,1,2.5,6,Yes,2 or fewer
+844,500000,1.0,No,70,35900,No,No,Oil,Hot Air,Private,1492,63,3,None,1.0,7,No,3
+845,170000,0.37,No,37,24500,No,No,Gas,Hot Water,Public,999,63,3,1,1.0,6,Yes,3
+846,179000,0.34,No,24,27000,No,No,Gas,Hot Air,Public,2102,54,3,1,2.5,9,Yes,3
+847,184900,0.32,No,18,27000,No,No,Gas,Hot Air,Public,1656,54,3,1,1.5,4,Yes,3
+848,177500,0.33,No,18,27000,No,No,Electric,Hot Air,Public,1561,54,3,None,1.5,7,No,3
+849,112500,0.15,No,19,15700,No,No,Electric,Electric,Public,988,54,2,None,2.0,7,No,2 or fewer
+850,180000,0.32,No,17,27000,No,No,Gas,Hot Water,Public,1765,54,5,1,2.0,9,Yes,4 or more
+851,10300,0.16,No,20,15700,No,No,Electric,Electric,Public,912,54,2,1,1.5,4,Yes,2 or fewer
+852,137900,0.16,No,17,15100,No,No,Electric,Electric,Public,1592,54,3,None,1.5,7,No,3
+853,144000,0.06,No,54,3600,No,No,Electric,Electric,Public,1344,54,5,None,1.0,8,No,4 or more
+854,131600,0.16,No,17,15100,No,No,Electric,Electric,Public,1385,54,2,1,1.5,7,Yes,2 or fewer
+855,123500,0.15,No,17,15100,No,No,Electric,Electric,Public,1385,54,2,None,1.5,5,No,2 or fewer
+856,123000,0.15,No,17,15100,No,No,Electric,Electric,Public,1679,54,2,None,1.5,7,No,2 or fewer
+857,109000,0.15,No,20,15700,No,No,Electric,Electric,Public,908,54,2,None,1.0,7,No,2 or fewer
+858,173000,0.31,No,16,27000,No,Yes,Gas,Hot Air,Public,1527,54,2,1,2.0,5,Yes,2 or fewer
+859,105000,0.16,No,20,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,3,No,2 or fewer
+860,122500,0.15,No,18,15100,No,No,Electric,Electric,Public,1184,54,2,None,1.5,3,No,2 or fewer
+861,191000,0.46,No,26,24500,No,No,Electric,Electric,Public,1719,63,3,1,1.5,7,Yes,3
+862,149000,0.16,No,19,15100,No,No,Electric,Electric,Private,1080,54,2,1,1.0,6,Yes,2 or fewer
+863,205000,0.33,No,16,27000,No,No,Electric,Electric,Public,2118,54,4,1,2.0,9,Yes,4 or more
+864,225000,0.33,No,16,27000,No,No,Electric,Electric,Public,2527,54,3,None,1.5,10,No,3
+865,210000,0.49,No,15,25000,No,No,Gas,Hot Air,Private,1592,54,3,1,1.5,8,Yes,3
+866,188900,0.32,No,18,27000,No,No,Electric,Electric,Public,1294,54,3,None,1.0,4,No,3
+867,192000,0.94,No,33,25200,No,No,Gas,Hot Water,Private,1974,63,4,1,2.5,8,Yes,4 or more
+868,137500,0.16,No,17,15700,No,No,Electric,Electric,Public,988,54,2,1,2.0,7,Yes,2 or fewer
+869,200000,0.36,No,20,27000,No,No,Gas,Hot Air,Public,1508,54,3,1,2.0,8,Yes,3
+870,126000,0.16,No,17,15600,No,No,Electric,Electric,Public,908,54,2,None,1.0,4,No,2 or fewer
+871,214500,0.35,No,20,27000,No,No,Electric,Electric,Public,1910,54,4,1,2.0,7,Yes,4 or more
+872,152000,0.15,No,18,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,5,No,2 or fewer
+873,115000,0.16,No,20,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,5,No,2 or fewer
+874,88000,0.16,No,19,15700,No,No,Electric,Electric,Public,988,54,2,None,2.0,4,No,2 or fewer
+875,170000,0.35,No,20,27000,No,No,Electric,Electric,Public,1748,54,2,None,2.0,4,No,2 or fewer
+876,137000,0.16,No,18,15700,No,No,Electric,Electric,Public,912,54,2,1,1.5,3,Yes,2 or fewer
+877,145000,0.15,No,17,15100,No,No,Electric,Electric,Public,1385,54,3,None,1.5,8,No,3
+878,202000,0.43,No,15,25000,No,No,Gas,Hot Air,Private,1300,54,3,None,1.5,7,No,3
+879,130000,0.15,No,17,15600,No,No,Electric,Electric,Public,908,54,2,None,1.0,7,No,2 or fewer
+880,265000,1.0,No,25,21700,No,No,Electric,Electric,Private,1900,54,3,None,2.0,7,No,3
+881,185000,0.33,No,16,27000,No,No,Electric,Electric,Public,2191,54,3,1,2.5,7,Yes,3
+882,130000,0.16,No,25,15100,No,Yes,Gas,Hot Air,Public,1080,54,2,1,1.0,4,Yes,2 or fewer
+883,190000,0.59,No,15,25000,No,Yes,Gas,Hot Air,Private,1300,54,3,1,1.5,5,Yes,3
+884,204000,0.4,No,1,15000,No,No,Gas,Hot Air,Public,2458,63,4,1,2.5,10,Yes,4 or more
+885,125000,0.35,No,22,10500,No,No,Electric,Electric,Public,1040,63,3,None,1.0,4,No,3
+886,349900,0.44,No,0,13000,Yes,No,Gas,Hot Air,Public,2886,63,4,1,3.0,12,Yes,4 or more
+887,142000,0.14,No,8,3700,No,No,Gas,Hot Air,Public,1840,23,3,None,1.0,6,No,3
+888,132500,0.37,No,19,13000,No,No,Electric,Electric,Public,1988,63,2,None,1.0,4,No,2 or fewer
+889,220000,1.0,No,43,22900,No,No,Oil,Hot Air,Private,672,57,2,None,1.0,3,No,2 or fewer
+890,160000,1.96,No,13,18400,No,No,Oil,Hot Air,Private,1512,57,2,None,2.0,4,No,2 or fewer
+891,10300,0.16,No,20,15700,No,No,Electric,Electric,Public,912,54,2,1,1.5,6,Yes,2 or fewer
+892,95000,0.15,No,19,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,6,No,2 or fewer
+893,122055,0.15,No,17,15000,No,No,Electric,Electric,Public,1385,54,2,None,1.5,5,No,2 or fewer
+894,149000,0.31,No,18,27000,No,No,Gas,Hot Air,Public,1508,54,3,1,1.5,8,Yes,3
+895,115000,0.15,No,17,15100,No,No,Electric,Electric,Public,1385,54,2,None,1.5,5,No,2 or fewer
+896,140000,0.15,No,19,15100,No,No,Electric,Electric,Public,1628,54,3,None,2.5,6,No,3
+897,137900,0.16,No,17,15100,No,No,Electric,Electric,Public,1592,54,3,None,1.5,5,No,3
+898,144000,0.06,No,54,3600,No,No,Electric,Electric,Public,1344,54,5,None,1.0,7,No,4 or more
+899,131600,0.16,No,17,15100,No,No,Electric,Electric,Public,1385,54,2,1,1.5,7,Yes,2 or fewer
+900,123500,0.15,No,17,15100,No,No,Electric,Electric,Public,1385,54,2,None,1.5,4,No,2 or fewer
+901,123000,0.15,No,17,15100,No,No,Electric,Electric,Public,1679,54,2,None,1.5,4,No,2 or fewer
+902,109000,0.15,No,20,15700,No,No,Electric,Electric,Public,908,54,2,None,1.0,3,No,2 or fewer
+903,173000,0.31,No,16,27000,No,Yes,Gas,Hot Air,Public,1527,54,2,1,2.0,7,Yes,2 or fewer
+904,105000,0.16,No,20,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,3,No,2 or fewer
+905,122500,0.15,No,18,15100,No,No,Electric,Electric,Public,1184,54,2,None,1.5,3,No,2 or fewer
+906,191000,0.46,No,26,24500,No,No,Electric,Electric,Public,1719,63,3,1,1.5,5,Yes,3
+907,149000,0.16,No,19,15100,No,No,Electric,Electric,Private,1080,54,2,1,1.0,5,Yes,2 or fewer
+908,205000,0.33,No,16,27000,No,No,Electric,Electric,Public,2118,54,4,1,2.0,10,Yes,4 or more
+909,225000,0.33,No,16,27000,No,No,Electric,Electric,Public,2527,54,3,None,1.5,8,No,3
+910,210000,0.49,No,15,25000,No,No,Gas,Hot Air,Private,1592,54,3,1,1.5,7,Yes,3
+911,188900,0.32,No,18,27000,No,No,Electric,Electric,Public,1294,54,3,None,1.0,4,No,3
+912,192000,0.94,No,33,25200,No,No,Gas,Hot Water,Private,1974,63,4,1,2.5,9,Yes,4 or more
+913,137500,0.16,No,17,15700,No,No,Electric,Electric,Public,988,54,2,1,2.0,3,Yes,2 or fewer
+914,200000,0.36,No,20,27000,No,No,Gas,Hot Air,Public,1508,54,3,1,2.0,7,Yes,3
+915,126000,0.16,No,17,15600,No,No,Electric,Electric,Public,908,54,2,None,1.0,4,No,2 or fewer
+916,214500,0.35,No,20,27000,No,No,Electric,Electric,Public,1910,54,4,1,2.0,10,Yes,4 or more
+917,152000,0.15,No,18,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,7,No,2 or fewer
+918,115000,0.16,No,20,15700,No,No,Electric,Electric,Public,912,54,2,None,1.5,7,No,2 or fewer
+919,88000,0.16,No,19,15700,No,No,Electric,Electric,Public,988,54,2,None,2.0,5,No,2 or fewer
+920,170000,0.35,No,20,27000,No,No,Electric,Electric,Public,1748,54,2,None,2.0,6,No,2 or fewer
+921,137000,0.16,No,18,15700,No,No,Electric,Electric,Public,912,54,2,1,1.5,6,Yes,2 or fewer
+922,145000,0.15,No,17,15100,No,No,Electric,Electric,Public,1385,54,3,None,1.5,7,No,3
+923,202000,0.43,No,15,25000,No,No,Gas,Hot Air,Private,1300,54,3,None,1.5,4,No,3
+924,130000,0.15,No,17,15600,No,No,Electric,Electric,Public,908,54,2,None,1.0,5,No,2 or fewer
+925,265000,1.0,No,25,21700,No,No,Electric,Electric,Private,1900,54,3,None,2.0,8,No,3
+926,185000,0.33,No,16,27000,No,No,Electric,Electric,Public,2191,54,3,1,2.5,8,Yes,3
+927,130000,0.16,No,25,15100,No,Yes,Gas,Hot Air,Public,1080,54,2,1,1.0,5,Yes,2 or fewer
+928,190000,0.59,No,15,25000,No,Yes,Gas,Hot Air,Private,1300,54,3,1,1.5,5,Yes,3
+929,204000,0.4,No,1,15000,No,No,Gas,Hot Air,Public,2458,63,4,1,2.5,11,Yes,4 or more
+930,125000,0.35,No,22,10500,No,No,Electric,Electric,Public,1040,63,3,None,1.0,8,No,3
+931,349900,0.44,No,0,13000,Yes,No,Gas,Hot Air,Public,2886,63,4,1,3.0,11,Yes,4 or more
+932,142000,0.14,No,8,3700,No,No,Gas,Hot Air,Public,1840,23,3,None,1.0,7,No,3
+933,132500,0.37,No,19,13000,No,No,Electric,Electric,Public,1988,63,2,None,1.0,5,No,2 or fewer
+934,220000,1.0,No,43,22900,No,No,Oil,Hot Air,Private,672,57,2,None,1.0,5,No,2 or fewer
+935,160000,1.96,No,13,18400,No,No,Oil,Hot Air,Private,1512,57,2,None,2.0,6,No,2 or fewer
+936,156900,0.28,No,52,23200,No,No,Oil,Hot Air,Private,1635,63,4,None,1.5,5,No,4 or more
+937,138000,0.31,No,39,25100,No,No,Gas,Hot Air,Public,1672,63,4,None,1.5,5,No,4 or more
+938,166000,0.25,No,26,29000,No,Yes,Gas,Hot Air,Public,1892,63,3,2 or more,2.0,6,Yes,3
+939,195000,0.56,No,18,30800,No,No,Gas,Hot Water,Public,1652,63,3,1,2.0,6,Yes,3
+940,295600,0.6,No,21,91600,No,Yes,Gas,Hot Air,Private,2513,63,4,1,2.5,8,Yes,4 or more
+941,460000,0.47,No,1,14100,No,Yes,Gas,Hot Air,Public,3336,63,4,1,3.5,12,Yes,4 or more
+942,126000,0.05,No,17,16000,No,Yes,Gas,Hot Air,Public,1302,63,2,1,1.5,4,Yes,2 or fewer
+943,220300,0.58,No,16,38200,No,Yes,Gas,Hot Air,Public,2006,63,3,1,2.0,5,Yes,3
+944,175000,0.29,No,27,22700,No,Yes,Gas,Hot Air,Public,1836,63,4,1,1.5,8,Yes,4 or more
+945,255000,1.0,No,49,69600,No,No,Oil,Hot Air,Private,1994,60,3,1,2.0,9,Yes,3
+946,185000,0.5,No,19,29000,No,No,Gas,Hot Water,Public,1652,63,3,1,2.0,6,Yes,3
+947,234000,0.57,No,8,31100,No,No,Gas,Hot Air,Public,1888,63,3,1,2.5,7,Yes,3
+948,133500,0.08,No,19,17200,No,Yes,Gas,Hot Air,Public,1480,63,3,1,1.5,5,Yes,3
+949,151000,0.2,No,19,19000,No,No,Electric,Electric,Public,1234,63,2,1,2.0,7,Yes,2 or fewer
+950,157500,0.3,No,31,24500,No,No,Gas,Hot Air,Public,1778,63,3,1,1.5,7,Yes,3
+951,285000,0.65,No,23,72000,No,Yes,Gas,Hot Air,Public,2514,63,5,1,2.5,10,Yes,4 or more
+952,217500,0.56,No,35,30800,No,No,Gas,Hot Water,Public,2700,63,4,1,2.5,10,Yes,4 or more
+953,300000,0.7,No,21,39200,No,Yes,Gas,Hot Air,Public,2330,63,4,1,3.5,8,Yes,4 or more
+954,161225,0.6,No,33,32000,No,No,Gas,Hot Water,Public,2676,63,4,1,2.5,11,Yes,4 or more
+955,217000,2.85,No,25,54700,No,Yes,Electric,Electric,Private,2180,60,4,1,2.0,8,Yes,4 or more
+956,250000,0.47,No,21,48300,No,Yes,Gas,Hot Air,Public,2284,63,4,1,2.5,9,Yes,4 or more
+957,124000,0.06,No,19,16400,No,No,Electric,Electric,Public,1314,63,2,None,1.5,6,No,2 or fewer
+958,248000,0.41,No,35,44300,No,No,Gas,Hot Air,Private,2396,63,4,1,2.5,11,Yes,4 or more
+959,187000,0.57,No,45,33200,No,No,Gas,Hot Water,Private,2088,63,4,1,2.0,8,Yes,4 or more
+960,195000,0.48,No,39,28200,No,No,Gas,Hot Water,Public,2310,63,5,1,2.5,11,Yes,4 or more
+961,239900,0.53,No,19,65800,No,Yes,Gas,Hot Air,Public,2040,63,4,1,2.5,10,Yes,4 or more
+962,475000,12.2,No,19,111300,No,Yes,Electric,Hot Air,Private,2599,63,3,1,2.5,11,Yes,3
+963,246000,0.61,No,16,29100,No,No,Gas,Hot Water,Public,1702,63,3,1,1.5,6,Yes,3
+964,219900,0.49,No,18,28600,No,No,Gas,Hot Water,Public,2125,63,4,1,2.5,8,Yes,4 or more
+965,193500,0.6,No,38,32000,No,No,Gas,Hot Water,Public,2310,63,4,1,2.5,10,Yes,4 or more
+966,122000,0.12,No,31,18200,No,Yes,Gas,Hot Air,Public,1431,63,3,None,1.5,8,No,3
+967,118000,0.15,No,20,18500,No,No,Gas,Hot Water,Public,924,63,2,None,1.0,7,No,2 or fewer
+968,125000,0.77,No,126,36300,No,No,Gas,Hot Air,Private,1799,60,3,1,1.0,6,Yes,3
+969,101000,0.26,No,23,18200,No,No,Electric,Electric,Public,976,63,3,None,2.0,5,No,3
+970,249000,0.66,No,19,53000,No,Yes,Gas,Hot Air,Public,2217,63,4,1,2.5,8,Yes,4 or more
+971,180000,0.57,No,102,25800,No,No,Oil,Hot Water,Private,1969,77,4,2 or more,1.0,6,Yes,4 or more
+972,292500,0.47,No,19,75200,No,Yes,Gas,Hot Air,Public,2376,63,3,1,2.5,8,Yes,3
+973,199500,0.48,No,18,36700,No,No,Gas,Hot Water,Public,1585,63,3,1,1.5,5,Yes,3
+974,205100,0.46,No,32,32700,No,No,Gas,Hot Air,Public,1453,63,4,1,2.0,7,Yes,4 or more
+975,330000,0.57,No,12,67300,No,Yes,Oil,Hot Air,Public,2973,63,4,1,3.0,11,Yes,4 or more
+976,179000,0.43,No,37,31400,No,No,Gas,Hot Air,Public,1612,63,3,1,1.5,7,Yes,3
+977,342000,0.58,No,4,17400,No,Yes,Gas,Hot Air,Public,2734,63,3,1,2.5,9,Yes,3
+978,145000,0.15,No,22,18500,No,Yes,Electric,Electric,Public,1479,63,3,1,1.5,5,Yes,3
+979,66000,0.14,No,19,18400,No,Yes,Electric,Electric,Public,945,63,2,None,1.0,3,No,2 or fewer
+980,269900,0.4,No,25,25000,No,No,Gas,Hot Water,Public,1938,63,4,1,2.5,8,Yes,4 or more
+981,154000,0.1,No,174,32800,No,No,Oil,Hot Air,Private,1364,63,5,1,1.0,9,Yes,4 or more
+982,454900,0.5,No,2,15000,No,Yes,Gas,Hot Air,Public,3242,63,4,1,2.5,11,Yes,4 or more
+983,249900,0.42,No,23,57500,No,Yes,Gas,Hot Air,Public,1571,63,3,2 or more,2.0,7,Yes,3
+984,165000,0.09,No,21,17600,No,Yes,Electric,Electric,Public,1314,63,2,1,1.5,6,Yes,2 or fewer
+985,329000,0.46,No,3,16100,No,Yes,Gas,Hot Air,Public,2413,63,4,1,1.5,11,Yes,4 or more
+986,49387,0.48,No,56,31800,No,No,Oil,Hot Air,Private,900,77,2,1,1.0,5,Yes,2 or fewer
+987,445000,0.58,No,0,17400,No,Yes,Gas,Hot Air,Public,3157,63,4,1,3.5,10,Yes,4 or more
+988,73000,0.28,No,102,22400,No,No,Oil,Hot Water,Private,908,60,2,1,1.0,7,Yes,2 or fewer
+989,125000,0.13,No,20,18300,No,No,Electric,Electric,Public,924,63,2,None,1.0,6,No,2 or fewer
+990,146500,0.12,No,18,18200,No,Yes,Electric,Electric,Public,1138,63,2,1,1.0,6,Yes,2 or fewer
+991,209000,0.45,No,38,27000,No,No,Gas,Hot Water,Public,2310,63,5,1,2.5,12,Yes,4 or more
+992,196500,0.46,No,30,30400,No,No,Gas,Hot Air,Public,1874,63,4,1,2.0,9,Yes,4 or more
+993,157000,0.29,No,20,20300,No,No,Electric,Electric,Public,1228,63,4,None,1.5,6,No,4 or more
+994,125500,0.06,No,19,16400,No,Yes,Gas,Hot Air,Public,1479,63,3,1,1.5,5,Yes,3
+995,190000,0.44,No,38,31800,No,No,Gas,Hot Air,Public,1612,63,3,None,1.5,6,No,3
+996,250000,0.49,No,22,48800,No,Yes,Electric,Electric,Public,2088,63,4,1,2.5,6,Yes,4 or more
+997,255000,0.4,No,4,30000,No,No,Gas,Hot Air,Public,2131,63,4,1,2.5,10,Yes,4 or more
+998,129700,0.15,No,20,18500,No,No,Gas,Hot Air,Public,924,63,2,1,1.0,5,Yes,2 or fewer
+999,65000,0.34,No,74,24800,No,No,Electric,Electric,Private,1692,60,4,None,1.5,8,No,4 or more
+1000,107000,0.28,No,82,12600,No,No,Gas,Hot Air,Private,1568,63,3,None,1.0,7,No,3
+1001,255000,0.57,No,35,33200,No,Yes,Gas,Hot Air,Public,2262,77,4,1,2.5,9,Yes,4 or more
+1002,398000,0.61,No,8,71200,No,Yes,Gas,Hot Air,Public,2960,63,4,1,2.5,10,Yes,4 or more
+1003,176000,0.45,No,31,27000,No,No,Gas,Hot Water,Public,1683,63,4,1,2.5,8,Yes,4 or more
+1004,249900,0.86,No,36,35800,No,Yes,Gas,Hot Water,Public,2680,63,5,1,3.5,12,Yes,4 or more
+1005,244900,0.38,No,26,40100,No,No,Oil,Hot Air,Private,2742,77,3,1,3.0,8,Yes,3
+1006,220000,0.5,No,30,29000,No,No,Gas,Hot Water,Public,2012,63,4,1,2.5,10,Yes,4 or more
+1007,241000,0.35,No,31,27800,No,No,Gas,Hot Air,Public,2702,63,5,1,1.5,9,Yes,4 or more
+1008,159900,0.13,No,21,18300,No,Yes,Gas,Hot Air,Public,1314,63,2,1,1.5,6,Yes,2 or fewer
+1009,177555,0.56,No,38,34800,No,No,Gas,Hot Air,Public,1672,63,3,1,1.5,8,Yes,3
+1010,95000,0.2,No,55,7700,No,No,Oil,Hot Air,Private,1200,63,2,None,1.0,4,No,2 or fewer
+1011,5000,0.29,No,4,35800,No,Yes,Gas,Hot Air,Public,1700,63,3,1,2.5,6,Yes,3
+1012,264900,0.5,No,40,29000,No,No,Gas,Hot Water,Public,2652,63,5,1,3.5,12,Yes,4 or more
+1013,315000,0.77,No,16,74400,No,Yes,Gas,Hot Water,Public,3062,63,4,1,2.5,9,Yes,4 or more
+1014,155000,0.09,No,25,17600,No,Yes,Gas,Hot Air,Public,1290,63,2,1,1.5,5,Yes,2 or fewer
+1015,130000,0.22,No,23,15400,No,No,Electric,Electric,Public,1012,63,3,None,2.0,5,No,3
+1016,238000,0.71,No,35,35100,No,No,Gas,Hot Water,Public,2310,63,4,1,2.5,7,Yes,4 or more
+1017,224000,0.33,No,31,26500,No,No,Gas,Hot Air,Public,2026,63,3,1,2.5,7,Yes,3
+1018,211000,1.0,No,18,31800,No,Yes,Gas,Hot Air,None,1404,63,3,None,1.0,6,No,3
+1019,279000,0.23,No,13,34100,No,Yes,Gas,Hot Air,Private,1782,60,3,None,1.0,8,No,3
+1020,242000,0.11,No,15,42000,No,Yes,Gas,Hot Air,Public,2002,63,3,1,2.5,8,Yes,3
+1021,199875,0.61,No,36,35100,No,Yes,Gas,Hot Air,Public,1782,63,4,1,1.5,7,Yes,4 or more
+1022,259900,0.46,No,11,27400,No,Yes,Oil,Hot Air,Public,2212,63,4,1,2.5,10,Yes,4 or more
+1023,200000,1.28,No,84,34600,No,Yes,Oil,Electric,Private,1872,63,4,None,1.0,7,No,4 or more
+1024,212000,0.71,No,36,35100,No,No,Gas,Hot Water,Public,1804,63,4,1,2.5,7,Yes,4 or more
+1025,230000,0.47,No,41,27800,No,No,Gas,Hot Water,Public,1910,63,3,1,2.5,5,Yes,3
+1026,189000,0.42,No,28,30900,No,Yes,Gas,Hot Air,Public,1632,63,3,1,1.5,7,Yes,3
+1027,313635,1.93,No,16,131500,No,Yes,Gas,Hot Air,Private,3824,63,3,2 or more,4.0,12,Yes,3
+1028,185000,0.48,No,32,33600,No,No,Gas,Hot Air,Public,1196,63,3,None,1.5,5,No,3
+1029,239900,0.42,No,30,23200,No,Yes,Gas,Hot Water,Public,2259,63,4,1,2.5,11,Yes,4 or more
+1030,202000,0.48,No,39,25400,No,Yes,Gas,Hot Water,Public,1690,63,3,1,2.0,6,Yes,3
+1031,155000,0.12,No,19,18200,No,Yes,Gas,Hot Water,Public,1227,63,2,1,2.0,6,Yes,2 or fewer
+1032,120000,1.48,No,57,36000,No,No,Gas,Hot Air,Private,1278,63,3,1,1.0,7,Yes,3
+1033,78000,0.33,No,77,33500,No,No,Oil,Hot Air,Private,668,60,1,None,1.0,2,No,2 or fewer
+1034,311000,0.46,No,17,60500,No,Yes,Gas,Hot Water,Public,2762,63,4,1,2.5,8,Yes,4 or more
+1035,198000,0.32,No,38,42500,No,No,Gas,Hot Air,Private,1558,63,3,1,1.0,4,Yes,3
+1036,158500,0.92,No,11,36100,No,No,Electric,Electric,Private,1352,63,3,None,2.0,5,No,3
+1037,227000,0.46,No,37,27400,No,No,Gas,Hot Water,Public,1920,63,5,1,2.5,9,Yes,4 or more
+1038,265900,0.34,No,6,36000,No,No,Gas,Hot Air,Public,1940,63,3,1,2.5,7,Yes,3
+1039,163000,0.23,No,30,19300,No,No,Gas,Hot Air,Public,1249,63,3,None,1.5,8,No,3
+1040,165000,0.28,No,27,19600,No,No,Gas,Hot Water,Public,1576,63,3,None,2.5,4,No,3
+1041,151000,0.07,No,30,16800,No,Yes,Gas,Hot Air,Public,1419,63,3,None,1.5,4,No,3
+1042,200000,0.29,No,4,35800,No,Yes,Gas,Hot Air,Public,1700,63,3,1,2.5,7,Yes,3
+1043,299900,0.77,No,15,38700,No,Yes,Gas,Hot Air,Public,2748,63,4,1,3.5,8,Yes,4 or more
+1044,210000,0.33,No,18,35500,No,Yes,Gas,Hot Air,Public,1792,63,3,1,2.5,7,Yes,3
+1045,220000,0.66,No,36,35300,No,No,Electric,Electric,Private,1724,63,3,None,1.5,8,No,3
+1046,326900,1.0,No,15,83600,No,Yes,Gas,Hot Air,Public,2692,63,3,1,3.5,8,Yes,3
+1047,204900,0.39,No,29,24600,No,No,Oil,Hot Water,Public,1734,63,4,1,2.5,7,Yes,4 or more
+1048,234000,0.31,No,32,25100,No,No,Gas,Hot Air,Public,2014,63,3,1,1.5,7,Yes,3
+1049,236000,0.42,No,36,30900,No,No,Gas,Hot Air,Public,2056,63,4,1,1.5,9,Yes,4 or more
+1050,124000,0.46,No,36,32700,No,No,Gas,Hot Air,Public,1745,63,4,None,1.5,6,No,4 or more
+1051,199100,0.14,No,13,18400,No,Yes,Gas,Hot Air,Public,1352,63,2,1,1.5,5,Yes,2 or fewer
+1052,245000,0.5,No,30,29000,No,No,Gas,Hot Water,Public,2259,63,4,1,2.5,9,Yes,4 or more
+1053,264000,0.35,No,33,35300,No,No,Gas,Hot Air,Private,2572,60,3,1,2.5,11,Yes,3
+1054,105000,0.15,No,18,18500,No,No,Electric,Electric,Public,924,63,2,1,1.0,7,Yes,2 or fewer
+1055,187000,0.32,No,21,35000,No,Yes,Gas,Hot Air,Public,2000,63,3,None,1.5,7,No,3
+1056,127000,0.17,No,21,11900,No,Yes,Gas,Hot Air,Public,929,63,2,None,1.5,6,No,2 or fewer
+1057,100000,0.48,No,42,15800,No,No,Oil,Hot Air,Private,1540,77,4,None,1.0,7,No,4 or more
+1058,251000,0.77,No,44,47000,No,Yes,Oil,Hot Air,Private,1730,63,3,1,2.0,9,Yes,3
+1059,105000,0.95,No,50,36800,No,No,Oil,Hot Water,Private,1500,63,3,1,1.0,5,Yes,3
+1060,431250,0.53,No,10,65800,No,Yes,Gas,Hot Air,Public,2522,63,4,1,2.5,12,Yes,4 or more
+1061,149900,0.06,No,19,16400,No,Yes,Electric,Electric,Public,1479,63,3,1,1.5,4,Yes,3
+1062,180000,0.46,No,36,32700,No,Yes,Gas,Hot Air,Public,1922,63,4,1,1.5,9,Yes,4 or more
+1063,123500,0.18,No,20,12600,No,No,Gas,Hot Air,Public,1215,63,2,1,1.5,5,Yes,2 or fewer
+1064,253000,0.47,No,33,33200,No,Yes,Gas,Hot Air,Public,2772,63,5,2 or more,3.0,12,Yes,4 or more
+1065,330000,0.47,No,6,16500,No,No,Gas,Hot Air,Public,2574,63,4,None,2.5,12,No,4 or more
+1066,124500,0.19,No,21,18900,No,No,Electric,Electric,Public,945,63,2,None,1.0,3,No,2 or fewer
+1067,424200,1.82,No,19,130700,No,Yes,Gas,Hot Air,Public,2914,63,4,1,3.5,10,Yes,4 or more
+1068,120000,0.21,No,19,14700,No,Yes,Electric,Electric,Public,1480,63,3,None,1.5,7,No,3
+1069,205000,0.42,No,32,29400,No,No,Gas,Hot Air,Public,1914,63,3,1,1.5,5,Yes,3
+1070,175000,0.36,No,27,37000,No,Yes,Gas,Hot Air,Public,1354,63,3,1,2.0,5,Yes,3
+1071,295000,0.49,No,4,36900,No,Yes,Gas,Hot Air,Public,2302,63,4,1,2.5,7,Yes,4 or more
+1072,156500,0.21,No,19,19100,No,Yes,Electric,Electric,Public,1234,63,2,1,2.0,6,Yes,2 or fewer
+1073,143000,0.09,No,18,17600,No,Yes,Electric,Electric,Public,1480,63,3,None,1.5,6,No,3
+1074,215000,0.29,No,27,33000,No,Yes,Gas,Hot Air,Public,1665,63,4,1,2.0,5,Yes,4 or more
+1075,287000,0.4,No,6,12000,No,No,Gas,Hot Air,Public,2182,63,3,1,2.5,10,Yes,3
+1076,122500,0.23,No,18,19300,No,No,Electric,Electric,Public,924,63,2,1,1.0,7,Yes,2 or fewer
+1077,180000,1.0,No,19,49300,No,No,Electric,Electric,Public,1220,63,3,None,2.0,5,No,3
+1078,143000,0.09,No,18,17600,No,Yes,Electric,Electric,Public,1480,63,3,None,1.5,8,No,3
+1079,137000,0.08,No,21,17200,No,No,Electric,Electric,Public,1375,63,2,1,1.5,3,Yes,2 or fewer
+1080,271000,0.47,No,22,61300,No,Yes,Gas,Hot Air,Public,2003,63,3,1,2.5,7,Yes,3
+1081,129900,0.07,No,15,1800,No,Yes,Gas,Hot Air,Public,1480,54,2,1,2.5,5,Yes,2 or fewer
+1082,133000,0.06,No,15,1600,No,Yes,Gas,Hot Air,Public,1480,54,3,None,1.5,6,No,3
+1083,179000,0.25,No,11,8300,No,Yes,Gas,Hot Air,Public,1456,54,3,None,1.0,8,No,3
+1084,302000,0.72,No,5,27200,No,No,Gas,Hot Air,Private,1888,57,3,1,2.5,9,Yes,3
+1085,168000,0.92,No,28,8700,No,No,Oil,Hot Air,Private,1112,54,3,None,1.0,8,No,3
+1086,120000,0.19,No,16,3400,No,No,Gas,Hot Air,Public,1480,54,2,1,1.5,6,Yes,2 or fewer
+1087,119000,0.07,No,15,1800,No,Yes,Electric,Hot Air,Public,1480,54,2,1,2.5,3,Yes,2 or fewer
+1088,168000,0.35,No,27,7900,No,Yes,Gas,Hot Water,Private,1836,54,3,None,2.0,5,No,3
+1089,124900,0.98,No,96,16100,No,No,Oil,Hot Water,Public,1522,54,4,None,2.0,7,No,4 or more
+1090,415000,2.92,No,1,20000,No,Yes,Gas,Hot Air,Private,2709,36,3,1,2.5,10,Yes,3
+1091,150000,0.99,No,10,9900,No,Yes,Oil,Hot Air,Private,1020,57,3,None,2.0,5,No,3
+1092,310000,4.0,No,20,14000,No,No,Gas,Hot Water,Private,2208,36,4,1,2.0,10,Yes,4 or more
+1093,157000,0.46,No,18,7800,No,No,Electric,Electric,Private,1368,57,3,None,1.0,7,No,3
+1094,205000,0.8,No,28,18000,No,No,Gas,Hot Air,Private,2488,57,4,1,2.5,7,Yes,4 or more
+1095,275000,0.46,No,7,18400,No,No,Gas,Hot Air,Public,1865,57,3,None,2.5,8,No,3
+1096,320000,0.46,No,10,18400,No,Yes,Gas,Hot Air,Private,3174,57,4,None,4.0,12,No,4 or more
+1097,380000,0.74,No,17,23000,No,Yes,Gas,Hot Air,Private,2944,57,5,1,2.5,12,Yes,4 or more
+1098,119900,0.46,No,23,7800,No,No,Gas,Hot Air,Private,960,57,3,None,1.0,4,No,3
+1099,345000,0.82,No,15,15000,No,No,Gas,Hot Air,Private,3142,57,4,1,2.5,11,Yes,4 or more
+1100,145000,0.46,No,32,11500,No,No,Oil,Hot Air,Private,1666,57,4,1,2.0,9,Yes,4 or more
+1101,123000,0.07,No,77,14100,No,No,Oil,Hot Air,Private,708,57,2,1,1.0,7,Yes,2 or fewer
+1102,202500,0.79,No,17,17900,No,Yes,Oil,Hot Air,Private,1598,57,3,1,2.0,8,Yes,3
+1103,182000,1.0,No,13,4000,No,Yes,Gas,Hot Air,Private,1564,27,3,1,2.0,4,Yes,3
+1104,175000,0.63,No,14,5500,No,No,Gas,Hot Air,Private,1224,36,3,None,1.5,7,No,3
+1105,132500,0.21,No,77,3500,No,No,Gas,Hot Air,Public,1379,36,3,None,1.0,7,No,3
+1106,239000,0.41,No,41,25400,No,No,Gas,Hot Water,Public,2310,64,4,1,2.5,7,Yes,4 or more
+1107,86125,0.01,No,14,1200,No,No,Gas,Hot Water,Public,960,33,2,None,1.5,6,No,2 or fewer
+1108,245000,1.28,No,16,50000,No,No,Electric,Electric,Private,960,21,3,None,1.0,8,No,3
+1109,229900,1.64,No,52,25700,No,No,Gas,Hot Water,Private,1820,52,4,2 or more,2.5,7,Yes,4 or more
+1110,129000,0.33,No,95,2500,No,No,Oil,Hot Water,Private,1632,27,3,None,2.0,4,No,3
+1111,200000,0.09,No,90,5900,No,No,Gas,Hot Air,Public,1594,40,2,None,2.0,3,No,2 or fewer
+1112,144200,1.19,No,16,17900,No,No,Oil,Hot Water,Private,1290,62,3,None,2.0,5,No,3
+1113,166000,0.4,No,11,300,No,No,Gas,Hot Air,Private,1560,36,3,None,1.5,7,No,3
+1114,178000,0.9,No,46,7400,No,No,Oil,Hot Air,Private,1453,36,4,1,1.5,7,Yes,4 or more
+1115,165000,1.0,No,40,17000,No,No,Oil,Hot Water,Private,1664,62,3,1,2.0,8,Yes,3
+1116,218000,0.1,No,18,16200,No,Yes,Electric,Electric,Private,2169,62,3,1,2.5,10,Yes,3
+1117,175000,0.02,No,9,20000,No,No,Gas,Hot Air,Private,1420,62,3,None,1.0,8,No,3
+1118,145000,0.18,No,71,3100,No,No,Gas,Hot Air,Public,1441,36,3,None,1.5,8,No,3
+1119,195000,0.76,No,4,18100,No,No,Gas,Hot Air,Private,1016,62,3,None,1.5,5,No,3
+1120,288139,0.46,No,0,15200,Yes,No,Gas,Hot Air,Public,2947,52,4,1,2.5,10,Yes,4 or more
+1121,187500,0.59,No,11,16700,No,No,Oil,Hot Air,Private,1652,62,3,None,1.5,5,No,3
+1122,255000,0.91,No,105,13200,No,No,Oil,Hot Air,Private,1927,62,3,None,1.5,7,No,3
+1123,145000,1.0,No,11,16000,No,No,Gas,Hot Air,Private,960,62,3,None,1.0,5,No,3
+1124,183000,0.46,No,28,15700,No,No,Electric,Electric,Private,1804,62,3,1,1.5,7,Yes,3
+1125,318310,0.23,No,1,72300,No,No,Gas,Hot Air,Private,2616,62,4,1,2.5,8,Yes,4 or more
+1126,192500,1.2,No,42,17900,No,No,Oil,Hot Air,Private,1116,62,2,None,1.5,6,No,2 or fewer
+1127,195000,1.0,No,52,19200,No,No,Oil,Hot Water,Private,2147,62,2,1,1.5,7,Yes,2 or fewer
+1128,138000,0.87,No,36,17400,No,No,Oil,Hot Air,Private,876,62,2,2 or more,1.5,3,Yes,2 or fewer
+1129,230000,0.79,No,26,16100,No,No,Electric,Electric,Private,2102,62,4,1,2.5,10,Yes,4 or more
+1130,237500,1.0,No,15,12100,No,No,Oil,Hot Air,Private,1776,62,3,1,1.5,5,Yes,3
+1131,375000,4.84,No,3,21500,No,Yes,Gas,Hot Water,Private,1996,62,3,1,3.0,8,Yes,3
+1132,105000,0.16,No,165,7200,No,No,Gas,Hot Air,Public,1759,35,3,None,1.0,5,No,3
+1133,168000,1.0,No,10,16200,No,No,Gas,Hot Air,Private,1014,62,3,None,1.0,7,No,3
+1134,221000,0.29,No,5,7400,No,No,Gas,Hot Water,Public,2270,35,4,None,2.5,10,No,4 or more
+1135,135000,0.31,No,85,3400,No,No,Oil,Hot Air,Public,1548,27,3,None,1.5,8,No,3
+1136,129900,0.39,No,3,15000,No,No,Gas,Hot Air,Public,1620,35,3,None,2.0,4,No,3
+1137,344100,1.05,No,40,49800,No,Yes,Gas,Hot Air,Private,2608,52,4,2 or more,2.5,8,Yes,4 or more
+1138,112000,1.0,No,15,24500,No,No,Electric,Electric,Private,1080,35,3,None,2.0,4,No,3
+1139,380000,0.3,Yes,76,38300,No,Yes,Gas,Hot Air,Public,1140,50,3,None,2.0,5,No,3
+1140,125000,0.6,No,34,2700,No,No,Gas,Hot Air,Private,1152,36,3,None,1.0,5,No,3
+1141,145000,5.52,No,20,5900,No,No,Electric,Electric,Private,1056,36,2,None,1.0,7,No,2 or fewer
+1142,190000,0.48,No,2,13400,No,No,Gas,Electric,Private,1257,62,3,None,2.0,8,No,3
+1143,135000,0.15,No,25,7200,No,No,Gas,Hot Water,Public,936,35,2,1,1.5,3,Yes,2 or fewer
+1144,58500,0.04,No,30,1400,No,No,Electric,Electric,Public,1140,33,3,None,1.5,5,No,3
+1145,80500,0.01,No,14,1200,No,No,Gas,Hot Water,Public,960,33,2,None,1.5,3,No,2 or fewer
+1146,150410,0.25,No,6,15000,No,No,Gas,Hot Air,Public,1058,35,2,None,1.5,4,No,2 or fewer
+1147,170000,1.0,No,29,23000,No,No,Electric,Electric,Private,768,35,2,None,1.0,6,No,2 or fewer
+1148,242551,2.0,No,14,38900,No,No,Oil,Hot Air,Private,2048,52,4,1,2.5,10,Yes,4 or more
+1149,176500,0.29,No,7,1100,No,No,Gas,Hot Air,Public,1198,33,2,1,2.0,3,Yes,2 or fewer
+1150,212000,1.0,No,27,5000,No,Yes,Electric,Electric,Private,2430,50,4,None,1.0,9,No,4 or more
+1151,135000,0.41,No,35,1300,No,No,Oil,Hot Water,Private,918,50,3,None,1.0,7,No,3
+1152,215000,0.89,No,46,4500,No,Yes,Oil,Hot Air,Private,2722,50,4,1,1.5,11,Yes,4 or more
+1153,262000,0.46,No,0,11100,No,No,Gas,Hot Air,Public,2364,33,4,1,2.5,8,Yes,4 or more
+1154,155000,1.0,No,15,5000,No,No,Oil,Hot Water,Private,1440,50,3,None,1.0,4,No,3
+1155,207000,0.27,No,27,4600,No,No,Oil,Hot Air,Public,1744,50,3,None,1.0,7,No,3
+1156,185000,0.14,No,105,600,No,No,Oil,Hot Water,Public,2280,33,4,None,1.5,10,No,4 or more
+1157,92200,0.42,No,130,1700,No,No,Oil,Hot Water,Public,1736,33,3,None,2.0,5,No,3
+1158,111000,0.74,No,95,2700,No,No,Oil,Hot Air,Private,883,50,1,None,1.0,2,No,2 or fewer
+1159,97000,0.1,No,145,600,No,No,Gas,Hot Water,Public,1001,50,2,None,1.0,5,No,2 or fewer
+1160,200000,1.73,No,34,11500,No,No,Oil,Hot Water,Private,1296,50,3,None,1.0,5,No,3
+1161,230000,0.47,No,14,16400,No,No,Electric,Electric,Private,2304,40,3,1,2.5,9,Yes,3
+1162,299900,0.62,No,13,28500,No,No,Gas,Hot Air,Private,2076,52,3,1,2.5,9,Yes,3
+1163,183855,0.34,No,51,19000,No,No,Oil,Hot Air,Private,1468,52,4,None,1.0,5,No,4 or more
+1164,174900,0.34,No,50,19000,No,No,Gas,Hot Water,Private,1272,52,3,1,1.5,5,Yes,3
+1165,335000,3.28,No,11,39900,No,Yes,Oil,Hot Air,Private,1900,43,3,1,2.5,9,Yes,3
+1166,208000,0.47,No,53,23700,No,No,Oil,Hot Water,Private,1548,52,3,None,1.5,8,No,3
+1167,380000,2.0,No,35,36600,No,No,Electric,Electric,Private,2212,52,4,1,1.5,8,Yes,4 or more
+1168,289900,0.3,No,0,35800,No,No,Gas,Hot Air,Public,2376,52,4,1,2.5,10,Yes,4 or more
+1169,188000,0.41,No,33,13500,No,Yes,Oil,Hot Air,Private,1712,52,3,1,1.5,7,Yes,3
+1170,600000,0.99,No,1,5000,No,Yes,Gas,Hot Air,Public,2660,62,4,1,3.5,8,Yes,4 or more
+1171,262000,0.29,No,5,25000,No,Yes,Oil,Hot Water,Private,1487,36,3,None,3.0,5,No,3
+1172,220000,2.03,No,30,10200,No,No,Electric,Electric,Private,1532,36,3,1,1.5,8,Yes,3
+1173,275000,0.61,No,21,16100,No,Yes,Gas,Hot Air,Private,2486,62,4,1,2.5,11,Yes,4 or more
+1174,215000,0.46,No,25,13800,No,No,Gas,Hot Air,Private,1918,62,3,None,2.0,8,No,3
+1175,100000,0.51,No,47,14600,No,No,Oil,Hot Water,Public,1270,21,3,None,1.0,7,No,3
+1176,158500,0.17,No,19,15200,No,No,Electric,Electric,Public,1406,40,2,None,1.5,7,No,2 or fewer
+1177,148900,0.15,No,18,15100,No,No,Electric,Electric,Public,1385,40,2,None,1.5,6,No,2 or fewer
+1178,218000,0.45,No,16,25000,No,No,Gas,Hot Air,Private,1300,40,3,None,1.5,4,No,3
+1179,355840,0.87,No,0,108900,Yes,No,Gas,Hot Air,Public,3259,40,4,1,2.5,10,Yes,4 or more
+1180,168000,0.08,No,9,1000,No,Yes,Gas,Hot Air,Private,1536,36,3,None,1.5,7,No,3
+1181,171000,0.58,No,14,19000,No,No,Oil,Hot Air,None,1636,35,4,1,1.5,9,Yes,4 or more
+1182,195000,0.41,No,15,18700,No,No,Gas,Hot Air,Private,1944,35,3,1,1.5,7,Yes,3
+1183,201880,0.46,No,19,18800,No,No,Gas,Hot Air,Private,1676,35,3,1,2.0,7,Yes,3
+1184,145000,0.47,No,12,10700,No,Yes,Gas,Hot Air,Private,1040,36,3,None,1.0,5,No,3
+1185,206000,0.01,No,13,1000,No,Yes,Gas,Hot Air,Private,1800,36,3,1,2.5,7,Yes,3
+1186,78000,0.14,No,85,7800,No,No,Oil,Hot Air,Private,1394,21,3,1,1.5,6,Yes,3
+1187,320900,0.47,Yes,5,20400,No,No,Oil,Hot Water,Private,1885,21,2,1,2.0,7,Yes,2 or fewer
+1188,159000,0.61,No,1,19500,No,No,Oil,Hot Water,Private,1056,21,3,None,2.0,4,No,3
+1189,180000,0.16,No,38,54900,No,No,Gas,Hot Air,Public,1593,62,3,None,1.5,4,No,3
+1190,129900,0.05,No,125,45000,No,No,Oil,Hot Water,Public,1436,62,4,None,1.0,5,No,4 or more
+1191,150000,0.38,No,34,57800,No,No,Gas,Hot Air,Public,1668,62,4,1,1.5,5,Yes,4 or more
+1192,171134,0.25,No,35,50000,No,No,Gas,Hot Air,Public,1302,62,3,None,2.0,4,No,3
+1193,151000,0.37,No,33,57200,No,Yes,Gas,Hot Air,Public,1239,62,3,1,1.0,7,Yes,3
+1194,100000,0.31,No,85,64400,No,No,Oil,Hot Water,Public,840,62,2,None,1.0,3,No,2 or fewer
+1195,655000,0.19,No,55,103000,No,No,Gas,Hot Air,Public,780,62,2,None,1.5,6,No,2 or fewer
+1196,243500,0.29,No,3,64400,No,Yes,Gas,Hot Air,Public,1728,62,3,None,2.5,7,No,3
+1197,265000,0.18,No,140,56700,No,No,Gas,Hot Air,Public,1666,62,3,None,1.0,8,No,3
+1198,400000,0.24,No,4,75400,No,Yes,Gas,Hot Air,Public,2022,62,3,1,2.5,7,Yes,3
+1199,272800,0.08,No,46,183300,No,No,Gas,Hot Air,Private,2225,62,4,1,2.0,9,Yes,4 or more
+1200,255000,0.17,No,115,53700,No,No,Gas,Hot Air,Public,1023,62,2,None,1.0,6,No,2 or fewer
+1201,220000,0.13,No,17,51400,No,Yes,Electric,Electric,Public,1290,62,2,None,1.5,4,No,2 or fewer
+1202,775000,0.48,No,31,72600,No,Yes,Gas,Hot Air,Public,3968,62,5,2 or more,3.5,12,Yes,4 or more
+1203,233000,0.14,No,129,93000,No,No,Gas,Hot Water,Public,1699,62,4,None,1.0,9,No,4 or more
+1204,216977,0.48,No,27,57800,No,No,Gas,Hot Water,Public,2137,62,4,None,1.0,9,No,4 or more
+1205,245000,0.03,No,5,27000,No,Yes,Gas,Hot Air,Public,1428,62,2,1,2.5,4,Yes,2 or fewer
+1206,159000,0.24,No,35,49100,No,Yes,Gas,Hot Air,Public,936,62,3,None,1.0,8,No,3
+1207,725000,0.21,No,3,70600,No,Yes,Gas,Hot Air,Public,2586,62,4,1,3.0,10,Yes,4 or more
+1208,268300,0.16,No,6,36800,No,No,Gas,Hot Air,Public,1373,62,3,1,2.0,5,Yes,3
+1209,159000,0.28,No,33,51800,No,No,Gas,Hot Air,Public,1272,62,3,None,1.0,6,No,3
+1210,155000,0.3,No,33,53000,No,Yes,Gas,Hot Air,Public,1368,62,3,1,2.0,8,Yes,3
+1211,345000,0.29,No,18,46400,No,Yes,Gas,Hot Air,Public,2120,62,4,1,2.5,11,Yes,4 or more
+1212,165200,0.3,No,34,53000,No,No,Gas,Hot Air,Public,1279,62,2,None,1.0,5,No,2 or fewer
+1213,185000,0.53,No,35,66500,No,Yes,Gas,Hot Air,Public,1104,62,2,None,1.0,3,No,2 or fewer
+1214,225500,0.28,No,41,64000,No,No,Gas,Hot Water,Public,1092,62,3,1,1.0,4,Yes,3
+1215,420000,0.11,No,121,87000,No,No,Gas,Hot Water,Public,2247,62,4,None,2.0,10,No,4 or more
+1216,220000,0.18,No,53,101000,No,No,Gas,Hot Water,Public,1146,62,4,None,1.5,7,No,4 or more
+1217,620000,0.53,No,23,225800,No,No,Gas,Hot Air,Public,3250,62,3,2 or more,2.5,10,Yes,3
+1218,260000,0.35,No,18,50000,No,Yes,Gas,Hot Air,Public,1920,62,4,1,2.5,10,Yes,4 or more
+1219,359900,0.5,No,0,65000,No,No,Gas,Hot Air,Public,1932,62,3,1,2.0,7,Yes,3
+1220,375000,0.14,No,4,112100,No,Yes,Gas,Hot Air,Public,1620,62,3,None,2.5,7,No,3
+1221,302900,0.22,No,50,72000,No,No,Gas,Hot Water,Public,1640,62,3,None,1.0,4,No,3
+1222,175000,0.17,No,39,55800,No,No,Gas,Hot Air,Public,1040,62,5,None,1.5,6,No,4 or more
+1223,260000,5.35,No,37,137800,No,Yes,Oil,Hot Air,Private,1676,62,4,None,2.0,8,No,4 or more
+1224,270000,0.33,No,16,48800,No,Yes,Gas,Hot Air,Public,1991,62,3,1,2.5,6,Yes,3
+1225,485000,0.24,No,17,60200,No,Yes,Gas,Hot Air,Public,1908,62,4,1,3.5,9,Yes,4 or more
+1226,200000,0.57,No,85,62500,No,No,Oil,Hot Air,Public,966,62,3,None,1.0,4,No,3
+1227,367000,0.03,No,19,27000,No,Yes,Gas,Hot Air,Public,1815,62,2,1,2.5,5,Yes,2 or fewer
+1228,175000,0.3,No,32,53000,No,No,Gas,Hot Air,Public,1664,62,3,None,1.0,7,No,3
+1229,203000,0.04,No,19,25600,No,Yes,Gas,Hot Air,Public,1216,62,2,1,2.0,4,Yes,2 or fewer
+1230,170000,0.16,No,33,54900,No,Yes,Gas,Hot Air,Public,1564,62,3,None,2.0,7,No,3
+1231,375000,0.31,No,32,143200,No,Yes,Gas,Hot Air,Public,2752,62,4,1,2.5,10,Yes,4 or more
+1232,159900,0.25,No,35,50000,No,No,Gas,Hot Air,Public,936,62,3,None,1.0,4,No,3
+1233,230000,0.14,No,95,50800,No,No,Gas,Hot Air,Public,1617,62,4,None,1.5,9,No,4 or more
+1234,375000,0.12,No,69,195000,No,No,Gas,Hot Water,Public,1452,62,3,1,2.0,5,Yes,3
+1235,421000,0.31,No,5,80600,No,Yes,Gas,Hot Air,Public,1911,62,3,1,2.5,6,Yes,3
+1236,218000,0.28,No,31,80800,No,Yes,Gas,Hot Air,Public,1580,62,3,None,1.5,4,No,3
+1237,167850,0.27,No,34,51200,No,Yes,Gas,Hot Air,Public,1920,62,3,1,1.0,5,Yes,3
+1238,252500,0.21,No,80,115000,No,No,Gas,Hot Water,Public,1155,62,4,None,1.5,7,No,4 or more
+1239,650000,0.34,No,3,82400,No,Yes,Gas,Hot Air,Public,3770,62,4,1,2.5,12,Yes,4 or more
+1240,380000,0.04,No,18,36000,No,Yes,Gas,Hot Air,Public,1675,62,2,1,2.5,6,Yes,2 or fewer
+1241,214500,0.21,No,33,107000,No,No,Gas,Hot Air,Public,912,62,3,None,1.0,4,No,3
+1242,218500,0.17,No,115,55800,No,No,Gas,Hot Water,Public,1510,62,3,None,1.0,8,No,3
+1243,174000,0.16,No,35,54900,No,Yes,Gas,Hot Air,Public,864,62,2,None,1.0,6,No,2 or fewer
+1244,225000,0.46,No,35,62600,No,Yes,Gas,Hot Air,Public,1600,62,4,None,2.0,6,No,4 or more
+1245,309750,0.07,No,15,48200,No,Yes,Gas,Hot Air,Public,1744,62,3,1,2.5,5,Yes,3
+1246,658300,0.69,No,3,101500,No,Yes,Gas,Hot Air,Public,3208,62,4,1,2.5,11,Yes,4 or more
+1247,203000,0.06,No,16,45800,No,Yes,Gas,Hot Air,Public,1290,62,2,None,1.5,7,No,2 or fewer
+1248,375000,0.03,No,19,27000,No,Yes,Gas,Hot Air,Public,1900,62,2,1,2.5,7,Yes,2 or fewer
+1249,62500,1.0,No,25,24700,No,No,Oil,Hot Air,Private,2808,35,3,None,1.0,11,No,3
+1250,205000,0.19,No,18,7300,No,No,Gas,Hot Air,Public,1576,35,3,None,1.5,4,No,3
+1251,84500,0.2,No,135,7300,No,No,Gas,Hot Water,Public,1118,35,3,None,1.0,5,No,3
+1252,280500,1.09,No,8,23000,No,Yes,Gas,Hot Air,Private,1752,35,3,2 or more,2.0,6,Yes,3
+1253,182000,0.02,No,32,22500,No,No,Electric,Electric,Private,1753,35,3,None,1.5,5,No,3
+1254,571000,1.0,No,14,128500,No,Yes,Gas,Hot Air,None,2186,62,3,None,2.5,10,No,3
+1255,168000,0.25,No,35,50000,No,No,Gas,Hot Air,Public,1800,62,2,None,1.0,5,No,2 or fewer
+1256,354000,0.46,No,30,56600,No,Yes,Gas,Hot Air,Public,2462,62,5,1,2.5,10,Yes,4 or more
+1257,238000,0.2,No,50,70000,No,No,Gas,Hot Water,Public,1286,62,5,None,2.0,10,No,4 or more
+1258,182000,0.16,No,35,97000,No,Yes,Gas,Hot Air,Public,1337,62,3,None,1.0,8,No,3
+1259,218500,0.17,No,5,37600,No,No,Gas,Hot Air,Public,1170,62,2,1,2.5,4,Yes,2 or fewer
+1260,227500,0.55,No,53,73400,No,No,Gas,Hot Air,Public,1185,62,3,None,1.0,4,No,3
+1261,375000,0.5,No,19,59000,No,Yes,Gas,Hot Air,Public,2424,62,4,1,2.5,8,Yes,4 or more
+1262,399900,0.09,No,125,83000,No,No,Gas,Hot Water,Public,1828,62,3,None,1.5,7,No,3
+1263,360000,0.34,No,41,80000,No,Yes,Electric,Electric,Private,2176,62,4,1,2.5,8,Yes,4 or more
+1264,412500,0.39,No,4,85400,No,Yes,Gas,Hot Air,Public,2000,62,3,1,2.5,6,Yes,3
+1265,268500,0.18,No,10,38400,No,Yes,Gas,Hot Air,Public,1340,62,3,1,2.5,8,Yes,3
+1266,300300,0.13,No,52,63000,No,No,Gas,Hot Air,Public,1208,62,3,None,1.0,6,No,3
+1267,382500,0.19,No,2,57600,No,Yes,Gas,Hot Air,Public,2244,62,4,1,2.5,10,Yes,4 or more
+1268,189000,0.3,No,31,53000,No,No,Gas,Hot Air,Public,1592,62,3,1,1.5,7,Yes,3
+1269,295000,0.39,No,17,52400,No,Yes,Gas,Hot Air,Public,1831,62,3,1,2.5,7,Yes,3
+1270,220000,0.01,No,37,182600,No,No,Gas,Hot Water,Private,1093,62,2,1,1.5,5,Yes,2 or fewer
+1271,223000,0.12,No,110,89000,No,No,Gas,Hot Water,Public,1460,62,2,None,1.0,5,No,2 or fewer
+1272,399000,0.25,No,152,115000,No,No,Gas,Hot Water,Public,2128,62,3,1,1.5,10,Yes,3
+1273,169480,0.24,No,30,49100,No,No,Gas,Hot Air,Public,1368,62,3,None,1.0,5,No,3
+1274,347750,0.15,No,1,36000,No,Yes,Gas,Hot Air,Public,2200,62,3,1,2.5,8,Yes,3
+1275,455000,0.25,No,23,61000,No,Yes,Gas,Hot Air,Public,2310,62,2,1,3.0,8,Yes,2 or fewer
+1276,249900,0.04,No,12,25600,No,Yes,Gas,Hot Air,Public,1776,62,3,1,2.5,7,Yes,3
+1277,250000,0.05,No,8,32000,No,Yes,Electric,Electric,Public,1852,62,3,None,2.5,9,No,3
+1278,265000,0.32,No,42,144900,No,Yes,Gas,Hot Air,Public,1092,62,2,None,2.0,4,No,2 or fewer
+1279,670000,0.11,No,121,87000,No,No,Gas,Hot Water,Public,2247,62,4,None,2.0,8,No,4 or more
+1280,195000,0.11,No,19,49800,No,Yes,Gas,Hot Air,Public,1311,62,3,None,1.5,8,No,3
+1281,360000,0.13,No,4,110200,No,Yes,Gas,Hot Air,Public,1392,62,3,None,2.5,4,No,3
+1282,175000,0.4,No,33,59000,No,Yes,Gas,Hot Air,Public,1116,62,4,None,1.5,8,No,4 or more
+1283,166500,0.1,No,115,49500,No,No,Gas,Hot Air,Public,812,62,2,None,1.0,4,No,2 or fewer
+1284,190100,0.48,No,27,31700,No,No,Gas,Hot Air,Private,1872,52,4,1,2.5,8,Yes,4 or more
+1285,180500,0.75,No,8,20500,No,Yes,Electric,Hot Air,Public,1248,40,3,None,2.0,5,No,3
+1286,440000,0.19,Yes,3,97300,No,No,Gas,Hot Water,Private,1702,52,2,None,2.0,4,No,2 or fewer
+1287,170000,0.51,No,57,13300,No,No,Oil,Hot Water,Private,1346,52,2,1,1.0,4,Yes,2 or fewer
+1288,220000,0.63,No,20,17700,No,No,Gas,Hot Water,Private,1596,52,3,1,2.0,6,Yes,3
+1289,70500,0.09,No,57,1000,No,No,Gas,Hot Air,Public,884,36,3,None,1.0,7,No,3
+1290,65000,0.13,No,137,700,No,No,Gas,Hot Air,Private,814,36,2,None,1.0,3,No,2 or fewer
+1291,127500,0.19,No,71,3200,No,No,Gas,Hot Air,Public,720,36,2,None,1.0,5,No,2 or fewer
+1292,155000,0.57,No,28,2600,No,No,Electric,Electric,Private,2051,36,3,None,1.0,5,No,3
+1293,255500,0.92,No,11,2600,No,Yes,Oil,Hot Air,Private,1590,36,2,1,2.0,6,Yes,2 or fewer
+1294,136000,0.35,No,39,1600,No,No,Electric,Electric,Private,1202,36,3,None,1.0,6,No,3
+1295,204000,0.86,No,16,4300,No,No,Oil,Hot Water,Private,2016,36,3,None,1.5,5,No,3
+1296,200000,0.8,No,6,2000,No,No,Gas,Hot Air,Private,1274,36,3,1,2.0,6,Yes,3
+1297,163000,0.36,No,40,3600,No,No,Oil,Hot Air,Private,960,36,3,None,1.0,5,No,3
+1298,149350,0.44,No,47,4000,No,Yes,Gas,Hot Air,Private,1056,36,3,None,1.0,6,No,3
+1299,235000,0.25,No,12,5200,No,Yes,Oil,Hot Air,Private,1820,36,3,None,3.5,8,No,3
+1300,260000,0.65,No,27,16500,No,No,Gas,Hot Air,Private,2486,62,4,1,2.5,7,Yes,4 or more
+1301,210000,0.46,No,27,13800,No,Yes,Gas,Hot Air,Private,1890,62,3,None,2.5,9,No,3
+1302,159900,0.7,No,84,4600,No,No,Oil,Hot Water,Private,1274,36,4,1,1.0,6,Yes,4 or more
+1303,209000,0.55,No,14,3000,No,Yes,Oil,Hot Air,Private,1716,36,4,None,2.0,6,No,4 or more
+1304,135000,0.35,No,22,12000,No,Yes,Electric,Electric,Private,1336,62,2,1,1.5,4,Yes,2 or fewer
+1305,200000,0.96,No,45,8700,No,No,Gas,Hot Air,Private,1392,62,3,None,1.0,5,No,3
+1306,432600,0.54,No,1,20400,No,Yes,Gas,Hot Air,Private,2346,62,4,None,2.5,10,No,4 or more
+1307,195000,0.47,No,19,14100,No,No,Gas,Hot Air,Private,1475,62,3,None,1.5,7,No,3
+1308,165000,0.52,No,16,5500,No,No,Electric,Electric,Private,1248,27,3,None,2.0,6,No,3
+1309,198000,0.15,No,16,10000,Yes,Yes,Electric,Electric,Private,1920,27,4,1,2.5,10,Yes,4 or more
+1310,219000,0.65,No,2,4000,No,No,Oil,Hot Air,Private,2040,27,4,None,2.5,8,No,4 or more
+1311,430000,1.34,Yes,15,75700,No,No,Electric,Electric,Private,2649,21,3,1,3.0,7,Yes,3
+1312,120000,0.17,No,105,4100,No,No,Oil,Hot Air,Private,1500,64,3,None,1.0,6,No,3
+1313,373735,0.53,No,1,233000,Yes,Yes,Gas,Hot Air,Public,3163,64,4,1,2.5,10,Yes,4 or more
+1314,183853,0.14,No,18,19600,No,Yes,Gas,Hot Air,Public,1343,64,2,1,1.5,4,Yes,2 or fewer
+1315,213500,0.46,No,17,36600,No,Yes,Gas,Hot Air,Public,1573,64,3,1,2.0,5,Yes,3
+1316,155000,0.09,No,18,20500,No,Yes,Electric,Electric,Public,1270,64,3,1,1.5,4,Yes,3
+1317,197000,0.41,No,14,26700,No,No,Gas,Hot Air,Public,1316,64,3,None,1.5,8,No,3
+1318,392499,0.48,No,11,47400,No,Yes,Gas,Hot Air,Public,3092,64,4,1,2.5,11,Yes,4 or more
+1319,229900,0.44,No,7,24200,No,No,Gas,Hot Air,Public,1328,64,3,1,2.5,8,Yes,3
+1320,289250,0.42,No,14,28500,No,No,Oil,Hot Water,Private,2560,64,4,1,2.5,12,Yes,4 or more
+1321,189900,0.12,No,17,16800,No,Yes,Gas,Hot Air,Public,1343,64,2,1,2.5,6,Yes,2 or fewer
+1322,397200,0.46,No,1,3200,Yes,Yes,Gas,Hot Air,Public,3250,64,4,1,3.0,12,Yes,4 or more
+1323,389405,0.35,No,1,233000,Yes,Yes,Gas,Hot Air,Public,3086,64,3,1,2.5,8,Yes,3
+1324,135000,0.66,No,155,25200,No,No,Oil,Hot Water,Private,1080,64,2,1,1.0,3,Yes,2 or fewer
+1325,174000,0.13,No,16,18200,No,Yes,Gas,Hot Air,Public,1120,64,2,1,1.5,6,Yes,2 or fewer
+1326,525000,0.46,No,1,70100,No,Yes,Gas,Hot Air,Public,2876,64,5,1,3.5,12,Yes,4 or more
+1327,135000,0.01,No,19,9900,No,Yes,Electric,Electric,Public,1281,64,2,None,2.5,3,No,2 or fewer
+1328,412000,0.62,No,9,57800,No,Yes,Gas,Hot Air,Public,2900,64,4,1,2.5,10,Yes,4 or more
+1329,186000,0.08,No,18,20400,No,Yes,Gas,Hot Air,Public,1512,64,2,1,1.5,7,Yes,2 or fewer
+1330,453935,0.58,No,1,233000,Yes,Yes,Gas,Hot Air,Public,2879,64,4,1,2.5,9,Yes,4 or more
+1331,355000,0.69,No,3,43700,No,Yes,Gas,Hot Air,Public,2537,64,4,1,2.0,11,Yes,4 or more
+1332,186000,0.35,No,37,23500,No,No,Gas,Hot Water,Public,1056,64,3,None,1.0,4,No,3
+1333,197000,0.14,No,16,19600,No,No,Gas,Hot Air,Public,1296,64,2,1,1.5,6,Yes,2 or fewer
+1334,180000,0.13,No,18,20900,No,Yes,Electric,Electric,Public,1512,64,2,1,1.5,3,Yes,2 or fewer
+1335,178000,0.47,No,27,32000,No,No,Oil,Hot Air,Public,1338,64,3,1,2.0,7,Yes,3
+1336,305000,0.33,No,10,35400,No,Yes,Gas,Hot Air,Public,2368,64,4,1,2.5,7,Yes,4 or more
+1337,262000,0.46,No,8,25100,No,Yes,Gas,Hot Air,Public,1528,64,3,None,2.5,4,No,3
+1338,225000,0.89,No,27,30900,No,Yes,Gas,Hot Air,Public,1857,64,4,1,2.5,8,Yes,4 or more
+1339,403040,0.49,No,0,233000,Yes,Yes,Gas,Hot Air,Public,3320,64,4,1,2.5,12,Yes,4 or more
+1340,388500,0.46,No,14,36600,No,Yes,Gas,Hot Air,Public,2227,64,4,1,2.5,10,Yes,4 or more
+1341,417000,0.13,No,6,46500,No,Yes,Gas,Hot Air,Public,2742,64,4,1,2.5,11,Yes,4 or more
+1342,410000,0.5,No,9,37800,No,No,Gas,Hot Air,Public,2988,64,5,1,2.5,11,Yes,4 or more
+1343,170000,0.35,No,17,37000,No,Yes,Gas,Hot Air,Public,1656,64,3,1,1.5,8,Yes,3
+1344,295000,0.01,No,9,28400,No,No,Gas,Hot Air,Public,1760,64,3,1,2.5,5,Yes,3
+1345,216000,0.38,No,39,25000,No,No,Gas,Hot Air,Public,1702,64,4,1,1.5,8,Yes,4 or more
+1346,221649,0.37,No,38,24500,No,No,Gas,Hot Water,Public,1682,64,3,1,1.5,4,Yes,3
+1347,199900,0.21,No,17,28800,No,Yes,Gas,Hot Air,Public,1180,64,2,1,1.5,4,Yes,2 or fewer
+1348,463000,0.64,No,3,153800,No,Yes,Gas,Hot Air,Public,2885,64,4,1,2.5,10,Yes,4 or more
+1349,146500,0.02,No,20,14900,No,Yes,Electric,Electric,Public,1281,64,2,None,2.5,3,No,2 or fewer
+1350,225000,0.24,No,18,29500,No,Yes,Gas,Hot Air,Public,1596,64,3,1,2.0,4,Yes,3
+1351,160000,0.16,No,21,15100,No,No,Electric,Electric,Public,1184,40,3,None,2.0,4,No,3
+1352,275055,0.46,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2745,40,4,1,3.0,8,Yes,4 or more
+1353,315513,0.46,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2680,40,4,1,2.5,11,Yes,4 or more
+1354,323759,0.35,No,1,108900,Yes,No,Gas,Hot Air,Public,2483,40,3,1,2.5,10,Yes,3
+1355,167500,0.92,No,19,25000,No,No,Oil,Hot Air,Private,1188,40,3,None,1.0,4,No,3
+1356,272699,0.3,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2366,40,4,1,3.0,7,Yes,4 or more
+1357,177500,0.31,No,19,27000,No,No,Gas,Hot Air,Public,1508,40,3,1,1.5,4,Yes,3
+1358,128000,1.0,No,50,20500,No,No,Oil,Hot Water,Private,792,40,2,None,1.0,4,No,2 or fewer
+1359,317105,0.44,No,1,108900,No,No,Gas,Hot Air,Public,3285,40,4,1,2.5,10,Yes,4 or more
+1360,144500,0.15,No,18,15100,No,No,Gas,Electric,Public,1673,40,2,None,2.0,5,No,2 or fewer
+1361,260000,0.33,No,7,26000,No,No,Gas,Hot Air,Public,2000,64,4,None,2.5,7,No,4 or more
+1362,244000,0.33,No,18,27000,No,No,Electric,Electric,Public,1561,40,3,1,1.5,4,Yes,3
+1363,287989,0.4,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2828,40,4,1,3.0,9,Yes,4 or more
+1364,159000,0.16,No,18,15100,No,No,Electric,Electric,Public,1592,40,3,None,1.5,8,No,3
+1365,167000,0.16,No,18,15100,No,No,Electric,Electric,Public,1184,40,3,None,2.0,8,No,3
+1366,348000,0.17,No,14,10200,No,Yes,Oil,Hot Air,Public,1708,40,2,1,2.0,4,Yes,2 or fewer
+1367,140000,0.17,No,26,15200,No,Yes,Electric,Hot Air,Public,1276,40,2,1,2.0,6,Yes,2 or fewer
+1368,145000,0.15,No,20,15100,No,No,Electric,Electric,Public,1184,40,2,None,1.5,3,No,2 or fewer
+1369,150450,0.17,No,21,15800,No,No,Electric,Electric,Public,908,40,2,None,1.0,5,No,2 or fewer
+1370,230000,0.95,No,15,32800,No,No,Gas,Hot Water,Private,1612,64,3,1,2.0,6,Yes,3
+1371,147423,0.16,No,19,15700,No,No,Electric,Electric,Public,912,40,2,1,1.5,3,Yes,2 or fewer
+1372,223000,0.33,No,17,27000,No,No,Electric,Electric,Public,1508,40,3,1,1.5,6,Yes,3
+1373,167500,0.16,No,18,15100,No,No,Electric,Electric,Public,1492,40,3,None,2.5,6,No,3
+1374,299000,0.1,No,25,6000,No,No,Electric,Electric,Public,874,40,3,1,1.0,5,Yes,3
+1375,235900,0.59,No,33,26400,No,No,Gas,Hot Water,Public,1573,64,4,1,2.5,6,Yes,4 or more
+1376,147000,0.24,No,115,7200,No,No,Gas,Hot Air,Public,1227,64,3,1,1.0,5,Yes,3
+1377,305000,0.53,No,13,31300,No,No,Gas,Hot Air,Private,2494,64,3,1,2.5,7,Yes,3
+1378,154000,0.17,No,21,15800,No,No,Electric,Electric,Public,912,40,2,None,1.5,7,No,2 or fewer
+1379,149000,0.15,No,20,15700,No,No,Electric,Electric,Public,988,40,2,None,1.0,7,No,2 or fewer
+1380,300279,0.54,No,1,108900,Yes,No,Gas,Hot Air,Private,2762,40,4,1,3.0,9,Yes,4 or more
+1381,278000,0.64,No,33,26500,No,No,Gas,Hot Water,Public,2625,64,4,1,2.5,10,Yes,4 or more
+1382,202000,0.47,No,28,24600,No,No,Electric,Electric,Public,1222,64,2,None,1.0,6,No,2 or fewer
+1383,328463,0.49,No,1,108900,Yes,Yes,Gas,Hot Air,Public,3144,40,4,1,2.5,10,Yes,4 or more
+1384,185000,0.45,No,16,25000,No,No,Gas,Hot Air,Private,1173,40,3,1,1.0,5,Yes,3
+1385,128000,0.17,No,21,15800,No,No,Electric,Electric,Public,908,40,2,None,1.0,3,No,2 or fewer
+1386,335000,0.92,No,16,32700,No,Yes,Gas,Hot Water,Private,2274,64,4,1,2.5,10,Yes,4 or more
+1387,148900,0.16,No,18,15700,No,No,Gas,Electric,Public,908,40,2,None,1.0,4,No,2 or fewer
+1388,229900,0.43,No,16,25000,No,No,Gas,Hot Air,Private,1540,40,3,None,1.5,6,No,3
+1389,215000,0.49,No,28,24900,No,No,Gas,Hot Air,Public,1196,64,4,1,2.0,7,Yes,4 or more
+1390,253000,0.45,No,16,25000,No,No,Gas,Hot Air,Private,1780,40,3,1,1.5,9,Yes,3
+1391,304065,0.34,No,1,108900,Yes,No,Gas,Hot Air,Public,2670,40,4,1,3.0,8,Yes,4 or more
+1392,222000,0.34,No,26,27000,No,No,Gas,Hot Air,Public,1581,40,3,1,1.5,5,Yes,3
+1393,165000,0.15,No,18,15100,No,No,Electric,Electric,Public,1592,40,3,None,1.5,7,No,3
+1394,275000,0.37,No,14,31200,No,Yes,Gas,Hot Air,Private,2011,40,4,1,2.5,8,Yes,4 or more
+1395,325000,0.27,Yes,105,56500,No,No,Electric,Electric,Public,1391,40,2,1,1.0,4,Yes,2 or fewer
+1396,406000,1.08,No,15,21100,No,Yes,Gas,Hot Air,Private,2636,40,4,2 or more,2.5,8,Yes,4 or more
+1397,230000,0.31,No,19,27000,No,No,Electric,Electric,Public,1656,40,3,1,1.5,6,Yes,3
+1398,125000,0.04,No,130,2400,No,No,Gas,Hot Air,Public,1518,64,3,None,1.0,8,No,3
+1399,148000,0.41,No,84,18200,No,No,Oil,Hot Air,Public,1182,64,3,1,1.5,8,Yes,3
+1400,279000,0.44,No,9,26000,No,Yes,Gas,Hot Air,Public,1836,64,3,None,2.5,8,No,3
+1401,250000,0.62,No,14,31600,No,Yes,Gas,Hot Air,Private,1529,64,2,1,2.0,6,Yes,2 or fewer
+1402,314940,0.37,No,0,108900,Yes,No,Gas,Hot Air,Public,2715,40,4,1,3.0,10,Yes,4 or more
+1403,165900,0.16,No,21,15100,No,No,Electric,Electric,Public,1184,40,2,None,1.5,3,No,2 or fewer
+1404,150000,0.75,No,14,3700,No,No,Oil,Hot Air,Private,1120,36,3,None,1.5,6,No,3
+1405,133000,0.15,No,15,2500,No,No,Gas,Hot Air,Public,1008,36,3,None,1.0,4,No,3
+1406,155000,0.37,No,18,2500,No,No,Electric,Electric,Private,1008,36,3,None,1.0,7,No,3
+1407,220000,0.41,No,57,4800,No,No,Oil,Hot Air,Private,2077,36,3,1,2.0,7,Yes,3
+1408,229000,1.61,No,26,4500,No,No,Electric,Electric,Private,1572,36,3,None,1.5,4,No,3
+1409,177000,0.63,No,34,5000,No,No,Oil,Hot Water,Private,1874,36,4,None,1.5,9,No,4 or more
+1410,120000,0.11,No,50,1300,No,No,Gas,Hot Air,Public,768,36,2,None,1.0,6,No,2 or fewer
+1411,195000,0.29,No,3,3800,No,No,Gas,Hot Air,Private,1552,36,3,1,2.5,5,Yes,3
+1412,315371,1.0,No,1,3400,No,No,Gas,Hot Air,Private,2331,36,4,1,2.5,8,Yes,4 or more
+1413,137000,0.36,No,48,3600,No,No,Gas,Hot Air,Private,960,36,2,None,1.0,3,No,2 or fewer
+1414,225700,0.36,No,19,13000,No,No,Electric,Electric,Public,1720,64,3,None,1.5,9,No,3
+1415,204900,0.34,No,20,13000,No,No,Electric,Electric,Public,1437,64,3,None,1.5,8,No,3
+1416,189500,0.34,No,19,13000,No,Yes,Oil,Hot Air,Public,1510,64,3,None,2.0,8,No,3
+1417,374000,0.72,No,21,26000,No,No,Electric,Electric,Public,3021,28,4,1,2.5,11,Yes,4 or more
+1418,319000,0.35,No,12,13000,No,No,Gas,Hot Water,Private,1960,64,4,None,2.5,8,No,4 or more
+1419,294100,0.39,No,11,13000,No,No,Gas,Hot Water,Private,2112,64,3,1,2.5,10,Yes,3
+1420,440760,0.38,No,0,13000,No,Yes,Gas,Hot Air,Private,2917,64,4,1,3.0,10,Yes,4 or more
+1421,128000,0.16,No,21,15700,No,No,Electric,Electric,Public,912,40,2,1,1.5,4,Yes,2 or fewer
+1422,239505,0.37,No,1,108900,Yes,No,Gas,Hot Air,Public,2244,40,3,1,2.5,10,Yes,3
+1423,141700,0.15,No,18,15100,No,No,Electric,Electric,Public,1202,40,2,None,1.5,4,No,2 or fewer
+1424,215500,0.34,No,19,27000,No,Yes,Gas,Hot Air,Public,2601,40,4,1,2.5,10,Yes,4 or more
+1425,320210,0.81,No,1,108900,Yes,No,Gas,Hot Air,Public,2492,40,3,1,2.5,9,Yes,3
+1426,273495,0.3,No,1,108900,Yes,No,Gas,Hot Air,Public,2680,40,4,None,2.5,11,No,4 or more
+1427,256350,0.35,No,1,108900,Yes,No,Gas,Hot Air,Public,2271,40,3,1,2.5,6,Yes,3
+1428,255000,0.33,No,17,27000,No,No,Electric,Electric,Public,2012,40,3,1,3.0,6,Yes,3
+1429,124000,0.09,No,13,6700,No,No,Electric,Electric,Public,920,40,3,None,1.0,8,No,3
+1430,293000,1.94,No,5,110000,No,Yes,Gas,Hot Air,Private,2111,40,3,1,2.0,9,Yes,3
+1431,147000,0.15,No,20,15100,No,No,Gas,Hot Water,Public,1184,40,3,1,2.0,4,Yes,3
+1432,284595,0.32,No,1,108900,Yes,No,Gas,Hot Air,Public,2627,40,4,1,3.0,10,Yes,4 or more
+1433,342269,0.39,No,1,108900,Yes,No,Gas,Hot Air,Public,2641,40,4,1,3.0,9,Yes,4 or more
+1434,229000,0.51,No,25,25000,No,No,Gas,Hot Water,Public,1736,40,3,1,1.5,8,Yes,3
+1435,216900,0.31,No,19,27000,No,No,Electric,Electric,Public,1656,40,3,1,1.5,7,Yes,3
+1436,164900,0.15,No,22,15100,No,No,Electric,Electric,Public,1168,40,3,1,1.5,6,Yes,3
+1437,149000,0.15,No,18,15100,No,No,Gas,Hot Air,Public,1385,40,2,1,1.5,3,Yes,2 or fewer
+1438,150000,0.18,No,85,3600,No,No,Oil,Hot Air,Private,969,64,2,None,1.0,4,No,2 or fewer
+1439,214990,0.32,No,17,27000,No,No,Gas,Hot Water,Public,1508,40,3,1,1.5,6,Yes,3
+1440,173000,0.14,No,26,15100,No,Yes,Gas,Hot Air,Public,1602,40,2,1,1.5,7,Yes,2 or fewer
+1441,149900,0.17,No,19,15800,No,No,Electric,Electric,Public,912,40,2,1,1.5,4,Yes,2 or fewer
+1442,155000,0.15,No,18,15100,No,No,Electric,Electric,Public,1128,40,2,None,1.5,3,No,2 or fewer
+1443,170000,0.16,No,18,15100,No,No,Electric,Electric,Public,1514,40,3,1,1.5,5,Yes,3
+1444,237500,0.37,No,19,27000,No,No,Electric,Hot Water,Public,1535,40,3,None,2.0,5,No,3
+1445,297065,0.45,No,1,108900,Yes,No,Gas,Hot Air,Public,2722,40,4,None,3.0,9,No,4 or more
+1446,342202,0.44,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2711,40,4,1,2.5,9,Yes,4 or more
+1447,345264,0.88,No,1,108900,Yes,Yes,Gas,Hot Air,Public,3020,40,4,1,3.0,11,Yes,4 or more
+1448,325046,0.5,No,1,108900,Yes,No,Gas,Hot Air,Public,2712,40,4,None,2.5,10,No,4 or more
+1449,367000,1.0,No,19,21400,No,Yes,Electric,Electric,Private,2556,64,4,1,2.5,8,Yes,4 or more
+1450,159900,0.17,No,21,15200,No,No,Electric,Electric,Public,1184,40,3,None,2.0,4,No,3
+1451,145000,0.16,No,21,15700,No,No,Gas,Hot Air,Public,912,40,2,1,1.5,3,Yes,2 or fewer
+1452,272500,0.32,No,18,27000,No,Yes,Gas,Hot Air,Public,2212,40,4,1,2.5,10,Yes,4 or more
+1453,163255,0.09,No,25,15100,No,Yes,Gas,Hot Air,Public,1602,40,2,1,1.5,3,Yes,2 or fewer
+1454,319000,0.47,No,1,108900,Yes,No,Gas,Hot Air,Public,3285,40,4,1,3.0,12,Yes,4 or more
+1455,160600,0.15,No,20,15100,No,No,Electric,Electric,Public,1406,40,2,None,1.5,3,No,2 or fewer
+1456,246000,0.34,No,20,27000,No,Yes,Gas,Hot Air,Public,1472,40,3,1,2.0,6,Yes,3
+1457,153000,0.17,No,57,10200,No,No,Oil,Hot Air,Public,1072,40,2,None,1.0,6,No,2 or fewer
+1458,295000,0.48,No,15,30000,No,No,Gas,Hot Air,Private,2504,64,5,1,2.5,10,Yes,4 or more
+1459,159000,0.16,No,18,15100,No,No,Electric,Electric,Public,1184,40,2,None,1.5,3,No,2 or fewer
+1460,148400,0.15,No,20,15700,No,No,Electric,Electric,Public,912,40,2,1,1.5,5,Yes,2 or fewer
+1461,311000,0.54,No,10,30000,No,Yes,Gas,Hot Air,Public,2120,40,3,None,2.5,7,No,3
+1462,314000,0.53,No,1,108900,Yes,No,Gas,Hot Air,Public,3344,40,4,1,3.5,11,Yes,4 or more
+1463,250000,0.4,No,25,27000,No,Yes,Electric,Hot Air,Public,2243,40,3,1,2.5,6,Yes,3
+1464,149000,0.16,No,21,15700,No,No,Electric,Electric,Public,908,40,2,None,1.0,3,No,2 or fewer
+1465,307890,0.55,No,1,108900,Yes,No,Gas,Hot Air,Public,2714,40,4,None,3.0,12,No,4 or more
+1466,223000,0.33,No,18,27000,No,No,Electric,Electric,Public,1360,40,3,1,1.5,8,Yes,3
+1467,219000,0.47,No,27,24600,No,No,Electric,Electric,Public,1719,64,3,1,1.5,5,Yes,3
+1468,178000,0.48,No,28,24800,No,No,Electric,Electric,Public,1404,64,3,1,1.5,6,Yes,3
+1469,295925,0.56,No,0,108900,Yes,No,Gas,Hot Air,Public,2134,40,4,1,2.5,9,Yes,4 or more
+1470,141160,0.17,No,20,15800,No,No,Electric,Electric,Public,912,40,2,None,1.5,6,No,2 or fewer
+1471,229900,0.34,No,9,30000,No,Yes,Electric,Electric,Public,1423,40,3,1,1.5,8,Yes,3
+1472,254900,0.33,No,10,30000,No,No,Gas,Hot Air,Public,2044,40,3,None,2.0,5,No,3
+1473,126000,0.85,No,28,3900,No,No,Oil,Hot Air,Private,896,36,2,None,1.0,4,No,2 or fewer
+1474,176500,0.37,No,55,4600,No,Yes,Oil,Hot Water,Private,1380,36,3,1,1.5,6,Yes,3
+1475,161800,0.34,No,41,3500,No,No,Gas,Hot Air,Private,960,36,3,None,1.0,7,No,3
+1476,112200,0.14,No,44,2400,No,No,Gas,Hot Air,Public,840,36,2,None,1.0,4,No,2 or fewer
+1477,154500,0.54,No,35,5700,No,No,Gas,Hot Water,Private,1820,36,4,None,1.5,8,No,4 or more
+1478,300000,0.92,No,19,5000,No,Yes,Oil,Hot Air,Private,2144,36,3,1,2.5,8,Yes,3
+1479,206000,0.1,No,17,5100,No,No,Gas,Hot Air,Private,1610,36,3,None,2.0,8,No,3
+1480,257000,0.75,No,6,1700,No,No,Gas,Hot Air,Private,1752,36,3,None,2.5,7,No,3
+1481,182000,0.38,No,36,3300,No,No,Gas,Hot Water,Private,1729,36,4,1,1.5,8,Yes,4 or more
+1482,161000,0.59,No,37,4400,No,No,Gas,Hot Air,Private,1056,36,3,None,1.0,6,No,3
+1483,176000,0.42,No,21,12250,No,No,Electric,Electric,Public,1292,64,3,None,1.5,6,No,3
+1484,177160,0.41,No,35,7200,No,No,Oil,Hot Air,Public,832,64,3,None,1.0,8,No,3
+1485,355063,0.36,No,0,13000,Yes,Yes,Gas,Hot Air,Private,2256,64,4,1,2.5,8,Yes,4 or more
+1486,213000,0.48,No,20,10000,No,No,Electric,Electric,Public,1274,64,3,1,2.0,4,Yes,3
+1487,266500,0.52,No,18,13000,No,No,Electric,Electric,Public,1608,64,3,None,2.5,4,No,3
+1488,285000,0.36,No,13,13000,No,No,Gas,Hot Water,Private,1868,64,3,1,2.5,9,Yes,3
+1489,178900,0.35,No,21,36500,No,No,Electric,Electric,Public,1554,64,3,None,1.0,4,No,3
+1490,300000,0.56,No,34,30800,No,No,Gas,Hot Water,Public,3604,64,6,1,3.5,12,Yes,4 or more
+1491,211000,0.49,No,41,28600,No,Yes,Gas,Hot Water,Public,1887,64,4,1,2.5,8,Yes,4 or more
+1492,451000,2.0,No,52,84000,No,Yes,Oil,Hot Air,Public,1326,64,3,None,1.0,7,No,3
+1493,201400,0.49,No,30,28600,No,No,Gas,Hot Water,Public,1876,64,3,1,2.5,6,Yes,3
+1494,195900,0.4,No,34,30000,No,No,Gas,Hot Air,Public,1672,64,3,1,0.0,5,Yes,3
+1495,190000,0.57,No,35,34900,No,Yes,Gas,Hot Air,Public,2064,64,4,1,2.5,6,Yes,4 or more
+1496,150000,0.21,No,19,19100,No,No,Electric,Electric,Public,1138,64,2,1,1.0,4,Yes,2 or fewer
+1497,206000,1.0,No,19,36000,No,Yes,Gas,Hot Air,Private,1814,64,3,1,1.5,7,Yes,3
+1498,285000,0.32,No,28,35000,No,Yes,Electric,Electric,Public,2380,64,4,1,1.5,10,Yes,4 or more
+1499,120000,0.2,No,24,14000,No,No,Electric,Electric,Public,976,64,2,None,2.0,3,No,2 or fewer
+1500,377500,1.0,No,21,116300,No,Yes,Gas,Hot Air,Public,2886,64,4,2 or more,2.5,9,Yes,4 or more
+1501,340000,0.55,No,8,19300,No,No,Gas,Hot Air,Public,2483,64,4,1,2.5,10,Yes,4 or more
+1502,240000,0.45,No,35,32300,No,No,Gas,Hot Air,Public,1846,64,3,1,1.5,6,Yes,3
+1503,295000,0.49,No,17,36900,No,Yes,Gas,Hot Air,Public,2592,64,4,1,2.5,12,Yes,4 or more
+1504,215000,0.63,No,21,39100,No,Yes,Electric,Electric,Public,1792,64,3,None,1.5,9,No,3
+1505,275000,0.47,No,35,27800,No,No,Gas,Hot Water,Public,2588,64,4,1,2.5,10,Yes,4 or more
+1506,189000,0.81,No,53,21600,No,No,Gas,Hot Water,Private,1210,64,3,None,1.0,7,No,3
+1507,156000,0.09,No,26,17600,No,Yes,Gas,Hot Air,Public,1290,64,2,1,1.5,3,Yes,2 or fewer
+1508,410000,0.79,No,11,86900,No,No,Gas,Hot Air,Private,2444,75,4,1,3.0,11,Yes,4 or more
+1509,264500,0.46,No,34,27400,No,No,Gas,Hot Water,Public,2376,64,4,2 or more,2.5,9,Yes,4 or more
+1510,145500,0.09,No,20,17600,No,No,Gas,Hot Air,Public,1480,64,3,None,1.5,4,No,3
+1511,116500,0.08,No,22,17200,No,Yes,Gas,Hot Air,Public,1375,64,2,None,1.5,4,No,2 or fewer
+1512,264500,0.44,No,40,26600,No,No,Gas,Hot Water,Public,2676,64,4,1,2.5,11,Yes,4 or more
+1513,215000,0.3,No,32,24500,No,No,Gas,Hot Air,Public,1778,64,3,1,1.5,6,Yes,3
+1514,263000,0.6,No,28,28800,No,No,Gas,Hot Water,Public,2570,64,5,1,2.5,12,Yes,4 or more
+1515,243000,0.57,No,9,34900,No,No,Gas,Hot Air,Public,1272,64,2,None,1.5,6,No,2 or fewer
+1516,203000,0.29,No,30,23900,No,Yes,Gas,Hot Air,Public,1852,64,3,1,1.5,6,Yes,3
+1517,335000,0.61,No,10,34700,No,Yes,Gas,Hot Air,Private,2298,64,4,1,2.5,9,Yes,4 or more
+1518,385000,0.5,No,7,17500,No,Yes,Gas,Hot Air,Public,2259,64,4,1,2.5,9,Yes,4 or more
+1519,210000,0.59,No,38,31700,No,No,Gas,Hot Water,Public,2426,64,4,1,2.5,7,Yes,4 or more
+1520,154000,0.14,No,20,18400,No,No,Gas,Hot Water,Public,1480,64,3,1,1.5,5,Yes,3
+1521,155000,0.17,No,20,18700,No,Yes,Gas,Hot Air,Public,1244,64,2,None,2.0,6,No,2 or fewer
+1522,165000,0.17,No,22,18700,No,No,Gas,Hot Air,Public,1479,64,3,None,1.5,4,No,3
+1523,300000,0.7,No,15,40000,No,No,Gas,Hot Air,Public,2358,64,4,None,2.5,7,No,4 or more
+1524,240000,0.46,No,33,32700,No,Yes,Gas,Hot Air,Public,1453,64,4,1,2.0,9,Yes,4 or more
+1525,182000,0.35,No,40,27800,No,Yes,Gas,Hot Air,Public,2080,64,4,1,1.5,10,Yes,4 or more
+1526,194000,6.15,No,64,73500,No,No,Oil,Hot Water,Private,1960,64,3,1,1.5,9,Yes,3
+1527,410000,0.44,No,3,13200,No,Yes,Gas,Hot Air,Public,2600,64,4,1,2.5,10,Yes,4 or more
+1528,280000,0.85,No,18,40800,No,Yes,Gas,Hot Air,Public,1897,64,4,1,2.5,7,Yes,4 or more
+1529,235000,0.47,No,37,27800,No,No,Gas,Hot Water,Public,1872,64,4,1,2.5,9,Yes,4 or more
+1530,185000,0.06,No,27,16400,No,Yes,Gas,Hot Air,Public,1260,64,2,1,1.5,6,Yes,2 or fewer
+1531,167000,0.21,No,21,14700,No,Yes,Gas,Hot Air,Public,1228,64,3,1,1.5,5,Yes,3
+1532,206500,0.5,No,35,34500,No,Yes,Gas,Hot Air,Public,1956,64,4,None,2.0,7,No,4 or more
+1533,165000,0.05,No,19,16000,No,Yes,Gas,Hot Air,Public,1480,64,3,None,2.5,6,No,3
+1534,230000,0.35,No,42,27800,No,Yes,Gas,Hot Air,Private,1793,64,4,1,1.5,9,Yes,4 or more
+1535,235000,0.73,No,34,35700,No,No,Gas,Hot Air,Public,2078,64,4,1,1.5,6,Yes,4 or more
+1536,200500,0.69,No,26,27900,No,Yes,Gas,Hot Air,Private,1666,64,3,1,1.5,4,Yes,3
+1537,310000,0.46,No,21,27400,No,No,Gas,Hot Water,Public,2378,64,3,1,2.5,9,Yes,3
+1538,169900,0.06,No,27,16400,No,Yes,Gas,Hot Air,Public,1452,64,3,1,1.5,5,Yes,3
+1539,210500,0.28,No,22,32000,No,No,Electric,Electric,Public,1792,64,3,1,1.5,5,Yes,3
+1540,305000,0.92,No,16,35900,No,No,Oil,Hot Water,Private,2290,75,4,1,2.0,7,Yes,4 or more
+1541,508000,0.17,No,1,116700,No,No,Gas,Hot Air,Public,3511,64,4,1,2.5,12,Yes,4 or more
+1542,220000,0.41,No,39,30500,No,No,Gas,Hot Air,Public,1922,64,4,None,1.5,9,No,4 or more
+1543,256000,0.5,No,20,29000,No,No,Gas,Hot Water,Public,2263,64,4,1,2.5,11,Yes,4 or more
+1544,196900,0.41,No,35,30500,No,Yes,Gas,Hot Air,Public,1672,64,4,None,1.5,6,No,4 or more
+1545,233000,0.26,No,30,21900,No,Yes,Gas,Hot Air,Public,1902,64,3,1,1.5,5,Yes,3
+1546,140000,0.06,No,20,16400,No,Yes,Gas,Hot Air,Public,1479,64,2,1,1.5,7,Yes,2 or fewer
+1547,162900,0.12,No,20,18200,No,No,Electric,Electric,Public,1314,64,2,1,1.5,5,Yes,2 or fewer
+1548,178000,0.17,No,18,18700,No,Yes,Electric,Electric,Public,1302,64,2,None,1.5,4,No,2 or fewer
+1549,265000,0.67,No,40,34100,No,No,Gas,Hot Water,Public,2310,64,5,1,2.5,10,Yes,4 or more
+1550,454900,0.66,No,9,75800,No,No,Gas,Hot Air,Public,2880,64,4,1,2.5,11,Yes,4 or more
+1551,215000,5.65,No,53,69400,No,Yes,Oil,Hot Air,Public,1948,64,2,1,1.5,5,Yes,2 or fewer
+1552,248000,0.67,No,16,39600,No,Yes,Gas,Hot Air,Public,1613,64,3,1,1.5,8,Yes,3
+1553,395000,0.7,No,16,35000,No,Yes,Gas,Hot Water,Public,2803,64,4,1,3.0,10,Yes,4 or more
+1554,171500,0.07,No,20,16800,No,Yes,Electric,Electric,Public,1479,64,3,1,1.5,4,Yes,3
+1555,268000,0.48,No,27,62000,No,Yes,Gas,Hot Air,Public,2147,64,4,1,2.5,10,Yes,4 or more
+1556,166500,0.06,No,20,16400,No,Yes,Electric,Electric,Public,1314,64,2,1,1.5,4,Yes,2 or fewer
+1557,355000,0.43,No,7,39000,No,Yes,Gas,Hot Air,Public,2330,64,4,1,2.5,7,Yes,4 or more
+1558,165000,0.93,No,13,38300,No,No,Gas,Hot Air,Private,1352,64,3,None,1.0,8,No,3
+1559,300000,0.08,No,34,37300,No,No,Gas,Hot Water,Public,2276,64,5,1,2.5,10,Yes,4 or more
+1560,350000,0.5,No,18,63500,No,Yes,Gas,Hot Air,Public,2162,64,4,1,2.5,9,Yes,4 or more
+1561,279900,0.49,No,19,62800,No,Yes,Gas,Hot Air,Public,2091,64,4,1,2.5,8,Yes,4 or more
+1562,265000,0.65,No,37,33500,No,No,Gas,Hot Water,Public,2564,64,4,1,2.5,8,Yes,4 or more
+1563,267000,0.31,No,33,25100,No,No,Gas,Hot Air,Public,2050,64,4,None,1.5,9,No,4 or more
+1564,235000,0.76,No,38,35300,No,No,Gas,Hot Water,Public,1768,64,3,None,2.0,5,No,3
+1565,299900,0.46,No,18,60500,No,Yes,Gas,Hot Air,Public,2497,64,3,1,2.5,9,Yes,3
+1566,167000,0.07,No,26,16800,No,Yes,Gas,Hot Air,Public,1290,64,2,1,1.5,7,Yes,2 or fewer
+1567,168000,0.4,No,149,28000,No,No,Oil,Hot Air,Private,1776,64,3,None,2.0,8,No,3
+1568,150000,0.07,No,21,16800,No,No,Electric,Electric,Public,1480,64,3,None,1.5,6,No,3
+1569,255000,0.41,No,21,25400,No,Yes,Gas,Hot Air,Public,1910,64,4,None,2.5,6,No,4 or more
+1570,455000,4.2,No,29,70500,No,Yes,Electric,Electric,Private,2828,64,3,1,2.5,10,Yes,3
+1571,351100,0.46,No,3,16100,No,No,Gas,Hot Air,Public,2535,64,4,1,2.5,10,Yes,4 or more
+1572,315000,0.46,No,36,27400,No,No,Gas,Hot Water,Public,2576,64,4,1,2.5,12,Yes,4 or more
+1573,220000,0.4,No,21,28000,No,No,Gas,Hot Air,Public,1500,64,3,None,1.5,7,No,3
+1574,159000,0.14,No,20,18400,No,No,Electric,Electric,Public,1480,64,3,None,1.5,8,No,3
+1575,341000,0.57,No,16,68800,No,Yes,Gas,Hot Air,Public,2250,64,3,1,2.5,8,Yes,3
+1576,276000,0.47,No,19,36600,No,Yes,Gas,Hot Air,Public,1831,64,3,1,2.0,5,Yes,3
+1577,309000,0.49,No,19,62800,No,Yes,Gas,Hot Air,Public,2214,64,4,1,2.5,10,Yes,4 or more
+1578,217021,0.46,No,31,32700,No,No,Gas,Hot Water,Private,1846,64,3,None,1.5,7,No,3
+1579,188500,0.05,No,19,16000,No,Yes,Gas,Hot Air,Public,1302,64,2,None,1.5,6,No,2 or fewer
+1580,320000,0.55,No,33,50300,No,Yes,Gas,Hot Air,Public,2212,64,4,1,2.5,9,Yes,4 or more
+1581,247000,0.34,No,40,39000,No,No,Gas,Hot Air,Public,1783,64,4,1,2.5,10,Yes,4 or more
+1582,166000,0.1,No,21,18000,No,No,Electric,Electric,Public,1480,64,2,1,1.5,7,Yes,2 or fewer
+1583,236000,0.15,No,37,38800,No,No,Oil,Hot Water,Private,1794,64,3,None,2.0,6,No,3
+1584,233900,0.3,No,32,24500,No,Yes,Gas,Hot Air,Public,1918,64,4,1,1.5,6,Yes,4 or more
+1585,162740,0.07,No,21,16800,No,No,Gas,Hot Air,Public,1480,64,3,1,1.5,8,Yes,3
+1586,225000,0.45,No,35,32300,No,No,Gas,Hot Air,Public,1756,64,4,1,1.5,7,Yes,4 or more
+1587,360000,0.91,No,17,77200,No,Yes,Gas,Hot Water,Public,2499,64,4,1,3.0,7,Yes,4 or more
+1588,281520,0.56,No,34,30800,No,Yes,Gas,Hot Water,Public,2310,64,5,1,3.0,8,Yes,4 or more
+1589,365000,0.56,No,0,37900,No,No,Gas,Hot Air,Public,2950,64,4,1,2.5,12,Yes,4 or more
+1590,315000,0.6,No,20,71000,No,Yes,Gas,Hot Air,Public,2702,64,4,2 or more,2.5,10,Yes,4 or more
+1591,297900,0.3,No,15,34000,No,Yes,Gas,Hot Air,Public,2288,64,3,1,2.5,8,Yes,3
+1592,270000,0.42,No,35,30900,No,Yes,Gas,Hot Air,Public,1838,64,4,None,1.5,7,No,4 or more
+1593,260000,0.42,No,27,25800,No,No,Gas,Hot Water,Public,2310,64,4,1,2.5,10,Yes,4 or more
+1594,72000,0.33,No,85,24600,No,No,Electric,Electric,Private,1152,52,3,None,1.0,6,No,3
+1595,229500,0.34,No,22,22600,No,No,Gas,Hot Air,Public,1577,64,3,None,2.0,8,No,3
+1596,275000,0.54,No,19,30200,No,No,Gas,Hot Water,Public,2175,64,4,1,2.5,10,Yes,4 or more
+1597,155000,0.29,No,23,19500,No,No,Gas,Hot Air,Public,1375,64,2,None,1.5,4,No,2 or fewer
+1598,225570,0.37,No,27,23800,No,No,Gas,Hot Water,Public,1616,64,3,1,3.0,8,Yes,3
+1599,224000,0.54,No,38,34700,No,No,Gas,Hot Air,Public,1954,64,4,1,2.0,10,Yes,4 or more
+1600,290000,0.61,No,34,32300,No,No,Gas,Hot Water,Public,2728,64,4,1,2.5,10,Yes,4 or more
+1601,262000,0.64,No,35,33200,No,No,Gas,Hot Water,Public,2553,64,4,1,2.5,9,Yes,4 or more
+1602,319900,0.34,No,3,11900,No,No,Gas,Hot Air,Public,1963,64,4,1,2.5,8,Yes,4 or more
+1603,265000,0.45,No,43,27000,No,No,Gas,Hot Water,Public,2564,64,4,1,2.5,11,Yes,4 or more
+1604,255000,0.33,No,19,35500,No,Yes,Gas,Electric,Public,1792,64,3,1,1.5,7,Yes,3
+1605,217300,0.35,No,40,27800,No,No,Gas,Hot Water,Public,1663,64,3,1,1.0,8,Yes,3
+1606,291000,0.49,No,6,17200,No,Yes,Gas,Hot Air,Public,2070,64,4,1,2.5,6,Yes,4 or more
+1607,319000,0.46,No,26,48000,No,Yes,Oil,Hot Air,Public,2588,64,4,1,2.5,12,Yes,4 or more
+1608,271500,0.54,No,35,30200,No,No,Gas,Hot Water,Public,2276,64,5,1,2.5,9,Yes,4 or more
+1609,224900,0.48,No,45,28200,No,No,Gas,Hot Air,Public,1732,64,4,None,2.0,7,No,4 or more
+1610,260000,0.63,No,39,32900,No,No,Gas,Hot Water,Public,2310,64,5,1,2.5,9,Yes,4 or more
+1611,199900,0.63,No,38,22100,No,Yes,Gas,Hot Water,Private,1742,52,4,1,1.0,10,Yes,4 or more
+1612,252659,0.41,No,36,25400,No,No,Gas,Hot Water,Public,2802,64,4,1,2.5,8,Yes,4 or more
+1613,312500,0.46,No,16,36400,No,Yes,Gas,Hot Air,Public,1902,64,4,1,2.5,6,Yes,4 or more
+1614,290000,0.46,No,22,48000,No,Yes,Gas,Hot Air,Public,2030,64,4,1,2.5,10,Yes,4 or more
+1615,155000,0.57,No,59,29900,No,No,Gas,Hot Air,Public,1498,75,2,1,1.0,7,Yes,2 or fewer
+1616,355000,0.55,No,20,67300,No,Yes,Gas,Hot Air,Public,2116,64,3,1,2.5,10,Yes,3
+1617,190000,0.83,No,37,35700,No,No,Gas,Hot Water,Public,2108,64,4,1,2.5,10,Yes,4 or more
+1618,130000,0.06,No,16,1600,No,Yes,Gas,Hot Air,Public,1480,40,2,1,2.5,4,Yes,2 or fewer
+1619,264000,0.21,No,1,32000,Yes,No,Gas,Hot Air,Public,2427,40,3,None,2.5,9,No,3
+1620,193980,0.31,No,12,10400,No,No,Gas,Hot Air,Public,1348,40,2,None,2.0,5,No,2 or fewer
+1621,219900,0.25,No,13,9000,No,No,Gas,Hot Air,Public,1391,40,3,None,2.0,8,No,3
+1622,469900,1.4,No,2,74800,Yes,Yes,Gas,Hot Air,Public,3422,62,4,1,4.0,12,Yes,4 or more
+1623,314230,0.51,No,1,74800,Yes,Yes,Gas,Hot Air,Public,2686,62,4,1,3.0,10,Yes,4 or more
+1624,138900,0.15,No,14,5400,No,Yes,Gas,Hot Water,Public,1034,40,2,None,1.5,3,No,2 or fewer
+1625,160000,0.29,No,14,9700,No,Yes,Gas,Hot Air,Public,1072,40,2,None,1.0,7,No,2 or fewer
+1626,228000,0.25,No,12,15200,No,No,Gas,Hot Air,Public,1512,40,3,None,2.0,8,No,3
+1627,224400,5.0,No,17,24100,No,No,Electric,Electric,Private,1008,40,2,None,1.0,5,No,2 or fewer
+1628,132870,0.06,No,17,1600,No,No,Gas,Hot Water,Public,1480,40,3,1,1.5,5,Yes,3
+1629,135600,0.51,No,34,16600,No,No,Gas,Hot Air,Private,912,40,3,None,1.0,4,No,3
+1630,150600,0.07,No,17,1800,No,Yes,Gas,Hot Water,Public,1480,40,3,1,1.5,7,Yes,3
+1631,335000,1.25,No,16,11900,No,No,Electric,Electric,Private,1558,62,3,1,2.0,7,Yes,3
+1632,316250,0.04,No,0,74800,Yes,No,Gas,Hot Air,Public,2648,62,4,1,2.5,11,Yes,4 or more
+1633,181280,0.39,No,26,9800,No,No,Gas,Hot Air,Private,2248,40,4,None,1.0,10,No,4 or more
+1634,158000,0.73,No,85,16400,No,No,Oil,Hot Air,Private,1461,40,3,None,1.0,6,No,3
+1635,221000,0.23,No,11,7700,No,No,Gas,Hot Air,Public,1470,40,3,1,2.5,8,Yes,3
+1636,230000,0.5,No,8,4000,No,No,Gas,Hot Air,Public,1900,40,3,None,1.5,6,No,3
+1637,299000,0.1,No,8,13000,No,Yes,Gas,Hot Air,Public,2054,62,4,None,2.5,6,No,4 or more
+1638,148000,0.07,No,16,1800,No,No,Gas,Hot Air,Public,1480,40,2,1,2.5,4,Yes,2 or fewer
+1639,267500,0.24,No,14,8600,No,No,Gas,Hot Air,Public,1822,40,3,None,2.0,9,No,3
+1640,259000,0.01,No,12,17900,No,No,Gas,Hot Air,Public,1620,62,3,1,2.5,5,Yes,3
+1641,321000,0.1,No,14,21000,No,Yes,Gas,Hot Air,Public,2120,62,4,None,2.5,8,No,4 or more
+1642,409790,0.27,No,1,74800,Yes,No,Gas,Hot Air,Public,3009,62,5,1,3.5,12,Yes,4 or more
+1643,184000,0.45,No,35,9000,No,No,Gas,Hot Air,Private,1791,40,4,None,1.0,10,No,4 or more
+1644,145000,0.07,No,16,1800,No,Yes,Electric,Hot Air,Public,1480,40,2,1,2.5,3,Yes,2 or fewer
+1645,310000,1.75,No,14,20600,No,No,Electric,Electric,Private,1300,40,3,None,2.0,4,No,3
+1646,170000,0.07,No,16,1800,No,No,Gas,Hot Air,Public,1480,40,3,1,1.5,5,Yes,3
+1647,210500,0.02,No,15,9700,No,No,Gas,Hot Air,Public,1876,40,3,None,2.0,6,No,3
+1648,199900,0.24,No,13,8000,No,No,Gas,Hot Air,Public,1564,40,3,None,2.0,5,No,3
+1649,150000,0.28,No,70,9800,No,No,Gas,Hot Water,Public,1248,40,3,None,1.5,4,No,3
+1650,153000,0.11,No,16,2900,No,No,Gas,Hot Air,Public,1480,40,2,None,2.5,4,No,2 or fewer
+1651,334000,0.55,No,12,19300,No,No,Gas,Hot Air,Public,2281,62,4,1,2.5,7,Yes,4 or more
+1652,216900,0.4,No,38,8000,No,Yes,Gas,Hot Air,Private,2395,40,3,1,1.5,6,Yes,3
+1653,259000,0.05,No,15,16800,No,No,Gas,Hot Air,Public,1915,40,4,1,2.5,10,Yes,4 or more
+1654,240000,0.3,No,12,10800,No,No,Gas,Hot Air,Public,1400,40,3,2 or more,1.5,4,Yes,3
+1655,186030,0.37,No,38,9300,No,Yes,Gas,Hot Air,Private,1104,40,4,None,1.0,9,No,4 or more
+1656,203000,0.43,No,14,13500,No,Yes,Gas,Hot Air,Public,1796,40,3,1,2.5,8,Yes,3
+1657,255000,0.13,No,15,13700,No,No,Gas,Hot Air,Public,1512,40,3,None,1.5,6,No,3
+1658,119000,0.09,No,95,3200,No,No,Gas,Hot Water,Public,1646,40,3,None,1.0,5,No,3
+1659,260800,0.5,No,5,4000,No,No,Gas,Hot Air,Public,1868,40,3,1,2.5,7,Yes,3
+1660,169000,0.19,No,15,6800,No,No,Gas,Hot Air,Public,1301,40,3,None,1.5,4,No,3
+1661,225000,0.95,No,15,11200,No,No,Electric,Electric,Private,1652,62,3,None,2.0,7,No,3
+1662,124000,0.35,No,33,8500,No,No,Oil,Hot Water,Private,1056,62,3,None,1.0,7,No,3
+1663,245000,0.51,No,22,15100,No,No,Gas,Hot Air,Private,2312,62,3,None,1.5,10,No,3
+1664,250000,0.48,No,15,19200,No,Yes,Gas,Hot Air,Private,2072,62,3,None,2.5,5,No,3
+1665,172000,0.46,No,20,7800,No,No,Electric,Electric,Private,1200,62,2,None,1.0,6,No,2 or fewer
+1666,153500,0.48,No,33,12000,No,No,Oil,Hot Air,Private,1764,62,3,1,1.5,7,Yes,3
+1667,165000,0.02,No,17,20100,No,No,Gas,Hot Air,Private,960,62,3,None,1.0,4,No,3
+1668,159000,0.17,No,22,15800,No,No,Gas,Hot Air,Public,988,51,2,None,2.0,4,No,2 or fewer
+1669,171500,0.17,No,19,15200,No,No,Electric,Electric,Public,1514,51,3,None,1.5,7,No,3
+1670,240000,0.51,No,13,26900,No,Yes,Gas,Hot Air,Public,1320,61,3,None,2.0,7,No,3
+1671,409550,0.69,No,1,83500,Yes,Yes,Gas,Hot Air,Private,2719,61,3,1,2.0,9,Yes,3
+1672,302000,0.61,No,11,41700,No,No,Gas,Hot Air,Public,1796,61,3,1,2.5,6,Yes,3
+1673,285000,0.38,No,4,53900,No,No,Gas,Hot Air,Public,1709,61,3,1,2.5,5,Yes,3
+1674,385900,0.4,No,1,233000,Yes,Yes,Gas,Hot Air,Public,3008,61,4,1,2.5,11,Yes,4 or more
+1675,140595,0.42,No,71,18600,No,No,Oil,Hot Air,Private,1350,61,3,None,1.0,5,No,3
+1676,213000,0.47,No,20,20000,No,Yes,Electric,Electric,Private,1200,61,3,None,1.5,7,No,3
+1677,335000,0.47,No,3,53900,No,Yes,Gas,Hot Air,Public,1857,61,3,1,2.5,6,Yes,3
+1678,290000,0.66,No,15,31200,No,Yes,Gas,Hot Air,Private,2305,51,4,1,2.5,11,Yes,4 or more
+1679,265000,0.49,No,1,15000,Yes,Yes,Gas,Hot Air,Private,2184,51,3,1,2.5,10,Yes,3
+1680,334000,0.32,No,116,16400,No,No,Gas,Hot Air,Public,1668,51,3,None,2.0,7,No,3
+1681,382406,0.44,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2712,51,4,1,2.5,12,Yes,4 or more
+1682,149300,0.16,No,20,15700,No,No,Electric,Electric,Public,912,51,2,None,1.5,3,No,2 or fewer
+1683,212000,0.34,No,21,27000,No,No,Electric,Electric,Public,1508,51,3,None,1.5,4,No,3
+1684,195000,0.46,No,28,24500,No,No,Electric,Electric,Public,1232,61,3,1,1.0,6,Yes,3
+1685,245000,0.36,No,106,35900,No,No,Gas,Hot Air,Public,1836,51,4,1,1.5,6,Yes,4 or more
+1686,422680,0.16,No,176,46200,No,No,Gas,Hot Water,Public,4486,51,6,1,4.0,12,Yes,4 or more
+1687,240000,4.21,No,38,70400,No,No,Oil,Hot Water,Private,2204,51,3,2 or more,2.0,8,Yes,3
+1688,156000,0.16,No,19,15100,No,No,Gas,Hot Air,Public,1184,51,3,None,2.0,7,No,3
+1689,265000,0.49,No,1,15000,Yes,Yes,Gas,Hot Air,Private,2184,51,3,1,2.5,8,Yes,3
+1690,334000,0.32,No,116,16400,No,No,Gas,Hot Air,Public,1668,51,3,None,2.0,5,No,3
+1691,382406,0.44,No,1,108900,Yes,Yes,Gas,Hot Air,Public,2712,51,4,1,2.5,11,Yes,4 or more
+1692,149300,0.16,No,20,15700,No,No,Electric,Electric,Public,912,51,2,None,1.5,5,No,2 or fewer
+1693,212000,0.34,No,21,27000,No,No,Electric,Electric,Public,1508,51,3,None,1.5,4,No,3
+1694,195000,0.46,No,28,24500,No,No,Electric,Electric,Public,1232,61,3,1,1.0,4,Yes,3
+1695,171600,0.32,No,15,4650,No,No,Electric,Electric,Public,960,61,3,None,1.0,4,No,3
+1696,245000,0.36,No,106,35900,No,No,Gas,Hot Air,Public,1836,51,4,1,1.5,8,Yes,4 or more
+1697,282000,0.87,No,12,56300,No,Yes,Gas,Hot Air,Public,1836,61,4,1,1.5,6,Yes,4 or more
+1698,260000,0.34,No,42,27100,No,No,Gas,Hot Water,Private,1803,61,4,None,1.5,6,No,4 or more
+1699,254500,0.17,No,9,20400,No,Yes,Gas,Hot Air,Public,1463,61,3,1,2.0,8,Yes,3
+1700,179900,0.07,No,27,16800,No,Yes,Gas,Hot Air,Public,1290,61,2,1,1.5,7,Yes,2 or fewer
+1701,255000,0.53,No,38,29900,No,No,Gas,Hot Water,Public,2310,61,5,1,2.5,10,Yes,4 or more
+1702,265000,0.43,No,40,26200,No,Yes,Gas,Hot Water,Public,1664,61,3,1,2.0,4,Yes,3
+1703,174000,0.06,No,21,16400,No,No,Gas,Hot Air,Public,1479,61,3,None,1.5,8,No,3
+1704,322000,0.26,No,7,9100,No,Yes,Gas,Hot Air,Public,2483,61,4,1,2.5,8,Yes,4 or more
+1705,337000,0.46,No,4,60500,No,Yes,Gas,Hot Air,Public,2480,61,4,1,2.5,10,Yes,4 or more
+1706,221450,0.36,No,121,33000,No,No,Oil,Hot Air,Private,2699,61,6,1,1.0,12,Yes,4 or more
+1707,247000,0.3,No,28,34000,No,Yes,Gas,Hot Air,Public,1676,61,3,1,2.5,8,Yes,3
+1708,180000,0.54,No,38,30200,No,No,Gas,Hot Water,Public,2816,61,5,1,2.5,10,Yes,4 or more
+1709,229900,0.37,No,26,23800,No,No,Gas,Hot Water,Public,1966,61,3,None,1.5,7,No,3
+1710,230000,0.54,No,39,34700,No,No,Gas,Hot Air,Public,2112,61,4,1,1.5,9,Yes,4 or more
+1711,388000,0.77,No,9,74400,No,No,Gas,Hot Air,Public,2762,61,4,1,2.5,12,Yes,4 or more
+1712,350000,0.66,No,23,72200,No,Yes,Gas,Hot Air,Public,2184,61,3,1,2.5,9,Yes,3
+1713,169700,0.07,No,22,16800,No,No,Electric,Electric,Public,1480,61,3,None,1.5,7,No,3
+1714,190000,0.53,No,39,34700,No,No,Gas,Hot Air,Public,1624,61,3,None,1.0,4,No,3
+1715,317500,0.54,No,19,30200,No,Yes,Gas,Hot Air,Public,1650,61,3,1,2.0,4,Yes,3
+1716,70000,1.34,No,34,36700,No,No,Electric,Electric,Private,1313,61,2,None,1.5,3,No,2 or fewer
+1717,300000,0.65,No,19,33500,No,No,Gas,Hot Water,Public,2600,61,4,1,2.5,11,Yes,4 or more
+1718,145400,0.13,No,22,18300,No,No,Gas,Hot Air,Public,945,61,2,None,1.0,5,No,2 or fewer
+1719,183500,0.28,No,57,23200,No,No,Oil,Hot Air,Private,1121,61,3,None,1.5,4,No,3
+1720,275900,0.81,No,0,7300,Yes,No,Gas,Hot Air,Public,2288,61,3,1,2.5,8,Yes,3
+1721,436023,0.41,No,5,43400,No,Yes,Gas,Hot Air,Public,2718,61,4,1,2.5,12,Yes,4 or more
+1722,319900,0.58,No,42,31400,No,No,Gas,Hot Water,Public,2464,61,4,1,2.5,8,Yes,4 or more
+1723,249000,0.43,No,41,45800,No,No,Gas,Hot Water,Public,2426,61,4,2 or more,2.0,7,Yes,4 or more
+1724,289000,0.38,No,32,24200,No,No,Gas,Hot Water,Public,2310,61,5,1,2.5,11,Yes,4 or more
+1725,285000,0.94,No,37,36200,No,No,Gas,Hot Water,Public,2564,61,4,1,2.5,11,Yes,4 or more
+1726,194900,0.39,No,9,20400,No,No,Gas,Hot Air,Public,1099,51,2,None,1.0,3,No,2 or fewer
+1727,125000,0.24,No,48,16800,No,No,Gas,Hot Air,Public,1225,51,3,1,1.0,7,Yes,3
+1728,111300,0.59,No,86,26000,No,No,Gas,Hot Air,Private,1959,51,3,None,1.0,6,No,3
