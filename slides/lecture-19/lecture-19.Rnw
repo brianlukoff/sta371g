@@ -1,0 +1,231 @@
+\documentclass{beamer}
+\usepackage{preview}
+\usepackage{../371g-slides}
+\title{Logistic Regression 1}
+\subtitle{Lecture 19}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  library(okcupiddata)
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}
+      \fullpagepicture{okcupid}
+    \end{frame}
+
+    \begin{frame}{The OkCupid data set}
+      \begin{itemize}
+        \item The OkCupid data set contains information about \Sexpr{nrow(profiles)} profiles from users of the OkCupid online dating service.
+        \item We have data on user age, height, sex, income, sexual orientation, education level, body type, ethnicity, and more.
+        \item OkCupid often publishes their own analyses of their data---see \url{https://theblog.okcupid.com/tagged/data}.
+        \item Let's see if we can predict the sex/gender of the user based on their height.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{What's wrong with this regression?}
+      \[
+        \widehat{\text{sex}} = \hat\beta_0 + \hat\beta_1\cdot\text{height}
+      \]
+
+      \pause
+
+      \begin{center}
+        The $Y$ variable here is \alert{categorical} (two levels---everyone in this data set is either labeled male or female), so regular linear regression won't work here.
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{But what if we just do it anyway?}
+      Let's first create a dummy variable to convert sex to a quantitative dummy variable:
+      <<>>=
+      profiles$male <- ifelse(profiles$sex == "m", 1, 0)
+      @
+      We could do this with 1 representing either male or female (it wouldn't matter).
+    \end{frame}
+
+    \begin{frame}[fragile]{But what if we just do it anyway?}
+      <<echo=F, fig.height=2.5>>=
+      plot(male ~ height, data=profiles[sample(nrow(profiles), 1000, replace=F),], pch=16, col="lightblue")
+      bad.model <- lm(male ~ height, data=profiles)
+      abline(bad.model, lwd=3, col="orange")
+      @
+      A line is a spectacularly bad fit to this data---it's not even close to linear. And what does it mean to predict that male = 0.7 (or 1.2)?
+    \end{frame}
+
+    \begin{frame}
+      What challenges might we run into with this data?
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{MaleHeightDistribution}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{MaleHeightDistributionYoink}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        So men lie about their height---by an average of about 2 inches! And many men round up to 6 feet.
+        \pause
+
+        \bigskip
+        Women do too!
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{FemaleHeightDistributionImplied}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        We don't really have any tools at our disposal to correct for this, but let's still proceed with the analysis (with some caution) since the exaggeration seems about the same regardless of gender.
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{Cleaning the data}
+      There are definitely some weird values for height:
+      <<fig.height=2>>=
+      boxplot(profiles$height, horizontal=T, xlab="Height")
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Cleaning the data}
+      Let's consider only heights between 55 and 80 inches (4'7" and 6'8"), inclusive. This is arbitrary, but it excludes only \Sexpr{nrow(subset(profiles, height < 55 | height > 80))} cases out of \Sexpr{nrow(profiles)}.
+      <<>>=
+      my.profiles <- subset(profiles,
+                       height >= 55 & height <= 80)
+      @
+    \end{frame}
+
+    \begin{frame}{The idea behind logistic regression}
+      \begin{itemize}
+        \item Instead of predicting whether someone is male, let's predict the \emph{probability} that they are male
+        \item In logistic regression, one level of $Y$ is always called ``success'' and the other called ``failure.'' Since $Y=1$ for males, in our setup we have designated males as ``success.'' (You could also set $Y=1$ for females and call females ``success.'')
+        \item Let's fit a curve that is always between 0 and 1.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Odds}
+      \begin{itemize}[<+->]
+        \item When something has ``even (1/1) odds,'' the probability of success is $1/2$
+        \item When something has ``2/1 odds,'' the probability of success is $2/3$
+        \item When something has ``3/2 odds,'' the probability of success is $3/5$
+        \item In general, the odds of something happening are $p/(1-p)$
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The logistic regression model}
+      Logistic regression models the \alert{log odds} of success $p$ as a linear function of $X$:
+      \[
+        \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X + \epsilon
+      \]
+      This fits an S-shaped curve to the data (we'll see what it looks like later).
+    \end{frame}
+
+    \begin{frame}[fragile]{Let's try it}
+      <<results='hide'>>=
+      model <- glm(male ~ height, data=my.profiles,
+                   family=binomial)
+      summary(model)
+      @
+    \end{frame}
+
+    \begin{frame}{How to interpret the curve?}
+      <<include=F>>=
+      b0 <- coef(model)['(Intercept)']
+      b1 <- coef(model)['height']
+      options(digits=2)
+      @
+      The regression output tells us that our prediction is
+      \[
+        \log\text{odds} = \log\left(\frac{P(\text{male})}{1-P(\text{male})}\right) = \Sexpr{b0} + \Sexpr{b1}\cdot\text{height}.
+      \]
+      \pause
+      Let's solve for $P(\text{male})$:
+      \[
+        \widehat{P(\text{male})} = \frac{e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}}{1 + e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}}
+      \]
+    \end{frame}
+
+    \begin{frame}[fragile]{Making predictions}
+      We can use \texttt{predict} to automate the process of plugging into the equation:
+      <<>>=
+      predict(model, list(height=69), type="response")
+      @
+      <<include=F>>=
+      prediction <- predict(model, list(height=69), type="response")
+      @
+      \[
+        \frac{e^{\Sexpr{b0} + \Sexpr{b1}\cdot 69}}{1 + e^{\Sexpr{b0} + \Sexpr{b1}\cdot 69}} = \Sexpr{prediction}
+      \]
+      \pause
+      We predict that someone that is 5'9" has a 77\% chance of being male.
+    \end{frame}
+
+    \begin{frame}[fragile]{Visualizing the model}
+      <<echo=F>>=
+      plot(male ~ height, data=my.profiles[sample(nrow(my.profiles), 1000, replace=F),], pch=16, col="lightblue")
+      x <- seq(55, 80, 0.1)
+      y <- predict(model, list(height=x), type="response")
+      lines(x, y, lwd=3, col="orange")
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{How to interpret the curve?}
+      \[
+        \widehat{P(\text{male})} = \frac{e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}}{1 + e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}}
+      \]
+      <<fig.height=2.5, echo=F>>=
+      curve(exp(b0+b1*x)/(1+exp(b0+b1*x)), from=55, to=80,
+          xlab='Height', ylab='Predicted P(male)')
+      @
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients}
+      Our prediction equation is:
+      \[
+        \log\left(\frac{P(\text{male})}{1-P(\text{male})}\right) = \Sexpr{b0} + \Sexpr{b1}\cdot\text{height}.
+      \]
+      Let's start with some basic, but not particularly useful, interpretations:
+      \begin{itemize}[<+->]
+        \item When $\text{height}=0$, we predict that the log odds will be $\Sexpr{b0}$ \pause, so the probability of male is predicted to be very close to \Sexpr{round(100*predict(model, list(height=0), type='response'))}\%.
+        \item When height increases by 1 inch, we predict that the log odds of being male will increase by $\Sexpr{b1}$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients}
+      Let's rewrite the prediction equation as:
+      \[
+        \text{Predicted odds of male} = e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}
+      \]
+      Increasing height by 1 inch will \emph{multiply} the odds by $e^{\Sexpr{b1}}=\Sexpr{exp(b1)}$; i.e., increase the odds by $\Sexpr{round(100*(exp(b1)-1), 0)}$\%.
+
+      \bigskip\pause
+      Increasing height by 2 inches will \emph{multiply} the odds by $e^{2 \cdot \Sexpr{b1}}=\Sexpr{exp(2*b1)}$; i.e., increase the odds by $\Sexpr{round(100*(exp(2*b1)-1), 0)}$\%.
+    \end{frame}
+  \end{darkframes}
+
+\end{document}

@@ -18,8 +18,10 @@
 | Lecture 14: What can go wrong, and how to fix it 2 | [Slides](slides/lecture-14/lecture-14.pdf) | [Script](lecture-scripts/lecture-14.R) |
 | Lecture 15: Multiple Regression | [Slides](slides/lecture-15/lecture-15.pdf) | [Script](lecture-scripts/lecture-15.R) |
 | Lecture 16: Polynomial Regression & Data Cleaning | [Slides](slides/lecture-16/lecture-16.pdf) | [Script](lecture-scripts/lecture-16.R) |
-| Lecture 17: Building Models | [Slides](slides/lecture-17/lecture-17.pdf) | |
-| Lecture 18: Indicator Variables and Interactions | [Slides](slides/lecture-18/lecture-18.pdf) | |
+| Lecture 17: Building Models | [Slides](slides/lecture-17/lecture-17.pdf) | [Script](lecture-scripts/lecture-17.R) |
+| Lecture 18: Indicator Variables and Interactions | [Slides](slides/lecture-18/lecture-18.pdf) | [Script](lecture-scripts/lecture-18.R) |
+| Lecture 19: Logistic Regression 1 | [Slides](slides/lecture-19/lecture-19.pdf) | | 
+| Lecture 20: Logistic Regression 2 | [Slides](slides/lecture-20/lecture-20.pdf) | | 
 
 # R help pages
 

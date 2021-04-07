@@ -1,0 +1,456 @@
+\documentclass{beamer}
+\usepackage{preview}
+\usepackage{../371g-slides}
+\title{Logistic Regression 2}
+\subtitle{Lecture 20}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  library(okcupiddata)
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')
+
+  # https://stackoverflow.com/questions/48286722/rmarkdown-how-to-show-partial-output-from-chunk
+  hook_output <- knit_hooks$get('output')
+  knit_hooks$set(output = function(x, options) {
+    if (!is.null(n <- options$out.lines)) {
+      n <- as.numeric(n)
+      x <- unlist(stringr::str_split(x, "\n"))
+      nx <- length(x)
+      x <- x[pmin(n,nx)]
+      if(min(n) > 1)
+        x <- c("...", x)
+      if(max(n) < nx)
+        x <- c(x, "...")
+      x <- paste(c(x, "\n"), collapse = "\n")
+    }
+    hook_output(x, options)
+  })
+
+  library(okcupiddata)
+  source("../../lecture-scripts/empirical-logit-plot.R")
+  profiles$male <- ifelse(profiles$sex == "m", 1, 0)
+  my.profiles <- subset(profiles, height >= 55 & height <= 80)
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{Last time}
+      <<echo=F>>=
+      profiles$male <- ifelse(profiles$sex == "m", 1, 0)
+      my.profiles <- subset(profiles, height >= 55 & height <= 80)
+      model <- glm(male ~ height, data=my.profiles, family=binomial)
+      b0 <- coef(model)['(Intercept)']
+      b1 <- coef(model)['height']
+      options(digits=2)
+      @
+      \begin{itemize}
+        \item The OkCupid data set contains information about \Sexpr{nrow(profiles)} profiles from users of the OkCupid online dating service.
+        \item We predicted sex (as a binary categorical variable) from height using logistic regression, and came up with the prediction equation:
+        \[
+          \log\text{odds} = \log\left(\frac{P(\text{male})}{1-P(\text{male})}\right) = \Sexpr{b0} + \Sexpr{b1}\cdot\text{height}.
+        \]
+        or, solving for $P(\text{male})$,
+        \[
+          \widehat{P(\text{male})} = \frac{e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}}{1 + e^{\Sexpr{b0} + \Sexpr{b1}\cdot\text{height}}}
+        \]
+      \end{itemize}
+    \end{frame}
+
+    \section{Evaluating the model}
+
+    \begin{frame}{How good is our model?}
+      \begin{itemize}[<+->]
+        \item Unfortunately, the typical $R^2$ metric isn't available for logistic regression.
+        \item However, there are many ``pseudo-$R^2$'' metrics that indicate model fit.
+        \item But: most of these pseudo-$R^2$ metrics are difficult to interpret, so we'll focus on something simpler to interpret and communicate.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{How many cases did we accurately predict?}
+      We could use our model to make a prediction of sex based on the probability. Suppose we say that our prediction is:
+      \[
+        \text{Prediction} = \begin{cases}
+          \text{male}, & \text{if $\widehat{P(\text{male})} \geq 0.5$}, \\
+          \text{female}, & \text{if $\widehat{P(\text{male})} < 0.5$}. \\
+        \end{cases}
+      \]
+
+      \pause
+      Now we can compute the fraction of people whose sex we correctly predicted:
+
+      \fontsize{9}{9}\selectfont
+      <<>>=
+      predicted.male <- (predict(model, type="response") >= 0.5)
+      actual.male <- (my.profiles$male == 1)
+      sum(predicted.male == actual.male) / nrow(my.profiles)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{How many cases did we accurately predict?}
+      \Sexpr{round(100*(sum(predicted.male == actual.male) / nrow(my.profiles)), 0)}\% sounds pretty good---what should we compare it against?
+
+      \bigskip
+      \pause
+
+      We should compare \Sexpr{round(100*(sum(predicted.male == actual.male) / nrow(my.profiles)), 0)}\% against what we would have gotten if we just predicted the most common outcome (male) for everyone, without using any other information:
+      \pause
+
+      <<>>=
+      sum(actual.male) / nrow(my.profiles)
+      @
+
+      \pause
+
+      In other words, our model provided a ``lift'' in accuracy from \Sexpr{round(100*(sum(actual.male) / nrow(my.profiles)), 0)}\% to \Sexpr{round(100*(sum(predicted.male == actual.male) / nrow(my.profiles)), 0)}\%.
+    \end{frame}
+
+    \begin{frame}{The confusion matrix}
+      Sometimes it is useful to understand what kinds of errors our model is making:
+      \begin{itemize}
+        \item \alert{True positives}: predicting male for someone that is male
+        \item \alert{True negatives}: predicting female for someone that is female
+        \item \alert{False positives}: predicting male for someone that is female
+        \item \alert{False negatives}: predicting female for someone that is male
+      \end{itemize}
+      (If we had designated female as 1 and male as 0, these would have switched!)
+    \end{frame}
+
+    \begin{frame}[fragile]{The confusion matrix}
+      <<>>=
+      table(predicted.male, actual.male)
+      prop.table(table(predicted.male, actual.male), 2)
+      @
+    \end{frame}
+
+    \section{Checking assumptions}
+
+    \begin{frame}{Checking assumptions}
+      \begin{itemize}
+        \item Independence
+        \item Linearity
+        \item Normality of residuals \redx
+        \item Homoscedasticity / Equal variance \redx
+      \end{itemize}
+      With logistic regression, we don't need to check the last two assumptions (since $Y$ is binary).
+    \end{frame}
+
+    \begin{frame}{Checking assumptions: Independence}
+      Like with linear regression, we check independence by thinking about the data conceptually: are the predictions the model makes likely to be independent from each other?
+      \bigskip\pause
+
+      \greencheckmark \alert{Yes!} Each case is a completely different person whose heights and genders are unrelated.
+    \end{frame}
+
+    \begin{frame}{Checking assumptions: Linearity}
+      Look at the logistic regression model:
+      \[
+        \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X + \epsilon
+      \]
+      We need an approximately linear relationship between the \alert{log odds of success} and $X$, or, equivalently, a linear relationship between the log odds of success and what is predicted from our linear model on the right side of the equation.
+    \end{frame}
+
+    \begin{frame}[fragile]{Checking assumptions: Linearity}
+      <<include=F>>=
+      breaks <- 10
+      percentiles <- quantile(predict(model), probs=seq(0, 1, 1/breaks))
+      data <- data.frame(predicted.logits=predict(model),
+                         y=model$model[,1],
+                         groups=cut(predict(model), breaks=percentiles, labels=1:breaks))
+      # Within each group, calculate actual number of successes and number of cases
+      num.success <- table(data$y, data$groups)["1",]
+      num.cases <- as.numeric(table(data$groups))
+      # Calculate empirical probability within each group, with a small
+      # adjustment to avoid infinity when p = 1
+      empirical.probs <- (num.success + 0.5) / (num.cases + 1)
+      # Calculate actual log odds within each group
+      logits <- log(empirical.probs / (1 - empirical.probs))
+      options(width=50)
+      @
+
+      To do this, we segment the predicted log odds into groups by deciles (bottom 10\%, next 10\%, up until the highest 10\%):
+
+      <<>>=
+      quantile(predict(model), probs=seq(0, 1, 0.1))
+      @
+    \end{frame}
+
+    \begin{frame}{Checking assumptions: linearity}
+      Then we'll calculate the empirical log odds within each group:
+
+      \begin{center}
+        \begin{tabular}{lllll}
+          Predicted log odds & \# males & Total & $p=P(\text{male})$ & Log odds \\
+          \hline
+          $[ \Sexpr{percentiles[1]}, \Sexpr{percentiles[2]} ]$ & $\Sexpr{num.success[1]}$ &  $\Sexpr{num.cases[1]}$ & $\Sexpr{empirical.probs[1]}$ & $\Sexpr{logits[1]}$ \\
+          $[ \Sexpr{percentiles[2]}, \Sexpr{percentiles[3]} ]$ & $\Sexpr{num.success[2]}$ &  $\Sexpr{num.cases[2]}$ & $\Sexpr{empirical.probs[2]}$ & $\Sexpr{logits[2]}$ \\
+          $[ \Sexpr{percentiles[3]}, \Sexpr{percentiles[4]} ]$ & $\Sexpr{num.success[3]}$ &  $\Sexpr{num.cases[3]}$ & $\Sexpr{empirical.probs[3]}$ & $\Sexpr{logits[3]}$ \\
+          $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+          $[ \Sexpr{percentiles[10]}, \Sexpr{percentiles[11]} ]$ & $\Sexpr{num.success[10]}$ &  $\Sexpr{num.cases[10]}$ & $\Sexpr{empirical.probs[10]}$ & $\Sexpr{logits[10]}$ \\
+
+        \end{tabular}
+      \end{center}
+
+      Then we'll plot the empirical log odds against the mean of each decile; we'd like to see approximately the line $y=x$; this is called an \alert{empirical logit plot}.
+    \end{frame}
+
+    \begin{frame}[fragile]{Checking assumptions: Linearity}
+      <<fig.height=2>>=
+      empirical.logit.plot(model)
+      @
+      \pause\vspace{-0.5cm}
+      \greencheckmark \alert{Yes!} This is approximately along the line $y=x$.
+    \end{frame}
+
+    \section{Logistic regression with 2+ predictors}
+
+    \begin{frame}{Adding another predictor}
+      \begin{itemize}
+        \item Just like with a linear regression model, we can add additional predictors to the model.
+        \item Our interpretation of the coefficients in multiple logistic regression is similar to multiple linear regression, in the sense that each coefficient represents the predicted effect of one $X$ on $Y$, holding the other $X$ variables constant.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Adding another predictor}
+      Let's add sexual orientation as a second predictor of gender, in addition to height:
+      <<include=F>>=
+      options(width=80, digits=2)
+      @
+      <<>>=
+      model2 <- glm(male ~ height + orientation,
+        data=my.profiles, family=binomial)
+      @
+      The \texttt{orientation} variable has three categories:
+      <<>>=
+      table(my.profiles$orientation)
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm\vspace{-0.3cm}
+      <<echo=F>>=
+      summary(model2)
+      @
+    \end{frame}
+
+    \begin{frame}{Interpreting coefficients}
+      Our prediction equation is:
+      <<include=F>>=
+      b0 <- coef(model2)['(Intercept)']
+      b1 <- coef(model2)['height']
+      b2 <- coef(model2)['orientationgay']
+      b3 <- coef(model2)['orientationstraight']
+      pct <- function(x) { paste(round(100 * x, 0), "\\%", sep="") }
+      @
+      \[
+        \log\left(\frac{p}{1-p}\right) =
+          \Sexpr{b0} +
+          \Sexpr{b1}\cdot\text{height} +
+          \Sexpr{b2}\cdot\text{gay} +
+          \Sexpr{b3}\cdot\text{straight}.
+      \]
+      This means that:
+      \begin{itemize}[<+->]
+        \item Our predicted log odds of being male for someone who is bisexual and has a height of 0" is $\Sexpr{b0}$ (the intercept).
+        \item Among people with the same sexual orientation, each additional inch of height corresponds to an increase in \Sexpr{pct(exp(b1)-1)} in predicted odds of being male (i.e., multiplied by $e^{\Sexpr{b1}} = \Sexpr{exp(b1)}$).
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Interpreting coefficients}
+      \[
+        \log\left(\frac{p}{1-p}\right) =
+          \Sexpr{b0} +
+          \Sexpr{b1}\cdot\text{height} +
+          \Sexpr{b2}\cdot\text{gay} +
+          \Sexpr{b3}\cdot\text{straight}.
+      \]
+      \begin{itemize}[<+->]
+        \item Among people of the same height, being gay increases the predicted odds of being male by \Sexpr{pct(exp(b2)-1)} (i.e., multiplied by $e^{\Sexpr{b2}} = \Sexpr{exp(b2)}$) compared to being bisexual.
+        \item Among people of the same height, being straight increases the predicted odds of being male by \Sexpr{pct(exp(b3)-1)} (i.e., multiplied by $e^{\Sexpr{b3}} = \Sexpr{exp(b3)}$) compared to being bisexual.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Understanding what's going on}
+      \fontsm
+      <<>>=
+      crosstabs <- table(my.profiles$sex, my.profiles$orientation)
+      crosstabs
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsm
+      <<>>=
+      barplot(prop.table(crosstabs, 2), col=c("pink", "lightblue"),
+        legend=T)
+      @
+    \end{frame}
+
+    \begin{frame}{Converting back to probabilities}
+      Because there is a nonlinear relationship between probability and odds, a particular percentage increase in odds does not correspond to a fixed change in probability. But it can be useful sometimes to compute some exemplar predicted probabilities to get a sense of the relationships:
+
+      <<include=F>>=
+      options(digits=3)
+      @
+
+      \begin{center}
+        \begin{tabular}{r|llll}
+          & \multicolumn{4}{c}{Height} \\
+          & 60" & 64" & 68" & 72" \\
+          \hline
+          bisexual
+            & \Sexpr{predict(model2, list(height=60, orientation="bisexual"), type="response")}
+            & \Sexpr{predict(model2, list(height=64, orientation="bisexual"), type="response")}
+            & \Sexpr{predict(model2, list(height=68, orientation="bisexual"), type="response")}
+            & \Sexpr{predict(model2, list(height=72, orientation="bisexual"), type="response")}
+            \\
+          gay
+            & \Sexpr{predict(model2, list(height=60, orientation="gay"), type="response")}
+            & \Sexpr{predict(model2, list(height=64, orientation="gay"), type="response")}
+            & \Sexpr{predict(model2, list(height=68, orientation="gay"), type="response")}
+            & \Sexpr{predict(model2, list(height=72, orientation="gay"), type="response")}
+            \\
+          straight
+            & \Sexpr{predict(model2, list(height=60, orientation="straight"), type="response")}
+            & \Sexpr{predict(model2, list(height=64, orientation="straight"), type="response")}
+            & \Sexpr{predict(model2, list(height=68, orientation="straight"), type="response")}
+            & \Sexpr{predict(model2, list(height=72, orientation="straight"), type="response")}
+            \\
+        \end{tabular}
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      We can also visualize this by plotting the three curves for straight (yellow), gay (green), and bisexual (blue) OkCupid users:
+      <<echo=F>>=
+      curve(exp(b0+b1*x+b2)/(1+exp(b0+b1*x+b2)), from=55, to=80,
+          xlab='Height', ylab='Predicted P(male)', col="lightgreen", lwd=3)
+      curve(exp(b0+b1*x+b3)/(1+exp(b0+b1*x+b3)), add=T, col="yellow", lwd=3)
+      @
+      Where will the curve for bisexual OkCupid users be?
+    \end{frame}
+
+    \begin{frame}
+      We can also visualize this by plotting the three curves for straight (yellow), gay (green), and bisexual (blue) OkCupid users:
+      <<echo=F>>=
+      curve(exp(b0+b1*x)/(1+exp(b0+b1*x)), from=55, to=80,
+          xlab='Height', ylab='Predicted P(male)', col="lightblue", lwd=3)
+      curve(exp(b0+b1*x+b2)/(1+exp(b0+b1*x+b2)), add=T, col="lightgreen", lwd=3)
+      curve(exp(b0+b1*x+b3)/(1+exp(b0+b1*x+b3)), add=T, col="yellow", lwd=3)
+      @
+    \end{frame}
+
+    \section{Interactions in logistic regression}
+
+    \begin{frame}{What would interactions do?}
+      \begin{itemize}
+        \item In linear regression, an interaction between two predictors $X_1$ and $X_2$ means that the \alert{slope} of $X_1$ will depend on the \alert{value} of $X_2$.
+        \item In other words, there will be differently-sloped regression lines predicting $Y$ from $X_1$ depending on what the value of $X_2$ is.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      <<echo=F, fig.height=3.5>>=
+      nba <- read.csv('../../data/nba.csv')
+      model3 <- lm(PTS ~ N3PA * PCT3P, data=nba)
+
+      plot(nba$N3PA, nba$PTS, pch=16, col='orange', xlab='Num 3-point shots attempted', ylab='Total points')
+      a <- model3$coefficients["(Intercept)"] + mean(nba$PCT3P) * model3$coefficients["PCT3P"]
+      b <- model3$coefficients["N3PA"] + model3$coefficients["N3PA:PCT3P"] * mean(nba$PCT3P)
+      abline(a, b, col='yellow', lwd=4)
+      text(29, b*29+a, "Average 3P% (35.4%)", col="yellow", pos=3, srt=b*43)
+
+      a <- model3$coefficients["(Intercept)"] + (mean(nba$PCT3P) - 2*sd(nba$PCT3P)) * model3$coefficients["PCT3P"]
+      b <- model3$coefficients["N3PA"] + model3$coefficients["N3PA:PCT3P"] * (mean(nba$PCT3P) - 2*sd(nba$PCT3P))
+      abline(a, b, col='red', lwd=4)
+      text(28.5, b*28.5+a, "2 SD below avg (31.7%)", col="red", pos=3, srt=b*45)
+
+      a <- model3$coefficients["(Intercept)"] + (mean(nba$PCT3P) + 2*sd(nba$PCT3P)) * model3$coefficients["PCT3P"]
+      b <- model3$coefficients["N3PA"] + model3$coefficients["N3PA:PCT3P"] * (mean(nba$PCT3P) + 2*sd(nba$PCT3P))
+      abline(a, b, col='green', lwd=4)
+      text(29, b*29+a, "2 SD above avg (39.2%)", col="green", pos=3, srt=b*40)
+
+      breakeven <- -model3$coefficients["N3PA"] / model3$coefficients["N3PA:PCT3P"]
+      a <- model3$coefficients["(Intercept)"] + breakeven * model3$coefficients["PCT3P"]
+      b <- model3$coefficients["N3PA"] + model3$coefficients["N3PA:PCT3P"] * breakeven
+      abline(a, b, col='pink', lwd=4)
+      text(29, b*29+a, "26.5% 3P shooting", col="pink", pos=3, srt=b*45)
+      @
+    \end{frame}
+
+    \begin{frame}{What would interactions do?}
+      \begin{itemize}
+        \item We can add interactions to logistic regression and the interpretation is the same: the effect of $X_1$ on the \alert{probability of being male} depends on the \alert{value} of $X_2$.
+        \item Let's try this out with $X_1=\text{height}$ and $X_2=\text{orientation}$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+      <<>>=
+      int.model <- glm(male ~ height * orientation, data=my.profiles, family=binomial)
+      summary(int.model)
+      @
+    \end{frame}
+
+    \begin{frame}
+      The interaction model is:
+      <<echo=F>>=
+      b0 <- coef(int.model)['(Intercept)']
+      b1 <- coef(int.model)['height']
+      b2 <- coef(int.model)['orientationgay']
+      b3 <- coef(int.model)['orientationstraight']
+      b4 <- coef(int.model)['height:orientationgay']
+      b5 <- coef(int.model)['height:orientationstraight']
+      options(digits=2)
+      @
+      \begin{align*}
+        \log\left(\frac{p}{1-p}\right) &=
+          \Sexpr{b0} +
+          \Sexpr{b1}\cdot\text{height}
+          - \Sexpr{abs(b2)}\cdot\text{gay}
+          - \Sexpr{abs(b3)}\cdot\text{straight} \\ & \qquad+
+          \Sexpr{b4}\cdot\text{height}\cdot\text{gay} +
+          \Sexpr{b5}\cdot\text{height}\cdot\text{straight}.
+      \end{align*}
+    \end{frame}
+
+    \begin{frame}
+      Let's graph the equation for gay (green), straight (yellow), and bisexual (blue) users:
+      <<echo=F>>=
+      curve(exp(b0+(b1+b4)*x+b2)/(1+exp(b0+(b1+b4)*x+b2)), from=55, to=80,
+          xlab='Height', ylab='Predicted P(male)', col="lightgreen", lwd=3)
+      curve(exp(b0+(b1+b5)*x+b3)/(1+exp(b0+(b1+b5)*x+b3)), add=T, col="yellow", lwd=3)
+      curve(exp(b0+b1*x)/(1+exp(b0+b1*x)), add=T, col="lightblue", lwd=3)
+      @
+    \end{frame}
+
+    \section{Other applications of logistic regression}
+
+    \begin{frame}{What else can we use logistic regression for?}
+      \begin{itemize}
+        \item \textbf{Finance:} Predicting which customers are most likely to default on a loan
+        \item \textbf{Advertising:} Predicting when a customer will respond positively to an advertising campaign
+        \item \textbf{Marketing:} Predicting when a customer will purchase a product or sign up for a service
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+\end{document}

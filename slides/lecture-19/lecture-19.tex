@@ -1,0 +1,291 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{1, 0.894, 0.769}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.824,0.412,0.118}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{1,0.894,0.71}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.824,0.706,0.549}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.941,0.902,0.549}{#1}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.804,0.776,0.451}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.78,0.941,0.545}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{1,0.78,0.769}{#1}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{preview}
+\usepackage{../371g-slides}
+\title{Logistic Regression 1}
+\subtitle{Lecture 19}
+\author{STA 371G}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+  
+  
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}
+      \fullpagepicture{okcupid}
+    \end{frame}
+
+    \begin{frame}{The OkCupid data set}
+      \begin{itemize}
+        \item The OkCupid data set contains information about 59946 profiles from users of the OkCupid online dating service.
+        \item We have data on user age, height, sex, income, sexual orientation, education level, body type, ethnicity, and more.
+        \item OkCupid often publishes their own analyses of their data---see \url{https://theblog.okcupid.com/tagged/data}.
+        \item Let's see if we can predict the sex/gender of the user based on their height.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{What's wrong with this regression?}
+      \[
+        \widehat{\text{sex}} = \hat\beta_0 + \hat\beta_1\cdot\text{height}
+      \]
+
+      \pause
+
+      \begin{center}
+        The $Y$ variable here is \alert{categorical} (two levels---everyone in this data set is either labeled male or female), so regular linear regression won't work here.
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{But what if we just do it anyway?}
+      Let's first create a dummy variable to convert sex to a quantitative dummy variable:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{profiles}\hlopt{$}\hlstd{male} \hlkwb{<-} \hlkwd{ifelse}\hlstd{(profiles}\hlopt{$}\hlstd{sex} \hlopt{==} \hlstr{"m"}\hlstd{,} \hlnum{1}\hlstd{,} \hlnum{0}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+      We could do this with 1 representing either male or female (it wouldn't matter).
+    \end{frame}
+
+    \begin{frame}[fragile]{But what if we just do it anyway?}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-3-1} 
+
+\end{knitrout}
+      A line is a spectacularly bad fit to this data---it's not even close to linear. And what does it mean to predict that male = 0.7 (or 1.2)?
+    \end{frame}
+
+    \begin{frame}
+      What challenges might we run into with this data?
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{MaleHeightDistribution}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{MaleHeightDistributionYoink}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        So men lie about their height---by an average of about 2 inches! And many men round up to 6 feet.
+        \pause
+
+        \bigskip
+        Women do too!
+      \end{center}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{FemaleHeightDistributionImplied}
+    \end{frame}
+
+    \begin{frame}
+      \begin{center}
+        We don't really have any tools at our disposal to correct for this, but let's still proceed with the analysis (with some caution) since the exaggeration seems about the same regardless of gender.
+      \end{center}
+    \end{frame}
+
+    \begin{frame}[fragile]{Cleaning the data}
+      There are definitely some weird values for height:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{boxplot}\hlstd{(profiles}\hlopt{$}\hlstd{height,} \hlkwc{horizontal}\hlstd{=T,} \hlkwc{xlab}\hlstd{=}\hlstr{"Height"}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-4-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]{Cleaning the data}
+      Let's consider only heights between 55 and 80 inches (4'7" and 6'8"), inclusive. This is arbitrary, but it excludes only 117 cases out of 59946.
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{my.profiles} \hlkwb{<-} \hlkwd{subset}\hlstd{(profiles,}
+                 \hlstd{height} \hlopt{>=} \hlnum{55} \hlopt{&} \hlstd{height} \hlopt{<=} \hlnum{80}\hlstd{)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{The idea behind logistic regression}
+      \begin{itemize}
+        \item Instead of predicting whether someone is male, let's predict the \emph{probability} that they are male
+        \item In logistic regression, one level of $Y$ is always called ``success'' and the other called ``failure.'' Since $Y=1$ for males, in our setup we have designated males as ``success.'' (You could also set $Y=1$ for females and call females ``success.'')
+        \item Let's fit a curve that is always between 0 and 1.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Odds}
+      \begin{itemize}[<+->]
+        \item When something has ``even (1/1) odds,'' the probability of success is $1/2$
+        \item When something has ``2/1 odds,'' the probability of success is $2/3$
+        \item When something has ``3/2 odds,'' the probability of success is $3/5$
+        \item In general, the odds of something happening are $p/(1-p)$
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The logistic regression model}
+      Logistic regression models the \alert{log odds} of success $p$ as a linear function of $X$:
+      \[
+        \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 X + \epsilon
+      \]
+      This fits an S-shaped curve to the data (we'll see what it looks like later).
+    \end{frame}
+
+    \begin{frame}[fragile]{Let's try it}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model} \hlkwb{<-} \hlkwd{glm}\hlstd{(male} \hlopt{~} \hlstd{height,} \hlkwc{data}\hlstd{=my.profiles,}
+             \hlkwc{family}\hlstd{=binomial)}
+\hlkwd{summary}\hlstd{(model)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{How to interpret the curve?}
+      
+      The regression output tells us that our prediction is
+      \[
+        \log\text{odds} = \log\left(\frac{P(\text{male})}{1-P(\text{male})}\right) = -44.45 + 0.66\cdot\text{height}.
+      \]
+      \pause
+      Let's solve for $P(\text{male})$:
+      \[
+        \widehat{P(\text{male})} = \frac{e^{-44.45 + 0.66\cdot\text{height}}}{1 + e^{-44.45 + 0.66\cdot\text{height}}}
+      \]
+    \end{frame}
+
+    \begin{frame}[fragile]{Making predictions}
+      We can use \texttt{predict} to automate the process of plugging into the equation:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{predict}\hlstd{(model,} \hlkwd{list}\hlstd{(}\hlkwc{height}\hlstd{=}\hlnum{69}\hlstd{),} \hlkwc{type}\hlstd{=}\hlstr{"response"}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+   1 
+0.77 
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      
+      \[
+        \frac{e^{-44.45 + 0.66\cdot 69}}{1 + e^{-44.45 + 0.66\cdot 69}} = 0.77
+      \]
+      \pause
+      We predict that someone that is 5'9" has a 77\% chance of being male.
+    \end{frame}
+
+    \begin{frame}[fragile]{Visualizing the model}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-10-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]{How to interpret the curve?}
+      \[
+        \widehat{P(\text{male})} = \frac{e^{-44.45 + 0.66\cdot\text{height}}}{1 + e^{-44.45 + 0.66\cdot\text{height}}}
+      \]
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-11-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients}
+      Our prediction equation is:
+      \[
+        \log\left(\frac{P(\text{male})}{1-P(\text{male})}\right) = -44.45 + 0.66\cdot\text{height}.
+      \]
+      Let's start with some basic, but not particularly useful, interpretations:
+      \begin{itemize}[<+->]
+        \item When $\text{height}=0$, we predict that the log odds will be $-44.45$ \pause, so the probability of male is predicted to be very close to 0\%.
+        \item When height increases by 1 inch, we predict that the log odds of being male will increase by $0.66$.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Interpreting the coefficients}
+      Let's rewrite the prediction equation as:
+      \[
+        \text{Predicted odds of male} = e^{-44.45 + 0.66\cdot\text{height}}
+      \]
+      Increasing height by 1 inch will \emph{multiply} the odds by $e^{0.66}=1.94$; i.e., increase the odds by $94$\%.
+
+      \bigskip\pause
+      Increasing height by 2 inches will \emph{multiply} the odds by $e^{2 \cdot 0.66}=3.76$; i.e., increase the odds by $276$\%.
+    \end{frame}
+  \end{darkframes}
+
+\end{document}
