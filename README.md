@@ -20,7 +20,7 @@
 | Lecture 16: Polynomial Regression & Data Cleaning | [Slides](slides/lecture-16/lecture-16.pdf) | [Script](lecture-scripts/lecture-16.R) |
 | Lecture 17: Building Models | [Slides](slides/lecture-17/lecture-17.pdf) | [Script](lecture-scripts/lecture-17.R) |
 | Lecture 18: Indicator Variables and Interactions | [Slides](slides/lecture-18/lecture-18.pdf) | [Script](lecture-scripts/lecture-18.R) |
-| Lecture 19: Logistic Regression 1 | [Slides](slides/lecture-19/lecture-19.pdf) | | 
+| Lecture 19: Logistic Regression 1 | [Slides](slides/lecture-19/lecture-19.pdf) | [Script](lecture-scripts/lecture-19.R) | 
 | Lecture 20: Logistic Regression 2 | [Slides](slides/lecture-20/lecture-20.pdf) | | 
 
 # R help pages
