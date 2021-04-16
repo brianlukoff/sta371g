@@ -1,0 +1,437 @@
+\documentclass{beamer}
+\usepackage{preview}
+\usepackage{../371g-slides}
+\title{Training and test sets}
+\subtitle{Lecture 22}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  hook_output <- knit_hooks$get('output')
+  knit_hooks$set(output = function(x, options) {
+    if (!is.null(n <- options$out.lines)) {
+      n <- as.numeric(n)
+      x <- unlist(stringr::str_split(x, "\n"))
+      nx <- length(x)
+      x <- x[pmin(n,nx)]
+      if(min(n) > 1)
+        x <- c("...", x)
+      if(max(n) < nx)
+        x <- c(x, "...")
+      x <- paste(c(x, "\n"), collapse = "\n")
+    }
+    hook_output(x, options)
+  })
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')  
+  houses <- read.csv("../../data/houses.csv")
+  titanic <- read.csv("../../data/titanic.csv")
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \section{Overfitting}
+
+    \begin{frame}{Overfitting}
+      \begin{itemize}
+        \item A related problem to $p$-hacking is the issue of \alert{overfitting}: creating a model that fits your \emph{sample} very well but does not generalize well to the larger \emph{population}.
+        \item In other words, an overfit model is one where the $R^2$ (for linear regression) or prediction accuracy (for logistic regression) is high, but the model will not work as well as expected when given new data.
+        \item Let's consider a simple problem of predicting $Y$ from one $X$, and fitting a polynomial curve to the data.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      <<echo=F>>=
+      set.seed(1)
+      n <- 200
+      x <- sort(runif(n, min=0, max=1.5))
+      x2 <- sort(runif(n, min=0, max=1.5))
+      y <- sin(1.2*x*3.14159) + rnorm(n, 0, 0.2)
+      y2 <- sin(1.2*x*3.14159) + rnorm(n, 0, 0.2)
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      @
+
+      \pause
+      \vspace{-1cm}
+      As we increase the degree (the highest power of $x$) of the polynomial, the fit improves, since the curve can zig and zag to capture more of the idiosyncrasies of the sample.
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{polynomials}
+    \end{frame}
+
+    \begin{frame}{Degree 1 polynomial}
+      <<echo=F>>=
+      model1 <- lm(y ~ x)
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model1), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(resid(model1))), 4)}$
+    \end{frame}
+
+    \begin{frame}{Degree 2 polynomial}
+      <<echo=F>>=
+      model2 <- lm(y ~ x + I(x^2))
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model2), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(resid(model2))), 4)}$
+    \end{frame}
+
+    \begin{frame}{Degree 3 polynomial}
+      <<echo=F>>=
+      model3 <- lm(y ~ x + I(x^2) + I(x^3))
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model3), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(resid(model3))), 4)}$
+    \end{frame}
+
+    \begin{frame}{Degree 10 polynomial}
+      <<echo=F>>=
+      model10 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10))
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model10), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(resid(model10))), 4)}$
+    \end{frame}
+
+    \begin{frame}{Degree 20 polynomial}
+      <<echo=F>>=
+      model20 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10) + I(x^11) + I(x^12) + I(x^13) + I(x^14) + I(x^15) + I(x^16) + I(x^17) + I(x^18) + I(x^19) + I(x^20))
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model20), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(resid(model20))), 4)}$
+    \end{frame}
+
+    \begin{frame}{Degree 30 polynomial}
+      <<echo=F>>=
+      model30 <- lm(y ~ x + I(x^2) + I(x^3) + I(x^4) + I(x^5) + I(x^6) + I(x^7) + I(x^8) + I(x^9) + I(x^10) + I(x^11) + I(x^12) + I(x^13) + I(x^14) + I(x^15) + I(x^16) + I(x^17) + I(x^18) + I(x^19) + I(x^20) + I(x^21) + I(x^22) + I(x^23) + I(x^24) + I(x^25) + I(x^26) + I(x^27) + I(x^28) + I(x^29) + I(x^30))
+      plot(x, y, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model30), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(resid(model30))), 4)}$
+    \end{frame}
+
+    \begin{frame}
+      As we fit increasingly complex polynomials, the average prediction error decreases:
+
+      <<echo=F>>=
+      deg <- 1:30
+      f <- "y ~ 1"
+      training.error <- c()
+      for (i in deg) {
+        f <- paste(f, "+ I(x^", i, ")")
+        model <- lm(formula(f))
+        training.error <- c(training.error, mean(abs(resid(model))))
+      }
+      plot(deg, training.error, xlab="Degree", ylab="Prediction error", pch=16, col="orange", type="o", lwd=3)
+      @
+    \end{frame}
+
+    \begin{frame}{Parsimony}
+      \begin{itemize}
+        \item We've talked a lot about the need to select models that are \alert{parsimonious}, i.e., those that strike a good balance between fitting well and being simple.
+        \item Besides being easier to communicate, there's another reason to prefer simpler models---they tend to generalize better to new data.
+        \item Let's see how these models perform on a new sample from the same population!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Degree 1 polynomial}
+      <<echo=F>>=
+      plot(x2, y2, pch=16, col="lightblue", xlab="", ylab="")
+      y.hat <- predict(model1, list(x=x2))
+      lines(x2, y.hat, col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(y.hat - y2)), 4)}$
+      (was $\Sexpr{round(mean(abs(resid(model1))), 4)}$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 2 polynomial}
+      <<echo=F>>=
+      plot(x2, y2, pch=16, col="lightblue", xlab="", ylab="")
+      y.hat <- predict(model2, list(x=x2))
+      lines(x2, y.hat, col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(y.hat - y2)), 4)}$
+      (was $\Sexpr{round(mean(abs(resid(model2))), 4)}$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 3 polynomial}
+      <<echo=F>>=
+      plot(x2, y2, pch=16, col="lightblue", xlab="", ylab="")
+      y.hat <- predict(model3, list(x=x2))
+      lines(x2, y.hat, col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(y.hat - y2)), 4)}$
+      (was $\Sexpr{round(mean(abs(resid(model3))), 4)}$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 10 polynomial}
+      <<echo=F>>=
+      plot(x2, y2, pch=16, col="lightblue", xlab="", ylab="")
+      y.hat <- predict(model10, list(x=x2))
+      lines(x2, y.hat, col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(y.hat - y2)), 4)}$
+      (was $\Sexpr{round(mean(abs(resid(model10))), 4)}$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 20 polynomial}
+      <<echo=F>>=
+      plot(x2, y2, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model20), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(y.hat - y2)), 4)}$
+      (was $\Sexpr{round(mean(abs(resid(model20))), 4)}$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 30 polynomial}
+      <<echo=F>>=
+      plot(x2, y2, pch=16, col="lightblue", xlab="", ylab="")
+      lines(x, predict(model30), col="orange", lwd=2)
+      @
+      \vspace{-1cm} $\text{average absolute prediction error} = \Sexpr{round(mean(abs(y.hat - y2)), 4)}$
+      (was $\Sexpr{round(mean(abs(resid(model30))), 4)}$ in the original sample)
+    \end{frame}
+
+    \begin{frame}
+      The increasingly complex polynomials do not perform as well on the new data as the simple polynomials, because they had \alert{overfit} the idiosyncrasies of the original data.
+
+      <<echo=F, warning=F>>=
+      f <- "y ~ 1"
+      test.error <- c()
+      for (i in deg) {
+        f <- paste(f, "+ I(x^", i, ")")
+        model <- lm(formula(f))
+        y.hat <- predict(model, list(x=x2))
+        test.error <- c(test.error, mean(abs(y.hat - y2)))
+      }
+      plot(deg, training.error, xlab="Degree", ylim=c(min(c(test.error, training.error)), max(c(test.error, training.error))), ylab="Prediction error", pch=16, col="orange", type="o", lwd=3)
+      lines(deg, test.error, pch=16, col="lightgreen", type="o", lwd=3)
+      @
+    \end{frame}
+
+    \begin{frame}{Overfitting in multiple regression}
+      \begin{itemize}[<+->]
+        \item A similar phenomenon occurs when you have many variables to choose from when building a regression model.
+        \item By including many variables in your model, you can get $R^2$ to increase (or prediction error to decrease) on the data used to build the model.
+        \item But the more complex models are more likely to be \alert{overfitting} the data, and won't generalize as well as simple models.
+        \item In general, a model's performance on the data used to build the model will usually be stronger than its performance on new data.
+      \end{itemize}
+    \end{frame}
+
+    \section{Using $p$-values responsibly to avoid overfitting and $p$-hacking}
+
+    \begin{frame}{Two phases of analysis}
+      \begin{itemize}
+        \item Think of any analysis you do as having two phases, rather than one:
+          \begin{itemize}
+            \item The \alert{exploratory phase} where you try out different conditions, different subgroups, different measures of success, etc. until you find something that you \emph{think} works.
+            \item The \alert{confirmatory phase} where you try to replicate your results in a new sample.
+          \end{itemize}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The exploratory phase in regression analysis}
+      \begin{itemize}
+        \item Try looking at a large number of variables.
+        \item Try looking at different subsets---e.g. only women, or only men; only large companies, or only small companies; etc.
+        \item Use low $p$-values as a guide to what \emph{might} generalize to the larger population, but take them with a grain (cannister?!) of salt.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The confirmatory phase in regression analysis}
+      \begin{itemize}
+        \item Using what you think is the best model from the exploratory phase, see if your results generalize to a completely new sample.
+        \item Now you can trust that your $p$-values are not misleading, since you are only running a single test on this sample!
+      \end{itemize}
+    \end{frame}
+
+    \section{Training and test sets}
+
+    \begin{frame}{Review of training and test sets}
+      \begin{center}
+        \tikzstyle{block} = [rectangle, draw, fill=darkgray,
+          text centered, minimum height=2em]
+        \tikzstyle{line} = [draw, -latex']
+
+        \begin{tikzpicture}[auto]
+          \node [block, text width = 10cm] (all) {Original data set};
+          \node [block, below of=all, text width = 7cm, xshift=-1.5cm] (training) {Training set};
+          \node [block, right of=training, node distance = 5cm, text width = 3cm] (test) {Test set};
+        \end{tikzpicture}
+      \end{center}
+
+      \begin{itemize}
+        \item Split the data into a \alert{training set} and a \alert{test set} (a typical split is 70\% training set / 30\% test set).
+        \item We use the training set to build the model, and then evaluate the quality of the model on how well it predicts $Y$ in the test set.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The housing data set}
+      Let's look at different models to predict housing prices, with different sets of predictors.
+    \end{frame}
+
+    \begin{frame}[fragile]
+      Let's split our data into a training and test set with a rough 70/30 split. ($N=1728$, and 30\% of 1728 is approximately 518.)
+
+      \fontsm
+      <<>>=
+      # Select which row numbers will correspond to test cases
+      test.cases <- sample(1:1728, 518)
+
+      # Build the test set from those row numbers
+      test.set <- houses[test.cases,]
+
+      # Remaining row numbers will correspond to training cases
+      training.cases <- setdiff(1:1728, test.cases)
+
+      # Build the training set from those row numbers
+      training.set <- houses[training.cases,]
+      @
+    \end{frame}
+
+    \begin{frame}{Model-building strategy}
+      \begin{itemize}[<+->]
+        \item At first, the temptation is to build models on the training set, test using the test set, and repeat.
+        \item But this would lead to the same overfitting and $p$-hacking issues as before!
+        \item Instead, set aside the test set and don't look at it until you have a final model: what you think is the most parsimonious model.
+        \item Evaluate model performance in the test set as a way to get a fair measurement of how well your model will perform on new data.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Evaluating training and test error}
+      \fontsm
+      Let's start with a simple model that uses living area only:
+      <<>>=
+      model <- lm(Price ~ Living.Area, data=training.set)
+      @
+      The training set average error is:
+      <<>>=
+      mean(abs(resid(model)))
+      @
+      The test set average error comes from manually computing the prediction error for each case in the test set:
+      <<>>=
+      price.hat <- predict(model, test.set)
+      mean(abs(test.set$Price - price.hat))
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]{Evaluating training and test error}
+      \begin{itemize}[<+->]
+        \item Similarly, we can compare the $R^2$ from the training set to the $R^2$ that we would get by predicting prices for cases in the test set.
+        \item Recall that $R^2 = \text{cor}(Y,\hat Y)^2$; we can simulate what $R^2$ would be in the test set by calculating this in the test set:
+        <<>>=
+        cor(test.set$Price, price.hat)^2
+        @
+
+        \item Compare this to what $R^2$ is in the training set:
+        <<>>=
+        summary(model)$r.squared
+        @
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      <<>>=
+      
+      @
+    \end{frame}
+
+    \begin{frame}{Using training and test sets in logistic regression}
+      \begin{itemize}
+        \item The logic of training and test sets is identical for logistic regression.
+        \item If we build a logistic model to predict something, using a test set for evaluation will give us a more realistic estimate of prediction accuracy on new data.
+        \item Let's try this out on a data set of passengers from the \emph{Titanic}.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{The data set}
+      The \emph{Titanic} data set has data on \Sexpr{nrow(titanic)} passengers on the \emph{Titanic}; we'll predict the categorical variable survival from age of the passenger.  Let's segment the data into training and test sets, as before:
+
+      \fontsm
+      <<>>=
+      # Select which row numbers will correspond to test cases
+      test.cases <- sample(1:756, 227)
+
+      # Build the test set from those row numbers
+      test.set <- titanic[test.cases,]
+
+      # Remaining row numbers will correspond to training cases
+      training.cases <- setdiff(1:756, test.cases)
+
+      # Build the training set from those row numbers
+      training.set <- titanic[training.cases,]
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsm
+      Let's build the model:
+      <<>>=
+      model <- glm(Survived ~ Age, data=training.set, family=binomial)
+      @
+
+      \pause
+
+      Then we can evaluate prediction accuracy as usual:
+      <<>>=
+      predicted <- (predict(model, type="response") >= 0.5)
+      actual <- (training.set$Survived == 1)
+      sum(predicted == actual) / nrow(training.set)
+      @
+
+      \pause
+
+      To evaluate prediction accuracy on the training set, we use the same model, but apply it to the test set:
+      <<>>=
+      predicted <- (predict(model, test.set, type="response") >= 0.5)
+      actual <- (test.set$Survived == 1)
+      sum(predicted == actual) / nrow(test.set)
+      @
+    \end{frame}
+
+    \begin{frame}{Cross-validation}
+      \begin{center}
+        \tikzstyle{block} = [rectangle, draw, fill=darkgray,
+          text centered, minimum height=2em]
+        \tikzstyle{line} = [draw, -latex']
+
+        \begin{tikzpicture}[auto]
+          \node [block, text width = 9.75cm] (all) {Original data set};
+          \node [block, below of=all, text width = 1.75cm, xshift=-4cm] (fold1) {Fold 1};
+          \node [block, right of=fold1, node distance = 2cm, text width = 1.75cm] (fold2) {Fold 2};
+          \node [block, right of=fold2, node distance = 2cm, text width = 1.75cm] (fold3) {Fold 3};
+          \node [block, right of=fold3, node distance = 2cm, text width = 1.75cm] (fold4) {Fold 4};
+          \node [block, right of=fold4, node distance = 2cm, text width = 1.75cm] (fold5) {Fold 5};
+        \end{tikzpicture}
+      \end{center}
+
+      \begin{itemize}
+        \item Split the data into $k$ ``folds'' (here $k=5$).
+        \item For each fold, use that fold as a test set and the other folds together as a training set.
+        \item Average the prediction accuracy across all $k$ folds as your best estimate of prediction accuracy.
+        \item Cross-validation reduces the impact of the random chance from your selection of training and test sets.
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+\end{document}

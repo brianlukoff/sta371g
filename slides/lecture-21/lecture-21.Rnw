@@ -1,0 +1,292 @@
+\documentclass{beamer}
+\usepackage{preview}
+\usepackage{../371g-slides}
+\title{Problems with $p$-values}
+\subtitle{Lecture 21}
+\author{STA 371G}
+
+\begin{document}
+  <<setup, include=F, cache=F>>=
+  library(knitr)
+  opts_knit$set(global.par=T)
+  opts_chunk$set(dev="cairo_pdf", dev.args=list(bg="transparent"), external=F, fig.path='/tmp/figures/', comment=NA, fig.width=4.5, fig.height=3)
+  library(extrafont)
+  loadfonts()
+  knit_theme$set('camo')
+  hook_output <- knit_hooks$get('output')
+  knit_hooks$set(output = function(x, options) {
+    if (!is.null(n <- options$out.lines)) {
+      n <- as.numeric(n)
+      x <- unlist(stringr::str_split(x, "\n"))
+      nx <- length(x)
+      x <- x[pmin(n,nx)]
+      if(min(n) > 1)
+        x <- c("...", x)
+      if(max(n) < nx)
+        x <- c(x, "...")
+      x <- paste(c(x, "\n"), collapse = "\n")
+    }
+    hook_output(x, options)
+  })
+  mystery <- read.csv("../../data/mystery.csv")
+  @
+  <<include=F, cache=F>>=
+  par(fg='#fefefe', col.axis='#fefefe', col.lab='#fefefe', col.main="#fefefe", mar=c(5.1, 4.1, 1.1, 2.1), family='Lato')  
+  @
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \begin{frame}{A quick refresher on $p$-values}
+      \begin{itemize}[<+->]
+        \item To do a study, we select a sample from a population, and collect a statistic of interest in that sample (e.g., a mean or proportion)
+        \item For example, in marketing, we might A/B test two potential web online store designs.
+        \item We randomly show design A (the existing design) or B (the new design) to customers, and then track how much money they spend.
+        \item A $t$-test would be used to test the null hypothesis that the average amount spent with design A is the same as the amount spent with design B.
+        \item If we find $p<.05$ (and that the new design results in significantly higher revenue than the old design) then we redo our store with the new design.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      The hypotheses we are testing:
+      \[
+        H_0 : \mu_A=\mu_B \qquad\text{vs}\qquad
+        H_A : \mu_A<\mu B
+      \]
+      And:
+      \[
+        \text{$p$-value} = P(\text{seeing a difference as large as our sample} \mid \text{$H_0$ is true})
+      \]
+      \pause
+      So a small $p$-value means that null hypothesis $H_0$ is not a tenable assumption---we'll reject it and assume instead that the alternative hypothesis $H_A$ is true.
+    \end{frame}
+
+    \begin{frame}
+      Remember: a $p$-value is a \alert{conditional probability} that represents how likely it is that we would see a difference as extreme as the results we saw in the sample, under the assumption that $H_0$ is true.
+
+      \bigskip
+
+      As a result, it is sensitive to:
+      \begin{itemize}
+        \item \alert{Sample size}: Seeing the same difference in a larger sample will tend to result in a smaller $p$-value.
+        \item \alert{Sampling variation}: More variation in the population will tend to result in a larger $p$-value.
+      \end{itemize}
+    \end{frame}
+
+    \section{The consequence of running too many hypothesis tests}
+
+    \begin{frame}
+      \fullpagepicture{mystery-spot}
+    \end{frame}
+
+    \begin{frame}{How reliable is $R^2$?}
+      \begin{itemize}[<+->]
+        \item The mystery data set contains 20 predictor variables X1-X20.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+      <<out.lines=10:31, echo=F>>=
+      summary(lm(Y ~ ., data=mystery))
+      @
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontvsm
+      <<>>=
+      parsimonious.model <- lm(Y ~ X10 + X13 + X16, data=mystery)
+      summary(parsimonious.model)
+      @
+    \end{frame}
+
+    \begin{frame}{Mystery revealed!}
+      \begin{itemize}[<+->]
+        \item This data set consists of nothing but random numbers!
+        \item Suppose that the null hypothesis is always true (as it is here, for each of the $X$'s).
+        \item If you use $\alpha=.05$ as your cutoff for statistical significance, then you'll get a significant result 5\% of the time just by chance!
+        \item If we have 20 predictor variables, we are running 20 hypothesis tests, and we'd \alert{expect} to see one of them be significant, just by chance.
+        \item That means that when you are building a model from a large data set with many variables, you should expect to see some significant coefficients no matter what.
+      \end{itemize}
+    \end{frame}
+
+    \section{Changing your analysis strategy based on a hypothesis test}
+
+    \begin{frame}
+      \begin{itemize}[<+->]
+        \item Suppose you have a strong belief that there is a gender difference in propensity to buy a certain product.
+        \item You build a logistic regression model and find that the gender coefficient is nonsignificant ($p>.05$).
+        \item Maybe it would be significant for your older, 65+ customers?
+          \begin{itemize} \item Nope---still nonsignificant. \end{itemize}
+        \item Maybe it would be significant for your white customers?
+          \begin{itemize} \item Nope---still nonsignificant. \end{itemize}
+        \item Maybe it would be significant for customers in Texas?
+          \begin{itemize} \item Nope---still nonsignificant. \end{itemize}
+        \item Maybe it would be significant for customers in Oklahoma?
+          \begin{itemize} \item Yes---$p=0.03$! \end{itemize}
+        \item So it must be true that there is a significant gender difference in propensity to buy among customers in Oklahoma...
+        \item ...or, you just got a false positive by running a lot of tests!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{$p$-hacking}
+      \begin{itemize}[<+->]
+        \item This process is known as \alert{$p$-hacking}.
+        \item In some sense, this is a natural part of the data analysis process---you don't necessarily know what effects are out there unless you look for them.
+        \item But running too many tests can result in false positives!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{xkcd}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{republicans}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{democrats}
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{bem}
+    \end{frame}
+
+    \begin{frame}{What did the Bem study do?}
+      \begin{itemize}[<+->]
+        \item Reported on 9 different experiments of precognition (ESP)
+        \item A typical example: participants see two images and pick one; the computer than randomly picks one of the images as the ``correct'' image, and the participant sees a ``positive'' image as a reward (or a ``negative'' image as punishment) if they happened to select the right one in advance.
+        \item Participants picked the right image 51.7\% of the time ($t=2.39$, $p=.009$)
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{How did he prove that ESP exists?!}
+      \begin{itemize}[<+->]
+        \item Every time you do a hypothesis test, there is a 5\% chance that you'll get $p<.05$ just by chance!
+        \item Bem reports on 9 experiments that came out with $p<.05$, but he doesn't report on all of the failed attempts! This is called the \alert{file-drawer problem}.
+        \item Many researchers later tried to replicate Bem's results, and failed.
+      \end{itemize}
+    \end{frame}
+
+    \section{Stopping an experiment based on a hypothesis test}
+
+    \begin{frame}{Running A/B testing until we get significance}
+      \begin{itemize}[<+->]
+        \item Consider a similar situation: we run an A/B test where a customer is presented with two different offers.
+        \item After each customer, we test the null hypothesis that the proportion of customers that prefer offer A is the same as the proportion that prefer offer B.
+        \item We try this with up to 10,000 customers, but stop if we get a $p$-value less than .05.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      Let's simulate a situation where the customers in the population are just selecting randomly between offers A and B.
+
+      \bigskip\pause
+
+      In theory, the proportion of customers choosing offer A should stay near $0.5$ and we should get through all 10,000 customers with $p>.05$ each time.
+    \end{frame}
+
+    \begin{frame}
+      The \textcolor{pink}{pink} line shows the $p$-value after each customer, and the \textcolor{cyan}{blue} line shows the proportion of customers that chose offer A.
+      <<echo=F>>=
+      set.seed(2)
+      a.clicks <- 0
+      total <- 0
+      p.values <- c()
+      sample.p <- c()
+      for (i in 1:10000) {
+        if (sample(c("A", "B"), 1) == "A") {
+          a.clicks <- a.clicks + 1
+        }
+        total <- total + 1
+        SD <- sqrt(0.5 * 0.5 / total)
+        ts.z <- (a.clicks / total - 0.5) / SD
+        p <- min(pnorm(ts.z), 1 -  pnorm(ts.z))
+        sample.p <- c(sample.p, a.clicks / total)
+        p.values <- c(p.values, p)
+      }
+
+      plot(sample.p, type="l", col="lightblue", ylim=c(0,1),
+                     xlab="Customer number", ylab="", lwd=2)
+      lines(p.values, type="l", col="lightpink", lwd=2)
+      abline(h=0.5, col="yellow", lwd=2)
+      abline(h=0.05, col="lightgreen", lwd=2)
+      @
+    \end{frame}
+
+    \begin{frame}
+      \begin{itemize}
+        \item Running the hypothesis test after each customer provides too many opportunities for false positives.
+        \item Better: decide in advance how long you'll run the test.
+      \end{itemize}
+    \end{frame}
+
+    \section{Survivorship bias}
+
+    \begin{frame}
+      \fullpagepicture{funds}
+    \end{frame}
+
+    \begin{frame}{Which funds beat the market?}
+      \begin{itemize}[<+->]
+        \item In any given year, the vast majority of managed funds trail the S\&P 500.
+        \item Some managed funds do outperform the S\&P 500---but the high performers are \alert{different} every year.
+        \item Why are there no funds that consistently outperform the market?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Survivorship bias}
+      \begin{itemize}[<+->]
+        \item The worst performers are the ones most likely to be shut down every year.
+        \item So the situation is even worse than it looks!
+        \item This phenomenon is called \alert{survivorship bias}: the survivors are not necessarily representative of the whole.
+        \item Survivorship bias is why we should be careful about trying to emulate the characteristics of the most successful people or companies!
+      \end{itemize}
+    \end{frame}
+
+    \section{Practical versus statistical significance}
+
+    \begin{frame}
+      \begin{itemize}[<+->]
+        \item We show design A to 10,000 customers and design B to 10,000 customers.
+        \item Design A results in a mean of \$40 spent, with an SD of \$20.
+        \item Design B results in a mean of \$41 spent, with an SD of \$20.
+        \item A one-sample $t$-test of the null hypothesis $\mu_A=\mu_B$ against $\mu_A<\mu_B$ gives a $p$-value of $0.0002$.
+        \item So we should redesign the store with design B, right?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{But:}
+      \begin{itemize}[<+->]
+        \item What if it would cost millions of dollars to do, and we would never recoup our investment?
+        \item What if there is another design that would cost just as much to implement but would deliver a much higher ROI?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Practical vs statistical significance}
+      \begin{itemize}[<+->]
+        \item We tend to misuse $p$-values as a proxy for ``important,'' but $p$-values really just tell us whether our sample is consistent with the null hypothesis being true.
+        \item A small $p$-value means that we can be confident that designs A and B do not result in exactly the same revenue per user---is the difference \alert{statistically significant}...
+        \item ...but that's not answer to the question we really have: is the difference large enough for us to care about---is the difference \alert{practically significant}?
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+      \begin{itemize}[<+->]
+        \item What ``practical'' means depends on your business situation: \alert{is the benefit worth the cost?}
+        \item Design B might be statistically significantly better than design A, but the online store redesign might cost millions to execute.
+        \item One fund might outperform the market in a statistically significant way, but the difference might be partially (or completely!) offset by the fund's fees.
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+\end{document}

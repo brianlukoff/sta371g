@@ -1,0 +1,502 @@
+\documentclass{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{1, 0.894, 0.769}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.824,0.412,0.118}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{1,0.894,0.71}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.824,0.706,0.549}{#1}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{1,0.894,0.769}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.941,0.902,0.549}{#1}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.804,0.776,0.451}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.78,0.941,0.545}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{1,0.78,0.769}{#1}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{preview}
+\usepackage{../371g-slides}
+\title{Training and test sets}
+\subtitle{Lecture 22}
+\author{STA 371G}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+  
+  
+
+  \frame{\maketitle}
+
+  % Show outline at beginning of each section
+  \AtBeginSection[]{
+    \begin{frame}<beamer>
+      \tableofcontents[currentsection]
+    \end{frame}
+  }
+
+  %%%%%%% Slides start here %%%%%%%
+
+  \begin{darkframes}
+    \section{Overfitting}
+
+    \begin{frame}{Overfitting}
+      \begin{itemize}
+        \item A related problem to $p$-hacking is the issue of \alert{overfitting}: creating a model that fits your \emph{sample} very well but does not generalize well to the larger \emph{population}.
+        \item In other words, an overfit model is one where the $R^2$ (for linear regression) or prediction accuracy (for logistic regression) is high, but the model will not work as well as expected when given new data.
+        \item Let's consider a simple problem of predicting $Y$ from one $X$, and fitting a polynomial curve to the data.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-2-1} 
+
+\end{knitrout}
+
+      \pause
+      \vspace{-1cm}
+      As we increase the degree (the highest power of $x$) of the polynomial, the fit improves, since the curve can zig and zag to capture more of the idiosyncrasies of the sample.
+    \end{frame}
+
+    \begin{frame}
+      \fullpagepicture{polynomials}
+    \end{frame}
+
+    \begin{frame}{Degree 1 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-3-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.3438$
+    \end{frame}
+
+    \begin{frame}{Degree 2 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-4-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.3097$
+    \end{frame}
+
+    \begin{frame}{Degree 3 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-5-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.1696$
+    \end{frame}
+
+    \begin{frame}{Degree 10 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-6-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.1565$
+    \end{frame}
+
+    \begin{frame}{Degree 20 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-7-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.156$
+    \end{frame}
+
+    \begin{frame}{Degree 30 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-8-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.1559$
+    \end{frame}
+
+    \begin{frame}
+      As we fit increasingly complex polynomials, the average prediction error decreases:
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-9-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Parsimony}
+      \begin{itemize}
+        \item We've talked a lot about the need to select models that are \alert{parsimonious}, i.e., those that strike a good balance between fitting well and being simple.
+        \item Besides being easier to communicate, there's another reason to prefer simpler models---they tend to generalize better to new data.
+        \item Let's see how these models perform on a new sample from the same population!
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Degree 1 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-10-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.3339$
+      (was $0.3438$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 2 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-11-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.3688$
+      (was $0.3097$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 3 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-12-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.2718$
+      (was $0.1696$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 10 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-13-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.2927$
+      (was $0.1565$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 20 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-14-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.2927$
+      (was $0.156$ in the original sample)
+    \end{frame}
+
+    \begin{frame}{Degree 30 polynomial}
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-15-1} 
+
+\end{knitrout}
+      \vspace{-1cm} $\text{average absolute prediction error} = 0.2927$
+      (was $0.1559$ in the original sample)
+    \end{frame}
+
+    \begin{frame}
+      The increasingly complex polynomials do not perform as well on the new data as the simple polynomials, because they had \alert{overfit} the idiosyncrasies of the original data.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}
+\includegraphics[width=\maxwidth]{/tmp/figures/unnamed-chunk-16-1} 
+
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Overfitting in multiple regression}
+      \begin{itemize}[<+->]
+        \item A similar phenomenon occurs when you have many variables to choose from when building a regression model.
+        \item By including many variables in your model, you can get $R^2$ to increase (or prediction error to decrease) on the data used to build the model.
+        \item But the more complex models are more likely to be \alert{overfitting} the data, and won't generalize as well as simple models.
+        \item In general, a model's performance on the data used to build the model will usually be stronger than its performance on new data.
+      \end{itemize}
+    \end{frame}
+
+    \section{Using $p$-values responsibly to avoid overfitting and $p$-hacking}
+
+    \begin{frame}{Two phases of analysis}
+      \begin{itemize}
+        \item Think of any analysis you do as having two phases, rather than one:
+          \begin{itemize}
+            \item The \alert{exploratory phase} where you try out different conditions, different subgroups, different measures of success, etc. until you find something that you \emph{think} works.
+            \item The \alert{confirmatory phase} where you try to replicate your results in a new sample.
+          \end{itemize}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The exploratory phase in regression analysis}
+      \begin{itemize}
+        \item Try looking at a large number of variables.
+        \item Try looking at different subsets---e.g. only women, or only men; only large companies, or only small companies; etc.
+        \item Use low $p$-values as a guide to what \emph{might} generalize to the larger population, but take them with a grain (cannister?!) of salt.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The confirmatory phase in regression analysis}
+      \begin{itemize}
+        \item Using what you think is the best model from the exploratory phase, see if your results generalize to a completely new sample.
+        \item Now you can trust that your $p$-values are not misleading, since you are only running a single test on this sample!
+      \end{itemize}
+    \end{frame}
+
+    \section{Training and test sets}
+
+    \begin{frame}{Review of training and test sets}
+      \begin{center}
+        \tikzstyle{block} = [rectangle, draw, fill=darkgray,
+          text centered, minimum height=2em]
+        \tikzstyle{line} = [draw, -latex']
+
+        \begin{tikzpicture}[auto]
+          \node [block, text width = 10cm] (all) {Original data set};
+          \node [block, below of=all, text width = 7cm, xshift=-1.5cm] (training) {Training set};
+          \node [block, right of=training, node distance = 5cm, text width = 3cm] (test) {Test set};
+        \end{tikzpicture}
+      \end{center}
+
+      \begin{itemize}
+        \item Split the data into a \alert{training set} and a \alert{test set} (a typical split is 70\% training set / 30\% test set).
+        \item We use the training set to build the model, and then evaluate the quality of the model on how well it predicts $Y$ in the test set.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The housing data set}
+      Let's look at different models to predict housing prices, with different sets of predictors.
+    \end{frame}
+
+    \begin{frame}[fragile]
+      Let's split our data into a training and test set with a rough 70/30 split. ($N=1728$, and 30\% of 1728 is approximately 518.)
+
+      \fontsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Select which row numbers will correspond to test cases}
+\hlstd{test.cases} \hlkwb{<-} \hlkwd{sample}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{1728}\hlstd{,} \hlnum{518}\hlstd{)}
+
+\hlcom{# Build the test set from those row numbers}
+\hlstd{test.set} \hlkwb{<-} \hlstd{houses[test.cases,]}
+
+\hlcom{# Remaining row numbers will correspond to training cases}
+\hlstd{training.cases} \hlkwb{<-} \hlkwd{setdiff}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{1728}\hlstd{, test.cases)}
+
+\hlcom{# Build the training set from those row numbers}
+\hlstd{training.set} \hlkwb{<-} \hlstd{houses[training.cases,]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Model-building strategy}
+      \begin{itemize}[<+->]
+        \item At first, the temptation is to build models on the training set, test using the test set, and repeat.
+        \item But this would lead to the same overfitting and $p$-hacking issues as before!
+        \item Instead, set aside the test set and don't look at it until you have a final model: what you think is the most parsimonious model.
+        \item Evaluate model performance in the test set as a way to get a fair measurement of how well your model will perform on new data.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{Evaluating training and test error}
+      \fontsm
+      Let's start with a simple model that uses living area only:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model} \hlkwb{<-} \hlkwd{lm}\hlstd{(Price} \hlopt{~} \hlstd{Living.Area,} \hlkwc{data}\hlstd{=training.set)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+      The training set average error is:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{mean}\hlstd{(}\hlkwd{abs}\hlstd{(}\hlkwd{resid}\hlstd{(model)))}
+\end{alltt}
+\begin{verbatim}
+[1] 47685.76
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      The test set average error comes from manually computing the prediction error for each case in the test set:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{price.hat} \hlkwb{<-} \hlkwd{predict}\hlstd{(model, test.set)}
+\hlkwd{mean}\hlstd{(}\hlkwd{abs}\hlstd{(test.set}\hlopt{$}\hlstd{Price} \hlopt{-} \hlstd{price.hat))}
+\end{alltt}
+\begin{verbatim}
+[1] 47983.22
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]{Evaluating training and test error}
+      \begin{itemize}[<+->]
+        \item Similarly, we can compare the $R^2$ from the training set to the $R^2$ that we would get by predicting prices for cases in the test set.
+        \item Recall that $R^2 = \text{cor}(Y,\hat Y)^2$; we can simulate what $R^2$ would be in the test set by calculating this in the test set:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{cor}\hlstd{(test.set}\hlopt{$}\hlstd{Price, price.hat)}\hlopt{^}\hlnum{2}
+\end{alltt}
+\begin{verbatim}
+[1] 0.5162538
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+        \item Compare this to what $R^2$ is in the training set:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{summary}\hlstd{(model)}\hlopt{$}\hlstd{r.squared}
+\end{alltt}
+\begin{verbatim}
+[1] 0.5040246
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+
+    \end{frame}
+
+    \begin{frame}{Using training and test sets in logistic regression}
+      \begin{itemize}
+        \item The logic of training and test sets is identical for logistic regression.
+        \item If we build a logistic model to predict something, using a test set for evaluation will give us a more realistic estimate of prediction accuracy on new data.
+        \item Let's try this out on a data set of passengers from the \emph{Titanic}.
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]{The data set}
+      The \emph{Titanic} data set has data on 756 passengers on the \emph{Titanic}; we'll predict the categorical variable survival from age of the passenger.  Let's segment the data into training and test sets, as before:
+
+      \fontsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# Select which row numbers will correspond to test cases}
+\hlstd{test.cases} \hlkwb{<-} \hlkwd{sample}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{756}\hlstd{,} \hlnum{227}\hlstd{)}
+
+\hlcom{# Build the test set from those row numbers}
+\hlstd{test.set} \hlkwb{<-} \hlstd{titanic[test.cases,]}
+
+\hlcom{# Remaining row numbers will correspond to training cases}
+\hlstd{training.cases} \hlkwb{<-} \hlkwd{setdiff}\hlstd{(}\hlnum{1}\hlopt{:}\hlnum{756}\hlstd{, test.cases)}
+
+\hlcom{# Build the training set from those row numbers}
+\hlstd{training.set} \hlkwb{<-} \hlstd{titanic[training.cases,]}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsm
+      Let's build the model:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{model} \hlkwb{<-} \hlkwd{glm}\hlstd{(Survived} \hlopt{~} \hlstd{Age,} \hlkwc{data}\hlstd{=training.set,} \hlkwc{family}\hlstd{=binomial)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+      \pause
+
+      Then we can evaluate prediction accuracy as usual:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{predicted} \hlkwb{<-} \hlstd{(}\hlkwd{predict}\hlstd{(model,} \hlkwc{type}\hlstd{=}\hlstr{"response"}\hlstd{)} \hlopt{>=} \hlnum{0.5}\hlstd{)}
+\hlstd{actual} \hlkwb{<-} \hlstd{(training.set}\hlopt{$}\hlstd{Survived} \hlopt{==} \hlnum{1}\hlstd{)}
+\hlkwd{sum}\hlstd{(predicted} \hlopt{==} \hlstd{actual)} \hlopt{/} \hlkwd{nrow}\hlstd{(training.set)}
+\end{alltt}
+\begin{verbatim}
+[1] 0.5897921
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+
+      \pause
+
+      To evaluate prediction accuracy on the training set, we use the same model, but apply it to the test set:
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{predicted} \hlkwb{<-} \hlstd{(}\hlkwd{predict}\hlstd{(model, test.set,} \hlkwc{type}\hlstd{=}\hlstr{"response"}\hlstd{)} \hlopt{>=} \hlnum{0.5}\hlstd{)}
+\hlstd{actual} \hlkwb{<-} \hlstd{(test.set}\hlopt{$}\hlstd{Survived} \hlopt{==} \hlnum{1}\hlstd{)}
+\hlkwd{sum}\hlstd{(predicted} \hlopt{==} \hlstd{actual)} \hlopt{/} \hlkwd{nrow}\hlstd{(test.set)}
+\end{alltt}
+\begin{verbatim}
+[1] 0.5770925
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    \end{frame}
+
+    \begin{frame}{Cross-validation}
+      \begin{center}
+        \tikzstyle{block} = [rectangle, draw, fill=darkgray,
+          text centered, minimum height=2em]
+        \tikzstyle{line} = [draw, -latex']
+
+        \begin{tikzpicture}[auto]
+          \node [block, text width = 9.75cm] (all) {Original data set};
+          \node [block, below of=all, text width = 1.75cm, xshift=-4cm] (fold1) {Fold 1};
+          \node [block, right of=fold1, node distance = 2cm, text width = 1.75cm] (fold2) {Fold 2};
+          \node [block, right of=fold2, node distance = 2cm, text width = 1.75cm] (fold3) {Fold 3};
+          \node [block, right of=fold3, node distance = 2cm, text width = 1.75cm] (fold4) {Fold 4};
+          \node [block, right of=fold4, node distance = 2cm, text width = 1.75cm] (fold5) {Fold 5};
+        \end{tikzpicture}
+      \end{center}
+
+      \begin{itemize}
+        \item Split the data into $k$ ``folds'' (here $k=5$).
+        \item For each fold, use that fold as a test set and the other folds together as a training set.
+        \item Average the prediction accuracy across all $k$ folds as your best estimate of prediction accuracy.
+        \item Cross-validation reduces the impact of the random chance from your selection of training and test sets.
+      \end{itemize}
+    \end{frame}
+  \end{darkframes}
+\end{document}

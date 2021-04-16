@@ -21,7 +21,9 @@
 | Lecture 17: Building Models | [Slides](slides/lecture-17/lecture-17.pdf) | [Script](lecture-scripts/lecture-17.R) |
 | Lecture 18: Indicator Variables and Interactions | [Slides](slides/lecture-18/lecture-18.pdf) | [Script](lecture-scripts/lecture-18.R) |
 | Lecture 19: Logistic Regression 1 | [Slides](slides/lecture-19/lecture-19.pdf) | [Script](lecture-scripts/lecture-19.R) | 
-| Lecture 20: Logistic Regression 2 | [Slides](slides/lecture-20/lecture-20.pdf) | | 
+| Lecture 20: Logistic Regression 2 | [Slides](slides/lecture-20/lecture-20.pdf) | [Script](lecture-scripts/lecture-20.R) | 
+| Lecture 21: Problems with p-values | [Slides](slides/lecture-21/lecture-21.pdf) |  | 
+| Lecture 20: Training and test sets | [Slides](slides/lecture-22/lecture-22.pdf) |  | 
 
 # R help pages
 
