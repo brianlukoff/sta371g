@@ -396,8 +396,48 @@
       \end{itemize}
     \end{frame}
 
-    \begin{frame}
+    \begin{frame}{What if we did a transform of $Y$?}
+      \begin{itemize}
+        \item When a trasformation is applied to $Y$, we have to be careful about measuring model fit because $R^2$ and average absolute prediction error (MAE) now refer to the transformed variable and not the original variable
+        \item To get an accurate measurement of model fit in these cases, calculate predicted values for the original variable by reversing the transformation, and then use those predictions to compute $R^2$ or MAE
+      \end{itemize}
+    \end{frame}
 
+    \begin{frame}[fragile]
+      \fontsm
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.137, 0.137, 0.137}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{logmodel} \hlkwb{<-} \hlkwd{lm}\hlstd{(}\hlkwd{I}\hlstd{(}\hlkwd{log}\hlstd{(Price))} \hlopt{~} \hlstd{Living.Area} \hlopt{+} \hlstd{Land.Value,}
+                 \hlkwc{data}\hlstd{=training.set)}
+\hlstd{predict.training} \hlkwb{<-} \hlkwd{exp}\hlstd{(}\hlkwd{predict}\hlstd{(logmodel))}
+\hlstd{predict.test} \hlkwb{<-} \hlkwd{exp}\hlstd{(}\hlkwd{predict}\hlstd{(logmodel, test.set))}
+
+\hlkwd{cor}\hlstd{(predict.training, training.set}\hlopt{$}\hlstd{Price)}\hlopt{^}\hlnum{2}      \hlcom{# training R^2}
+\end{alltt}
+\begin{verbatim}
+[1] 0.538023
+\end{verbatim}
+\begin{alltt}
+\hlkwd{cor}\hlstd{(predict.test, test.set}\hlopt{$}\hlstd{Price)}\hlopt{^}\hlnum{2}              \hlcom{# test R^2}
+\end{alltt}
+\begin{verbatim}
+[1] 0.5524367
+\end{verbatim}
+\begin{alltt}
+\hlkwd{mean}\hlstd{(}\hlkwd{abs}\hlstd{(predict.training} \hlopt{-} \hlstd{training.set}\hlopt{$}\hlstd{Price))} \hlcom{# training MAE}
+\end{alltt}
+\begin{verbatim}
+[1] 45771.17
+\end{verbatim}
+\begin{alltt}
+\hlkwd{mean}\hlstd{(}\hlkwd{abs}\hlstd{(predict.test} \hlopt{-} \hlstd{test.set}\hlopt{$}\hlstd{Price))}         \hlcom{# test MAE}
+\end{alltt}
+\begin{verbatim}
+[1] 45266.46
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
     \end{frame}
 
     \begin{frame}{Using training and test sets in logistic regression}

@@ -351,9 +351,25 @@
       \end{itemize}
     \end{frame}
 
-    \begin{frame}
+    \begin{frame}{What if we did a transform of $Y$?}
+      \begin{itemize}
+        \item When a trasformation is applied to $Y$, we have to be careful about measuring model fit because $R^2$ and average absolute prediction error (MAE) now refer to the transformed variable and not the original variable
+        \item To get an accurate measurement of model fit in these cases, calculate predicted values for the original variable by reversing the transformation, and then use those predictions to compute $R^2$ or MAE
+      \end{itemize}
+    \end{frame}
+
+    \begin{frame}[fragile]
+      \fontsm
       <<>>=
-      
+      logmodel <- lm(I(log(Price)) ~ Living.Area + Land.Value, 
+                       data=training.set)
+      predict.training <- exp(predict(logmodel))
+      predict.test <- exp(predict(logmodel, test.set))
+
+      cor(predict.training, training.set$Price)^2      # training R^2
+      cor(predict.test, test.set$Price)^2              # test R^2
+      mean(abs(predict.training - training.set$Price)) # training MAE
+      mean(abs(predict.test - test.set$Price))         # test MAE
       @
     \end{frame}
 
