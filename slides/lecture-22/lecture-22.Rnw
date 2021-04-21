@@ -327,12 +327,12 @@
       @
       The training set average error is:
       <<>>=
-      mean(abs(resid(model)))
+      mean(abs(residuals(model)))
       @
       The test set average error comes from manually computing the prediction error for each case in the test set:
       <<>>=
-      price.hat <- predict(model, test.set)
-      mean(abs(test.set$Price - price.hat))
+      predicted.prices <- predict(model, test.set)
+      mean(abs(test.set$Price - predicted.prices))
       @
     \end{frame}
 
@@ -341,7 +341,7 @@
         \item Similarly, we can compare the $R^2$ from the training set to the $R^2$ that we would get by predicting prices for cases in the test set.
         \item Recall that $R^2 = \text{cor}(Y,\hat Y)^2$; we can simulate what $R^2$ would be in the test set by calculating this in the test set:
         <<>>=
-        cor(test.set$Price, price.hat)^2
+        cor(test.set$Price, predicted.prices)^2
         @
 
         \item Compare this to what $R^2$ is in the training set:
@@ -361,7 +361,8 @@
     \begin{frame}[fragile]
       \fontsm
       <<>>=
-      logmodel <- lm(I(log(Price)) ~ Living.Area + Land.Value, 
+      logPrice <- log(training.set$Price)
+      logmodel <- lm(logPrice ~ Living.Area + Land.Value, 
                        data=training.set)
       predict.training <- exp(predict(logmodel))
       predict.test <- exp(predict(logmodel, test.set))
