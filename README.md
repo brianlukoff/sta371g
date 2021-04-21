@@ -23,7 +23,7 @@
 | Lecture 19: Logistic Regression 1 | [Slides](slides/lecture-19/lecture-19.pdf) | [Script](lecture-scripts/lecture-19.R) | 
 | Lecture 20: Logistic Regression 2 | [Slides](slides/lecture-20/lecture-20.pdf) | [Script](lecture-scripts/lecture-20.R) | 
 | Lecture 21: Problems with p-values | [Slides](slides/lecture-21/lecture-21.pdf) | [Script](lecture-scripts/lecture-21.R) | 
-| Lecture 20: Training and test sets | [Slides](slides/lecture-22/lecture-22.pdf) |  | 
+| Lecture 20: Training and test sets | [Slides](slides/lecture-22/lecture-22.pdf) | [Script](lecture-scripts/lecture-22.R) | 
 
 # R help pages
 
